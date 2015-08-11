@@ -1,0 +1,49 @@
+<!---@ Description: Support for alert --->
+
+
+
+
+<cfscript>
+if (!thisTag.HasEndTag) 
+	abort "An end tag is required for b:alert."; 
+	
+	
+
+switch (thisTag.ExecutionMode)     {
+case "start" :
+
+	variables.result = "";
+  
+	param attributes.closable	= false;
+	param attributes.id			= "";
+	param attributes.rendered 	= true;
+	param attributes.severity	= "warning";
+	param attributes.title		= "";
+	param attributes.tooltip		= "";
+     
+	break;
+     
+case "end" :     
+     
+	   							variables.result &= '<div class="alert alert-#attributes.severity#';
+	if(attributes.closable)			variables.result &= ' alert-dismissible';  							
+	   							variables.result &= '"';
+	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
+								variables.result &= '>';
+	
+	if(attributes.closable)			variables.result &= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';		
+	if(attributes.title		!= "")    variables.result &= '<strong>#attributes.title#</strong><br />';
+	
+								variables.result &= thisTag.GeneratedContent; // pass through of content
+								variables.result &= '</div>';
+     
+
+     thisTag.GeneratedContent = "";
+     if (attributes.rendered)			writeOutput(variables.result);
+     
+	break;
+	}
+     
+ 
+</cfscript>
