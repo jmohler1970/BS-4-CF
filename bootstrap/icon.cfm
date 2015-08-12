@@ -17,11 +17,13 @@ case "start" :
 	param attributes.addon		= false;
 	param attributes.id			= "";
 	param attributes.name;
+	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.size		= "";
      param attributes.spin		= false;
      param attributes.tooltip		= "";
      
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

@@ -17,9 +17,11 @@ case "start" :
   
 
 	param attributes.look		= "default";
+	param attributes.processed 	= true;
 	param attributes.rendered	= true;
 	param attributes.value		= "";
 	
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

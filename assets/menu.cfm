@@ -9,7 +9,9 @@
 			<b:navLink value="Requirements" href="getting_started.cfm" />
 		    	<b:navLink value="Binding and Rendering" href="getting_started.cfm##bind" />
 			<b:navLink value="Layouts" href="layouts.cfm" />
+			<b:navLink value="Block Elements" href="block.cfm" />
 			<b:navLink value="Forms" href="forms.cfm" />
+			<b:navLink value="Tables" href="tables.cfm" />
 		</b:dropMenu>
 	
      	

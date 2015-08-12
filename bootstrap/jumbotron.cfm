@@ -16,9 +16,11 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.id			= "";
+	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.tooltip		= "";
      
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
@@ -28,7 +30,7 @@ case "end" :
 	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
 								variables.result &= '>';
 								variables.result &= thisTag.GeneratedContent; // pass through of content
-								variables.result &= '</div>';
+								variables.result &= '</div><!-- /.jumbotron -->';
      
      
      thisTag.GeneratedContent = "";

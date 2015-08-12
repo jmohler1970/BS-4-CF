@@ -17,10 +17,12 @@ case "start" :
 	param attributes.disabled	= false;
 	param attributes.id			= "";
 	param attributes.legend		= "";
+	param attributes.processed 	= true;
      param attributes.rendered 	= true; // removes content not actuall td
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

@@ -18,7 +18,8 @@ case "start" :
 	param attributes.binding		= "";
      param attributes.id			= "";
      param attributes.look		= "";
-     param attributes.rendered 	= true; // removes content not actuall td
+     // param attributes.processed	= true; // unknown how to support
+     param attributes.rendered 	= true; // removes content not actual td
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
@@ -28,7 +29,9 @@ case "start" :
 	break;
      
 case "end" :     
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+
+// This needs to be smart enough to iterate
+//     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
           
 	   							variables.result &= '<td class="';
 	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';

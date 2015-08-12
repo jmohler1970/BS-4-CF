@@ -19,9 +19,11 @@ case "start" :
 	param attributes.brandHref	= "";
 	param attributes.fixed		= "";
 	param attributes.inverse		= false;
+	param attributes.processed 	= true;
      param attributes.rendered 	= true;
 	param attributes.static		= false;
 	
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

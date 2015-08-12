@@ -13,23 +13,26 @@ switch (thisTag.ExecutionMode)     {
 case "start" :
 
 	variables.result = "";
+	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.binding		= "";
      param attributes.id			= "";
-	param attributes.rendered 	= true; // removes content not actuall td
+     param attributes.processed 	= true;
+	param attributes.rendered 	= true; 
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
      param attributes.tooltip		= "";
 
 
-     
-	break;
+     if (!attributes.processed) exit "exitTag";
+     break;
      
 case "end" :
-    	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+    	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlformat(evaluate("caller.rc.#attributes.binding#"));
      
-        							variables.result &= '<h4 class="';
+								
+  	   							variables.result &= '<h4 class="';
 	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';		
 	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		
 	   							variables.result &= '"';
@@ -41,6 +44,7 @@ case "end" :
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 	
 								variables.result &= '</h4>';
+     
      
      
      thisTag.GeneratedContent = "";

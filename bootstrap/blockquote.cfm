@@ -13,9 +13,11 @@ switch (thisTag.ExecutionMode)     {
 case "start" :
 
 	variables.result = "";
+	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.binding		= "";
      param attributes.id			= "";
+     param attributes.processed 	= true;
      param attributes.reverse		= false;
 	param attributes.rendered 	= true; // removes content not actuall td
 	param attributes.style		= "";
@@ -24,11 +26,11 @@ case "start" :
      param attributes.tooltip		= "";
 
 
-     
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 	
 	   							variables.result &= '<blockquote class="';
 	if(attributes.reverse)			variables.result &= ' blockquote-reverse';	

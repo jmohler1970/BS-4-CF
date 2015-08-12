@@ -13,6 +13,9 @@ switch (thisTag.ExecutionMode)     {
 case "start" :
 
 	variables.result = "";
+
+	if (!structKeyExists(attributes, "id") && !structKeyExists(attributes, "href")) throw("b:a tag must have either an id or an href. Neither have been provided"); 
+
   
 	param attributes.binding		= "";
 	param attributes.disabled	= false;
@@ -20,6 +23,7 @@ case "start" :
 	param attributes.href		= "";
 	param attributes.id			= "";
 	param attributes.look	 	= "default";
+	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.size		= "";
 	param attributes.style		= "";
@@ -27,11 +31,12 @@ case "start" :
 	param attributes.text		= "";
 	param attributes.tooltip		= "";
 	
-     
-	break;
+	
+	if (!attributes.processed) exit "exitTag";
+     break;
      
 case "end" :     
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 
 	   							variables.result &= '<a class="btn btn-#attributes.look#';
 	if(attributes.disabled)			variables.result &= ' disabled';

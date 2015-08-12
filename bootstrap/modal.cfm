@@ -19,14 +19,18 @@ case "start" :
 	param attributes.closable		= true;
 	if(!structKeyExists(attributes, "close-on-escape")) attributes["close-on-escape"] = true;
 	param attributes.id				= "";
+	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
 	param attributes.size			= "";
      param attributes.styleClass		= "";
 	param attributes.title			= "";
-     
+	
+	
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
+     
      
 	   							variables.result &= variables.crlf & '<div class="modal fade';
 	if(attributes.styleClass != "")	variables.result &= ' #attributes.styleClass#"';

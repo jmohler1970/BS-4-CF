@@ -28,7 +28,7 @@
     <b:jumbotron>
       <b:h1>BS-4-CF</b:h1>
       <p>Bootstrap tags for Adobe ColdFusion</p>
-      <p><b:a href="sample.cfm" look="primary" size="lg">Learn more</b:a></p>
+      <p><b:a href="getting_started.cfm" look="primary" size="lg">Learn more</b:a></p>
     </b:jumbotron>
 
 

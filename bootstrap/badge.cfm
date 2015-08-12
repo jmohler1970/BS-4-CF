@@ -17,15 +17,19 @@ case "start" :
   
   	param attributes.binding		= "";
 	param attributes.id			= "";
+	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.severity 	= "warning";
 	param attributes.value		= "";
 	
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.text = evaluate("caller.rc.#attributes.binding#");
-     
+	
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
+     
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.text = xmlformat(evaluate("caller.rc.#attributes.binding#"));
+          
      
 								variables.result &= '<span class="badge badge-#attributes.severity#">';
 								variables.result &= attributes.value; // pass through of content

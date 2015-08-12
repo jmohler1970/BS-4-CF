@@ -16,8 +16,9 @@ case "start" :
   	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.id			= "";
-	param attributes.rendered 	= true;
 	param attributes.offset		= 0;
+	param attributes.processed 	= true;
+	param attributes.rendered 	= true;
 	param attributes.span		= 0;
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
@@ -34,7 +35,8 @@ case "start" :
 	if(!structKeyExists(attributes, 'offset-md'))	attributes["offset-md"] = attributes.offset;
 	if(!structKeyExists(attributes, 'offset-lg'))	attributes["offset-lg"] = attributes.offset;
 
-     
+
+ 	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

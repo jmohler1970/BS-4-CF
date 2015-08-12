@@ -17,11 +17,14 @@ case "start" :
   
 	param attributes.fluid		= false;
 	param attributes.id			= "";
+	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.tooltip		= "";
      
+     
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

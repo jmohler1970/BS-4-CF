@@ -16,11 +16,13 @@ case "start" :
   
 	param attributes.closable	= false;
 	param attributes.id			= "";
+	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.severity	= "warning";
 	param attributes.title		= "";
 	param attributes.tooltip		= "";
      
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

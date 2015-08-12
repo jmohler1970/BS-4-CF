@@ -17,17 +17,21 @@ case "start" :
   
 	param attributes.binding		= "";
 	param attributes.id			= "";
+	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.severity 	= "default";
 	param attributes.text		= "";
 	param attributes.tooltip		= "";
 	
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.text = evaluate("caller.rc.#attributes.binding#");
-     
+	
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
      
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.text = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
+     
+	
 	   							variables.result &= '<span class="label label-#attributes.severity#"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
  	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';

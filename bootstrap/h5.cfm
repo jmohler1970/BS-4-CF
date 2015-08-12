@@ -13,21 +13,23 @@ switch (thisTag.ExecutionMode)     {
 case "start" :
 
 	variables.result = "";
+	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.binding		= "";
      param attributes.id			= "";
-	param attributes.rendered 	= true; // removes content not actuall td
+     param attributes.processed 	= true;
+	param attributes.rendered 	= true; 
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
      param attributes.tooltip		= "";
 
 
-     
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
      
 	   							variables.result &= '<h5 class="';
 	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';		

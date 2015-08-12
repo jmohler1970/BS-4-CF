@@ -24,6 +24,7 @@ case "start" :
 	param attributes.lang		= "";
 	param attributes.look		= "default";
 	param attributes.onclick		= "";
+	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.size		= "";		// large, small, mini
 	param attributes.style		= "";
@@ -32,11 +33,13 @@ case "start" :
 	param attributes.tooltipPosition = "bottom";
      param attributes.value		= "";
      
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.value = evaluate("caller.rc.#attributes.binding#");
-     
+      if (!attributes.processed) exit "exitTag";
 	break;
      
-case "end" :     
+case "end" :
+
+
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.value = evaluate("caller.rc.#attributes.binding#");
      
 	   							variables.result &= '<button type="button" class="btn btn-#attributes.look#';
 	if(attributes.size		!= "")	variables.result &= ' btn-#attributes.size#';

@@ -24,6 +24,7 @@ case "start" :
      param attributes.footerStyle	= "";
 	param attributes.id			= "";
 	param attributes.look		= "default";
+	param attributes.processed	= true;
 	param attributes.rendered 	= true;
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
@@ -32,6 +33,7 @@ case "start" :
      param attributes.titleStyle	= "";
      param attributes.tooltip		= "";
      
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

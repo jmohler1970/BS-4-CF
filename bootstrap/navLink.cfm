@@ -24,14 +24,16 @@ case "start" :
 	param attributes.header		= "";
 	param attributes.href		= "";
 	param attributes.onclick		= "";
+	param attributes.processed	= true;
 	param attributes.rendered 	= true;
 	param attributes.value		= "";
      
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :
 
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.value = evaluate("caller.rc.#attributes.binding#");
+	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.value = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 
      
      if (attributes.value == "" && attributes.header == "")

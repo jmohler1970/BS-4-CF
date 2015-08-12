@@ -19,6 +19,7 @@ case "start" :
      param attributes.condensed	= true;
      param attributes.hover		= false;
      param attributes.id			= "";
+     param attributes.processed	= true;
 	param attributes.rendered 	= true; // removes content not actuall td
 	param attributes.responsive	= true;
 	param attributes.striped		= true;
@@ -26,7 +27,7 @@ case "start" :
 	param attributes.styleClass	= "";
      param attributes.tooltip		= "";
 
-	
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

@@ -15,15 +15,16 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
   
-     param attributes.id			= "";
-     param attributes.justified	= false;
-     param attributes.orientation 	= "horizontal";
+ 	param attributes.id			= "";
+	param attributes.justified	= false;
+	param attributes.orientation 	= "horizontal";
+	param attributes.processed 	= true;
 	param attributes.rendered	= true;
 	param attributes.size		= "";
-     param attributes.tooltip		= "";
+	param attributes.tooltip		= "";
 
 	
-     
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

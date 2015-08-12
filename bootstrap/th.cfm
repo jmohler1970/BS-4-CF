@@ -17,17 +17,20 @@ case "start" :
   
 	param attributes.binding		= "";
      param attributes.id			= "";
-	param attributes.rendered 	= true; // removes content not actuall td
+     // param attributes.processed	= true; // unknown how to support
+	param attributes.rendered 	= true; // removes content not actual th
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
-     param attributes.tooltip		= "";
+     param attributes.tooltip		= ""; // It is attached to a span so that table layout does not get destroyed
 
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-     
+
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
+     
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
      
 	   							variables.result &= '<th class="';
 	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';		

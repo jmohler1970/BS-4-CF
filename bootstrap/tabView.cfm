@@ -24,6 +24,8 @@ case "start" :
 	param attributes.role 		= "tabpanel";
 	param attributes.style		= "";
 	
+	
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :

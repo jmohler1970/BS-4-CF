@@ -21,6 +21,7 @@ case "start" :
 	param attributes.style		= "";
      param attributes.title		= "";
      
+     if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :

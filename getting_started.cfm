@@ -39,17 +39,11 @@
 <p>&nbsp;</p>
 
 
-<b:h2>Requirements</b:h2>
-
-<p>This package has been tested on ColdFusion 9, 10, and 11</p>
 
 
 
 
-
-<b:h2>Recommended Usage</b:h2>
-
-<p>Whenever you have a tag that has too be a little bit smarter because of Bootstrap, use one of these custom tags. There is no requirement that all tags be converted. If has been the experience of this developer that these tags are most troublesome</p>
+<p>Whenever you have a tag that has too be a little bit smarter because of Bootstrap, use one of these custom tags. There is no requirement that all tags be converted. If has been the experience of this developer that these tags are most troublesome.</p>
 
 
 <ol>
@@ -65,6 +59,23 @@
 </ol>
 
 
+<p>In addition to making code more readable, you will also be writing fewer lines of code. All around productivity improvement!</p>
+
+
+<b:h2>Installation</b:h2>
+
+<p>This package has been tested on ColdFusion 11, but will probably work on lower versions</p>
+
+
+<p>&lt;cfimport&gt; allows for tag libraries to be anywhere and be aliased to any prefix. This documentation uses the `b:` prefix, but any can be used. Suggestions include:</p>
+
+<ul>
+	<li>&lt;b:tag&gt;</li><!--- Just like bootsfaces --->
+	<li>&lt;b3:tag&gt;</li><!--- For Bootstrap version 3 --->
+	<li>&lt;bs:tag&gt;</li><!--- For Bootstrap --->
+	<li>&lt;boot:tag&gt;</li><!--- You will just have to guess the strap part --->
+	<li>&lt;bootstrap:tag&gt;</li><!--- Just spell it all out --->
+</ul>	
 
 
 
@@ -90,7 +101,7 @@
 <p>&nbsp;</p>
 
 
-<b:h2>Using Rendered</b:h2>
+<b:h2>Using Processed</b:h2>
 <p><code>&lt;cfif&gt;</code> is used to conditionally show blocks of code. <code>&lt;cfif&gt;</code> can span dozens if not hundreds of lines of code. Bootstrap uses lots and lots of <code>&lt;div&gt;</code> tags. You can find yourself at the end of a large block code with nothing but <code>&lt;/cfif&gt;</code> and <code>&lt;/div&gt;</code>. One small mistake can mean wasting hours finding that stray tag.</p>	
 
 
@@ -113,7 +124,7 @@
 
 
 <pre>
-&lt;b:row rendered="#showme#"&gt;
+&lt;b:row processed="#showme#"&gt;
 	&lt;b:column span="4"&gt;
 
 ... // hundred lines later
@@ -121,6 +132,47 @@
 	
 	&lt;/b:column&gt;
 &lt;/b:row&gt;
+</pre>
+
+
+<b:h2>Using Rendered</b:h2>
+<p>"Rendered" is similar to processed except that it is like <code>&lt;cfsilent&gt;</code>. The "rendered" option is included for users who are familiar with JSF and want to continue programming using that approach.</p>	
+
+
+<b:h3>Using Processed</b:h3>
+
+<pre>
+&lt;cfset count = 0&gt;
+
+&lt;b:row processed="false"&gt;
+	&lt;cfset count++&gt;
+
+	...
+	
+	
+	&lt;/b:column&gt;
+&lt;/b:row&gt;
+
+&lt;cfoutput&gt;#count#&lt;/cfoutput&gt; --&gt; outputs 0	
+</pre>
+
+
+<b:h3>Using Rendered</b:h3>
+
+
+<pre>
+&lt;cfset count = 0&gt;
+
+&lt;b:row rendered="false"&gt;
+	&lt;cfset count++&gt;
+
+	...
+	
+	
+	&lt;/b:column&gt;
+&lt;/b:row&gt;
+
+&lt;cfoutput&gt;#count#&lt;/cfoutput&gt; --&gt; outputs 1
 </pre>	
 
 

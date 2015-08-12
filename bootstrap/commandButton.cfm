@@ -21,6 +21,7 @@ case "start" :
 	param attributes.lang		= "";
 	param attributes.look		= "default";
 	param attributes.onclick		= "";
+	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.size		= "";		// large, small, mini
 	param attributes.style		= "";
@@ -29,6 +30,7 @@ case "start" :
      param attributes.value		= "";
      
      
+	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
