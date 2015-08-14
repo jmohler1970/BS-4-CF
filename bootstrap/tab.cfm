@@ -16,7 +16,7 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.disabled	= false;
-	param attributes.id			= "";
+	param attributes.id;					// Tab must have id
 	param attributes.processed	= true;
 	param attributes.role 		= "tab";
 	param attributes.style		= "";

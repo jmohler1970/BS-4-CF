@@ -4,38 +4,37 @@
 
 <!-- Forms
       ================================================== -->
-      <div class="bs-docs-section">
-        <b:row>
-          <b:column span="12">
-            <div class="page-header">
-              <b:h1 id="forms">Forms</b:h1>
-            </div>
-          </b:column>
-        </b:row>
+<b:row>
+	<b:column span="12">
+     	<div class="page-header">
+          	<b:h1 id="forms">Forms</b:h1>
+          </div>
+	</b:column>
+</b:row>
 
-        <b:row>
-          <b:column span="6">
-            <div class="well bs-component">
-              <form class="form-horizontal">
-                <b:fieldset legend="Legend">
+<b:row>
+	<b:column span="6">
+     	<div class="well bs-component">
+			<form class="form-horizontal">
+				<b:fieldset legend="Legend">
+                  		<b:formGroup>
+						<label for="inputEmail" class="col-lg-2 control-label">Email</label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control" id="inputEmail" placeholder="Email">
+						</div>
+					</b:formGroup>
                   
-                  <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                    <div class="col-lg-10">
-                      <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                    <div class="col-lg-10">
-                      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> Checkbox
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+					<b:formGroup>	
+						<label for="inputPassword" class="col-lg-2 control-label">Password</label>
+						<div class="col-lg-10">
+							<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+								
+							<b:checkbox id="checkbox" look="success" checked="true">Checkbox</b:checkbox>
+						</div>
+					</b:formGroup>
+					
+	                 
+                  
                   <div class="form-group">
                     <label for="textArea" class="col-lg-2 control-label">Textarea</label>
                     <div class="col-lg-10">
@@ -43,34 +42,27 @@
                       <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-lg-2 control-label">Radios</label>
-                    <div class="col-lg-10">
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                          Option one is this
-                        </label>
-                      </div>
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                          Option two can be something else
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
+					<b:formGroup>
+						<label class="col-lg-2 control-label">Radios</label>
+						<b:column span="10">
+							<b:radio name="OptionRadios" id="auto" look="primary">This is primary option</b:radio>
+							<b:radio name="OptionRadios" id="auto" look="danger" checked="true">This dangerous</b:radio>
+						</b:column>
+					</b:formGroup>
+                 	
+					<b:formGroup>
                     <label for="select" class="col-lg-2 control-label">Selects</label>
-                    <div class="col-lg-10">
-                      <select class="form-control" id="select">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                      <br>
+                    	
+                    		<b:column span="10">
+                    			<b:selectOneMenu name="select">
+                    				<b:selectItem display="1" />
+                    				<b:selectItem display="2" />
+                    				<b:selectItem display="3" />
+                    				<b:selectItem display="4" />
+                    				<b:selectItem display="5" />
+							</b:selectOneMenu>
+							<br />
+
                       <select multiple="" class="form-control">
                         <option>1</option>
                         <option>2</option>
@@ -78,8 +70,10 @@
                         <option>4</option>
                         <option>5</option>
                       </select>
-                    </div>
-                  </div>
+                    
+                    		</b:column>
+					</b:formGroup>
+					
                   <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                       <button type="reset" class="btn btn-default">Cancel</button>
@@ -143,8 +137,7 @@
                     </span>
                   </div>
                 </div>
-              </form>
+		</form>
 
-          </b:column>
-        </b:row>
-      </div>
+	</b:column>
+</b:row>

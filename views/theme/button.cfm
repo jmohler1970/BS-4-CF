@@ -56,11 +56,11 @@
                   <b:a href="##" look="primary" dropdown="true" />
 
                   <ul class="dropdown-menu">
-                    <li><a href="##">Action</a></li>
-                    <li><a href="##">Another action</a></li>
-                    <li><a href="##">Something else here</a></li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
                     <li class="divider"></li>
-                    <li><a href="##">Separated link</a></li>
+                    <li><a href="#">Separated link</a></li>
                   </ul>
                 </div>
  
@@ -69,11 +69,11 @@
                   <b:a href="##" look="success" dropdown="true" />
 
                   <ul class="dropdown-menu">
-                    <li><a href="##">Action</a></li>
-                    <li><a href="##">Another action</a></li>
-                    <li><a href="##">Something else here</a></li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
                     <li class="divider"></li>
-                    <li><a href="##">Separated link</a></li>
+                    <li><a href="#">Separated link</a></li>
                   </ul>
                 </div>
 
@@ -81,23 +81,23 @@
                   <b:a href="##" look="info">Info</b:a>
                   <b:a href="##" look="info" dropdown="true" />
                   <ul class="dropdown-menu">
-                    <li><a href="##">Action</a></li>
-                    <li><a href="##">Another action</a></li>
-                    <li><a href="##">Something else here</a></li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
                     <li class="divider"></li>
-                    <li><a href="##">Separated link</a></li>
+                    <li><a href="#">Separated link</a></li>
                   </ul>
                 </div>
 
                 <div class="btn-group">
                   <b:a href="##" look="warning">Warning</b:a>
-                  <a href="##" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                  <a href="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="##">Action</a></li>
-                    <li><a href="##">Another action</a></li>
-                    <li><a href="##">Something else here</a></li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
                     <li class="divider"></li>
-                    <li><a href="##">Separated link</a></li>
+                    <li><a href="#">Separated link</a></li>
                   </ul>
                 </div>
               </div>
