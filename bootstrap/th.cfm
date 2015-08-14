@@ -25,7 +25,7 @@ case "start" :
      param attributes.tooltip		= ""; // It is attached to a span so that table layout does not get destroyed
 
 
-     if (!attributes.processed) exit "exitTag";
+    // if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     

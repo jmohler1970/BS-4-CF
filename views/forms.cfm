@@ -1,24 +1,7 @@
 
-<cfimport prefix="b" taglib="bootstrap">
+<cfimport prefix="b" taglib="../bootstrap">
 
 
-
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	
-<head>
-	<cfinclude template="assets/head.cfm">  
-</head>
-
-
-<body>
-
-
-<b:container>
-
-
-<cfinclude template="assets/menu.cfm">
 
 <div class="page-header">
 	<b:row>
@@ -38,6 +21,7 @@
 <p>BS-4-CF puts only a few wrappers around form elements. The reason is simple. There are simply too many form libraries out there to try to support. Hence. only the basics are included.</p>
 
 Supported tags include
+
 
 
 <b:table bordered="true" condensed="false">
@@ -69,12 +53,55 @@ Supported tags include
 </b:table>
 
 
+
+
 <p>Note: <code>&lt;b:label&gt;</code> refers to Bootstrap labels NOT the label tag that goes along with form fields</p>
 
 
 <b:h2>Basic example</b:h2>
 
-Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>.b:orm-group</code> for optimum spacing.
+Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>b:form-group</code> for optimum spacing.
+
+<pre>
+&lt;form&gt;
+	&lt;b:formGroup&gt;
+		&lt;label for=&quot;exampleInputEmail1&quot;&gt;Email address&lt;/label&gt;
+		&lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;exampleInputEmail1&quot; placeholder=&quot;Email&quot;&gt;
+	&lt;/b:formGroup&gt;
+	
+	&lt;b:formGroup&gt;
+		&lt;label for=&quot;exampleInputPassword1&quot;&gt;Password&lt;/label&gt;
+		&lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;exampleInputPassword1&quot; placeholder=&quot;Password&quot;&gt;
+	&lt;/b:formGroup&gt;
+	
+  
+  	&lt;b:formGroup&gt;
+  		&lt;label for=&quot;exampleInputFile&quot;&gt;File input&lt;/label&gt;
+  		&lt;input type=&quot;file&quot; id=&quot;exampleInputFile&quot;&gt;
+  		&lt;p class=&quot;help-block&quot;&gt;Example block-level help text here.&lt;/p&gt;
+  	&lt;/b:formGroup&gt;
+
+  	&lt;!--- This one won't be showing up ---&gt;
+  	&lt;b:formGroup rendered=&quot;false&quot;&gt;
+  		&lt;label for=&quot;exampleInputFile&quot;&gt;File input&lt;/label&gt;
+  		&lt;input type=&quot;file&quot; id=&quot;exampleInputFile&quot;&gt;
+  		&lt;p class=&quot;help-block&quot;&gt;Example block-level help text here.&lt;/p&gt;
+  	&lt;/b:formGroup&gt;
+
+
+  	&lt;div class=&quot;checkbox&quot;&gt;
+  		&lt;label&gt;
+  			&lt;input type=&quot;checkbox&quot;&gt; Check me out
+  		&lt;/label&gt;
+  	&lt;/div&gt;
+  
+	&lt;b:commandButton value=&quot;Submit&quot; /&gt;
+&lt;/form&gt;	
+	
+</pre>	
+
+
+
 
 <form>
 	<b:formGroup>
@@ -112,15 +139,3 @@ Individual form controls automatically receive some global styling. All textual 
 </form>
 
 
-
-
-<cfinclude template="assets/footer.cfm">
-
-
-</b:container>
-
-
-
-
-</body>
-</html>

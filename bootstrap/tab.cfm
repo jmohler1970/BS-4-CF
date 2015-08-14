@@ -17,9 +17,11 @@ case "start" :
   
 	param attributes.disabled	= false;
 	param attributes.id			= "";
+	param attributes.processed	= true;
 	param attributes.role 		= "tab";
 	param attributes.style		= "";
      param attributes.title		= "";
+	if (!structKeyExists(attributes, "data-url")) attributes["data-url"]	= "";
      
      if (!attributes.processed) exit "exitTag";
 	break;
@@ -28,10 +30,11 @@ case "end" :
      
 	variables.Data = {
 		disabled	= attributes.disabled,
-		id		= attributes.id, 
-		role		= attributes.Role, 
+		id		= attributes.id,
+		role		= attributes.Role,
 		style	= attributes.style,
-		title	= attributes.title, 
+		title	= attributes.title,
+		dataUrl	= attributes["data-url"],
 		generatedContent = thisTag.generatedContent
 		};
      

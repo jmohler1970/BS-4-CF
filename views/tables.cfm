@@ -1,24 +1,7 @@
 
-<cfimport prefix="b" taglib="bootstrap">
+<cfimport prefix="b" taglib="../bootstrap">
 
 
-
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	
-<head>
-	<cfinclude template="assets/head.cfm">  
-</head>
-
-
-<body>
-
-
-<b:container>
-
-
-<cfinclude template="assets/menu.cfm">
 
 <div class="page-header">
 	<b:row>
@@ -31,18 +14,10 @@
 </div>
 
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 
 <!--- Lets load up a query --->
 <cfscript>
-
-
 rc.qryData = QueryNew("Id,Icon,Album,Message,Score,Delete");
-
-
 
 
 rc.qryData.AddRow([
@@ -57,11 +32,16 @@ rc.qryData.AddRow([
 </cfscript>
 
 
-<h2>Dump of table</h2>
+<h2>Introduction</h2>
+
+
+<p>The most common for tables to be populated is via database query. This example manually loads data so that we don't have have a database.</p>
+
+<p>Notice that there is a delete column. This will be used to control which rows get rendered</p>
+
 
 <cfdump var="#rc.qryData#">
 	
-<p>Notice that there is a delete column. This will be used to control which rows get rendered</p>
 
 
 <h2>Now with tables</h2>
@@ -120,22 +100,7 @@ rc.qryData.AddRow([
 		<b:td><b:a href="###ID#" size="xs" look="primary">View #id#</b:a></b:td>
 	</b:tr>
 </cfoutput>	
-
 </tbody>
 </b:table>
 
 
-
-
-
-
-<cfinclude template="assets/footer.cfm">
-
-
-</b:container>
-
-
-
-
-</body>
-</html>

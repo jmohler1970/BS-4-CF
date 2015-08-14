@@ -52,8 +52,8 @@ case "end" :
 		if(attributes.onclick	!= "")	variables.result &= ' onclick="#attributes.onclick#"';
 		
  									variables.result &= '>';
- 		if (attributes.icon != "" && attributes.iconAlign == "left")	variables &= '<i class="glyphicon glyphicon-#attributes.icon#"></i>';										variables.result &= xmlformat(attributes.value); // pass through of content
- 		if (attributes.icon != "" && attributes.iconAlign == "right")	variables &= '<i class="glyphicon glyphicon-#attributes.icon#"></i>';						
+ 		if (attributes.icon != "" && attributes.iconAlign == "left")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';										variables.result &= xmlformat(attributes.value); // pass through of content
+ 		if (attributes.icon != "" && attributes.iconAlign == "right")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';						
 									variables.result &= '</a>';
 									variables.result &= '</li>
 									';

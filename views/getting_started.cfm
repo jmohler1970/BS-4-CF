@@ -1,26 +1,7 @@
 
-<cfimport prefix="b" taglib="bootstrap">
-
-<cfparam name="url.bootswatch" default="default">
+<cfimport prefix="b" taglib="../bootstrap">
 
 
-
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	
-<head>
-	<cfinclude template="assets/head.cfm">
-</head>
-
-
-<body>
-
-
-<b:container>
-
-
-<cfinclude template="assets/menu.cfm">
 
 
 <div class="page-header">
@@ -30,15 +11,6 @@
 		</b:column>	
 	</b:row>
 </div>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
-
 
 
 
@@ -223,14 +195,3 @@ rc.savelabel = "Save this data";
 <b:button rendered="#showme#" binding="savelabel" icon="floppy-disk" />	
 
 
-
- <cfinclude template="assets/footer.cfm">
-
-
- </b:container>
- 
-
-
- 
- </body>
- </html>

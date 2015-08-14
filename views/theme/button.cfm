@@ -1,4 +1,4 @@
-<cfimport prefix="b" taglib="../bootstrap">
+<cfimport prefix="b" taglib="../../bootstrap">
 
 
 <!-- Buttons

@@ -1,4 +1,4 @@
-<cfimport prefix="b" taglib="../bootstrap">
+<cfimport prefix="b" taglib="../../bootstrap">
 
 
 <cfset rc = { heading = "This is a sample heading using bind" }>

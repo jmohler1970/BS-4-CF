@@ -1,24 +1,6 @@
 
-<cfimport prefix="b" taglib="bootstrap">
+<cfimport prefix="b" taglib="../bootstrap">
 
-
-
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	
-<head>
-	<cfinclude template="assets/head.cfm">  
-</head>
-
-
-<body>
-
-
-<b:container>
-
-
-<cfinclude template="assets/menu.cfm">
 
 <div class="page-header">
 	<b:row>
@@ -90,11 +72,11 @@
 
 
 <h1>Stress test is false</h1>
-<p>There over 1000 rows inside of the hidden well. Check you debug code to see how fast it ran</p>
+<p>There over 100 rows inside of the hidden well. Check you debug code to see how fast it ran</p>
 
 <b:well rendered="false">
 
-	<cfloop from = "0" to="1001" index="i">
+	<cfloop from = "0" to="101" index="i">
 		<b:h1 binding="heading" />
 		<b:h2 binding="heading" />
 		<b:h3 binding="heading" />
@@ -108,12 +90,5 @@
 </b:well>
 
 
-<cfinclude template="assets/footer.cfm">
-      
-      
-</b:container>
- 
- 
-</body>
-</html>     
+
       

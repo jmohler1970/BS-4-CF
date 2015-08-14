@@ -1,24 +1,7 @@
 
-<cfimport prefix="b" taglib="bootstrap">
+<cfimport prefix="b" taglib="../bootstrap">
 
 
-
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	
-<head>
-	<cfinclude template="assets/head.cfm">  
-</head>
-
-
-<body>
-
-
-<b:container>
-
-
-<cfinclude template="assets/menu.cfm">
 
 <div class="page-header">
 	<b:row>
@@ -31,13 +14,9 @@
 </div>
 
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 
 
-<b:h2>Example: Stacked-to-horizontal</b:h2>
+<b:h1>Example: Stacked-to-horizontal</b:h1>
 
 <b:p>Using a single set of <code>span=</code> grid attributes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any <code>b:row</code>.</b:p>
 
@@ -182,15 +161,3 @@
 </b:row>    
 
 
-
-
-<cfinclude template="assets/footer.cfm">
-
-
-</b:container>
-
-
-
-
-</body>
-</html>

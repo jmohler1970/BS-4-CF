@@ -14,4 +14,4 @@
 	</small>	
 </p>
 
-<script src="./application.js"></script>
+<script src="./assets/application.js"></script>

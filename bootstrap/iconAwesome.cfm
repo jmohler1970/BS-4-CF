@@ -15,9 +15,10 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.addon		= false;
+	param attributes.binding		= "";
 	param attributes.flip		= "";
 	param attributes.id			= "";
-	param attributes.name;
+	param attributes.name		= "";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.rotate		= "";
@@ -28,7 +29,8 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	break;
      
-case "end" :     
+case "end" :
+	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.name = xmlFormat(evaluate("caller.rc.#attributes.binding#"));   
      
 	if(attributes.addon)			variables.result &= '<span class="input-group-addon">';
 	   							variables.result &= '<i class="fa fa-#attributes.name#';

@@ -20,6 +20,7 @@ case "start" :
 	
   
 	param attributes.activeIndex	= 1;
+	param attributes.processed	= true;
 	param attributes.rendered 	= true;
 	param attributes.role 		= "tabpanel";
 	param attributes.style		= "";
@@ -46,6 +47,7 @@ case "end" :
 		if (!variables.tab.disabled)	variables.result &= ' aria-controls="#variables.tab.id#"';
 		if (!variables.tab.disabled)	variables.result &= ' role="#variables.tab.id#"';
 		if (!variables.tab.disabled)	variables.result &= ' data-toggle="tab"';
+		if (!variables.tab.disabled && variables.tab.dataUrl != "")	variables.result &= ' data-url="' & variables.tab.dataUrl & '"';
 								variables.result &= ' >#variables.tab.title#</a>';
 								variables.result &= '</li>';
 		variables.currentTab++;
@@ -54,6 +56,7 @@ case "end" :
 
 
 	// start generate tab content
+								variables.result &= variables.crlf;
 								variables.result &= variables.crlf & '<div class="tab-content">';
 								
 	variables.currentTab = 1;							
@@ -76,6 +79,44 @@ case "end" :
     
 	break;
 	}
-     
- 
 </cfscript>
+
+
+<!--- 
+To enable AJAX, you need to include code like
+
+http://stackoverflow.com/questions/8456974/how-to-use-ajax-loading-with-bootstrap-tabs
+
+<script type="text/javascript">	
+$( document ).ready(function() {
+	
+	// load active tab no matter what
+	$('div.active').load($('li.active a[data-url]').attr('data-url'), function (data) {
+		$('.active a').tab('show');
+		});
+		
+	
+	// load normal tab clicks
+	$('li a[data-url]').click(function(e) {
+	    e.preventDefault();
+	    
+	    var targ = $(this).attr('data-url');
+	    
+	    var href = this.hash;
+	    
+		$(href).load(targ, function(data) {
+			$(this).tab('show');
+		});
+	
+	});
+
+
+});
+</script>
+
+ --->
+
+
+
+
+

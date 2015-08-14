@@ -48,9 +48,9 @@ case "end" :
 	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
  	if(attributes.disabled)			variables.result &= ' disabled="disabled"';
  								variables.result &= '>';
-//	if (attributes.icon != "" && attributes.iconAlign == "left")	variables &= '<i class="glyphicon glyphicon-#attributes.icon#"></i>';
+	if (attributes.icon != "" && attributes.iconAlign == "left")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';
 								variables.result &= attributes.value; // pass through of content
-	if (attributes.icon != "" && attributes.iconAlign == "right")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i>';							
+	if (attributes.icon != "" && attributes.iconAlign == "right")	variables.result &= ' <i class="glyphicon glyphicon-#attributes.icon#"></i>';							
 								variables.result &= '</button>';
      
      
