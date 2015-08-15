@@ -71,4 +71,35 @@
 
 
 
+<b:row>
+	<b:column span="12">
+		<div class="page-header">
+			<h1 id="progress">Progress bars</h1>
+          </div>
+
+          <b:h3 id="progress-basic">Basic</b:h3>
+          <b:progressBar width="60%" />
+ 
+ 
+		<b:h3 id="progress-alternatives">Contextual alternatives</b:h3>
+          <b:progressBar width="20%" look="info" />
+          <b:progressBar width="80%" look="success" />
+          <b:progressBar width="60%" look="warning" />
+          <b:progressBar width="40%" look="danger" />
+
+          <b:h3 id="progress-striped">Striped</b:h3>
+          <b:progressBar width="20%" look="info"		stripped="true" />
+          <b:progressBar width="80%" look="success"	stripped="true" />
+          <b:progressBar width="60%" look="warning"	stripped="true" />
+          <b:progressBar width="40%" look="danger"	stripped="true" />
+
+          
+          <b:h3 id="progress-animated">Animated</b:h3>
+          <b:progressBar width="40%" look="success"	animated="true" />
+
+
+	</b:column>
+</b:row>		
+
+
 

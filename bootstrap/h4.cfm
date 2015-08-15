@@ -43,7 +43,7 @@ case "end" :
 							
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 	
-								variables.result &= '</h4>';
+								variables.result &= '</h4>' & variables.crlf;
      
      
      

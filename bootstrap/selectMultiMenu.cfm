@@ -38,7 +38,7 @@ case "start" :
 case "end" :     
 	
 
-	
+	if(attributes.span		!= "")	variables.result &= '<div class="col-md-#attributes.span#">' & variables.crlf;
 								variables.result &= '<select multiple="multiple" class="form-control';
 	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';
 	if(attributes.fieldSize	!= "")	variables.result &= ' input-#attributes.fieldSize#';
@@ -59,7 +59,7 @@ case "end" :
 	
 								variables.result &= '</select>';
 	if(attributes.help		!= "")	variables.result &= '<span class="help-block">#attributes.help#</span>';						
-     
+     if(attributes.span		!= "")	variables.result &= variables.crlf & '</div><!-- /.col-md-#attributes.span# -->';
 
      thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);

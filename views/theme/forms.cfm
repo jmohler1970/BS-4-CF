@@ -51,28 +51,30 @@
 					</b:formGroup>
                  	
 					<b:formGroup>
-                    <label for="select" class="col-lg-2 control-label">Selects</label>
+						<label for="select" class="col-md-2 control-label">Select one</label>
                     	
-                    		<b:column span="10">
-                    			<b:selectOneMenu name="select">
-                    				<b:selectItem display="1" />
-                    				<b:selectItem display="2" />
-                    				<b:selectItem display="3" />
-                    				<b:selectItem display="4" />
-                    				<b:selectItem display="5" />
-							</b:selectOneMenu>
-							<br />
+                    	
+                    		<b:selectOneMenu name="select" span="10">
+                    			<b:selectItem display="1" />
+                    			<b:selectItem display="2" />
+                    			<b:selectItem display="3" />
+                    			<b:selectItem display="4" />
+                    			<b:selectItem display="5" />
+						</b:selectOneMenu>
+	
+                    	</b:formGroup>
 
-                      <select multiple="" class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </select>
-                    
-                    		</b:column>
-					</b:formGroup>
+					<b:formGroup>	
+						<label for="select" class="col-lg-2 control-label">Select Multiple</label>
+						
+						<b:selectMultiMenu name="select" span="10">
+                    			<b:selectItem display="1" />
+                    			<b:selectItem display="2" />
+                    			<b:selectItem display="3" />
+                    			<b:selectItem display="4" />
+                    			<b:selectItem display="5" />
+						</b:selectMultiMenu>
+  					</b:formGroup>
 					
                   <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">

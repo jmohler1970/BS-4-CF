@@ -26,7 +26,7 @@ case "start" :
 	param attributes.readonly 	= false;
 	param attributes.rendered 	= true;
 	param attributes.required	= false;
-	param attributes.span		= "";
+	param attributes.span		= "";	// md only. If you want finer control, use b:column
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.tooltip		= "";
@@ -38,7 +38,7 @@ case "start" :
 case "end" :     
 	
 
-	
+	if(attributes.span		!= "")	variables.result &= '<div class="col-md-#attributes.span#">' & variables.crlf;
 								variables.result &= '<select class="form-control';
 	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';
 	if(attributes.fieldSize	!= "")	variables.result &= ' input-#attributes.fieldSize#';
@@ -57,9 +57,10 @@ case "end" :
 
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 	
-								variables.result &= '</select>';
-	if(attributes.help		!= "")	variables.result &= '<span class="help-block">#attributes.help#</span>';						
-     
+								variables.result &= variables.crlf & '</select>';
+	if(attributes.help		!= "")	variables.result &= variables.crlf & '<span class="help-block">#attributes.help#</span>';						
+     if(attributes.span		!= "")	variables.result &= variables.crlf & '</div><!-- /.col-md-#attributes.span# -->';
+	
 
      thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);

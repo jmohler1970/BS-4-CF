@@ -39,7 +39,7 @@
 
      	
 		<b:dropMenu value="Themes">
-          	<b:navLink value="Default" href="?" />
+          	<b:navLink value="Default" href="?view=theme" />
 			<b:navLink />
 			<cfloop index="rc.i" list="Cerulean,Cosmo,Cyborg,Darkly,Flatly,Journal,Lumen,Paper,Readable,Sandstone,Simplex,Slate,Spacelab,Superhero,United,Yeti">
 				<b:navLink href="?view=theme&amp;theme=#rc.i#" binding="i" disabled="#IIF(url.theme EQ rc.i , 1, 0)#" />
