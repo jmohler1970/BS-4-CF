@@ -1,4 +1,5 @@
 <!--- This is a wrapper for select. --->
+<!--- This is inspired by cfselect, but don't hold that against me --->
 
 
 
@@ -11,8 +12,11 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
+
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
+	
+	thisTag.arOption 			= [];
   
 	param attributes.disabled	= false;
 	param attributes.fieldSize	= "";
@@ -54,6 +58,16 @@ case "end" :
 	if(attributes.onChange	!= "")	variables.result &= ' onChange="#attributes.onChange#"';
 	
 								variables.result &= ' >';
+								
+	for (variables.option in thisTag.arOption)	{	
+								variables.result &= '<option';
+								variables.result &= ' value="#variables.option.value#"';
+		if(variables.option.selected)	variables.result &= ' selected="selected"';
+								variables.result &= ' >';
+								variables.result &= variables.option.display;
+								variables.result &= '</option>';
+		} // end for						
+     							
 
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 	

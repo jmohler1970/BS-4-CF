@@ -13,6 +13,8 @@ case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
+	
+	thisTag.arOption 			= [];
   
 	param attributes.disabled	= false;
 	param attributes.fieldSize	= "";
@@ -55,7 +57,15 @@ case "end" :
 	
 								variables.result &= ' >';
 
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+	for (variables.option in thisTag.arOption)	{	
+								variables.result &= '<option';
+								variables.result &= ' value="#variables.option.value#"';
+		if(variables.option.selected)	variables.result &= ' selected="selected"';
+								variables.result &= ' >';
+								variables.result &= variables.option.display;
+								variables.result &= '</option>';
+		} // end for						
+     					
 	
 								variables.result &= '</select>';
 	if(attributes.help		!= "")	variables.result &= '<span class="help-block">#attributes.help#</span>';						

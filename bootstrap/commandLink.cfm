@@ -1,11 +1,12 @@
 <!---@ Description: Support for a tags which look like buttons --->
+<!---@ Also see: http://www.jsftoolbox.com/documentation/help/12-TagReference/html/h_commandLink.html --->
 
 
 
 
 <cfscript>
 if (!thisTag.HasEndTag) 
-	abort "An end tag is required for b:a."; 
+	abort "An end tag is required for b:commandLink."; 
 	
 	
 
@@ -17,10 +18,11 @@ case "start" :
 	if (!structKeyExists(attributes, "id") && !structKeyExists(attributes, "href")) throw("b:a tag must have either an id or an href. Neither have been provided"); 
 
   
+	param attributes.action		= "";
 	param attributes.binding		= "";
 	param attributes.disabled	= false;
 	param attributes.dropdown	= false;
-	param attributes.href		= "";
+	param attributes.action		= "";
 	param attributes.id			= "";
 	param attributes.look	 	= "default";
 	param attributes.processed 	= true;
@@ -45,7 +47,7 @@ case "end" :
 	if(attributes.styleClass != "")	variables.result &= ' #attributes.styleClass#';	
 	   							variables.result &= '"';
 	   							
-	if(attributes.href		!= "")	variables.result &= ' href="#attributes.href#"';
+	if(attributes.href		!= "")	variables.result &= ' href="#attributes.action#"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
  	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
  	if(attributes.style    	!= "")    variables.result &= ' style="#attributes.style#"';

@@ -1,5 +1,5 @@
 <!--- This is a wrapper option. Generates a list of options. See selectItem for single --->
-<!--- This is inspired by cfselect --->
+<!---@ Note: This can feed selectManyMenu, selectOneMenu, selectOneRadio --->
 
 
 
@@ -12,46 +12,55 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
-  
+	variables.MyParentTag = listfirst(listrest(GetBaseTagList()));
+
+	thisTag.Parent = GetBaseTagData(variables.MyParentTag);
+
+	param attributes.id				= "auto";
 	param attributes.query			= QueryNew("Label,Value");
-	param attributes.display			= "Display";
+	param attributes.displayBinding	= "Display";
 	param attributes.group			= "";
-	param attributes.value			= "Value";
+	param attributes.look			= "";
+	param attributes.valueBinding		= "Value";
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
+	param attributes.square			= false;	// if you go square, you go all square
 	param attributes.selected		= "";	// may be an array. We use arrays so that if the values commas, selecting will still work
+	param attributes.tooltipBinding	= "";
 	
 	if(!isArray(attributes.selected))	attributes.selected = [attributes.selected];
 	
 			     
      if (!attributes.processed) exit "exitTag";
-     if (attributes.query.recordcount == 0) exit "exitTag";
+	if (!attributes.rendered) exit "exitTag";
+	
+	if (attributes.query.recordcount == 0) exit "exitTag";
      break;
      
 case "end" :     
 	
 	
 	for(variables.myRow = 1; variables.myRow <= attributes.query.recordcount; variables.myRow++)	{
-								
-								variables.result &= "<!-- Working #variables.myRow# -->";
-							
-								variables.myDisplay = evaluate("attributes.query.#attributes.display#[#variables.myRow#]");
-								variables.myValue = evaluate("attributes.query.#attributes.value#[#variables.myRow#]");
-								
-								
-								variables.result &= '<option';
-								variables.result &= ' value="#myValue#"';
-		if(ArrayContains(attributes.selected, variables.MyValue))	variables.result &= ' selected="selected"';
-								variables.result &= ' >';
-								variables.result &= variables.myDisplay;
-								variables.result &= '</option>';
-		}							
+		
+		variables.Data = {
+			disabled	= attributes.disabled,
+			id		= '',
+			display	= evaluate("attributes.query.#attributes.display#[#variables.myRow#]"),
+			look		= attributes.look,
+			selected	= ArrayContains(attributes.selected, variables.MyValue),
+			square	= attributes.square,
+			tooltip	= evaluate("attributes.query.#attributes.tooltip#[#variables.myRow#]"),
+			value	= evaluate("attributes.query.#attributes.value#[#variables.myRow#]")
+			};
+		
+     
+			ArrayAppend(thisTag.Parent.thisTag.arTab, 			variables.Data);
+											
+
+		} // end for
      
 
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
      
 	break;
 	}

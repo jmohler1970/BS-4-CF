@@ -1,10 +1,11 @@
 <!--- This is a wrapper that matches Awesome Bootstrap Checkbox. But it can be updated to support anything --->
 
+<!--- See: https://github.com/flatlogic/awesome-bootstrap-checkbox --->
 
 
 <cfscript>
 if (!thisTag.HasEndTag) 
-	abort "An end tag is required for b:radio."; 
+	abort "An end tag is required for b:selectBooleanCheckbox."; 
 	
 	
 
@@ -14,32 +15,30 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
   
-	param attributes.square		= false;		// make it look like check
+	param attributes.circle		= false;		// make it look like a radio
 	param attributes.checked		= false;
 	param attributes.disabled	= false;
 	param attributes.name		= "";
-	param attributes.id			= attributes.name;
+	param attributes.id			= "";
 	param attributes.inline		= false;
+
 	param attributes.look		= "";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.title		= "";
 	param attributes.tooltip		= "";
 	
-	variables.preClass = attributes.square ? "checkbox" : "radio";
-	
 	if (attributes.id == "auto")	attributes.id = "auto_" & left(createUUID(), 10);
-		     
+     
      if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
-	
-	if(attributes.look == "" && attributes.square)	variables.result &= '<div class="checkbox checkbox';
-	else							variables.result &= '<div class="#variables.preClass#';
-	
-	if(attributes.look    	!= "")    variables.result &= ' #variables.preClass#-#attributes.look#';
-	if(attributes.inline)			variables.result &= ' #variables.preClass#-inline';
+		
+								variables.result &= '<div class="checkbox';
+	if(attributes.circle)			variables.result &= ' checkbox-circle';						
+	if(attributes.look    	!= "")    variables.result &= ' checkbox-#attributes.look#';
+	if(attributes.inline)			variables.result &= ' checkbox-inline';
 	   							variables.result &= '"';
 
 	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
@@ -47,7 +46,7 @@ case "end" :
 								
 								
 	
-								variables.result &= '<input type="radio"';
+								variables.result &= '<input type="checkbox"';
 	if(attributes.name		!= "")	variables.result &= ' name="#attributes.name#"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
 	if(attributes.checked)			variables.result &= ' checked="checked"';
@@ -61,7 +60,7 @@ case "end" :
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 								variables.result &= '</label>';
 								
-								variables.result &= variables.crlf & '</div><!-- /.radio -->';
+								variables.result &= variables.crlf &  '</div>';
      
 
      thisTag.GeneratedContent = "";
