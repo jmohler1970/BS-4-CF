@@ -40,7 +40,7 @@ rc.qryData.AddRow([
 <p>Notice that there is a delete column. This will be used to control which rows get rendered</p>
 
 
-<cfdump var="#rc.qryData#" expand="no">
+
 
 
 <b:panel look="info" title="Attributes of &lt;b:table&gt;">
@@ -113,8 +113,122 @@ rc.qryData.AddRow([
 		</tr>
 	</tbody>
 	</b:table>
-</b:panel>	
+</b:panel>
 	
+	
+	
+<b:panel look="info" title="Attributes of &lt;b:tr&gt;">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<b:th text="nowrap">Default value</b:th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+
+		<tr>
+			<td>id</td>
+			<td>(none)</td>
+			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+		</tr>
+		<tr>
+			<td>look</td>
+			<td>true</td>
+			<td>This for contextual classes</td>
+		</tr>
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td>This like a <code>&lt;cfif&gt;</code></td>
+		</tr>
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+		</tr>
+		<tr>
+			<td>style</td>
+			<td>(none)</td>
+			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+		</tr>
+		<tr>
+			<td>styleClass</td>
+			<td>(none)</td>
+			<td>Pass though of CSS class.</td>
+		</tr>
+		<tr>
+			<td>tooltip</td>
+			<td>(none)</td>
+			<td>Pass though of title</td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>	
+
+<b:panel look="info" title="Attributes of &lt;b:td&gt; &amp;  &lt;b:th&gt;">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<b:th text="nowrap">Default value</b:th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>binding</td>
+			<td>(none)</td>
+			<td>Reserved for future use</td>
+		</tr>
+		<tr>
+			<td>id</td>
+			<td>(none)</td>
+			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+		</tr>
+		<tr>
+			<td>look</td>
+			<td>true</td>
+			<td>This for contextual classes</td>
+		</tr>
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td>This is like a <code>&lt;cfif&gt;</code>, but only for content between tags. <b>Warning:</b> This will also process tags inbetween the start and end tags.</td>
+		</tr>
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td>This is like <code>&lt;cfsilent&gt;</code>, but only for content between the tags</td>
+		</tr>
+		<tr>
+			<td>style</td>
+			<td>(none)</td>
+			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+		</tr>
+		<tr>
+			<td>styleClass</td>
+			<td>(none)</td>
+			<td>Pass though of CSS class.</td>
+		</tr>
+		<tr>
+			<td>text</td>
+			<td>(none)</td>
+			<td>This is text content classes. This takes care off alignment and wrapping.</td>
+		</tr>
+		<tr>
+			<td>tooltip</td>
+			<td>(none)</td>
+			<td>Pass though of title</td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
 
 
 <h2>Example</h2>
@@ -147,3 +261,4 @@ rc.qryData.AddRow([
 </b:table>
 
 
+<cfdump var="#rc.qryData#" expand="no">

@@ -18,7 +18,7 @@ case "start" :
 	param attributes.binding		= "";
      param attributes.id			= "";
      param attributes.look		= "";
-     // param attributes.processed	= true; // unknown how to support
+     param attributes.processed	= true; // unknown how to support
      param attributes.rendered 	= true; // removes content not actual td
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
@@ -33,7 +33,7 @@ case "end" :
 // This needs to be smart enough to iterate
 //     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
           
-	   							variables.result &= '<td class="';
+	   							variables.result &= variables.crlf & '<td class="';
 	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';
 	if(attributes.look		!= "")	variables.result &= ' #attributes.look#';
 	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		
@@ -42,9 +42,11 @@ case "end" :
 	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';                 
 								variables.result &= '>';
 	if(attributes.tooltip    != "")	variables.result &=	'<span title="#attributes.tooltip#">';						
-	if (attributes.rendered)			variables.result &= thisTag.GeneratedContent; // pass through of content
+	if (attributes.rendered && attributes.processed)
+								variables.result &= thisTag.GeneratedContent; // pass through of content
 	if(attributes.tooltip    != "")	variables.result &=	 '</span>';
 								variables.result &= '</td>';
+								variables.result &= variables.crlf;	
      
      
      thisTag.GeneratedContent = "";

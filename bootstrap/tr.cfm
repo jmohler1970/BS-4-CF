@@ -15,7 +15,6 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
   
-	param attributes.binding		= "";
 	param attributes.id			= "";
 	param attributes.look		= "";
 	param attributes.processed	= true;
@@ -23,11 +22,12 @@ case "start" :
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	
+	if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";
+	
 	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
           
 	   							variables.result &= variables.crlf & '<tr class="';
 	if(attributes.look		!= "")	variables.result &= ' #attributes.look#';
