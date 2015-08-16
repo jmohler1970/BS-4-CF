@@ -18,12 +18,14 @@ case "start" :
 	param attributes.disabled	= false;
 	param attributes.id;					// Tab must have id
 	param attributes.processed	= true;
+	param attributes.rendered	= true;
 	param attributes.role 		= "tab";
 	param attributes.style		= "";
      param attributes.title		= "";
 	if (!structKeyExists(attributes, "data-url")) attributes["data-url"]	= "";
      
      if (!attributes.processed) exit "exitTag";
+	if (!attributes.rendered) exit "exitTag";	// this is a known bug
 	break;
      
 case "end" :

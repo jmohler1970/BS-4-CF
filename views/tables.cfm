@@ -41,7 +41,7 @@ rc.qryData.AddRow([
 
 
 
-
+<h2>b:table</h2>
 
 <b:panel look="info" title="Attributes of &lt;b:table&gt;">
 
@@ -74,7 +74,7 @@ rc.qryData.AddRow([
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+			<td>Pass through of HTML id.</td>
 		</tr>
 		<tr>
 			<td>processed</td>
@@ -115,6 +115,8 @@ rc.qryData.AddRow([
 	</b:table>
 </b:panel>
 	
+
+<h2>b:tr</h2>
 	
 	
 <b:panel look="info" title="Attributes of &lt;b:tr&gt;">
@@ -133,7 +135,7 @@ rc.qryData.AddRow([
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+			<td>Pass through of HTML id.</td>
 		</tr>
 		<tr>
 			<td>look</td>
@@ -167,7 +169,10 @@ rc.qryData.AddRow([
 		</tr>
 	</tbody>
 	</b:table>
-</b:panel>	
+</b:panel>
+
+
+<h2>b:th &amp; b:td</h2>
 
 <b:panel look="info" title="Attributes of &lt;b:td&gt; &amp;  &lt;b:th&gt;">
 
@@ -189,7 +194,7 @@ rc.qryData.AddRow([
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+			<td>Pass through of HTML id.</td>
 		</tr>
 		<tr>
 			<td>look</td>

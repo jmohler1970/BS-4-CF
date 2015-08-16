@@ -24,6 +24,7 @@ case "start" :
 	param attributes.rendered 	= true;
 	param attributes.role 		= "tabpanel";
 	param attributes.style		= "";
+	param attributes.styleClass	= "";
 	
 	
 	if (!attributes.processed) exit "exitTag";
@@ -32,8 +33,12 @@ case "start" :
 case "end" :
 
 	
-								variables.result &= variables.crlf & '<div class="tab-panel"';
+								variables.result &= variables.crlf & '<div class="tab-panel';
+	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';
+								variables.result &= '"';								
 	if(attributes.role		!= "")	variables.result &= ' role="#attributes.role#"';
+	
+	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
 								variables.result &= '>';
 								variables.result &= variables.crlf & '<ul class="nav nav-tabs" role="tablist">';
 	// generate tabs

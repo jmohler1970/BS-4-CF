@@ -20,10 +20,6 @@
 
 <p>BS-4-CF puts only a few wrappers around form elements. The reason is simple. There are simply too many form libraries out there to try to support. Hence. only the basics are included.</p>
 
-<b:row>
-
-	<b:column span="9">
-
 
 
 <b:h2>b:formGroup<a id="formgroup"></a></b:h2>
@@ -53,13 +49,7 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
-		</tr>
-
-		<tr>
-			<td>look</td>
-			<td>(none)</td>
-			<td>For selectOneRadio, this will control the look and feel. This is done through Awesome Bootstrap Checkboxs</td>
+			<td>Pass through of HTML id.</td>
 		</tr>
 
 		<tr>
@@ -67,7 +57,6 @@
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
 		</tr>
-
 
 		<tr>
 			<td>rendered</td>
@@ -147,7 +136,7 @@
 
 <p> <code>b:selectManyMenu</code>, <code>b:selectOneMenu</code>, and <code>b:selectOneRadio</code> are each loaded with <code>b:selectItem</code> and <code>b:selectItems</code> By using the same loading process, it makes it possible to have uniform API of sorts for the front end.</p>
 
-<h3>selectItem</h3>
+<h3>b:selectItem</h3>
 
 <p>This loads data one part at a time</p>
 
@@ -176,13 +165,13 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+			<td>Pass through of HTML id. </td>
 		</tr>
 
 		<tr>
 			<td>look</td>
 			<td>(none)</td>
-			<td>For selectOneRadio, this will control the look and feel. This is done through Awesome Bootstrap Checkboxs</td>
+			<td>For selectOneRadio, this will control the look and feel. This is done through Awesome Bootstrap Checkboxes</td>
 		</tr>
 
 		<tr>
@@ -220,7 +209,7 @@
 </b:panel>
 
 
-<h3>selectItems (yes with an s)</h3>
+<h3>b:selectItems (yes with an s)</h3>
 
 <p>This converts data from a query</p>
 
@@ -255,17 +244,17 @@
 		<tr>
 			<td>group</td>
 			<td>(none)</td>
-			<td>Reserved for future use. This will be used to group cfoutputs</td>
+			<td>Reserved for future use. This will be used to group <code>cfoutput</code>s</td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>auto</td>
-			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for <code>for</code> and <code>label</code>.</td>
 		</tr>
 		<tr>
 			<td>look</td>
 			<td>(none)</td>
-			<td>For selectOneRadio, this will control the look and feel. This is done through Awesome Bootstrap Checkboxs</td>
+			<td>For selectOneRadio, this will control the look and feel. This is done through Awesome Bootstrap Checkboxes</td>
 		</tr>
 		<tr>
 			<td>processed</td>
@@ -304,18 +293,18 @@
 
 
 
-<h3>selectBooleanCheckbox</h3>
+<h3>b:selectBooleanCheckbox</h3>
 
 
-<h3>selectManyMenu</h3>
-
-
-
-<h3>selectOneMenu</h3>
+<h3>b:selectManyMenu</h3>
 
 
 
-<h3>selectOneRadio</h3>
+<h3>b:selectOneMenu</h3>
+
+
+
+<h3>b:selectOneRadio</h3>
 
 <b:panel look="info" title="Attributes of &lt;b:selectOneRadio&gt;">
 
@@ -607,28 +596,7 @@ rc.qryData.AddRow([
 
 
 
-	</b:column>
-	
-	
-	<b:column span="3">
-	
-		<nav class="affix-top">
 
-			<ul class="nav">
-				<li><a href="#formgroup">b:formGroup</a></li>
-				<li><a href="#fieldset">b:fieldset</a></li>
-				<li><a href="#selectitem">b:selectItem</a></li>
-				<li><a href="#selectitems">b:selectItems</a></li>
-				<li><a href="#selectmanymenu">b:selectManyMenu</a></li>
-				<li><a href="#selectonemenu">b:selectOneMenu</a></li>
-				<li><a href="#selectoneradio">b:selectOneRadio</a></li>
-				<li><a href="#conversion">Conversion Summary</a></li>
-			</ul>	
-
-		</nav>
-
-	</b:column>
-</b:row>
 	
 	
 

@@ -5,11 +5,8 @@
 
 <b:navBar brand="BS-4-CF" brandHref="index.cfm" fixed="top">
 	<b:navbarLinks>
-		<b:dropMenu value="Getting started">
-			<b:navLink value="What's included" href="?view=getting_started" />
-		    	<b:navLink value="Basic Template" href="?view=getting_started##bind" />
-			<b:navLink value="Examples" href="?view=basic" />
-		</b:dropMenu>
+		<b:navLink value="Getting Started" href="?view=getting_started" />
+	
 		
 		<b:dropMenu value="CSS">
 			<b:navLink value="Grid system" href="?view=grid" icon="th-large" />
@@ -26,15 +23,18 @@
 			<b:navLink value="Button groups" href="?view=buttonGroups" />
 			<b:navLink value="Navs" href="?view=Nav" />
 			<b:navLink value="Labels & Badges" href="?view=label" />
-			<b:navLink value="Alerts & Panels" href="?view=alert" icon="list-alt" />
-			<b:navLink value="Progress Bars" href="?view=progress" />
+			<b:navLink value="Jumbotron" href="?view=jumbotron" />
+			<b:navLink value="Thumbnails" href="?view=thumbnail" icon="picture" />
+			<b:navLink value="Alerts" href="?view=alert" icon="list-alt" />
+			<b:navLink value="Progress Bars" href="?view=progress" icon= "tasks" />
+			<b:navLink value="Panels" href="?view=alert" />
 			<b:navLink value="Wells" href="?view=well" />
 		</b:dropMenu>
 	
 		<b:dropMenu value="JavaScript">
 			<b:navLink value="Modal" href="?view=Modal" icon="modal-window" />
-		    	<b:navLink value="Tab" href="?view=Tab" />
-			<b:navLink value="Tooltip" href="?view=tooltip" />
+		    	<b:navLink value="Tab" href="?view=Tab" icon="folder-close" />
+			<b:navLink value="Tooltip" href="?view=tooltip" icon="comment" />
 		</b:dropMenu>
 	
 
@@ -42,6 +42,7 @@
 		<b:dropMenu value="Themes">
           	<b:navLink value="Default" href="?view=theme" />
 			<b:navLink />
+			<b:navLink header="By Bootswatch"/>
 			<cfloop index="rc.i" list="Cerulean,Cosmo,Cyborg,Darkly,Flatly,Journal,Lumen,Paper,Readable,Sandstone,Simplex,Slate,Spacelab,Superhero,United,Yeti">
 				<b:navLink href="?view=theme&amp;theme=#rc.i#" binding="i" disabled="#IIF(url.theme EQ rc.i , 1, 0)#" />
 			</cfloop>		

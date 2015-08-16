@@ -54,7 +54,7 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+			<td>Pass through of HTML <code>id=</code>.</td>
 		</tr>
 		<tr>
 			<td>processed</td>

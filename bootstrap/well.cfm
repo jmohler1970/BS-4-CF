@@ -27,7 +27,7 @@ case "start" :
 	break;
      
 case "end" :     
-     
+     							variables.result &= crlf;
 	   							variables.result &= '<div class="well';
 	if(attributes.size		!= "")	variables.result &= ' well-#attributes.size#';		
 	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		
@@ -37,8 +37,8 @@ case "end" :
 	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
 								variables.result &= '>';
 								variables.result &= thisTag.GeneratedContent; // pass through of content
-								variables.result &= '</div>';
-     
+								variables.result &= '</div><!-- /.well -->';
+								variables.result &= crlf;	
      
      thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);

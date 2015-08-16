@@ -13,6 +13,24 @@
 </div>
 
 
+<h2>Why use this tag library?</h2>
+
+
+<b:h3>Without BS-4-CF</b:h3>
+<pre>
+&lt;cfif showme&gt;	
+     &lt;button type="button" class="btn btn-default"&gt;&lt;i class="glyphicon glyphicon-floppy-disk&gt;&lt;/i&gt;&lt;cfoutput&gt;#rc.savelabel#&lt;cfoutput&gt;&lt;/button&gt;
+&lt;/cfif&gt;	
+    
+</pre>	
+
+
+<b:h3>With BS-4-CF</b:h3>
+
+
+<pre>
+&lt;b:button rendered="#showme#" binding="savelabel" icon="floppy-disk /&gt;	
+</pre>
 
 
 <p>Whenever you have a tag that has too be a little bit smarter because of Bootstrap, use one of these custom tags. There is no requirement that all tags be converted. If has been the experience of this developer that these tags are most troublesome.</p>
@@ -51,9 +69,11 @@
 
 
 
+<h2>Common Attributes</h2>
+
 
 <a id="bind"></a>
-<b:h2>Using Binding</b:h2>
+<b:h3>Using Binding</b:h3>
 
 <p>BS-4-CF was written with frameworks such as FW/1 by Sean Corfield in mind. All of the variables that are outputted should be in the <code>rc</code> scope. We can take advantage of that and make our code much simple. Consider the following</p>
 
@@ -73,7 +93,7 @@
 <p>&nbsp;</p>
 
 
-<b:h2>Using Processed</b:h2>
+<b:h3>Using Processed</b:h3>
 <p><code>&lt;cfif&gt;</code> is used to conditionally show blocks of code. <code>&lt;cfif&gt;</code> can span dozens if not hundreds of lines of code. Bootstrap uses lots and lots of <code>&lt;div&gt;</code> tags. You can find yourself at the end of a large block code with nothing but <code>&lt;/cfif&gt;</code> and <code>&lt;/div&gt;</code>. One small mistake can mean wasting hours finding that stray tag.</p>	
 
 
@@ -107,7 +127,7 @@
 </pre>
 
 
-<b:h2>Using Rendered</b:h2>
+<b:h3>Using Rendered</b:h3>
 <p>"Rendered" is similar to processed except that it is like <code>&lt;cfsilent&gt;</code>. The "rendered" option is included for users who are familiar with JSF and want to continue programming using that approach.</p>	
 
 
@@ -155,7 +175,7 @@
 
 
 
-<b:h2>Using both Binding &amp; Rendered</b:h2>
+<b:h3>Using both Binding &amp; Rendered</b:h3>
 
 <p>Including a Glyphicon for good measure. Assume relevant variables have been already setup</p>
 
@@ -182,8 +202,6 @@ rc.savelabel = "Save this data";
 
 <b:h3>With BS-4-CF</b:h3>
 
-
-<p>Finally
 
 <pre>
 &lt;b:button rendered="#showme#" binding="savelabel" icon="floppy-disk /&gt;	
