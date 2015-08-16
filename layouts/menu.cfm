@@ -27,6 +27,7 @@
 			<b:navLink value="Navs" href="?view=Nav" />
 			<b:navLink value="Labels & Badges" href="?view=label" />
 			<b:navLink value="Alerts & Panels" href="?view=alert" icon="list-alt" />
+			<b:navLink value="Progress Bars" href="?view=progress" />
 			<b:navLink value="Wells" href="?view=well" />
 		</b:dropMenu>
 	

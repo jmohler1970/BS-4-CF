@@ -8,7 +8,7 @@
 		<b:column span="12">	
 
 			<b:h1>Tab Examples</b:h1>
-			<p>View code for details.</p>
+			<p>b:tab and b:tabView</p>
 		</b:column>	
 	</b:row>
 </div>
@@ -57,7 +57,7 @@
 		<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
      </b:tab>
   
-	<b:tab title="disabled" disabled="true">
+	<b:tab title="disabled" id="disabled" disabled="true">
 	     <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
 	</b:tab>
   
