@@ -11,7 +11,7 @@
     <b:jumbotron>
       <b:h1>Jumbotron</b:h1>
       <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-      <p><b:a look="primary" size="lg" id="nowhere">Learn more</b:a></p>
+      <p><b:commandLink look="primary" size="lg" id="nowhere">Learn more</b:commandLink></p>
     </b:jumbotron>
   </div>
 </b:column>

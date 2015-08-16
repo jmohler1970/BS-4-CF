@@ -15,7 +15,7 @@ case "start" :
 
 	variables.result = "";
 
-	if (!structKeyExists(attributes, "id") && !structKeyExists(attributes, "href")) throw("b:a tag must have either an id or an href. Neither have been provided"); 
+	if (!structKeyExists(attributes, "id") && !structKeyExists(attributes, "action")) throw("b:commandLink tag must have either an id or an action. Neither have been provided"); 
 
   
 	param attributes.action		= "";
@@ -47,7 +47,7 @@ case "end" :
 	if(attributes.styleClass != "")	variables.result &= ' #attributes.styleClass#';	
 	   							variables.result &= '"';
 	   							
-	if(attributes.href		!= "")	variables.result &= ' href="#attributes.action#"';
+	if(attributes.action	!= "")	variables.result &= ' href="#attributes.action#"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
  	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
  	if(attributes.style    	!= "")    variables.result &= ' style="#attributes.style#"';

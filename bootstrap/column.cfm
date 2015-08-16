@@ -42,7 +42,10 @@ case "start" :
 case "end" :     
      
 	   								variables.result &= variables.crlf & '<div class="';
-	   								variables.result &= 'col-xs-#attributes["col-xs"]# col-sm-#attributes["col-sm"]# col-md-#attributes["col-md"]# col-lg-#attributes["col-lg"]#';
+	   								variables.result &= 'col-xs-#attributes["col-xs"]#';
+	   								variables.result &= ' col-sm-#attributes["col-sm"]#';
+	   								variables.result &= ' col-md-#attributes["col-md"]#';
+	   								variables.result &= ' col-lg-#attributes["col-lg"]#';
 	if(attributes['offset-xs'] != 0)   	variables.result &= ' col-xs-offset-#attributes["offset-xs"]#';
 	if(attributes['offset-sm'] != 0)	 	variables.result &= ' col-sm-offset-#attributes["offset-sm"]#';
 	if(attributes['offset-md'] != 0)	 	variables.result &= ' col-md-offset-#attributes["offset-md"]#';
@@ -53,7 +56,7 @@ case "end" :
 	   								variables.result &= '"';
 	if(attributes.id		!= "")		variables.result &= ' id="#attributes.id#"';
 	if(attributes.style		!= "")		variables.result &= ' style="#attributes.style#"';                       
-	if(attributes.tooltip    != "")    	variables.result &= ' tooltip="#attributes.tooltip#"';
+	if(attributes.tooltip    != "")    	variables.result &= ' title="#attributes.tooltip#"';
 									variables.result &= '>';
 									variables.result &= thisTag.GeneratedContent; // pass through of content
 									variables.result &= variables.crlf & '</div><!-- /.column -->';

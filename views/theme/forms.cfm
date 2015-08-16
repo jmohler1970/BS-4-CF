@@ -29,7 +29,7 @@
 						<div class="col-lg-10">
 							<input type="password" class="form-control" id="inputPassword" placeholder="Password">
 								
-							<b:checkbox id="checkbox" look="success" checked="true">Checkbox</b:checkbox>
+							<b:selectBooleanCheckbox id="checkbox" look="success" checked="true">Checkbox</b:selectBooleanCheckbox>
 						</div>
 					</b:formGroup>
 					
@@ -45,8 +45,12 @@
 					<b:formGroup>
 						<label class="col-lg-2 control-label">Radios</label>
 						<b:column span="10">
-							<b:radio name="OptionRadios" id="auto" look="primary">This is primary option</b:radio>
-							<b:radio name="OptionRadios" id="auto" look="danger" checked="true">This dangerous</b:radio>
+						
+						
+							<b:selectOneRadio name="myRadio">
+								<b:selectItem value="1" id="auto" display="Really good choice" look="primary" />
+								<b:selectItem value="1" id="auto" display="Really dangerous option" look="danger" selected="true" />
+							</b:selectOneRadio>	
 						</b:column>
 					</b:formGroup>
                  	
@@ -67,13 +71,13 @@
 					<b:formGroup>	
 						<label for="select" class="col-lg-2 control-label">Select Multiple</label>
 						
-						<b:selectMultiMenu name="select" span="10">
+						<b:selectManyMenu name="select" span="10">
                     			<b:selectItem display="1" />
                     			<b:selectItem display="2" />
                     			<b:selectItem display="3" />
                     			<b:selectItem display="4" />
                     			<b:selectItem display="5" />
-						</b:selectMultiMenu>
+						</b:selectManyMenu>
   					</b:formGroup>
 					
                   <div class="form-group">

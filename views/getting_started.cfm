@@ -26,7 +26,7 @@
 	<li>&lt;b:tabView&gt;</li>
 	<li>&lt;b:badge&gt;</li>
 	<li>&lt;b:label&gt;</li>
-	<li>&lt;b:a&gt;</li>
+	<li>&lt;b:commandLink&gt; (&lt;a href=)</li>
 	<li>&lt;b:icon&gt;</li>
 </ol>
 

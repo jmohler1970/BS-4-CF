@@ -19,14 +19,13 @@ case "start" :
 	param attributes.disabled	= false;
 	param attributes.id			= "";
 	param attributes.display		= "";
-	param attributes.processed 	= true;
-	param attributes.value		= attributes.display; 
+	param attributes.look		= "";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.selected	= false;
-	param attributes.square		= false;		// make it look like check
 	param attributes.tooltip		= "";
-
+	param attributes.value		= attributes.display; 
+	
 
 
      if (!attributes.processed) exit "exitTag";
@@ -36,16 +35,16 @@ case "end" :
 	
 
 	variables.Data = {
-		square	= attributes.square,
 		disabled	= attributes.disabled,
 		id		= attributes.id,
 		display	= attributes.display,
+		look		= attributes.look,
 		value	= attributes.value,
 		selected	= attributes.selected,
 		tooltip	= attributes.tooltip
 		};
      
-     ArrayAppend(thisTag.Parent.thisTag.arTab, 			variables.Data);
+     ArrayAppend(thisTag.Parent.thisTag.arOption, 			variables.Data);
 
 	
 		

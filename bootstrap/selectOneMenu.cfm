@@ -62,7 +62,7 @@ case "end" :
 	for (variables.option in thisTag.arOption)	{	
 								variables.result &= '<option';
 								variables.result &= ' value="#variables.option.value#"';
-		if(variables.option.selected)	variables.result &= ' selected="selected"';
+	if(variables.option.selected)		variables.result &= ' selected="selected"';
 								variables.result &= ' >';
 								variables.result &= variables.option.display;
 								variables.result &= '</option>';

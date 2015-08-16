@@ -32,7 +32,7 @@ case "end" :
 	   							variables.result &= '"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
 	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';                         
-	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
+	if(attributes.tooltip    != "")    variables.result &= ' title="#attributes.tooltip#"';
 								variables.result &= '>';
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 								variables.result &= variables.crlf & '</div><!-- /.row -->';

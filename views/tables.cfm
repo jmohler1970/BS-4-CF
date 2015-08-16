@@ -7,8 +7,8 @@
 	<b:row>
 		<b:column span="12">	
 
-			<b:h1>Table Examples</b:h1>
-			<p>View code for details.</p>
+			<b:h1>Tables</b:h1>
+			<p>b:table, b:row, b:td, b:th</p>
 		</b:column>	
 	</b:row>
 </div>
@@ -40,41 +40,84 @@ rc.qryData.AddRow([
 <p>Notice that there is a delete column. This will be used to control which rows get rendered</p>
 
 
-<cfdump var="#rc.qryData#">
+<cfdump var="#rc.qryData#" expand="no">
+
+
+<b:panel look="info" title="Attributes of &lt;b:table&gt;">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<b:th text="nowrap">Default value</b:th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>bordered</td>
+			<td>true</td>
+			<td>tables will have borders</td>
+		</tr>
+		<tr>
+			<td>condensed</td>
+			<td>true</td>
+			<td>The table will have slightly smaller cell padding</td>
+		</tr>
+		<tr>
+			<td>hover</td>
+			<td>false</td>
+			<td>Hover effect when mouse is over table</td>
+		</tr>
+
+		<tr>
+			<td>id</td>
+			<td>(none)</td>
+			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+		</tr>
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td>This like a <code>&lt;cfif&gt;</code></td>
+		</tr>
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+		</tr>
+		<tr>
+			<td>responsive</td>
+			<td>true</td>
+			<td>Make tables scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</td>
+		</tr>
+		<tr>
+			<td>stripped</td>
+			<td>true</td>
+			<td>Rows will alternate light and dark backgrounds</td>
+		</tr>
+		<tr>
+			<td>style</td>
+			<td>(none)</td>
+			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+		</tr>
+		<tr>
+			<td>styleClass</td>
+			<td>(none)</td>
+			<td>Pass though of CSS class.</td>
+		</tr>
+		<tr>
+			<td>tooltip</td>
+			<td>(none)</td>
+			<td>Pass though of title</td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>	
 	
 
 
-<h2>Now with tables</h2>
-
-<pre>
-&lt;b:table&gt;
-&lt;thead&gt; 
-&lt;tr&gt;
-	&lt;th&gt;ID&lt;/th&gt;
-	&lt;th&gt;Icon&lt;/th&gt;
-	&lt;th&gt;Album&lt;/th&gt;
-	&lt;th&gt;Message&lt;/th&gt;
-	&lt;th&gt;Score&lt;/th&gt;
-	&lt;th&gt;&lt;/th&gt; 
-&lt;/tr&gt;
-&lt;/thead&gt;	
-
-&lt;tbody&gt;
-&lt;cfoutput query=&quot;rc.qryData&quot;&gt;
-	&lt;b:tr rendered=&quot;#IIF(Delete, 0, 1)#&quot;&gt;
-		&lt;b:td&gt;&lt;b:badge value=&quot;#ID#&quot; /&gt;&lt;/b:td&gt;
-		&lt;b:td&gt;&lt;b:icon name=&quot;#icon#&quot; /&gt;&lt;/b:td&gt;
-		&lt;b:td&gt;#Album#&lt;/b:td&gt;
-		&lt;b:td&gt;#Message#&lt;/b:td&gt;
-		&lt;b:td&gt;#Score#&lt;/b:td&gt;
-		&lt;b:td&gt;&lt;b:a href=&quot;###ID#&quot; size=&quot;xs&quot; look=&quot;primary&quot;&gt;View #id#&lt;/b:a&gt;&lt;/b:td&gt;
-	&lt;/b:tr&gt;
-&lt;/cfoutput&gt;	
-
-&lt;/tbody&gt;
-&lt;/b:table&gt;
-	
-</pre>	
+<h2>Example</h2>
 
 
 <b:table>
@@ -97,7 +140,7 @@ rc.qryData.AddRow([
 		<b:td>#Album#</b:td>
 		<b:td>#Message#</b:td>
 		<b:td>#Score#</b:td>
-		<b:td><b:a href="###ID#" size="xs" look="primary">View #id#</b:a></b:td>
+		<b:td><b:commandLink action="###ID#" size="xs" look="primary">View #id#</b:commandLink></b:td>
 	</b:tr>
 </cfoutput>	
 </tbody>

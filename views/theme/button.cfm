@@ -16,24 +16,24 @@
          <b:row>
           <div class="col-lg-7">
 
-            <p class="bs-component">
-              <b:a href="##">Default</b:a>
-              <b:a href="##" look="primary">Primary</b:a>
-              <b:a href="##" look="success">Success</b:a>
-              <b:a href="##" look="info">Info</b:a>
-              <b:a href="##" look="warning">Warning</b:a>
-              <b:a href="##" look="danger">Danger</b:a>
-              <b:a href="##" look="link">Link</b:a>
+            <p>
+              <b:commandLink action="##">Default</b:commandLink>
+              <b:commandLink action="##" look="primary">Primary</b:commandLink>
+              <b:commandLink action="##" look="success">Success</b:commandLink>
+              <b:commandLink action="##" look="info">Info</b:commandLink>
+              <b:commandLink action="##" look="warning">Warning</b:commandLink>
+              <b:commandLink action="##" look="danger">Danger</b:commandLink>
+              <b:commandLink action="##" look="link">Link</b:commandLink>
             </p>
 
-            <p class="bs-component">
-	         <b:a href="##">Default</b:a>
-              <b:a href="##" disabled="true" look="primary">Primary</b:a>
-              <b:a href="##" disabled="true" look="success">Success</b:a>
-              <b:a href="##" disabled="true" look="info">Info</b:a>
-              <b:a href="##" disabled="true" look="warning">Warning</b:a>
-              <b:a href="##" disabled="true" look="danger">Danger</b:a>
-              <b:a href="##" disabled="true" look="link">Link</b:a>   
+            <p>
+	         <b:commandLink action="##">Default</b:commandLink>
+              <b:commandLink action="##" disabled="true" look="primary">Primary</b:commandLink>
+              <b:commandLink action="##" disabled="true" look="success">Success</b:commandLink>
+              <b:commandLink action="##" disabled="true" look="info">Info</b:commandLink>
+              <b:commandLink action="##" disabled="true" look="warning">Warning</b:commandLink>
+              <b:commandLink action="##" disabled="true" look="danger">Danger</b:commandLink>
+              <b:commandLink action="##" disabled="true" look="link">Link</b:commandLink>   
             </p>
 
 
@@ -41,19 +41,19 @@
               <div class="btn-toolbar bs-component" style="margin: 0;">
              
                 <b:buttonGroup>
-                  <b:a href="##">Default</b:a>
+                  <b:commandLink action="##">Default</b:commandLink>
                   <b:dropButton>
-                  	<b:navLink href="##" value="Action" />
-                  	<b:navLink href="##" value="Another Action" />
-                  	<b:navLink href="##" value="Something else here" />
+                  	<b:navLink action="##" value="Action" />
+                  	<b:navLink action="##" value="Another Action" />
+                  	<b:navLink action="##" value="Something else here" />
                   	<b:navLink />
-                  	<b:navLink href="##" value="Separated link" />
+                  	<b:navLink action="##" value="Separated link" />
                   </b:dropButton>
                 </b:buttonGroup>
 
                 <div class="btn-group">
-                  <b:a href="##" look="primary">Primary</b:a>
-                  <b:a href="##" look="primary" dropdown="true" />
+                  <b:commandLink action="##" look="primary">Primary</b:commandLink>
+                  <b:commandLink action="##" look="primary" dropdown="true" />
 
                   <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
@@ -65,8 +65,8 @@
                 </div>
  
                 <div class="btn-group">
-                  <b:a href="##" look="success">Success</b:a>
-                  <b:a href="##" look="success" dropdown="true" />
+                  <b:commandLink action="##" look="success">Success</b:commandLink>
+                  <b:commandLink action="##" look="success" dropdown="true" />
 
                   <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
@@ -78,8 +78,8 @@
                 </div>
 
                 <div class="btn-group">
-                  <b:a href="##" look="info">Info</b:a>
-                  <b:a href="##" look="info" dropdown="true" />
+                  <b:commandLink action="##" look="info">Info</b:commandLink>
+                  <b:commandLink action="##" look="info" dropdown="true" />
                   <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a></li>
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="btn-group">
-                  <b:a href="##" look="warning">Warning</b:a>
+                  <b:commandLink action="##" look="warning">Warning</b:commandLink>
                   <a href="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
@@ -104,50 +104,50 @@
             </div>
 
             <p class="bs-component">
-              <b:a href="##" look="primary" size="lg">Large button</b:a>
-              <b:a href="##" look="primary">Default button</b:a>
-              <b:a href="##" look="primary" size="sm">Small button</b:a>
-              <b:a href="##" look="primary" size="xs">Mini button</b:a>
+              <b:commandLink action="##" look="primary" size="lg">Large button</b:commandLink>
+              <b:commandLink action="##" look="primary">Default button</b:commandLink>
+              <b:commandLink action="##" look="primary" size="sm">Small button</b:commandLink>
+              <b:commandLink action="##" look="primary" size="xs">Mini button</b:commandLink>
             </p>
 
           </div>
           <div class="col-lg-5">
 
             <p class="bs-component">
-              <b:a href="##" styleClass="btn-block">Block level button</b:a>
+              <b:commandLink action="##" styleClass="btn-block">Block level button</b:commandLink>
             </p>
 
 
             <div class="bs-component" style="margin-bottom: 15px;">
               <div class="btn-group btn-group-justified">
-                <b:a href="##">Left</b:a>
-                <b:a href="##">Middle</b:a>
-                <b:a href="##">Right</b:a>
+                <b:commandLink action="##">Left</b:commandLink>
+                <b:commandLink action="##">Middle</b:commandLink>
+                <b:commandLink action="##">Right</b:commandLink>
               </div>
             </div>
 
             <div class="bs-component" style="margin-bottom: 15px;">
               <div class="btn-toolbar">
           		<b:buttonGroup>
-					<b:a href="##">1</b:a>
-					<b:a href="##">2</b:a>
-					<b:a href="##">3</b:a>
-					<b:a href="##">4</b:a>
+					<b:commandLink action="##">1</b:commandLink>
+					<b:commandLink action="##">2</b:commandLink>
+					<b:commandLink action="##">3</b:commandLink>
+					<b:commandLink action="##">4</b:commandLink>
 			   	</b:buttonGroup>
 
 				<b:buttonGroup>
-					<b:a href="##">5</b:a>
-					<b:a href="##">6</b:a>
-					<b:a href="##">7</b:a>
+					<b:commandLink action="##">5</b:commandLink>
+					<b:commandLink action="##">6</b:commandLink>
+					<b:commandLink action="##">7</b:commandLink>
                	</b:buttonGroup>
                 	
 
 				<b:buttonGroup>
-               		<b:a href="##">8</b:a>
+               		<b:commandLink action="##">8</b:commandLink>
 					<b:dropButton value="Dropdown">
-               			<b:navLink href="##" value="Dropdownlink" />
-						<b:navLink href="##" value="Dropdownlink" />
-						<b:navLink href="##" value="Dropdownlink" />
+               			<b:navLink action="##" value="Dropdownlink" />
+						<b:navLink action="##" value="Dropdownlink" />
+						<b:navLink action="##" value="Dropdownlink" />
 					</b:dropButton>
 				</b:buttonGroup>
 			</div>
@@ -155,10 +155,10 @@
 
             <div class="bs-component">
               <b:buttonGroup orientation="vertical">
-                  <b:a href="##">Button</b:a>
-                  <b:a href="##">Button</b:a>
-                  <b:a href="##">Button</b:a>
-                  <b:a href="##">Button</b:a>
+                  <b:commandLink action="##">Button</b:commandLink>
+                  <b:commandLink action="##">Button</b:commandLink>
+                  <b:commandLink action="##">Button</b:commandLink>
+                  <b:commandLink action="##">Button</b:commandLink>
               </b:buttonGroup>
             </div>
 

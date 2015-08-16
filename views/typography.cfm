@@ -6,8 +6,8 @@
 	<b:row>
 		<b:column span="12">	
 
-			<b:h1>Block Element Examples</b:h1>
-			<p>View code for details.</p>
+			<b:h1>Typography</b:h1>
+			<p>b:h1, b:h2, b:h3, b:h4, b:h5, b:h6, b:p, b:blockquote</p>
 		</b:column>	
 	</b:row>
 </div>
@@ -17,6 +17,64 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+
+
+<b:panel look="info" title="Attributes for all typographical tags">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<th>Default value</th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>binding</td>
+			<td>(none)</td>
+			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
+		</tr>
+		<tr>
+			<td>id</td>
+			<td>(none)</td>
+			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+		</tr>
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td>This like a <code>&lt;cfif&gt;</code></td>
+		</tr>
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+		</tr>
+		<tr>
+			<td>reverse</td>
+			<td>false</td>
+			<td>This is for <code>&lt;b:blockquote&gt;</code> only. This puts the <code>&lt;blockquote&gt;</code> bar on the opposite of its normal possition.</td>
+		</tr>
+		<tr>
+			<td>style</td>
+			<td>(none)</td>
+			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+		</tr>
+		<tr>
+			<td>styleClass</td>
+			<td>(none)</td>
+			<td>Pass though of CSS class.</td>
+		</tr>
+		<tr>
+			<td>tooltip</td>
+			<td>(none)</td>
+			<td>Pass though of title</td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
+
 
 
 

@@ -5,7 +5,7 @@
 <b:jumbotron>
 	<b:h1>BS-4-CF</b:h1>
      <p>Bootstrap tags for Adobe ColdFusion</p>
-     <p><b:a href="getting_started.cfm" look="primary" size="lg">Learn more</b:a></p>
+     <p><b:commandLink action="?view=getting_started" look="primary" size="lg">Learn more</b:commandLink></p>
 </b:jumbotron>
 
 
