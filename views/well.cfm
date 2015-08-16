@@ -61,8 +61,6 @@
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
 		</tr>
-
-
 		<tr>
 			<td>rendered</td>
 			<td>true</td>

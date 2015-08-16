@@ -7,10 +7,113 @@
 		<b:column span="12">	
 
 			<b:h1>Buttons Examples</b:h1>
-			<p>View code for details.</p>
+			<p>b:button, b:commandButton, b:commandLink</p>
 		</b:column>	
 	</b:row>
 </div>
+
+
+<b:panel look="info" title="Attributes of &lt;b:button&gt;, &lt;b:commandButton&gt;, &amp;  &lt;b:commandLink&gt;">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<b:th text="nowrap">Default value</b:th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>action</td>
+			<td>(none)</td>
+			<td>For <code>b:commandLink</code> to creates a link to action. This is a pass through of HTML <code>href=</code>.</td>
+		</tr>
+		<tr>
+			<td>binding</td>
+			<td>(none)</td>
+			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
+		</tr>
+		<tr>
+			<td>disabled</td>
+			<td>false</td>
+			<td>Pass through of HTML <code>disabled="disabled"</code>.</td>
+		</tr>
+		<tr>
+			<td>dismiss</td>
+			<td>false</td>
+			<td>Sets <code> data-dismiss=</code></td>
+		</tr>
+		<tr>
+			<td>icon</td>
+			<td>(none)</td>
+			<td>Adds Glyphicon</td>
+		</tr>
+		<tr>
+			<td>iconAlign</td>
+			<td>(none)</td>
+			<td>Aligns Glyphicon</td>
+		</tr>		
+		<tr>
+			<td>id</td>
+			<td>(none)</td>
+			<td>Pass through of HTML <code>id=</code>.</td>
+		</tr>
+		<tr>
+			<td>lang</td>
+			<td>(none)</td>
+			<td>Pass through of HTML <code>lang=</code></td>
+		</tr>
+		<tr>
+			<td>look</td>
+			<td>true</td>
+			<td>This for contextual classes</td>
+		</tr>
+		<tr>
+			<td>onClick</td>
+			<td>(none)</td>
+			<td>Pass through of HTML <code>onClick=</code></td>
+		</tr>
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td>This like a <code>&lt;cfif&gt;</code></td>
+		</tr>
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+		</tr>
+		<tr>
+			<td>size</td>
+			<td>(none)</td>
+			<td>How big</td>
+		</tr>
+		<tr>
+			<td>style</td>
+			<td>(none)</td>
+			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+		</tr>
+		<tr>
+			<td>styleClass</td>
+			<td>(none)</td>
+			<td>Pass though of CSS class.</td>
+		</tr>
+		<tr>
+			<td>tooltip</td>
+			<td>(none)</td>
+			<td>Pass though of <code>title=</code></td>
+		</tr>
+		<tr>
+			<td>value</td>
+			<td>(none)</td>
+			<td>Content to be displayed. Tag also support <code>thisTag.GeneratedContent</code> </td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
+
 
 
 <h2>Ordinary Buttons</h2>
