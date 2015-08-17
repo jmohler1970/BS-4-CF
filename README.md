@@ -15,15 +15,15 @@ BootsFaces for JSF shows the way to a cleaner approach. So what I have done is c
 
 
 # Without BS-4-CF
-<cfif showme>	
-     <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-floppy-disk></i><cfoutput>#rc.savelabel#<cfoutput></button>
-</cfif>	
+&lt;cfif showme&gt;	
+     &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;&lt;i class=&quot;glyphicon glyphicon-floppy-disk&gt;&lt;/i&gt;&lt;cfoutput&gt;#rc.savelabel#&lt;cfoutput&gt;&lt;/button&gt;
+&lt;/cfif&gt;	
 	
 
 
-#With BS-4-CF
+# With BS-4-CF
 
-<b:button rendered="#showme#" binding="savelabel" icon="floppy-disk />	
+&lt;b:button rendered=&quot;#showme#&quot; binding=&quot;savelabel&quot; icon=&quot;floppy-disk /&gt;	
 
 
 
