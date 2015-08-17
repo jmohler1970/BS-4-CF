@@ -14,17 +14,19 @@ The two put together are highly unreadable and difficult to debug. This is where
 BootsFaces for JSF shows the way to a cleaner approach. So what I have done is created a similar library for ColdFusion.
 
 
-# Without BS-4-CF
+<h3>Without BS-4-CF</h3>
+```xml
 &lt;cfif showme&gt;	
      &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;&lt;i class=&quot;glyphicon glyphicon-floppy-disk&gt;&lt;/i&gt;&lt;cfoutput&gt;#rc.savelabel#&lt;cfoutput&gt;&lt;/button&gt;
 &lt;/cfif&gt;	
-	
+```	
 
 
-# With BS-4-CF
+<h3>With BS-4-CF</h3>
 
+```xml
 &lt;b:button rendered=&quot;#showme#&quot; binding=&quot;savelabel&quot; icon=&quot;floppy-disk /&gt;	
-
+```
 
 
 
