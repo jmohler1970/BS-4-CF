@@ -45,12 +45,12 @@
 	<b:column span="4">
       
           <h2>Labels</h2>
-          <b:label text="Default" />
-          <b:label text="Primary"	severity="primary" />
-          <b:label text="Success"	severity="success" />
-          <b:label text="Warning"	severity="warning" />
-          <b:label text="Danger"	severity="danger" />
-          <b:label text="Info"	severity="info" />
+          <b:label value="Default" />
+          <b:label value="Primary"	severity="primary" />
+          <b:label value="Success"	severity="success" />
+          <b:label value="Warning"	severity="warning" />
+          <b:label value="Danger"	severity="danger" />
+          <b:label value="Info"	severity="info" />
           	
             
 	</b:column>

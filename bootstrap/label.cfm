@@ -20,10 +20,11 @@ case "start" :
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.severity 	= "default";
-	param attributes.text		= "";
 	param attributes.tooltip		= "";
+	param attributes.value		= "";
 	
 	
+	if (structKeyExists(attributes, "text")) throw "attributes.text is an invalid option. Don't even think of using it";
      if (!attributes.processed) exit "exitTag";
 	break;
      
@@ -32,11 +33,11 @@ case "end" :
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.text = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
      
 	
-	   							variables.result &= '<span class="label label-#attributes.severity#"';
+	   							variables.result &= '<span class="label label-#lcase(attributes.severity)#"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
- 	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
+ 	if(attributes.tooltip    != "")    variables.result &= ' title="#attributes.tooltip#"';
 								variables.result &= '>';
-								variables.result &= attributes.text; // pass through of content
+								variables.result &= attributes.value; // pass through of content
 								variables.result &= '</span>';
      
 
