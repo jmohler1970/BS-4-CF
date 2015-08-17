@@ -41,7 +41,7 @@
 		<tr>
 			<td>display</td>
 			<td>(none)</td>
-			<td>Pass through of content</td>
+			<td>Reserved for future use</td>
 		</tr>
 		<tr>
 			<td>id</td>
@@ -71,13 +71,6 @@
 			<td>(none)</td>
 			<td>Used on selectOneRadio</td>
 		</tr>
-
-		<tr>
-			<td>value</td>
-			<td>(none)</td>
-			<td>Pass through of value</td>
-		</tr>
-
 	</tbody>
 	</b:table>
 </b:panel>

@@ -61,8 +61,6 @@
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
 		</tr>
-
-
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
@@ -73,13 +71,11 @@
 			<td>false</td>
 			<td>Is this selected on <code>&lt;option&gt;</code> or checked on <code>&lt;input type="radio"&gt;</code></td>
 		</tr>
-
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Used on selectOneRadio</td>
 		</tr>
-
 		<tr>
 			<td>value</td>
 			<td>(none)</td>

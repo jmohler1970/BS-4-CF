@@ -24,6 +24,7 @@ case "start" :
 	param attributes.name		= "";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
+	param attributes.tabIndex	= "";
 	param attributes.title		= "";
 	param attributes.tooltip		= "";
 	
@@ -50,6 +51,8 @@ case "end" :
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
 	if(attributes.checked)			variables.result &= ' checked="checked"';
 	if(attributes.disabled)			variables.result &= ' disabled="disabled"';
+	if(attributes.tabindex	!= "")	variables.result &= ' tabindex="#attributes.tabindex#"';
+	
 								variables.result &= ' />';
 								variables.result &= '<label';
 	if(attributes.id		!= "")	variables.result &=	' for="#attributes.id#"';

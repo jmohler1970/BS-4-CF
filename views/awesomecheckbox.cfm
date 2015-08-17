@@ -110,6 +110,11 @@
 			<td>Pass though of CSS class.</td>
 		</tr>
 		<tr>
+			<td>tabIndex</td>
+			<td>(none)</td>
+			<td>Pass though of tabindex</td>
+		</tr>
+		<tr>
 			<td>title</td>
 			<td>(none)</td>
 			<td>Content next to checkbox. If it is blank, perhaps the content is nearby</td>
