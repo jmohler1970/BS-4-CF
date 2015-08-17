@@ -17,6 +17,7 @@ case "start" :
   
 	param attributes.binding		= "";
 	param attributes.id			= "";
+	param attributes.pageHeader	= false;
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.style		= "";
@@ -32,6 +33,7 @@ case "end" :
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlformat(evaluate("caller.rc.#attributes.binding#"));
      
 
+	if(attributes.pageHeader)		variables.result &= '<div class="page-header">';
 	   							variables.result &= '<h1 class="';
 	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';		
 	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		
@@ -44,7 +46,7 @@ case "end" :
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 	
 								variables.result &= '</h1>' & variables.crlf;
-     
+     if(attributes.pageHeader)		variables.result &= '</div><!-- /.page-header -->';
      
      
      
