@@ -42,7 +42,7 @@ case "end" :
 	if(attributes.tooltip    != "")	variables.result &=	' title="#attributes.tooltip#"';               
 								variables.result &= '>';
 							
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+								variables.result &= trim(thisTag.GeneratedContent); // pass through of content
 	
 								variables.result &= '</blockquote>';
      

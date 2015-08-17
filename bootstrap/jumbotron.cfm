@@ -25,12 +25,15 @@ case "start" :
      
 case "end" :     
      
-	   							variables.result &= '<div class="jumbotron"';
+     							variables.result &= variables.crlf;
+								variables.result &= '<div class="jumbotron"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
 	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
 								variables.result &= '>';
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 								variables.result &= '</div><!-- /.jumbotron -->';
+								variables.result &= variables.crlf;
+											
      
      
      thisTag.GeneratedContent = "";
@@ -38,6 +41,4 @@ case "end" :
      
 	break;
 	}
-     
- 
 </cfscript>

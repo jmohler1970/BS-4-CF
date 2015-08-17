@@ -24,6 +24,11 @@ case "start" :
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
 	param attributes.tooltip		= "";
+	
+	
+	variables.myClass = "";
+	if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';		
+	if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';		
 
 
 	if (!attributes.processed) exit "exitTag";
@@ -34,16 +39,15 @@ case "end" :
      
 
 	if(attributes.pageHeader)		variables.result &= '<div class="page-header">';
-	   							variables.result &= '<h1 class="';
-	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';		
-	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		
-	   							variables.result &= '"';
+	if(variables.myClass == "")		variables.result &= '<h1';
+	if(variables.myClass != "")		variables.result &= '<h1 class="#variables.myClass#"';
+
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
 	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
 	if(attributes.tooltip    != "")	variables.result &=	' title="#attributes.tooltip#"';               
 								variables.result &= '>';
 							
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+								variables.result &= trim(thisTag.GeneratedContent); // pass through of content
 	
 								variables.result &= '</h1>' & variables.crlf;
      if(attributes.pageHeader)		variables.result &= '</div><!-- /.page-header -->';

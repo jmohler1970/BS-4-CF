@@ -24,7 +24,12 @@ case "start" :
 	param attributes.text		= "";
 	param attributes.tooltip		= "";
 
-	
+
+	variables.myClass = "";
+	if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';		
+	if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';	
+
+
 	if (!attributes.processed) exit "exitTag";
 	break;
      
@@ -32,17 +37,15 @@ case "end" :
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 	
 	
-								
-	   							variables.result &= '<h2 class="';
-	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';		
-	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		
-	   							variables.result &= '"';
+	if(variables.myClass == "")		variables.result &= '<h2';
+	if(variables.myClass != "")		variables.result &= '<h2 class="#variables.myClass#"';
+
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
 	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
 	if(attributes.tooltip    != "")	variables.result &=	' title="#attributes.tooltip#"';               
 								variables.result &= '>';
 							
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+								variables.result &= trim(thisTag.GeneratedContent); // pass through of content
 	
 								variables.result &= '</h2>' & variables.crlf;
      
