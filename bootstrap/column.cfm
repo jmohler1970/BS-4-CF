@@ -25,15 +25,15 @@ case "start" :
 	param attributes.tooltip		= "";
   
 	// spans for specific screen sizes
-	if(!structKeyExists(attributes, 'col-xs'))	attributes["col-xs"] = attributes.span;
-	if(!structKeyExists(attributes, 'col-sm'))	attributes["col-sm"] = attributes.span;
-	if(!structKeyExists(attributes, 'col-md'))	attributes["col-md"] = attributes.span;
-	if(!structKeyExists(attributes, 'col-lg'))	attributes["col-lg"] = attributes.span;
+	param attributes.colXs		= attributes.span;
+	param attributes.colSm		= attributes.span;
+	param attributes.colMd		= attributes.span;
+	param attributes.colLg		= "";
 	
-	if(!structKeyExists(attributes, 'offset-xs'))	attributes["offset-xs"] = attributes.offset;
-	if(!structKeyExists(attributes, 'offset-sm'))	attributes["offset-sm"] = attributes.offset;
-	if(!structKeyExists(attributes, 'offset-md'))	attributes["offset-md"] = attributes.offset;
-	if(!structKeyExists(attributes, 'offset-lg'))	attributes["offset-lg"] = attributes.offset;
+	param attributes.offsetXs	= attributes.offset;
+	param attributes.offsetSm	= attributes.offset;
+	param attributes.offsetMd	= attributes.offset;
+	param attributes.offsetLg	= 0;
 
 
  	if (!attributes.processed) exit "exitTag";
@@ -41,25 +41,25 @@ case "start" :
      
 case "end" :     
      
-	   								variables.result &= variables.crlf & '<div class="';
-	   								variables.result &= 'col-xs-#attributes["col-xs"]#';
-	   								variables.result &= ' col-sm-#attributes["col-sm"]#';
-	   								variables.result &= ' col-md-#attributes["col-md"]#';
-	   								variables.result &= ' col-lg-#attributes["col-lg"]#';
-	if(attributes['offset-xs'] != 0)   	variables.result &= ' col-xs-offset-#attributes["offset-xs"]#';
-	if(attributes['offset-sm'] != 0)	 	variables.result &= ' col-sm-offset-#attributes["offset-sm"]#';
-	if(attributes['offset-md'] != 0)	 	variables.result &= ' col-md-offset-#attributes["offset-md"]#';
-	if(attributes['offset-lg'] != 0)		variables.result &= ' col-lg-offset-#attributes["offset-lg"]#';
+	   							variables.result &= variables.crlf & '<div class="';
+	   							variables.result &= 'col-xs-#attributes.colXs# ';
+	   							variables.result &= 'col-sm-#attributes.colSm# ';
+	   							variables.result &= 'col-md-#attributes.colMd# ';
+	if(attributes.colLg 	!= "")	variables.result &= 'col-lg-#attributes.colLg# ';
+	if(attributes.offsetXs 	!= 0)   	variables.result &= 'col-xs-offset-#attributes.offsetXs# ';
+	if(attributes.offsetSm 	!= 0)	variables.result &= 'col-sm-offset-#attributes.offsetSm# ';
+	if(attributes.offsetMd 	!= 0)	variables.result &= 'col-md-offset-#attributes.offsetMd# ';
+	if(attributes.offsetLg 	!= 0)	variables.result &= 'col-lg-offset-#attributes.offsetLg# ';
 	   							
 	   							
-	if(attributes.styleClass	!= "")		variables.result &= ' #attributes.styleClass#';		
-	   								variables.result &= '"';
-	if(attributes.id		!= "")		variables.result &= ' id="#attributes.id#"';
-	if(attributes.style		!= "")		variables.result &= ' style="#attributes.style#"';                       
-	if(attributes.tooltip    != "")    	variables.result &= ' title="#attributes.tooltip#"';
-									variables.result &= '>';
-									variables.result &= thisTag.GeneratedContent; // pass through of content
-									variables.result &= variables.crlf & '</div><!-- /.column -->';
+	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		
+	   							variables.result &= '"';
+	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';                       
+	if(attributes.tooltip    != "")    variables.result &= ' title="#attributes.tooltip#"';
+								variables.result &= '>';
+								variables.result &= thisTag.GeneratedContent; // pass through of content
+								variables.result &= variables.crlf & '</div><!-- /.column -->';
      
      
      thisTag.GeneratedContent = "";

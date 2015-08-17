@@ -6,8 +6,8 @@
 <div class="page-header">
 	<b:row>
 		<b:column span="12">	
-			<b:h1>Grid System</b:h1>
-			<b:p>b:row and b:column</b:p>
+			<b:h1>Grid System Examples</b:h1>
+			<b:p>b:container, b:row and b:column</b:p>
 		</b:column>	
 	</b:row>
 </div>
@@ -17,7 +17,72 @@
 	<b:column span="12">
 
 
-<h2>b:row</h2>
+<h2>Introduction</h2>
+
+<h3>b:container</h3>
+
+<b:blockquote>
+	Rows must be placed within a <code>.container</code> (fixed-width) or <code>.container-fluid</code> (full-width) for proper alignment and padding.
+</b:blockquote>
+
+<p>This rule is not enforced within BS-4-CF</p>
+
+
+<b:panel look="info" title="Attributes of &lt;b:container&gt;">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<th>Default value</th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>fluid</td>
+			<td>true</td>
+			<td>Is this a fluid container?</td>
+		</tr>
+		<tr>
+			<td>id</td>
+			<td>(none)</td>
+			<td>Pass through of HTML id.</td>
+		</tr>
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td>This like a <code>&lt;cfif&gt;</code></td>
+		</tr>
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+		</tr>
+		<tr>
+			<td>style</td>
+			<td>(none)</td>
+			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+		</tr>
+		<tr>
+			<td>styleClass</td>
+			<td>(none)</td>
+			<td>Pass though of CSS class.</td>
+		</tr>
+		<tr>
+			<td>tooltip</td>
+			<td>(none)</td>
+			<td>Pass though of title</td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
+
+
+
+
+<h3>b:row</h3>
 
 
 
@@ -69,7 +134,7 @@
 </b:panel>
 
 
-<h2>b:column</h2>
+<h3>b:column</h3>
 
 
 <b:panel look="info" title="Attributes of &lt;b:column&gt;">
@@ -86,24 +151,24 @@
 	<tbody>
 		
 		<tr>
-			<td>col-xs</td>
+			<td>colxs</td>
 			<td>(none)</td>
 			<td>Span for extra small screens. Use <code>span=</code> if possible</td>
 		</tr>
 		<tr>
-			<td>col-sm</td>
+			<td>colsm</td>
 			<td>(none)</td>
 			<td>Span for small screens. Use <code>span=</code> if possible</td>
 		</tr>
 		<tr>
-			<td>col-md</td>
+			<td>colmd</td>
 			<td>(none)</td>
 			<td>Span for medium screens. Use <code>span=</code> if possible</td>
 		</tr>
 		<tr>
 			<td>col-lg</td>
 			<td>(none)</td>
-			<td>Span for large screens. Use <code>span=</code> if possible</td>
+			<td>This is now set by default. This has to be manually set if needed.</td>
 		</tr>
 		<tr>
 			<td>id</td>
@@ -132,8 +197,8 @@
 		</tr>
 		<tr>
 			<td>offset-lg</td>
-			<td>(none)</td>
-			<td>Offset for large screens</td>
+			<td>0</td>
+			<td>This is skipped where there is an offset of 0.</td>
 		</tr>
 		
 		<tr>
@@ -212,57 +277,57 @@
 
 
 <b:h2>Example: Mobile and desktop</b:h2>
-<b:p>Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding <code>col-xs="*"</code> <code>col-md="*"</code> to your columns. See the example below for a better idea of how it all works.</b:p>
+<b:p>Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding <code>colxs="*"</code> <code>colmd="*"</code> to your columns. See the example below for a better idea of how it all works.</b:p>
   
   
 
 <b:row styleClass="show-grid">
-	<b:column col-xs="12" 	col-md="8">col-xs="12" col-md="8"</b:column>
-	<b:column col-xs="6" 	col-md="4">col-xs="6" col-md="4"</b:column>
+	<b:column colxs="12" 	colmd="8">colxs="12" colmd="8"</b:column>
+	<b:column colxs="6" 	colmd="4">colxs="6" colmd="4"</b:column>
 </b:row>
 
 <b:row styleClass="show-grid">
-	<b:column col-xs="6" 	col-md="4">col-xs="6" col-md="4"</b:column>
-	<b:column col-xs="6" 	col-md="4">col-xs="6" col-md="4"</b:column>
-	<b:column col-xs="6" 	col-md="4">col-xs="6" col-md="4"</b:column>
+	<b:column colxs="6" 	colmd="4">colxs="6" colmd="4"</b:column>
+	<b:column colxs="6" 	colmd="4">colxs="6" colmd="4"</b:column>
+	<b:column colxs="6" 	colmd="4">colxs="6" colmd="4"</b:column>
 </b:row>
 
 
 <b:row styleClass="show-grid">
-	<b:column col-xs="6">col-xs="6"</b:column>
-	<b:column col-xs="6">col-xs="6"</b:column>
+	<b:column colxs="6">colxs="6"</b:column>
+	<b:column colxs="6">colxs="6"</b:column>
 </b:row>
 
 
 
 <!--- Ha, ha, this one won't be rendering on Mondays --->
 <b:row rendered="#IIF(DayOfWeek(now())EQ 2, 0, 1)#">
-	<b:column col-xs="6">col-xs="6" but only on Mondays</b:column>
-	<b:column col-xs="6">col-xs="6" but only on Mondays</b:column>
+	<b:column colxs="6">colxs="6" but only on Mondays</b:column>
+	<b:column colxs="6">colxs="6" but only on Mondays</b:column>
 </b:row>
 
  
 
 
 <h2>Example: Mobile, tablet, desktop</h2>
-<p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>col-sm=</code> attributes.</p>
+<p>Build on the previous example by creating even more dynamic and powerful layouts with tablet <code>colsm=</code> attributes.</p>
 
 
 <b:row styleClass="show-grid">
-	<b:column col-xs="12" col-sm="6" 	col-md="8">col-xs="12" 	col-sm="6" col-md="8"</b:column>
-	<b:column col-xs="6" 			col-md="4">col-xs="6" 	col-md="4"</b:column>
+	<b:column colxs="12" colsm="6" 	colmd="8">colxs="12" 	colsm="6" colmd="8"</b:column>
+	<b:column colxs="6" 			colmd="4">colxs="6" 	colmd="4"</b:column>
 </b:row>
 
 
 <b:row styleClass="show-grid">
-	<b:column col-xs="6" col-sm="4">col-xs="6" col-sm="4"</b:column>
-	<b:column col-xs="6" col-sm="4">col-xs="6" col-sm="4"</b:column>
+	<b:column colxs="6" colsm="4">colxs="6" colsm="4"</b:column>
+	<b:column colxs="6" colsm="4">colxs="6" colsm="4"</b:column>
 	
 
       <!-- Optional: clear the XS cols if their content doesn't match in height -->
       <div class="clearfix visible-xs-block"></div>
 
-	<b:column col-xs="6" col-sm="4">col-xs="6" col-sm="4"</b:column>
+	<b:column colxs="6" colsm="4">colxs="6" colsm="4"</b:column>
 </b:row>
 
 
@@ -274,10 +339,10 @@
 
 <b:row styleClass="show-grid">
 
-	<b:column col-xs="9">col-xs="9"</b:column>
+	<b:column colxs="9">colxs="9"</b:column>
 
-	<b:column col-xs="4">col-xs="4"<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</b:column>
-     <b:column col-xs="6">col-xs="6"<br>Subsequent columns continue along the new line.</b:column>
+	<b:column colxs="4">colxs="4"<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</b:column>
+     <b:column colxs="6">colxs="6"<br>Subsequent columns continue along the new line.</b:column>
 </b:row>
 
 
@@ -286,39 +351,39 @@
 <p>With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a <code>.clearfix</code> and responsive utility classes.</p>
 
 <b:row styleClass="show-grid">
-      <b:column col-xs="6" col-sm="3">
-     	col-xs="6" col-sm="3"
+      <b:column colxs="6" colsm="3">
+     	colxs="6" colsm="3"
 		<br>
 		Resize your viewport or check it out on your phone for an example.
 	</b:column>
 
-     <b:column col-xs="6" col-sm="3">col-xs="6" col-sm="4"</b:column>
+     <b:column colxs="6" colsm="3">colxs="6" colsm="4"</b:column>
 
       <!-- Add the extra clearfix for only the required viewport -->
       <div class="clearfix visible-xs-block"></div>
 
-     <b:column col-xs="6" col-sm="3">col-xs="6" col-sm="4"</b:column>
-	<b:column col-xs="6" col-sm="3">col-xs="6" col-sm="4"</b:column>
+     <b:column colxs="6" colsm="3">colxs="6" colsm="4"</b:column>
+	<b:column colxs="6" colsm="3">colxs="6" colsm="4"</b:column>
 </b:row>
 
 
 <h2>Offsetting columns</h2>
-<p>Move columns to the right using <code>offset-md="*"</code> attributes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>offset-md="4"</code> moves <code>col-md="4"</code> over four columns.</p>
+<p>Move columns to the right using <code>offset-md="*"</code> attributes. These classes increase the left margin of a column by <code>*</code> columns. For example, <code>offset-md="4"</code> moves <code>colmd="4"</code> over four columns.</p>
 
 <b:row styleClass="show-grid">
-   	<b:column col-md="4">col-md="4"</b:column>
-	<b:column col-md="4" offset-md="4">col-md="4" offset-md="4"</b:column>
+   	<b:column colmd="4">colmd="4"</b:column>
+	<b:column colmd="4" offsetmd="4">colmd="4" offsetmd="4"</b:column>
 </b:row>    
 
 
 <b:row styleClass="show-grid">
-    	<b:column col-md="3" offset-md="3">col-md="3" offset-md="3"</b:column>
-	<b:column col-md="3" offset-md="3">col-md="3" offset-md="3"</b:column>
+    	<b:column colmd="3" offsetmd="3">colmd="3" offsetmd="3"</b:column>
+	<b:column colmd="3" offsetmd="3">colmd="3" offsetmd="3"</b:column>
 </b:row>    
 
 
 <b:row styleClass="show-grid">
-	<b:column col-md="6" offset-md="3">col-md="6" col-md-offset="3"</b:column>
+	<b:column colmd="6" offsetmd="3">colmd="6" colmdoffset="3"</b:column>
 </b:row>    
 
 

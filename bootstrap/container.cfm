@@ -38,7 +38,8 @@ case "end" :
 	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
 								variables.result &= '>';
 								variables.result &= thisTag.GeneratedContent; // pass through of content
-								variables.result &= '</div>';
+								variables.result &= '</div><!-- /.container -->';
+								variables.result &= variables.crlf;
      
      thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);

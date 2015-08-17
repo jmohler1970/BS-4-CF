@@ -36,6 +36,8 @@ case "end" :
 								variables.result &= '>';
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 								variables.result &= variables.crlf & '</div><!-- /.row -->';
+								variables.result &= variables.crlf;
+								variables.result &= variables.crlf;
      
      
      thisTag.GeneratedContent = "";
