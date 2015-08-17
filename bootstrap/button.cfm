@@ -20,12 +20,16 @@ case "start" :
 	param attributes.dismiss		= false;
 	param attributes.icon		= "";
 	param attributes.iconAlign	= "left";
+	param attributes.iconAwesome	= "";
 	param attributes.id			= "";
 	param attributes.lang		= "";
 	param attributes.look		= "default";
-	param attributes.onclick		= "";
+	param attributes.onBlur		= "";
+	param attributes.onClick		= "";
+	param attributes.onMouseOver	= "";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
+	param attributes.role		= "button";
 	param attributes.size		= "";		// large, small, mini
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
@@ -38,9 +42,10 @@ case "start" :
      
 case "end" :
 
+	if(attributes.value != "")											thisTag.generatedContent = xmlFormat(attributes.value);
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.value = evaluate("caller.rc.#attributes.binding#");
-     
+    
 	   							variables.result &= '<button type="button" class="btn btn-#attributes.look#';
 	if(attributes.size		!= "")	variables.result &= ' btn-#attributes.size#';
 	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';
@@ -59,9 +64,16 @@ case "end" :
 	if(attributes.tooltip    != "")    variables.result &= ' data-placement="#attributes.tooltipPosition#"';
 	if(attributes.disabled)			variables.result &= ' disabled="disabled"';
  								variables.result &= '>';
-	if (attributes.icon != "" && attributes.iconAlign == "left")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';
-														variables.result &= attributes.value; // pass through of content
-	if (attributes.icon != "" && attributes.iconAlign == "right")	variables.result &= ' <i class="glyphicon glyphicon-#attributes.icon#"></i>';							
+ 								
+ 	// space on end is not an accident							
+	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';
+	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="fa fa-#attributes.iconAwesome#"></i> ';
+								variables.result &= thisTag.generatedContent; // pass through of content
+	
+	// space at start is not an accident
+	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="glyphicon glyphicon-#attributes.icon#"></i>';
+	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="fa fa-#attributes.iconAwesome#"></i>';			
+								
 								variables.result &= '</button>';
      
      

@@ -41,7 +41,8 @@ case "end" :
 							
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 	
-								variables.result &= '</div>';
+								variables.result &= '</div><!-- /.btn-group -->';
+								variables.result &= variables.crlf;
      
      
 	thisTag.GeneratedContent = "";
