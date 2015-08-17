@@ -23,6 +23,8 @@
 
 <b:blockquote>
 	Rows must be placed within a <code>.container</code> (fixed-width) or <code>.container-fluid</code> (full-width) for proper alignment and padding.
+
+	<footer>Quote from <cite>Bootstrap documentation</cite></footer>
 </b:blockquote>
 
 <p>This rule is not enforced within BS-4-CF</p>

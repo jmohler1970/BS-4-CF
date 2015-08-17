@@ -13,6 +13,7 @@ switch (thisTag.ExecutionMode)     {
 case "start" :
 
 	variables.result = "";
+	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.closable	= false;
 	param attributes.id			= "";
@@ -35,10 +36,12 @@ case "end" :
 								variables.result &= '>';
 	
 	if(attributes.closable)			variables.result &= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';		
-	if(attributes.title		!= "")    variables.result &= '<strong>#attributes.title#</strong><br />';
-	
+	if(attributes.title		!= "")    variables.result &= '<strong>#attributes.title#</strong>';
+								variables.result &= variables.crlf;
+	if(attributes.title		!= "")    variables.result &= '<br />';
 								variables.result &= thisTag.GeneratedContent; // pass through of content
-								variables.result &= '</div>';
+								variables.result &= '</div><!-- /.alert -->';
+								variables.result &= variables.crlf;
      
 
      thisTag.GeneratedContent = "";
