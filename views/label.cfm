@@ -69,7 +69,7 @@
 		<tr>
 			<td>text</td>
 			<td>Required to not exist</td>
-			<td>BootsFaces has this wrong. b:banner and b:label are very similar and should both be powered by value.</td>
+			<td>BootsFaces has this wrong. b:banner and b:label are very similar and should both be powered by value. One of the reasons why this is wrong, is <code>text=</code> is used for context colors. See helpers for more details </td>
 		</tr>
 
 		<tr>

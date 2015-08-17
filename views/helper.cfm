@@ -12,7 +12,7 @@
 		<b:column span="12">	
 
 			<b:h1>Helper Class Examples</b:h1>
-			<p>View code for details.</p>
+			<p>text attribute</p>
 		</b:column>	
 	</b:row>
 </div>
@@ -20,18 +20,41 @@
 
 <b:h2>Introduction</b:h2>
 
+<b:blockquote>
+	<p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
+
+	<footer>Quote from <cite>Bootstrap documentation</cite></footer>
+</b:blockquote>
 
 
-<pre>
-&lt;b:p text=&quot;muted&quot;&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/b:p&gt;
-&lt;b:p text=&quot;primary&quot;&gt;Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/b:p&gt;
-&lt;b:p text=&quot;warning&quot;&gt;Etiam porta sem malesuada magna mollis euismod.&lt;/b:p&gt;
-&lt;b:p text=&quot;danger&quot;&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/b:p&gt;
-&lt;b:p text=&quot;success&quot;&gt;Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&lt;/b:p&gt;
-&lt;b:p text=&quot;info&quot;&gt;Maecenas sed diam eget risus varius blandit sit amet non magna.&lt;/b:p&gt;
-</pre>
+<b:panel look="info" title="Tags with &lt;b:text&gt; attribute">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Tag</th>
+			<b:th text="nowrap">Default value</b:th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>h1,h2,h3,h4,h5.h6,p,blockqoute</td>
+			<td></td>
+			<td>Color of text</td>
+		</tr>
+		<tr>
+			<td>td,th</td>
+			<td></td>
+			<td>Color of text</td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
 
 
+<h2>Examples
 
 
 <b:p text="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</b:p>
@@ -43,15 +66,6 @@
 
 
 <h2>Backgrounds</h2>
-
-<pre>
-&lt;b:p styleClass=&quot;bg-muted&quot;&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/b:p&gt;
-&lt;b:p styleClass=&quot;bg-primary&quot;&gt;Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/b:p&gt;
-&lt;b:p styleClass=&quot;bg-warning&quot;&gt;Etiam porta sem malesuada magna mollis euismod.&lt;/b:p&gt;
-&lt;b:p styleClass=&quot;bg-danger&quot;&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/b:p&gt;
-&lt;b:p styleClass=&quot;bg-success&quot;&gt;Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&lt;/b:p&gt;
-&lt;b:p styleClass=&quot;bg-info&quot;&gt;Maecenas sed diam eget risus varius blandit sit amet non magna.&lt;/b:p&gt;	
-</pre>	
 
 
 
