@@ -3,15 +3,12 @@
 
 
 
-<div class="page-header">
-	<b:row>
-		<b:column span="12">	
-
-			<b:h1>Tables</b:h1>
-			<p>b:table, b:row, b:td, b:th</p>
-		</b:column>	
-	</b:row>
-</div>
+<b:row>
+	<b:column span="12">	
+		<b:h1 pageheader="true">Tables</b:h1>
+		<p>&lt;b:table&gt;, &lt;b:row&gt;, &lt;b:td&gt;, &lt;b:th&gt;</p>
+	</b:column>	
+</b:row>
 
 
 
@@ -204,7 +201,7 @@ rc.qryData.AddRow([
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This is like a <code>&lt;cfif&gt;</code>, but only for content between tags. <b>Warning:</b> This will also process tags inbetween the start and end tags.</td>
+			<td>This is like a <code>&lt;cfif&gt;</code>, but only for content between tags. <b>Warning:</b> This will also process tags in between the start and end tags.</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
@@ -265,5 +262,7 @@ rc.qryData.AddRow([
 </tbody>
 </b:table>
 
+<h3>cfdump of content</h3>
 
 <cfdump var="#rc.qryData#" expand="no">
+
