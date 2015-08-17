@@ -17,7 +17,10 @@ BootsFaces for JSF shows the way to a cleaner approach. So what I have done is c
 ### Without BS-4-CF
 ```
 <cfif showme>	
-     <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-floppy-disk></i><cfoutput>#rc.savelabel#<cfoutput></button>
+     <button type="button" class="btn btn-default btn-lg">
+         <i class="glyphicon glyphicon-floppy-disk"></i><!-- Don't forget the whitespace here -->
+         <cfoutput>#rc.savelabel#<cfoutput>
+     </button>
 </cfif>	
 ```	
 
@@ -25,7 +28,7 @@ BootsFaces for JSF shows the way to a cleaner approach. So what I have done is c
 ### With BS-4-CF
 
 ```
-<b:button rendered="#showme#" binding="savelabel" icon="floppy-disk />	
+<b:button processed="#showme#" binding="savelabel" icon="floppy-disk" size="lg" />	
 ```
 
 
