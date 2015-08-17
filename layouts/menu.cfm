@@ -18,7 +18,7 @@
 		</b:dropMenu>
 		
 		<b:dropMenu value="Components">
-			<b:navLink value="Glyphicons" href="?view=glyphicons" icon="picture" />
+			<b:navLink value="Icons" href="?view=icons" icon="picture" />
 		    	<b:navLink value="Dropdowns" href="?view=dropdowns" />
 			<b:navLink value="Button groups" href="?view=buttonGroups" />
 			<b:navLink value="Navs" href="?view=Nav" />
@@ -27,7 +27,7 @@
 			<b:navLink value="Thumbnails" href="?view=thumbnail" icon="picture" />
 			<b:navLink value="Alerts" href="?view=alert" icon="list-alt" />
 			<b:navLink value="Progress Bars" href="?view=progress" icon= "tasks" />
-			<b:navLink value="Panels" href="?view=alert" />
+			<b:navLink value="Panels" href="?view=panel" />
 			<b:navLink value="Wells" href="?view=well" />
 		</b:dropMenu>
 	
