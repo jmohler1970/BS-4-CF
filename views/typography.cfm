@@ -7,15 +7,13 @@
 	<b:column span="12">	
 
 		<b:h1 pageHeader="true">Typography</b:h1>
-		<p>b:h1, b:h2, b:h3, b:h4, b:h5, b:h6, b:p, b:blockquote</p>
+		<p>&lt;b:h1&gt;, &lt;b:h2&gt;, &lt;b:h3&gt;, &lt;b:h4&gt;, &lt;b:h5&gt;, &lt;b:h6&gt;, &lt;b:p&gt;, &lt;b:blockquote&gt;, &lt;b:outputText&gt;</p>
 	</b:column>	
 </b:row>
 
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+
+<b:h2>Introduction</b:h2>
 
 
 <b:panel look="info" title="Attributes for all typographical tags">
@@ -91,9 +89,15 @@
 </b:panel>
 
 
-
-
 <cfset rc = { heading = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium magna in sem pharetra, gravida tristique nulla ultricies. Suspendisse ornare nulla quis tempus dictum. Random <b> tag. It should be escaped. In at ipsum ut sapien efficitur dictum sed a nibh. Nunc convallis at ligula sed porta. Cras convallis turpis sed eleifend fringilla." }>
+
+
+
+<h3>About &lt;b:outputText&gt;</h3>
+
+
+<p><code>&lt;b:outputText&gt;</code> is not a block element like all the rest. It wraps its content in a <code>&lt;span&gt;</code>. You may find that this tag is overkill in many circumstances. This tag has been included for completeness, but its use is discouraged. Many of the other tags are have closer semantic meaning.</p>
+
 
 
 
@@ -102,17 +106,23 @@
 
 
 
-	<b:h1 pageHeader="true">I am a page header. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h1>
-	<b:h1>I am h1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h1>
-	<b:h2>I am h2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h2>
-	<b:h3>I am h3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h3>
-	<b:h4>I am h4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h4>
-	<b:h5>I am h5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h5>
-	<b:h6>I am h6. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h6>
-	<b:p>I am p. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:p>
-	<b:p lead="true">I am p with lead. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:p>
-	<b:blockquote>I am blockquote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:blockquote>
+<b:h1 pageHeader="true">I am a page header. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h1>
+<b:h1>I am h1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h1>
+<b:h2>I am h2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h2>
+<b:h3>I am h3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h3>
+<b:h4>I am h4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h4>
+<b:h5>I am h5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h5>
+<b:h6>I am h6. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h6>
+<b:p>I am p. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:p>
+<b:p lead="true">I am p with lead. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:p>
+<b:blockquote>I am blockquote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:blockquote>
 
+
+<h3>&lt;b:outputText&gt; Example</h3>
+
+
+<p><b:outputText binding="heading" /></p>
+<!-- you should have just done the binding to p -->
 
 
 
