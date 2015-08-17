@@ -5,7 +5,7 @@
 
 <b:row>
 	<b:column span="12">	
-		<b:h1 pageheader="true">Tables</b:h1>
+		<b:h1 pageheader="true">Table Examples</b:h1>
 		<p>&lt;b:table&gt;, &lt;b:row&gt;, &lt;b:td&gt;, &lt;b:th&gt;</p>
 	</b:column>	
 </b:row>

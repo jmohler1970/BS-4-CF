@@ -13,6 +13,8 @@
 		    	<b:navLink value="Typography" href="?view=typography" />
 			<b:navLink value="Tables" href="?view=tables" icon="th" />
 			<b:navLink value="Forms" href="?view=forms" />
+			<b:navLink value="Select, Checkbox, Radio" href="?view=select" />
+			<b:navLink value="Awesome Bootstrap Checkboxes" href="?view=awesomecheckbox" />
 			<b:navLink value="Buttons" href="?view=buttons" />
 			<b:navLink value="Helper classes" href="?view=helper" />
 		</b:dropMenu>

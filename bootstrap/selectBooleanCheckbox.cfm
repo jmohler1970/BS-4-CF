@@ -18,11 +18,10 @@ case "start" :
 	param attributes.circle		= false;		// make it look like a radio
 	param attributes.checked		= false;
 	param attributes.disabled	= false;
-	param attributes.name		= "";
 	param attributes.id			= "";
 	param attributes.inline		= false;
-
 	param attributes.look		= "";
+	param attributes.name		= "";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.title		= "";
