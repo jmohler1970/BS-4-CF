@@ -25,7 +25,9 @@ case "start" :
 	param attributes.rendered 		= true;
 	param attributes.square			= false;		// make it look like check
 	
-		     
+	// Patch this
+	if(attributes.disabled == "disabled")	attributes.disabled = true;
+			     
      if (!attributes.processed) exit "exitTag";
 	break;
      

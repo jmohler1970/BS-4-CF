@@ -29,6 +29,9 @@ case "start" :
 	param attributes.tooltip		= "";
 	
 	if (attributes.id == "auto")	attributes.id = "auto_" & left(createUUID(), 10);
+	
+	// Patch this
+	if(attributes.disabled == "disabled")	attributes.disabled = true;
      
      if (!attributes.processed) exit "exitTag";
 	break;

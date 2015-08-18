@@ -35,6 +35,8 @@ case "start" :
 	param attributes.styleClass	= "";
 	param attributes.tooltip		= "";
 
+	// Patch this
+	if(attributes.disabled == "disabled")	attributes.disabled = true;
 
      if (!attributes.processed) exit "exitTag";
 	break;
