@@ -23,8 +23,9 @@ case "start" :
 	param attributes.id			= "";
 	param attributes.lang		= "";
 	param attributes.look		= "default";
-	param attributes.processed 	= true;
-	param attributes.rendered 	= true;
+	param attributes.name		= "";
+	param attributes.processed	= true;
+	param attributes.rendered	= true;
 	param attributes.rel		= "";
 	param attributes.role		= "button";
 	param attributes.size		= "";		// large, small, mini
@@ -53,7 +54,7 @@ case "start" :
 
 	if (!attributes.processed) exit "exitTag";
 	break;
-     
+
 case "end" :
 
 	if(attributes.value != "")											thisTag.generatedContent = xmlFormat(attributes.value);
@@ -67,12 +68,13 @@ case "end" :
 
 	if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
 	if(attributes.lang		!= "")				variables.result &= ' lang="#attributes.lang#"';
+	if(attributes.name		!= "")				variables.result &= ' name="#attributes.name#"';
 
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
 
 	if(attributes.role		!= "")				variables.result &= ' role="#attributes.role#"';
 	if(attributes.style		!= "")				variables.result &= ' style="#attributes.style#"';
-	if(attributes.tooltip    != "")				variables.result &= ' tooltip="#attributes.tooltip#"';
+	if(attributes.tooltip	!= "")				variables.result &= ' tooltip="#attributes.tooltip#"';
 	if(attributes.disabled)						variables.result &= ' disabled="disabled"';
 											variables.result &= '>';
 
