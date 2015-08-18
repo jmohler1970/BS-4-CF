@@ -24,6 +24,25 @@ case "start" :
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
      param attributes.tooltip		= "";
+     
+     
+     if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";
+	     
+     variables.myClass = "";
+     if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';
+     if(attributes.look		!= "")	variables.myClass &= '#attributes.look# ';	
+     if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';	
+     
+     
+	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
+	variables.arAttrSeries = [];
+	
+	for(variables.myKey in attributes)	{
+		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
+			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
+			} // end if	
+		}	// end for
+
 
 	
 	break;
@@ -32,21 +51,23 @@ case "end" :
 
 // This needs to be smart enough to iterate
 //     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-          
-	   							variables.result &= variables.crlf & '<td class="';
-	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';
-	if(attributes.look		!= "")	variables.result &= ' #attributes.look#';
-	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		
-	   							variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';                 
-								variables.result &= '>';
-	if(attributes.tooltip    != "")	variables.result &=	'<span title="#attributes.tooltip#">';						
+
+
+	if(variables.myClass 	== "")				variables.result &= '<td';
+	if(variables.myClass 	!= "")				variables.result &= '<td class="#variables.myClass#"';
+	if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
+	
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+	
+	
+	if(attributes.style		!= "")				variables.result &= ' style="#attributes.style#"';                 
+											variables.result &= '>';
+	if(attributes.tooltip    != "")				variables.result &=	'<span title="#attributes.tooltip#">';						
 	if (attributes.rendered && attributes.processed)
-								variables.result &= thisTag.GeneratedContent; // pass through of content
-	if(attributes.tooltip    != "")	variables.result &=	 '</span>';
-								variables.result &= '</td>';
-								variables.result &= variables.crlf;	
+											variables.result &= thisTag.GeneratedContent; // pass through of content
+	if(attributes.tooltip    != "")				variables.result &=	 '</span>';
+											variables.result &= '</td>';
+											variables.result &= variables.crlf;	
      
      
      thisTag.GeneratedContent = "";

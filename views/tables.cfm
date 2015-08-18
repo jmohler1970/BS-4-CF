@@ -130,6 +130,11 @@ rc.qryData.AddRow([
 	<tbody>
 
 		<tr>
+			<td>data-*</td>
+			<td>(none)</td>
+			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+		</tr>
+		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML id.</td>
@@ -138,6 +143,16 @@ rc.qryData.AddRow([
 			<td>look</td>
 			<td>true</td>
 			<td>This for contextual classes</td>
+		</tr>
+		<tr>
+			<td>ng-*</td>
+			<td>(none)</td>
+			<td>Pass through of all AngularJS attributes</td>
+		</tr>
+		<tr>
+			<td>on*</td>
+			<td>(none)</td>
+			<td>Pass through of all Mouse/Pointer events.</td>
 		</tr>
 		<tr>
 			<td>processed</td>
@@ -194,9 +209,24 @@ rc.qryData.AddRow([
 			<td>Pass through of HTML id.</td>
 		</tr>
 		<tr>
+			<td>data-*</td>
+			<td>(none)</td>
+			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+		</tr>
+		<tr>
 			<td>look</td>
 			<td>true</td>
 			<td>This for contextual classes</td>
+		</tr>
+		<tr>
+			<td>ng-*</td>
+			<td>(none)</td>
+			<td>Pass through of all AngularJS attributes</td>
+		</tr>
+		<tr>
+			<td>on*</td>
+			<td>(none)</td>
+			<td>Pass through of all Mouse/Pointer events.</td>
 		</tr>
 		<tr>
 			<td>processed</td>
@@ -252,7 +282,7 @@ rc.qryData.AddRow([
 <cfoutput query="rc.qryData">
 	<b:tr rendered="#IIF(Delete, 0, 1)#">
 		<b:td><b:badge value="#ID#" /></b:td>
-		<b:td><b:icon name="#icon#" /></b:td>
+		<b:td data-sort="#ID#"><b:icon name="#icon#" /></b:td>
 		<b:td>#Album#</b:td>
 		<b:td>#Message#</b:td>
 		<b:td>#Score#</b:td>
