@@ -24,9 +24,6 @@ case "start" :
 	param attributes.id			= "";
 	param attributes.lang		= "";
 	param attributes.look		= "default";
-	param attributes.onBlur		= "";
-	param attributes.onClick		= "";
-	param attributes.onMouseOver	= "";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.role		= "button";
@@ -37,6 +34,19 @@ case "start" :
 	param attributes.tooltipPosition = "bottom";
      param attributes.value		= "";
      
+     
+     variables.arAttrSeries = [];
+	
+	
+	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
+	for(variables.myKey in attributes)	{
+		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
+			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
+			} // end if	
+		}	// end for
+		
+     
+     
       if (!attributes.processed) exit "exitTag";
 	break;
      
@@ -46,35 +56,38 @@ case "end" :
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 
     
-	   							variables.result &= '<button type="button" class="btn btn-#attributes.look#';
-	if(attributes.size		!= "")	variables.result &= ' btn-#attributes.size#';
-	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';
-								variables.result &= '"';
+	   										variables.result &= '<button type="button" class="btn btn-#attributes.look#';
+	if(attributes.size		!= "")				variables.result &= ' btn-#attributes.size#';
+	if(attributes.styleClass	!= "")				variables.result &= ' #attributes.styleClass#';
+											variables.result &= '"';
 	// end class specification
 	
-	if(attributes.dismiss	!= "")	variables.result &= ' data-dismiss="#attributes.dismiss#"';
+	if(attributes.dismiss	!= "")				variables.result &= ' data-dismiss="#attributes.dismiss#"';
 	if(structKeyExists(attributes, "data-target"))	variables.result &= ' data-target="' & attributes['data-target'] & '"';
 	if(structKeyExists(attributes, "data-toggle"))	variables.result &= ' data-toggle="' & attributes['data-toggle'] & '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
-	if(attributes.lang		!= "")	variables.result &= ' lang="#attributes.lang#"';
-	if(attributes.onclick	!= "")	variables.result &= ' onclick="#attributes.onclick#"';
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
-	if(attributes.tooltip    != "")    variables.result &= ' title="#attributes.tooltip#"';
-	if(attributes.tooltip    != "")    variables.result &= ' data-toggle="tooltip"';
-	if(attributes.tooltip    != "")    variables.result &= ' data-placement="#attributes.tooltipPosition#"';
-	if(attributes.disabled)			variables.result &= ' disabled="disabled"';
- 								variables.result &= '>';
+	if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
+	if(attributes.lang		!= "")				variables.result &= ' lang="#attributes.lang#"';
+		
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key#=#variables.myAttr.value#';
+		
+	
+	if(attributes.style		!= "")				variables.result &= ' style="#attributes.style#"';
+	if(attributes.tooltip    != "")   				variables.result &= ' title="#attributes.tooltip#"';
+	if(attributes.tooltip    != "")    			variables.result &= ' data-toggle="tooltip"';
+	if(attributes.tooltip    != "")				variables.result &= ' data-placement="#attributes.tooltipPosition#"';
+	if(attributes.disabled)						variables.result &= ' disabled="disabled"';
+ 											variables.result &= '>';
  								
  	// space on end is not an accident							
 	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';
 	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="fa fa-#attributes.iconAwesome#"></i> ';
-								variables.result &= thisTag.generatedContent; // pass through of content
+											variables.result &= thisTag.generatedContent; // pass through of content
 	
 	// space at start is not an accident
 	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="glyphicon glyphicon-#attributes.icon#"></i>';
 	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="fa fa-#attributes.iconAwesome#"></i>';			
 								
-								variables.result &= '</button>';
+											variables.result &= '</button>';
      
      
      thisTag.GeneratedContent = "";

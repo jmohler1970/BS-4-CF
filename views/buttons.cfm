@@ -43,6 +43,11 @@
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. See note below</td>
 		</tr>
 		<tr>
+			<td>data-*</td>
+			<td>(none)</td>
+			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+		</tr>
+		<tr>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML <code>disabled="disabled"</code>.</td>
@@ -91,19 +96,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td>onBlur</td>
+			<td>ng-*</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>onBlur=</code></td>
+			<td>Pass through of all AngularJS attributes</td>
 		</tr>
 		<tr>
-			<td>onClick</td>
+			<td>on*</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>onClick=</code></td>
-		</tr>
-		<tr>
-			<td>onMouseOver</td>
-			<td>(none)</td>
-			<td>Pass through of HTML <code>onMouseOver=</code></td>
+			<td>Pass through of all Mouse/Pointer events.</td>
 		</tr>
 		<tr>
 			<td>processed</td>

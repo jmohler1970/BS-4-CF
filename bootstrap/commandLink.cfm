@@ -27,9 +27,6 @@ case "start" :
 	param attributes.iconAwesome	= "";
 	param attributes.id			= "";
 	param attributes.look	 	= "default";
-	param attributes.onBlur		= "";
-	param attributes.onClick		= "";
-	param attributes.onMouseOver	= "";
 	param attributes.processed 	= true;
 	param attributes.rel		= "";
 	param attributes.rendered 	= true;
@@ -38,10 +35,23 @@ case "start" :
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.target		= "";
-	param attributes.text		= "";
 	param attributes.tooltip		= "";
 	param attributes.value		= "";
 	
+	
+	// Patch this
+	if(attributes.disabled == "disabled")	attributes.disabled = true;
+	
+	
+	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
+	variables.arAttrSeries = [];
+	
+	for(variables.myKey in attributes)	{
+		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
+			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
+			} // end if	
+		}	// end for
+		
 	
 	if (!attributes.processed) exit "exitTag";
      break;
@@ -62,10 +72,11 @@ case "end" :
 	   							
 	if(attributes.action	!= "")			variables.result &= ' href="#attributes.action#"';
 	if(attributes.id		!= "")			variables.result &= ' id="#attributes.id#"';
+
+	for(variables.myAttr in variables.arAttrSeries)	{
+										variables.result &= ' #variables.myAttr.key#=#variables.myAttr.value#';
+		}	
 	
-	if(attributes.onBlur	!= "")			variables.result &= ' onBlur="#attributes.onBlur#"';
-	if(attributes.onClick	!= "")			variables.result &= ' onClick="#attributes.onClick#"';
-	if(attributes.onMouseOver!= "")			variables.result &= ' onMouseOver="#attributes.onMouseOver#"';
  	
  	if(attributes.rel		!= "")			variables.result &= ' rel="#attributes.rel#"';
  	if(attributes.target	!= "")			variables.result &= ' target="#attributes.target#"';
