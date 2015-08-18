@@ -24,6 +24,8 @@ case "start" :
 	param attributes.size			= "";
      param attributes.styleClass		= "";
 	param attributes.title			= "";
+	param attributes.showSubmit		= false;
+	param attributes.submitValue		= "Save Changes";
 	
 	
      if (!attributes.processed) exit "exitTag";
@@ -33,7 +35,8 @@ case "end" :
      
      
 	   							variables.result &= variables.crlf & '<div class="modal fade';
-	if(attributes.styleClass != "")	variables.result &= ' #attributes.styleClass#"';
+	if(attributes.styleClass != "")	variables.result &= ' #attributes.styleClass#';
+								variables.result &= '"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
 	if(attributes.backdrop	!= true)	variables.result &= ' data-backdrop="#attributes.backdrop#"';
 	if(!attributes["close-on-escape"])	variables.result &= ' data-keyboard="false"';
@@ -53,7 +56,7 @@ case "end" :
 
 								variables.result &= variables.crlf & '<div class="modal-footer">';
 								variables.result &= variables.crlf & '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-								variables.result &= variables.crlf & '<button type="button" class="btn btn-primary">Save changes</button>';
+	if(attributes.showSubmit)		variables.result &= variables.crlf & '<button type="submit" class="btn btn-primary">#xmlFormat(attributes.submitValue)#</button>';
 								variables.result &= variables.crlf & '</div><!-- /.modal-footer -->';
 								variables.result &= variables.crlf & '</div><!-- /.modal-content -->';
 								variables.result &= variables.crlf & '</div><!-- /.modal-dialog -->';
