@@ -66,16 +66,17 @@ case "end" :
 								
 	variables.currentTab = 1;							
 	for (variables.tab in thisTag.arTab)	{							
-							variables.result &= variables.crlf & '<div role="tabpanel"';
+							variables.result &= variables.crlf & '<section role="tabpanel"';
 		if (attributes.activeIndex == variables.currentTab)	variables.result &= ' class="tab-pane active"';
 		if (attributes.activeIndex != variables.currentTab)	variables.result &= ' class="tab-pane"';
 							
 							variables.result &= ' id="#variables.tab.id#">';
 							variables.result &= variables.tab.generatedContent;
-							variables.result &= variables.crlf & '</div><!-- /. tab-content -->';
+							variables.result &= variables.crlf & '</section>';
 		variables.currentTab++;			
 		}	// end for
      
+							variables.result &= variables.crlf & '</div><!-- /. tab-content -->';
 							variables.result &= variables.crlf & '</div><!-- /. tab-panel -->';
 	// end generate tab content						
 
@@ -96,7 +97,7 @@ http://stackoverflow.com/questions/8456974/how-to-use-ajax-loading-with-bootstra
 $( document ).ready(function() {
 	
 	// load active tab no matter what
-	$('div.active').load($('li.active a[data-url]').attr('data-url'), function (data) {
+	$('section.active').load($('li.active a[data-url]').attr('data-url'), function (data) {
 		$('.active a').tab('show');
 		});
 		
