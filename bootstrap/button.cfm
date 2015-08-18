@@ -9,12 +9,12 @@ if (!thisTag.HasEndTag)
 	
 	
 
-switch (thisTag.ExecutionMode)     {
+switch (thisTag.ExecutionMode)	{
 case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
-  
+
 	param attributes.binding		= "";
 	param attributes.disabled	= false;
 	param attributes.dismiss		= false;
@@ -32,10 +32,10 @@ case "start" :
 	param attributes.styleClass	= "";
 	param attributes.tooltip		= "";
 	param attributes.tooltipPosition = "bottom";
-     param attributes.value		= "";
-     
-     
-     variables.arAttrSeries = [];
+	param attributes.value		= "";
+
+
+	variables.arAttrSeries = [];
 	
 	
 	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
@@ -45,18 +45,18 @@ case "start" :
 			} // end if	
 		}	// end for
 		
-     
-     
-      if (!attributes.processed) exit "exitTag";
+
+
+	if (!attributes.processed) exit "exitTag";
 	break;
-     
+
 case "end" :
 
 	if(attributes.value != "")											thisTag.generatedContent = xmlFormat(attributes.value);
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 
-    
-	   										variables.result &= '<button type="button" class="btn btn-#attributes.look#';
+
+											variables.result &= '<button type="button" class="btn btn-#attributes.look#';
 	if(attributes.size		!= "")				variables.result &= ' btn-#attributes.size#';
 	if(attributes.styleClass	!= "")				variables.result &= ' #attributes.styleClass#';
 											variables.result &= '"';
@@ -68,33 +68,33 @@ case "end" :
 	if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
 	if(attributes.lang		!= "")				variables.result &= ' lang="#attributes.lang#"';
 		
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key#=#variables.myAttr.value#';
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
 		
-	
+	if(attributes.role		!= "")				variables.result &= ' role="#attributes.role#"';
 	if(attributes.style		!= "")				variables.result &= ' style="#attributes.style#"';
-	if(attributes.tooltip    != "")   				variables.result &= ' title="#attributes.tooltip#"';
-	if(attributes.tooltip    != "")    			variables.result &= ' data-toggle="tooltip"';
-	if(attributes.tooltip    != "")				variables.result &= ' data-placement="#attributes.tooltipPosition#"';
+	if(attributes.tooltip	!= "")				variables.result &= ' title="#attributes.tooltip#"';
+	if(attributes.tooltip	!= "")				variables.result &= ' data-toggle="tooltip"';
+	if(attributes.tooltip	!= "")				variables.result &= ' data-placement="#attributes.tooltipPosition#"';
 	if(attributes.disabled)						variables.result &= ' disabled="disabled"';
- 											variables.result &= '>';
- 								
- 	// space on end is not an accident							
+											variables.result &= '>';
+								
+	// space on end is not an accident							
 	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';
 	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="fa fa-#attributes.iconAwesome#"></i> ';
 											variables.result &= thisTag.generatedContent; // pass through of content
 	
 	// space at start is not an accident
 	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="glyphicon glyphicon-#attributes.icon#"></i>';
-	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="fa fa-#attributes.iconAwesome#"></i>';			
-								
+	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="fa fa-#attributes.iconAwesome#"></i>';
+
 											variables.result &= '</button>';
-     
-     
-     thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
-     
+
+
+	thisTag.GeneratedContent = "";
+	if (attributes.rendered)			writeOutput(variables.result);
+
 	break;
 	}
-     
- 
+
+
 </cfscript>
