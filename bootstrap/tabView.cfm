@@ -57,7 +57,7 @@ case "end" :
 								variables.result &= '</li>';
 		variables.currentTab++;
 		} // end for
-								variables.result &= '</ul>';
+								variables.result &= variables.crlf & '</ul>';
 
 
 	// start generate tab content
