@@ -36,6 +36,7 @@
 		<b:dropMenu value="JavaScript">
 			<b:navLink value="Modal" href="?view=Modal" icon="modal-window" />
 		    	<b:navLink value="Tab" href="?view=Tab" icon="folder-close" />
+		    	<b:navLink value="Poll" href="?view=Poll" icon="refresh" />
 		</b:dropMenu>
 	
 

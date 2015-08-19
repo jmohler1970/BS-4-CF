@@ -28,7 +28,7 @@ case "start" :
 	param attributes.title		= "";
 	param attributes.tooltip		= "";
 	
-	if (attributes.id == "auto")	attributes.id = "auto_" & left(createUUID(), 10);
+	if (attributes.id == "auto")	attributes.id = "checkbox_" & left(createUUID(), 10);
 	
 	// Patch this
 	if(attributes.disabled == "disabled")	attributes.disabled = true;
