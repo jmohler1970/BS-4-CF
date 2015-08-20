@@ -13,8 +13,12 @@
 </div>
 
 
+<h2>Requirements</h2>
+
+
 <h2>Why use this tag library?</h2>
 
+<p>This library promotes a relaxed style of writing Bootstrap / ColdFusion code. The code becomes much more intuitive and self describing, and therefore easier to maintain.</p>
 
 <b:h3>Without BS-4-CF</b:h3>
 <pre>
@@ -212,4 +216,44 @@ rc.savelabel = "Save this data";
 
 <b:button rendered="#showme#" binding="savelabel" icon="floppy-disk" />	
 
+
+<!---
+<b:h2>Kudos</b:h2>
+--->
+
+
+<b:h2>Roadmap</b:h2>
+
+
+<ul>
+	<li>b:SelectManyCheckbox</li>
+	<li>pass through of dir attribute</li>
+	<li>pass through of lang attribute</li>
+	<li>b:datePicker</li>
+	<li>b:pill</li>
+	<li>pass though of Mask</li>
+	<li>Any tag with binding, should be able to add at least the following ColdFusion formatters
+		<ul>
+			<li>LSDateFormat()</li>
+			<li>LSTimeFormat()</li>
+			<li>LSCurrencyFormat()</li>
+			<li>LSNumberFormat()</li>
+		</ul>	
+	
+	</li>
+</ul>	
+
+
+<b:h2>License</b:h2>
+
+<pre>
+Copyright (c) 2015 James Mohler
+
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<pre>
 
