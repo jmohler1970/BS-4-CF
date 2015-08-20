@@ -80,28 +80,28 @@
 						</b:selectManyMenu>
   					</b:formGroup>
 					
-                  <div class="form-group">
-                    <div class="col-lg-10 col-lg-offset-2">
-                      <button type="reset" class="btn btn-default">Cancel</button>
-                      <b:commandButton look="primary" value="Submit" />
-                    </div>
-                  </div>
-                </b:fieldset>
+  					<b:formGroup>
+  						<div class="col-lg-10 col-lg-offset-2">
+  							<button type="reset" class="btn btn-default">Cancel</button>
+  							<b:commandButton look="primary" value="Submit" />
+                    		</div>
+					</b:formGroup>
+				</b:fieldset>
               </form>
             </div>
           </b:column>
           <b:column span="4" offset="1">
 
               <form class="bs-component">
-                <div class="form-group">
+                 <b:formGroup>
                   <label class="control-label" for="focusedInput">Focused input</label>
                   <input class="form-control" id="focusedInput" type="text" value="This is focused...">
-                </div>
+                </b:formGroup>
 
-                <div class="form-group">
+                <b:formGroup>
                   <label class="control-label" for="disabledInput">Disabled input</label>
                   <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
-                </div>
+                 </b:formGroup>
 
                 <div class="form-group has-warning">
                   <label class="control-label" for="inputWarning">Input warning</label>
@@ -118,22 +118,22 @@
                   <input type="text" class="form-control" id="inputSuccess">
                 </div>
 
-                <div class="form-group">
+                <b:formGroup>
                   <label class="control-label" for="inputLarge">Large input</label>
                   <input class="form-control input-lg" type="text" id="inputLarge">
-                </div>
+                </b:formGroup>
 
-                <div class="form-group">
+                 <b:formGroup>
                   <label class="control-label" for="inputDefault">Default input</label>
                   <input type="text" class="form-control" id="inputDefault">
-                </div>
+                </b:formGroup>
 
-                <div class="form-group">
+                <b:formGroup>
                   <label class="control-label" for="inputSmall">Small input</label>
                   <input class="form-control input-sm" type="text" id="inputSmall">
-                </div>
+               </b:formGroup>
 
-                <div class="form-group">
+                 <b:formGroup>
                   <label class="control-label">Input addons</label>
                   <div class="input-group">
                     <span class="input-group-addon">$</span>
@@ -142,7 +142,7 @@
                       <b:button value="Button" />
                     </span>
                   </div>
-                </div>
+                </b:formGroup>
 		</form>
 
 	</b:column>

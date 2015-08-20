@@ -4,9 +4,9 @@
 
 <cfscript>
 if (!thisTag.HasEndTag) 
-	abort "An end tag is required for b:selectOneRadio."; 
-	
-	
+	abort "An end tag is required for b:selectOneRadio.";
+
+
 
 switch (thisTag.ExecutionMode)     {
 case "start" :
@@ -15,9 +15,9 @@ case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
-	
+
 	thisTag.arOption 				= [];
-  
+
 	param attributes.disabled		= false;
 	param attributes.inline			= false;
 	param attributes.name;
@@ -27,10 +27,10 @@ case "start" :
 	
 	// Patch this
 	if(attributes.disabled == "disabled")	attributes.disabled = true;
-			     
-     if (!attributes.processed) exit "exitTag";
+
+	if (!attributes.processed) exit "exitTag";
 	break;
-     
+
 case "end" :
 
 
@@ -43,17 +43,17 @@ case "end" :
 		if(variables.option.look == "" && attributes.square)	variables.result &= '<div class="checkbox checkbox';
 		else							variables.result &= '<div class="#variables.preClass#';
 		
-		if(variables.option.look    	!= "")    variables.result &= ' #variables.preClass#-#variables.option.look#';
+		if(variables.option.look		!= "")	variables.result &= ' #variables.preClass#-#variables.option.look#';
 		if(attributes.inline)			variables.result &= ' #variables.preClass#-inline';
-		   							variables.result &= '"';
+									variables.result &= '"';
 	
-		if(variables.option.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
+		if(variables.option.tooltip	!= "")	variables.result &= ' tooltip="#attributes.tooltip#"';
 									variables.result &= '>';
-									
-									
-		
+
+
+
 									variables.result &= '<input type="radio"';
-		if(attributes.name		!= "")	variables.result &= ' name="#attributes.name#"';
+		if(attributes.name			!= "")	variables.result &= ' name="#attributes.name#"';
 		if(variables.option.id		!= "")	variables.result &= ' id="#variables.option.id#"';
 		if(variables.option.selected)
 									variables.result &= ' checked="checked"';
@@ -69,17 +69,16 @@ case "end" :
 									variables.result &= '</label>';
 									
 									variables.result &= variables.crlf & '</div><!-- /.radio -->';
-     
-		} // end for						
-     					
 
-    
-	
+		} // end for
 
 
-     thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
-     
+
+
+
+	thisTag.GeneratedContent = "";
+	if (attributes.rendered)			writeOutput(variables.result);
+
 	break;
 	}
 

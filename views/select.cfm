@@ -169,6 +169,9 @@
 </b:panel>
 
 
+<h3>b:buttonGroup</h3>
+
+<b:commandLink action="?view=buttonGroups" value="See button groups" />
 
 
 <h3>b:selectBooleanCheckbox</h3>
@@ -328,7 +331,7 @@
 	<b:selectItem value="1" display="Success"	id="auto"	look="success" />
 	<b:selectItem value="1" display="Warning"	id="auto"	look="warning" />
 	<b:selectItem value="1" display="Danger"	id="auto"	look="danger" />
-</b:selectOneRadio>	
+</b:selectOneRadio>
 
 
 <p>Now with square radio buttons</p>
@@ -340,7 +343,7 @@
 	<b:selectItem value="1" display="Success"	id="auto"	look="success" />
 	<b:selectItem value="1" display="Warning"	id="auto"	look="warning" />
 	<b:selectItem value="1" display="Danger"	id="auto"	look="danger" />
-</b:selectOneRadio>	
+</b:selectOneRadio>
 
 
 
@@ -366,40 +369,40 @@ rc.qryData.AddRow([
 
 <b:table>
 <thead>
-   <tr>
-       <th><code>size="lg"</code></th>
-       <th>Default</th>
-       <th><code>size="sm"</code></th>
-       <th>Multiple</th>
-   </tr>
+	<tr>
+		<th><code>size="lg"</code></th>
+		<th>Default</th>
+		<th><code>size="sm"</code></th>
+		<th>Multiple</th>
+	</tr>
 </thead>
 <tbody>
 <tr>
 	<td>
 		<b:selectOneMenu name="select" 	fieldSize="lg" >
-	     	<b:selectItem display="Manually Created Value" />
-	       	<b:selectItems query="#rc.qryData#" selected="4" />
-	     </b:selectOneMenu>
+			<b:selectItem display="Manually Created Value" />
+			<b:selectItems query="#rc.qryData#" selected="4" />
+		</b:selectOneMenu>
 	</td>
-     
+
 	<td>
 		<b:selectOneMenu name="select">
 			<b:selectItem display="Manually Created Value" />
 			<b:selectItems query="#rc.qryData#" selected="2" />
 		</b:selectOneMenu>
 	</td>
-     <td>
-	     <b:selectOneMenu name="select" 	fieldSize="sm"	>
-	     	<b:selectItem display="Manually Created Value" />
-	     	<b:selectItems query="#rc.qryData#" selected="5" />
-	     </b:selectOneMenu>
+	<td>
+		<b:selectOneMenu name="select" 	fieldSize="sm"	>
+			<b:selectItem display="Manually Created Value" />
+			<b:selectItems query="#rc.qryData#" selected="5" />
+		</b:selectOneMenu>
 	</td>
-     <td>
-	     <cfset selected = [3,4,5]>
-	     <b:selectManyMenu name="select" help="Use Ctrl to select multiple items">
-	     	<b:selectItem display="Manually Created Value" />
-	     	<b:selectItems query="#rc.qryData#" selectedValue="#selected#" />
-	     </b:selectManyMenu>
+	<td>
+		<cfset selected = [3,4,5]>
+		<b:selectManyMenu name="select" help="Use Ctrl to select multiple items">
+			<b:selectItem display="Manually Created Value" />
+			<b:selectItems query="#rc.qryData#" selectedValue="#selected#" />
+		</b:selectManyMenu>
 	</td>
 </tr>
 </tbody>

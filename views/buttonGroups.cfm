@@ -111,6 +111,11 @@
 			<td>How much padding should this well have</td>
 		</tr>
 		<tr>
+			<td>toggle</td>
+			<td>false</td>
+			<td>This is going to contain radio or checkbox that thank list items</td>
+		</tr>
+		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Pass though of title</td>
@@ -144,5 +149,40 @@
 		<b:button value="9" />
 	</b:buttonGroup>
 </b:buttonToolbar>
+
+
+
+<h3>Mixed buttons</h3>
+
+
+<b:buttonGroup>
+	<b:button look="success" value="500" />
+	<b:button look="primary" icon="print" />
+	<b:dropButton look="warning" value="DropButton">
+		<b:navLink href="##" value="Action" />
+		<b:navLink href="##" value="Another Action" />
+		<b:navLink />
+		<b:navLink href="##" value="Something else here" />
+	</b:dropButton>
+</b:buttonGroup>
+
+
+
+<h3>Radio buttons</h3>
+
+
+
+
+
+
+<b:buttonGroup toggle="true" name="sample">
+	<b:selectItem value="1" display="Default"	id="auto"	selected="true" />
+	<b:selectItem value="1" display="Primary"	id="auto"	look="primary" />
+	<b:selectItem value="1" display="Info"		id="auto"	look="info" />
+	<b:selectItem value="1" display="Success"	id="auto"	look="success" />
+	<b:selectItem value="1" display="Warning"	id="auto"	look="warning" />
+	<b:selectItem value="1" display="Danger"	id="auto"	look="danger" />
+</b:buttonGroup>
+
 
 
