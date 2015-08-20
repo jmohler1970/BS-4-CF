@@ -181,7 +181,92 @@
 
 <h3>b:selectOneMenu</h3>
 
+<p>This generates a normal <code>&lt;select&gt;</code>
+	
+<p>This tag does not have selectedValue or selected index. Those belong to <code>&lt;selectItem&gt;</code> and <code>&lt;selectItems&gt;</code>	
+	
+<p>You can also create content between the tags and that will also be apart of the select one menu.	
 
+<b:panel look="info" title="Attributes of &lt;b:selectOneRadio&gt;">
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<th>Default value</th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>data-*</td>
+			<td>(none)</td>
+			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+		</tr>
+		<tr>
+			<td>disabled</td>
+			<td>false</td>
+			<td>Pass through of HTML disabled. If the string "disabled" is passed in, it will be treated as true.</td>
+		</tr>
+		<tr>
+			<td>fieldSize</td>
+			<td>(none)</td>
+			<td>Bootstrap control size</td>
+		</tr>
+		<tr>
+			<td>help</td>
+			<td>(none)</td>
+			<td>Bootstrap help text below control</td>
+		</tr>
+		
+		<tr>
+			<td>id</td>
+			<td>(none)</td>
+			<td>Pass through of HTML id.</td>
+		</tr>
+		<tr>
+			<td>name</td>
+			<td>required</td>
+			<td>All the check boxes get the same name</td>
+		</tr>
+		<tr>
+			<td>ng-*</td>
+			<td>(none)</td>
+			<td>Pass through of all AngularJS attributes</td>
+		</tr>
+		<tr>
+			<td>on*</td>
+			<td>(none)</td>
+			<td>Pass through of all Mouse/Pointer events.</td>
+		</tr>
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td>This like a <code>&lt;cfif&gt;</code></td>
+		</tr>
+		<tr>
+			<td>readonly</td>
+			<td>false</td>
+			<td>Pass through of HTML readonly. If the string "readonly" is passed in, it will be treated as true/</td>
+		</tr>
+		<tr>
+			<td>required</td>
+			<td>false</td>
+			<td>Pass through of HTML required. If the string "required" is passed in, it will be treated as true</td>
+		</tr>		
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+		</tr>
+		<tr>
+			<td>tooltip</td>
+			<td>(none)</td>
+			<td>Pass though of <code>title=</code></td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
 
 <h3>b:selectOneRadio</h3>
 
@@ -197,6 +282,11 @@
 	</thead>
 	
 	<tbody>
+		<tr>
+			<td>disabled</td>
+			<td>false</td>
+			<td>Pass through of HTML disabled. If the string "disabled" is passed in, it will be treated as true.</td>
+		</tr>
 		<tr>
 			<td>inline</td>
 			<td>false</td>

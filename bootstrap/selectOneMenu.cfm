@@ -23,9 +23,7 @@ case "start" :
 	param attributes.help		= "";
 	param attributes.id			= "";
 	param attributes.name;				// required field
-	param attributes.onBlur		= "";
-	param attributes.onClick		= "";
-	param attributes.onChange	= "";
+
 	param attributes.processed 	= true;
 	param attributes.readonly 	= false;
 	param attributes.rendered 	= true;
@@ -37,6 +35,18 @@ case "start" :
 
 	// Patch this
 	if(attributes.disabled == "disabled")	attributes.disabled = true;
+	if(attributes.readonly == "readonly")	attributes.readonly = true;
+	if(attributes.required == "required")	attributes.required = true;
+		
+	
+	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
+	variables.arAttrSeries = [];
+	
+	for(variables.myKey in attributes)	{
+		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
+			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
+			} // end if	
+		}	// end for
 
      if (!attributes.processed) exit "exitTag";
 	break;
@@ -51,13 +61,14 @@ case "end" :
 								variables.result &= '"';
 	if(attributes.disabled)			variables.result &= ' disabled="disabled"';													
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+	
 	if(attributes.readonly)			variables.result &= ' readonly="readonly"';
 	if(attributes.required)			variables.result &= ' required="required"';
 	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
 	if(attributes.tooltip    != "")	variables.result &=	' title="#attributes.tooltip#"';
-	if(attributes.onBlur	!= "")	variables.result &= ' onBlur="#attributes.onBlur#"';
-	if(attributes.onClick	!= "")	variables.result &= ' onClick="#attributes.onClick#"';
-	if(attributes.onChange	!= "")	variables.result &= ' onChange="#attributes.onChange#"';
+
 	
 								variables.result &= ' >';
 								

@@ -4,7 +4,7 @@
 
 <cfscript>
 if (!thisTag.HasEndTag) 
-	abort "An end tag is required for b:radio."; 
+	abort "An end tag is required for b:selectOneRadio."; 
 	
 	
 
