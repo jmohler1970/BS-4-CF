@@ -16,7 +16,7 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
 
-	thisTag.arOption 				= [];
+	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip");
 
 	param attributes.disabled		= false;
 	param attributes.inline			= false;
@@ -34,41 +34,41 @@ case "start" :
 case "end" :
 
 
-	for (variables.option in thisTag.arOption)	{
+	for(variables.myRow = 1; variables.myRow <= thisTag.qryOption.recordcount; variables.myRow++)	{
+
 		
-		if (variables.option.id == "auto")	variables.option.id = "auto_" & left(createUUID(), 10);
+		if(thisTag.qryOption.id[variables.myRow] == "auto")	QuerySetCell(thisTag.qryOption, "id", "auto_" & left(createUUID(), 10), variables.myRow);
 		
 		variables.preClass = attributes.square ? "checkbox" : "radio";
 		
-		if(variables.option.look == "" && attributes.square)	variables.result &= '<div class="checkbox checkbox';
-		else							variables.result &= '<div class="#variables.preClass#';
+		if(thisTag.qryOption.look[variables.myRow] == "" && attributes.square)	variables.result &= '<div class="checkbox checkbox';
+		else												variables.result &= '<div class="#variables.preClass#';
 		
-		if(variables.option.look		!= "")	variables.result &= ' #variables.preClass#-#variables.option.look#';
-		if(attributes.inline)			variables.result &= ' #variables.preClass#-inline';
-									variables.result &= '"';
+		if(thisTag.qryOption.look[variables.myRow]		!= "")	variables.result &= ' #variables.preClass#-#thisTag.qryOption.look[variables.myRow]#';
+		if(attributes.inline)								variables.result &= ' #variables.preClass#-inline';
+														variables.result &= '"';
 	
-		if(variables.option.tooltip	!= "")	variables.result &= ' tooltip="#attributes.tooltip#"';
-									variables.result &= '>';
+		if(thisTag.qryOption.tooltip[variables.myRow]	!= "")	variables.result &= ' tooltip="#thisTag.qryOption.tooltip[variables.myRow]#"';
+														variables.result &= '>';
 
 
 
-									variables.result &= '<input type="radio"';
-		if(attributes.name			!= "")	variables.result &= ' name="#attributes.name#"';
-		if(variables.option.id		!= "")	variables.result &= ' id="#variables.option.id#"';
-		if(variables.option.selected)
-									variables.result &= ' checked="checked"';
-		if(attributes.disabled)			variables.result &= ' disabled="disabled"';
-									variables.result &= ' value="#variables.option.value#"';	
-									variables.result &= ' />';
-									variables.result &= variables.crlf &'<label';
-		if(variables.option.id		!= "")	variables.result &=	' for="#variables.option.id#"';
-									variables.result &= '>';
+														variables.result &= '<input type="radio"';
+		if(attributes.name							!= "")	variables.result &= ' name="#attributes.name#"';
+		if(thisTag.qryOption.id[variables.myRow]		!= "")	variables.result &= ' id="#thisTag.qryOption.id[variables.myRow]#"';
+		if(thisTag.qryOption.selected[variables.myRow])			variables.result &= ' checked="checked"';
+		if(attributes.disabled)								variables.result &= ' disabled="disabled"';
+														variables.result &= ' value="#thisTag.qryOption.value[variables.myRow]#"';	
+														variables.result &= ' />';
+														variables.result &= variables.crlf &'<label';
+		if(thisTag.qryOption.id[variables.myRow]		!= "")	variables.result &=	' for="#thisTag.qryOption.id[variables.myRow]#"';
+														variables.result &= '>';
 	
 		
-									variables.result &= variables.option.display; // pass through of content
-									variables.result &= '</label>';
+														variables.result &= thisTag.qryOption.display[variables.myRow]; // pass through of content
+														variables.result &= '</label>';
 									
-									variables.result &= variables.crlf & '</div><!-- /.radio -->';
+														variables.result &= variables.crlf & '</div><!-- /.radio -->';
 
 		} // end for
 

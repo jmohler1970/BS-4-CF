@@ -34,18 +34,15 @@ case "start" :
 case "end" :     
 	
 
-	variables.Data = {
-		disabled	= attributes.disabled,
-		id		= attributes.id,
-		display	= attributes.display,
-		look		= attributes.look,
-		value	= attributes.value,
-		selected	= attributes.selected,
-		tooltip	= attributes.tooltip
-		};
+	QueryAddRow( thisTag.Parent.thisTag.qryOption);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "disabled", 	attributes.disabled);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "id", 		attributes.id);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "display", 	attributes.display);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "look", 	attributes.look);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "value", 	attributes.value);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "selected",	attributes.selected);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "tooltip",	attributes.tooltip);
      
-     ArrayAppend(thisTag.Parent.thisTag.arOption, 			variables.Data);
-
 	
 		
 	thisTag.generatedContent = "";

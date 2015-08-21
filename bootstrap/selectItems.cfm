@@ -19,9 +19,9 @@ case "start" :
 	param attributes.binding			= "Value";
 	param attributes.disabled		= false;
 	param attributes.displayBinding	= "Display";
-	param attributes.group			= "";
-	param attributes.id				= "auto";
-	param attributes.look			= "";
+	param attributes.groupBinding		= "";
+	param attributes.idBinding		= "auto";
+	param attributes.lookBinding		= "";
 	param attributes.processed 		= true;
 	param attributes.query			= QueryNew("Label,Value");
 	param attributes.rendered 		= true;
@@ -46,19 +46,22 @@ case "end" :
 		
 		variables.myValue = evaluate("attributes.query.#attributes.binding#[#variables.myRow#]");
 		
-		variables.Data = {
-			disabled	= attributes.disabled,
-			id		= '',
-			display	= evaluate("attributes.query.#attributes.displayBinding#[#variables.myRow#]"),
-			look		= attributes.look,
-			selected	= (attributes.selected || ArrayContains(attributes.selectedValue, variables.myValue)),
-			tooltip	= (attributes.tooltipBinding == "" ? "" : evaluate("attributes.query.#attributes.tooltipBinding#[#variables.myRow#]")),
-			value	= variables.myValue
-			};
 		
-     
-			ArrayAppend(thisTag.Parent.thisTag.arOption, 			variables.Data);
-											
+		QueryAddRow( thisTag.Parent.thisTag.qryOption);
+		QuerySetCell(thisTag.Parent.thisTag.qryOption, "disabled", 	attributes.disabled);
+		QuerySetCell(thisTag.Parent.thisTag.qryOption, "display", 	evaluate("attributes.query.#attributes.displayBinding#[#variables.myRow#]"));
+		QuerySetCell(thisTag.Parent.thisTag.qryOption, "selected",	(attributes.selected || ArrayContains(attributes.selectedValue, variables.myValue)));
+		
+		
+		if (attributes.groupBinding	!= "")		QuerySetCell(thisTag.Parent.thisTag.qryOption, "group", 	evaluate("attributes.query.#attributes.groupBinding#[#variables.myRow#]"));
+		if (attributes.idBinding		== "auto")	QuerySetCell(thisTag.Parent.thisTag.qryOption, "id", 		"auto");
+		if (attributes.idBinding		!= "auto")	QuerySetCell(thisTag.Parent.thisTag.qryOption, "id", 		evaluate("attributes.query.#attributes.idBinding#[#variables.myRow#]"));
+		if (attributes.lookBinding 	!= "")		QuerySetCell(thisTag.Parent.thisTag.qryOption, "look", 	evaluate("attributes.query.#attributes.lookBinding#[#variables.myRow#]"));
+		if (attributes.tooltipBinding	!= "")		QuerySetCell(thisTag.Parent.thisTag.qryOption, "tooltip",	evaluate("attributes.query.#attributes.tooltipBinding#[#variables.myRow#]"));
+		if (attributes.binding		!= "")		QuerySetCell(thisTag.Parent.thisTag.qryOption, "value", 	variables.myValue);
+		
+		
+							
 
 		} // end for
      

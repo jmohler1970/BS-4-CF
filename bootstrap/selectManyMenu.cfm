@@ -14,7 +14,7 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
 	
-	thisTag.arOption 			= [];
+	thisTag.qryOption 			= QueryNew("disabled,display,group,id,look,value,selected,tooltip");
   
 	param attributes.disabled	= false;
 	param attributes.fieldSize	= "";
@@ -59,12 +59,12 @@ case "end" :
 	
 								variables.result &= ' >';
 
-	for (variables.option in thisTag.arOption)	{	
+	for(variables.myRow = 1; variables.myRow <= thisTag.qryOption.recordcount; variables.myRow++)	{							
 								variables.result &= '<option';
-								variables.result &= ' value="#variables.option.value#"';
-		if(variables.option.selected)	variables.result &= ' selected="selected"';
+								variables.result &= ' value="#thisTag.qryOption.value[variables.myRow]#"';
+		if(thisTag.qryOption.selected[variables.myRow])	variables.result &= ' selected="selected"';
 								variables.result &= ' >';
-								variables.result &= variables.option.display;
+								variables.result &= thisTag.qryOption.display[variables.myRow];
 								variables.result &= '</option>';
 		} // end for						
      					

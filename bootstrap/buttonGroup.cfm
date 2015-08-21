@@ -14,8 +14,8 @@ case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
-
-	thisTag.arOption 				= [];
+	
+	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip");
 
 	param attributes.id			= "";
 	param attributes.justified	= false;
@@ -46,33 +46,33 @@ case "end" :
 								variables.result &= ' role="group">';
 
 
-	for (variables.option in thisTag.arOption)	{
-		
-		if (variables.option.id == "auto")	variables.option.id = "auto_" & left(createUUID(), 10);
+	for(variables.myRow = 1; variables.myRow <= thisTag.qryOption.recordcount; variables.myRow++)	{							
 
-
-									variables.result &= '<label class="btn btn-#variables.option.look# ';
-		
-		if(variables.option.selected)		variables.result &= ' active';
-									variables.result &= '"';
+		if(thisTag.qryOption.id[variables.myRow] == "auto")	QuerySetCell(thisTag.qryOption, "id", "auto_" & left(createUUID(), 10), variables.myRow);	
 	
-		if(variables.option.tooltip	!= "")    variables.result &= ' tooltip="#attributes.tooltip#"';
-									variables.result &= '>';
-
-
-
-									variables.result &= '<input type="radio"';
-		if(attributes.name		!= "")	variables.result &= ' name="#attributes.name#"';
-		if(variables.option.id	!= "")	variables.result &= ' id="#variables.option.id#"';
-		if(variables.option.selected)
-									variables.result &= ' checked="checked"';
-									variables.result &= ' value="#variables.option.value#"';	
-									variables.result &= ' />';
 		
-									variables.result &= variables.option.display; // pass through of content
-									variables.result &= '</label>';
-									
-									variables.result &= variables.crlf & '</label><!-- /.radio -->';
+													variables.result &= '<label class="btn btn-#thisTag.qryOption.look[variables.myRow]# ';
+		
+		if(thisTag.qryOption.selected[variables.myRow])		variables.result &= ' active';
+													variables.result &= '"';
+	
+		if(thisTag.qryOption.tooltip[variables.myRow] != "")	variables.result &= ' tooltip="#thisTag.qryOption.tooltip[variables.myRow]#"';
+													variables.result &= '>';
+
+
+
+													variables.result &= '<input type="radio"';
+		if(attributes.name					 != "")		variables.result &= ' name="#attributes.name#"';
+		if(thisTag.qryOption.id[variables.myRow] != "")		variables.result &= ' id="#thisTag.qryOption.id[variables.myRow]#"';
+		if(thisTag.qryOption.selected[variables.myRow])
+													variables.result &= ' checked="checked"';
+													variables.result &= ' value="#thisTag.qryOption.value[variables.myRow]#"';	
+													variables.result &= ' />';
+		
+													variables.result &= thisTag.qryOption.display[variables.myRow]; // pass through of content
+													variables.result &= '</label>';
+												
+													variables.result &= variables.crlf & '</label><!-- /.radio -->';
 
 		} // end for
 								
