@@ -11,5 +11,6 @@ $( document ).ready(function() {
 
   $('select.select2').select2();
   
+  $('table.datatables').DataTable();
 
 });

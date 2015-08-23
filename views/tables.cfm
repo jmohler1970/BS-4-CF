@@ -330,7 +330,48 @@ rc.qryData.AddRow([
 </b:table>
 
 
+<h2>Example with jQuery datatables.</h2>
+
+
+<b:blockquote>
+
+DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table.
+
+	<footer><a href="https://www.datatables.net/">https://www.datatables.net/</a></footer>
+</b:blockquote>
+
+<p>This example also includes supplemental Bootstrap look and feel</p>
+
+
+<b:table styleClass="datatables">
+<thead> 
+<tr>
+	<th>ID</th>
+	<th>Icon</th>
+	<th>Album</th>
+	<th>Message</th>
+	<th>Score</th>
+	<th></th> 
+</tr>
+</thead>	
+
+<tbody>
+<cfoutput query="rc.qryData">
+	<b:tr rendered="#IIF(Delete, 0, 1)#">
+		<b:td><b:badge value="#ID#" /></b:td>
+		<b:td data-sort="#ID#"><b:icon name="#icon#" /></b:td>
+		<b:td>#Album#</b:td>
+		<b:td>#Message#</b:td>
+		<b:td>#Score#</b:td>
+		<b:td><b:commandLink action="###ID#" size="xs" look="primary">View #id#</b:commandLink></b:td>
+	</b:tr>
+</cfoutput>	
+</tbody>
+</b:table>
+
+
 <h3>cfdump of content</h3>
 
 <cfdump var="#rc.qryData#" expand="no">
+
 
