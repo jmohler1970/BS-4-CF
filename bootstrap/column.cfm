@@ -58,8 +58,10 @@ case "end" :
 	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';                       
 	if(attributes.tooltip    != "")    variables.result &= ' title="#attributes.tooltip#"';
 								variables.result &= '>';
+								variables.result &= variables.crlf;
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 								variables.result &= variables.crlf & '</div><!-- /.column -->';
+								variables.result &= variables.crlf;
      
      
      thisTag.GeneratedContent = "";

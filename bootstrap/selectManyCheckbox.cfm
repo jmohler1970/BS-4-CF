@@ -4,7 +4,7 @@
 
 <cfscript>
 if (!thisTag.HasEndTag) 
-	abort "An end tag is required for b:selectOneRadio.";
+	abort "An end tag is required for b:selectManyCheckbox.";
 
 
 
@@ -25,7 +25,7 @@ case "start" :
 	param attributes.name;
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
-	param attributes.square			= false;		// make it look like check
+	param attributes.circle			= false;		// make it look like radio
 	
 	// Patch this
 	if(attributes.disabled == "disabled")	attributes.disabled = true;
@@ -41,10 +41,10 @@ case "end" :
 		
 		if(thisTag.qryOption.id[variables.myRow] == "auto")	QuerySetCell(thisTag.qryOption, "id", "auto_" & left(createUUID(), 10), variables.myRow);
 		
-		variables.preClass = attributes.square ? "checkbox" : "radio";
 		
-		if(thisTag.qryOption.look[variables.myRow] == "" && attributes.square)	variables.result &= '<div class="checkbox checkbox';
-		else												variables.result &= '<div class="#variables.preClass#';
+		
+		if(thisTag.qryOption.look[variables.myRow] == "" && attributes.circle)	variables.result &= '<div class="checkbox checkbox-circle';
+		else												variables.result &= '<div class="checkbox';
 		
 		if(thisTag.qryOption.look[variables.myRow]		!= "")	variables.result &= ' #variables.preClass#-#thisTag.qryOption.look[variables.myRow]#';
 		if(attributes.inline)								variables.result &= ' #variables.preClass#-inline';
@@ -55,7 +55,7 @@ case "end" :
 
 
 
-														variables.result &= '<input type="radio"';
+														variables.result &= '<input type="checkbox"';
 		if(attributes.name							!= "")	variables.result &= ' name="#attributes.name#"';
 		if(thisTag.qryOption.id[variables.myRow]		!= "")	variables.result &= ' id="#thisTag.qryOption.id[variables.myRow]#"';
 		if(thisTag.qryOption.selected[variables.myRow])			variables.result &= ' checked="checked"';
@@ -70,8 +70,7 @@ case "end" :
 														variables.result &= thisTag.qryOption.display[variables.myRow]; // pass through of content
 														variables.result &= '</label>';
 									
-														variables.result &= variables.crlf & '</div><!-- /.radio -->';
-														variables.result &= variables.crlf;
+														variables.result &= variables.crlf & '</div><!-- /.selectManyCheckbox -->';
 
 		} // end for
 

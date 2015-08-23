@@ -173,8 +173,6 @@
 
 
 
-
-
 <b:buttonGroup toggle="true" name="sample">
 	<b:selectItem value="1" display="Default"	id="auto"	selected="true" />
 	<b:selectItem value="1" display="Primary"	id="auto"	look="primary" />

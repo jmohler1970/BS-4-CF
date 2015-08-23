@@ -16,6 +16,8 @@ case "start" :
 	
 	thisTag.qryOption 			= QueryNew("disabled,display,group,id,look,value,selected,tooltip");
   
+	if(structKeyExists(attributes, "qryOption")) thisTag.qryOption = attributes.qryOption;
+  
 	param attributes.disabled	= false;
 	param attributes.fieldSize	= "";
 	param attributes.help		= "";
