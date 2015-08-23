@@ -204,6 +204,13 @@ rc.qryData.AddRow([
 			<td>Reserved for future use</td>
 		</tr>
 		<tr>
+			<td>hidden</td>
+			<td>(none)</td>
+			<td>Should this cell be hidden when the screen is small. Unlike Bootstrap hidden, if connect is hidden when sm then xs is hidden too.
+				Likewise, if hidden on md, then sm and xs are hidden too. If the default Bootstrap behavior is desire, then use <code>styleClass=</code> instead.
+			</td>
+		</tr>
+		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML id.</td>
@@ -291,6 +298,37 @@ rc.qryData.AddRow([
 </cfoutput>	
 </tbody>
 </b:table>
+
+<h2>Example with fields that go hidden.</h2>
+
+<p>Make page narrow to see fields disappear.</p>
+
+<b:table>
+<thead> 
+<tr>
+	<b:th hidden="md">ID</b:th>
+	<b:th hidden="sm">Icon</b:th>
+	<b:th hidden="xs">Album</b:th>
+	<b:th>Message</b:th>
+	<b:th>Score</b:th>
+	<b:th></b:th> 
+</tr>
+</thead>	
+
+<tbody>
+<cfoutput query="rc.qryData">
+	<b:tr rendered="#IIF(Delete, 0, 1)#">
+		<b:td hidden="md"><b:badge value="#ID#" /></b:td>
+		<b:td hidden="sm" data-sort="#ID#"><b:icon name="#icon#" /></b:td>
+		<b:td hidden="xs">#Album#</b:td>
+		<b:td>#Message#</b:td>
+		<b:td>#Score#</b:td>
+		<b:td><b:commandLink action="###ID#" size="xs" look="primary">View #id#</b:commandLink></b:td>
+	</b:tr>
+</cfoutput>	
+</tbody>
+</b:table>
+
 
 <h3>cfdump of content</h3>
 

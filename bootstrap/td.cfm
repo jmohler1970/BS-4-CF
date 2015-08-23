@@ -5,38 +5,46 @@
 
 <cfscript>
 if (!thisTag.HasEndTag) 
-	abort "An end tag is required for b:td."; 
-	
-	
+	abort "An end tag is required for b:td.";
 
-switch (thisTag.ExecutionMode)     {
+
+
+switch (thisTag.ExecutionMode)	{
 case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
-  
+
 	param attributes.binding		= "";
-     param attributes.id			= "";
-     param attributes.look		= "";
-     param attributes.processed	= true; // unknown how to support
-     param attributes.rendered 	= true; // removes content not actual td
+	param attributes.hidden		= "";
+	param attributes.id			= "";
+	param attributes.look		= "";
+	param attributes.processed	= true; // unknown how to support
+	param attributes.rendered 	= true; // removes content not actual td
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
-     param attributes.tooltip		= "";
-     
-     
-     if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";
-	     
-     variables.myClass = "";
-     if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';
-     if(attributes.look		!= "")	variables.myClass &= '#attributes.look# ';	
-     if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';	
-     
-     
+	param attributes.tooltip		= "";
+
+
+	if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";
+
+	variables.myClass = "";
+	if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';
+	if(attributes.look		!= "")	variables.myClass &= '#attributes.look# ';
+	switch(attributes.hidden)	{
+		case "md" :					variables.myClass &= 'hidden-xs hidden-sm  hidden-md ';	break;
+		case "sm" :					variables.myClass &= 'hidden-xs hidden-sm ';				break;
+		case "xs" :					variables.myClass &= 'hidden-xs ';						break;
+		}
+
+
+	if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';
+
+
 	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
 	variables.arAttrSeries = [];
-	
+
 	for(variables.myKey in attributes)	{
 		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
 			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
@@ -44,37 +52,37 @@ case "start" :
 		}	// end for
 
 
-	
+
 	break;
-     
-case "end" :     
+
+case "end" :
 
 // This needs to be smart enough to iterate
-//     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+//	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
 
 
-	if(variables.myClass 	== "")				variables.result &= '<td';
-	if(variables.myClass 	!= "")				variables.result &= '<td class="#variables.myClass#"';
+	if(variables.myClass	== "")				variables.result &= '<td';
+	if(variables.myClass	!= "")				variables.result &= '<td class="#variables.myClass#"';
 	if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
-	
+
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
-	
-	
-	if(attributes.style		!= "")				variables.result &= ' style="#attributes.style#"';                 
+
+
+	if(attributes.style		!= "")				variables.result &= ' style="#attributes.style#"';
 											variables.result &= '>';
-	if(attributes.tooltip    != "")				variables.result &=	'<span title="#attributes.tooltip#">';						
+	if(attributes.tooltip	!= "")				variables.result &= '<span title="#attributes.tooltip#">';
 	if (attributes.rendered && attributes.processed)
 											variables.result &= thisTag.GeneratedContent; // pass through of content
-	if(attributes.tooltip    != "")				variables.result &=	 '</span>';
+	if(attributes.tooltip	!= "")				variables.result &= '</span>';
 											variables.result &= '</td>';
-											variables.result &= variables.crlf;	
-     
-     
-     thisTag.GeneratedContent = "";
-     writeOutput(variables.result);
-     
+											variables.result &= variables.crlf;
+
+
+	thisTag.GeneratedContent = "";
+	writeOutput(variables.result);
+
 	break;
 	}
-     
- 
+
+
 </cfscript>
