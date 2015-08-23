@@ -1,45 +1,47 @@
 
-<cfimport prefix="b" taglib="../bootstrap">
+<cfimport taglib="../bootstrap">
 
 
 
-<b:row>
-	<b:column span="12">	
-		<b:h1 pageHeader="true">Well</b:h1>
+<row>
+	<column span="12">	
+		<h1 pageHeader="true">Well</h1>
 		<p>b:well</p>
-	</b:column>	
-</b:row>
+	</column>	
+</row>
 
 
 
 
-<b:h2>Introduction</b:h2>
+<h2>Introduction</h2>
 
 <p>Use the well as a simple effect on an element to give it an inset effect.</p>
 
+<p>This is also the no prefix example. None of the ColdFusion custom tags have a prefix.</p>
 
 
-<b:well>
+
+<well>
     <h3>Well Header</h3>
     Well content.
-</b:well>
+</well>
 
 
 <h5>Markup:</h5>
 
 <pre>
-&lt;b:well&gt;
+&lt;well&gt;
     &lt;h3&gt;Well Header&lt;/h3&gt;
     Well content.
-&lt;/b:well&gt;
+&lt;/well&gt;
 </pre>
 
 <p>&nbsp;</p>
 
 
-<b:panel look="info" title="Attributes of &lt;b:well&gt;">
+<panel look="info" title="Attributes of &lt;b:well&gt;">
 
-	<b:table>
+	<table>
 	<thead>
 		<tr>
 			<th>Attribute</th>
@@ -87,8 +89,8 @@
 
 
 	</tbody>
-	</b:table>
-</b:panel>
+	</table>
+</panel>
 
 
 
@@ -96,17 +98,17 @@
 <h3>Examples</h3>
 
 
-<b:row>
-	<b:column span="4">
-		<b:well size="sm">Look, I'm in a small well!</b:well>
-	</b:column>
+<row>
+	<column span="4">
+		<well size="sm">Look, I'm in a small well!</well>
+	</column>
 
-	<b:column span="4">
-		<b:well size="lg">Look, I'm in a large well!</b:well>
-	</b:column>
+	<column span="4">
+		<well size="lg">Look, I'm in a large well!</well>
+	</column>
 	
-	<b:column span="4">
-		<b:well><b:well>Look, I'm in a well in a well!</b:well></b:well>
-	</b:column>
-</b:row>	
+	<column span="4">
+		<well><well>Look, I'm in a well in a well!</well></well>
+	</column>
+</row>	
 
