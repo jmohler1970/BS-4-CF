@@ -15,6 +15,13 @@
 </b:row>
 
 <b:row>
+     <b:column span="12">
+		<h1 pageHeader="true" id="nav">Indicators</h1>
+     </b:column>
+</b:row>
+
+
+<b:row>
 	<b:column span="12">
      
             <h2>Alerts</h2>
@@ -73,10 +80,8 @@
 
 <b:row>
 	<b:column span="12">
-		<div class="page-header">
-			<h1 id="progress">Progress bars</h1>
-          </div>
-
+		<b:h1 pageheader="true" id="progress">Progress bars</b:h1>
+          
           <b:h3 id="progress-basic">Basic</b:h3>
           <b:progressBar width="60%" />
  

@@ -32,7 +32,7 @@ case "end" :
      if (attributes.inverse)		variables.result &= '<nav class="navbar navbar-inverse';
 	if (attributes.fixed != "")	variables.result &= ' navbar-fixed-#attributes.fixed#';     
      						variables.result &= ' ">';
-     						variables.result &= crlf & '<div class="container-fluid">';
+							variables.result &= crlf & '<div class="container-fluid">';
      						variables.result &= crlf & '<div class="navbar-header">';
      						
 							variables.result &= '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">';
@@ -45,15 +45,13 @@ case "end" :
 	if (attributes.brand != "" && attributes.brandHref == "")	variables.result &= '<a class="navbar-brand" href="##">#attributes.Brand#</a>';						
 	if (attributes.brand != "" && attributes.brandHref != "")	variables.result &= '<a class="navbar-brand" href="#attributes.brandHref#">#attributes.Brand#</a>';						
 
-							variables.result &= '</div>';	// end of Brand and Hamburger area
+							variables.result &= '</div><!-- /.navbar-header -->';	// end of Brand and Hamburger area
 							
 	// Collect the nav links, forms, and other content for toggling 
 							variables.result &= '<div class="collapse navbar-collapse">';
 							variables.result &= thisTag.GeneratedContent;
-							variables.result &= '</div><!-- /.navbar-collapse -->
-							';
-							variables.result &= '</div><!-- /.container-fluid -->
-							';
+							variables.result &= variables.crlf & '</div><!-- /.navbar-collapse -->';
+							variables.result &= variables.crlf & '</div><!-- /.container-fluid -->';
 							variables.result &= '</nav>
 							';
 							
