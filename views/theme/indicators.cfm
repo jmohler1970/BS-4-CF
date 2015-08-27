@@ -5,18 +5,9 @@
       <!-- Indicators
       ================================================== -->
 
-
 <b:row>
      <b:column span="12">
-       <div class="page-header">
-         <h1 id="nav">Indicators</h1>
-       </div>
-     </b:column>
-</b:row>
-
-<b:row>
-     <b:column span="12">
-		<h1 pageHeader="true" id="nav">Indicators</h1>
+		<b:h1 pageHeader="true" id="nav">Indicators</b:h1>
      </b:column>
 </b:row>
 
@@ -71,8 +62,6 @@
                 <li><a href="#">Profile <b:badge value="3" /></a></li>
                 <li><a href="#">Messages <b:badge value="20" /></a></li>
               </ul>
-            </div>
-          
      </b:column>
 </b:row>
 
@@ -81,6 +70,7 @@
 <b:row>
 	<b:column span="12">
 		<b:h1 pageheader="true" id="progress">Progress bars</b:h1>
+
           
           <b:h3 id="progress-basic">Basic</b:h3>
           <b:progressBar width="60%" />
