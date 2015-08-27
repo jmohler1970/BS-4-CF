@@ -74,7 +74,7 @@
 			<td>Aligns icon</td>
 		</tr>		
 		<tr>
-			<td>icon</td>
+			<td>iconAwesome</td>
 			<td>(none)</td>
 			<td>Adds Font Awesome icon</td>
 		</tr>

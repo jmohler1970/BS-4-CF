@@ -14,6 +14,7 @@ switch (thisTag.ExecutionMode)     {
 case "start" :
 
 	variables.result = "";
+	variables.crlf =  chr(13) & chr(10);
 
 	if (!structKeyExists(attributes, "id") && !structKeyExists(attributes, "action")) throw("b:commandLink tag must have either an id or an action. Neither have been provided"); 
 
