@@ -47,7 +47,7 @@
 			<b:navLink />
 			<b:navLink header="By Bootswatch"/>
 			<cfloop index="rc.i" list="Cerulean,Cosmo,Cyborg,Darkly,Flatly,Journal,Lumen,Paper,Readable,Sandstone,Simplex,Slate,Spacelab,Superhero,United,Yeti">
-				<b:navLink href="?view=theme&amp;theme=#rc.i#" binding="i" disabled="#IIF(url.theme EQ rc.i , 1, 0)#" />
+				<b:navLink href="?view=theme&amp;theme=#rc.i#" binding="i" disabled="#IIF(session.theme EQ rc.i , 1, 0)#" />
 			</cfloop>		
 		</b:dropMenu>
 		

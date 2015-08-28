@@ -194,10 +194,19 @@
 </b:navBar>
 
 
+<h3>With Inverse text and Jumbotron</h3>
+
+<b:jumbotron tight="true">
+	<b:buttonGroup list="true" pull="right">
+		<b:commandLink action="##" icon="user" value="James Mohler" />
+		<b:commandLink action="##" icon="envelope">News <b:badge severity="success" value="3" /></b:commandLink>
+		<b:commandLink action="##" icon="log-out" />
+	</b:buttonGroup>
+	
+	<b:h1>Omega! Software Inc.</b:h1>
+</b:jumbotron>
 
 
-
-<h3>With Inverse text</h3>
 
 <b:navBar brand="BS-4-CF" brandHref="##" inverse="true">
     <b:navbarLinks>
@@ -206,6 +215,12 @@
         <b:navLink				href="##">FAQ</b:navLink>
     </b:navbarLinks>
 </b:navBar>
+
+
+<b:h1 pageheader="true">Hello World!</b:h1>
+
+
+<p>Lorem Ipsum</p>
 
 
 

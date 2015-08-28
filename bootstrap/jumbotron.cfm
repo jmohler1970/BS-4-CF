@@ -18,6 +18,7 @@ case "start" :
 	param attributes.id			= "";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
+	param attributes.tight		= false;
 	param attributes.tooltip		= "";
      
 	if (!attributes.processed) exit "exitTag";
@@ -29,6 +30,7 @@ case "end" :
 								variables.result &= '<div class="jumbotron"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
 	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
+	if(attributes.tight)			variables.result &= ' style="margin : 0; padding-top : 0; padding-right : 0"';
 								variables.result &= '>';
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 								variables.result &= '</div><!-- /.jumbotron -->';

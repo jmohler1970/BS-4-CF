@@ -43,12 +43,15 @@
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
 		</tr>
 		<tr>
+			<td>tight</td>
+			<td>false</td>
+			<td>Quickly set <code>margin : 0; padding-top : 0; padding-right : 0</code></td>
+		</tr>
+		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Pass though of title</td>
 		</tr>
-
-
 	</tbody>
 	</b:table>
 </b:panel>
@@ -65,6 +68,19 @@
     <b:p><b:commandLink action="?view=jumbotron">Learn more</b:commandLink></b:p>
 </b:jumbotron>
 
+
+<h2>Example with buttongroup</h2>
+
+
+<b:jumbotron tight="true">
+	<b:buttonGroup list="true" pull="right">
+		<b:commandLink action="##" icon="user" value="James Mohler" />
+		<b:commandLink action="##" icon="envelope" value="News" />
+		<b:commandLink action="##" icon="log-out" />
+	</b:buttonGroup>
+	
+	<b:h1>Omega! Software Inc.</b:h1>
+</b:jumbotron>
 
 
 

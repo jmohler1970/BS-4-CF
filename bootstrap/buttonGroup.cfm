@@ -22,6 +22,7 @@ case "start" :
 	param attributes.name		= "";
 	param attributes.orientation 	= "horizontal";
 	param attributes.processed 	= true;
+	param attributes.pull 		= "";
 	param attributes.rendered	= true;
 	param attributes.size		= "";
 	param attributes.toggle		= false;
@@ -39,6 +40,7 @@ case "end" :
 
 	if(attributes.size		!= "")	variables.result &= ' btn-group-#attributes.size#';
 	if(attributes.justified)			variables.result &= ' btn-group-justified';
+	if(attributes.pull		!= "")	variables.result &= ' pull-#attributes.pull#';
 								variables.result &= '"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
 	if(attributes.tooltip	!= "")	variables.result &=	' title="#attributes.tooltip#"';
