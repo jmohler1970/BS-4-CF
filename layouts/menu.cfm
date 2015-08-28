@@ -19,7 +19,7 @@
 			<b:navLink value="Helper classes" href="?view=helper" />
 		</b:dropMenu>
 		
-		<b:dropMenu value="Components" active="#ArrayContains(['icons','dropdowns','buttonGroups','nav','label','jumbotron','thumbnail','alert','progress','panel','well'], url.view)#">
+		<b:dropMenu value="Components" active="#ArrayContains(['icons','dropdowns','buttonGroups','nav','label','jumbotron','thumbnail','alert','progress','panel','well','include'], url.view)#">
 			<b:navLink value="Icons" href="?view=icons" icon="picture" />
 		    	<b:navLink value="Dropdowns" href="?view=dropdowns" />
 			<b:navLink value="Button groups" href="?view=buttonGroups" />
@@ -31,10 +31,11 @@
 			<b:navLink value="Progress Bars" href="?view=progress" icon= "tasks" />
 			<b:navLink value="Panels" href="?view=panel" />
 			<b:navLink value="Wells" href="?view=well" />
+			<b:navLink value="Include" href="?view=include" />
 		</b:dropMenu>
 	
 		<b:dropMenu value="JavaScript" active="#ArrayContains(['modal','tab','poll'], url.view)#">
-			<b:navLink value="Modal" href="?view=modal" icon="modal-window" />
+		    	<b:navLink value="Modal" href="?view=modal" icon="modal-window" />
 		    	<b:navLink value="Tab" href="?view=tab" icon="folder-close" />
 		    	<b:navLink value="Poll" href="?view=poll" icon="refresh" />
 		</b:dropMenu>
