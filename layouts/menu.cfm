@@ -26,7 +26,7 @@
 			<b:navLink value="Navs" href="?view=nav" />
 			<b:navLink value="Labels & Badges" href="?view=label" />
 			<b:navLink value="Jumbotron" href="?view=jumbotron" />
-			<b:navLink value="Thumbnails" href="?view=thumbnail" icon="picture" />
+			<b:navLink value="Images" href="?view=image" icon="picture" />
 			<b:navLink value="Alerts" href="?view=alert" icon="list-alt" />
 			<b:navLink value="Progress Bars" href="?view=progress" icon= "tasks" />
 			<b:navLink value="Panels" href="?view=panel" />
@@ -43,7 +43,7 @@
 
      	
 		<b:dropMenu value="Themes" active="#IIF(url.view EQ 'theme', 1, 0)#">
-          	<b:navLink value="Default" href="?view=theme" />
+          	<b:navLink value="Default" href="?view=theme&theme=default" />
 			<b:navLink />
 			<b:navLink header="By Bootswatch"/>
 			<cfloop index="rc.i" list="Cerulean,Cosmo,Cyborg,Darkly,Flatly,Journal,Lumen,Paper,Readable,Sandstone,Simplex,Slate,Spacelab,Superhero,United,Yeti">

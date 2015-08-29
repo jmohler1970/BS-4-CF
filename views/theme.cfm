@@ -2,7 +2,7 @@
 <cfimport prefix="b" taglib="../bootstrap">
 
 
-<cfset rc.theme = url.theme>
+<cfset rc.theme = session.theme>
 
 
 
