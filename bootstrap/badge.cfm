@@ -17,9 +17,9 @@ case "start" :
   
   	param attributes.binding		= "";
 	param attributes.id			= "";
+	param attributes.look	 	= "warning";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
-	param attributes.severity 	= "warning";
 	param attributes.tooltip		= "";
 	param attributes.value		= "";
 	
@@ -34,7 +34,7 @@ case "end" :
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.text = xmlformat(evaluate("caller.rc.#attributes.binding#"));
           
      
-								variables.result &= '<span class="badge badge-#lcase(attributes.severity)#"';
+								variables.result &= '<span class="badge badge-#lcase(attributes.look)#"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';							
 	if(attributes.tooltip    != "")    variables.result &= ' title="#attributes.tooltip#"';							
 								variables.result &= '>';

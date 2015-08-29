@@ -25,7 +25,7 @@ case "start" :
 	if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";
 	
 	variables.myClass = "";
-     if(attributes.look		!= "")	variables.myClass &= '#attributes.look# ';	
+     if(attributes.look		!= "")	variables.myClass &= '#lcase(attributes.look)# ';	
      if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';
      
      

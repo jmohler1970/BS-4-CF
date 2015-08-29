@@ -476,7 +476,7 @@
        <td><b:commandLink action="##" look="link" value="Link"  size="xs"/></td>
        
        <td><code>look="link"</code></td>
-       <td>Button that looks like a link <!--- as opposed to a link that looks like a button ---></td>
+       <td>A link that looks like a link. No button class are applied</td>
    </tr>
 
 </tbody>

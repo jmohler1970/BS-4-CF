@@ -141,7 +141,7 @@ rc.qryData.AddRow([
 		</tr>
 		<tr>
 			<td>look</td>
-			<td>true</td>
+			<td>(none)</td>
 			<td>This for contextual classes</td>
 		</tr>
 		<tr>
@@ -222,7 +222,7 @@ rc.qryData.AddRow([
 		</tr>
 		<tr>
 			<td>look</td>
-			<td>true</td>
+			<td>(none)</td>
 			<td>This for contextual classes</td>
 		</tr>
 		<tr>

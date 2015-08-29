@@ -38,7 +38,7 @@ case "start" :
      
 case "end" :     
      
-	   							variables.result &= '<div class="panel panel-#attributes.look#';
+	   							variables.result &= '<div class="panel panel-#lcase(attributes.look)#';
 	if(attributes.styleClass != "") 	variables.result &= ' #attribites.styleClass#';						
 	   							variables.result &= '"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';

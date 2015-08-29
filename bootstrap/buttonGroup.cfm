@@ -19,6 +19,7 @@ case "start" :
 
 	param attributes.id			= "";
 	param attributes.justified	= false;
+	param attributes.look		= ""; // this is the default unless over ridden 
 	param attributes.name		= "";
 	param attributes.orientation 	= "horizontal";
 	param attributes.processed 	= true;
@@ -50,10 +51,11 @@ case "end" :
 
 	for(variables.myRow = 1; variables.myRow <= thisTag.qryOption.recordcount; variables.myRow++)	{							
 
-		if(thisTag.qryOption.id[variables.myRow] == "auto")	QuerySetCell(thisTag.qryOption, "id", "auto_" & left(createUUID(), 10), variables.myRow);	
-	
-		
-													variables.result &= '<label class="btn btn-#thisTag.qryOption.look[variables.myRow]# ';
+		variables.mylook = thisTag.qryOption.look[variables.myRow] == "" ? attributes.look : thisTag.qryOption.look[variables.myRow];		
+
+		if(thisTag.qryOption.id[variables.myRow] == "auto")	QuerySetCell(thisTag.qryOption, "id", "auto_" & left(createUUID(), 10), variables.myRow);
+			
+													variables.result &= '<label class="btn btn-#lcase(variables.myLook)# ';
 		
 		if(thisTag.qryOption.selected[variables.myRow])		variables.result &= ' active';
 													variables.result &= '"';

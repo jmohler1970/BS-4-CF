@@ -199,7 +199,7 @@
 <b:jumbotron tight="true">
 	<b:buttonGroup list="true" pull="right">
 		<b:commandLink action="##" icon="user" value="James Mohler" />
-		<b:commandLink action="##" icon="envelope">News <b:badge severity="success" value="3" /></b:commandLink>
+		<b:commandLink action="##" icon="envelope">News <b:badge look="success" value="3" /></b:commandLink>
 		<b:commandLink action="##" icon="log-out" />
 	</b:buttonGroup>
 	

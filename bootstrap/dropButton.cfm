@@ -25,7 +25,7 @@ case "start" :
 	break;
      
 case "end" : 
-	variables.result &= crlf & '<a class="btn btn-#attributes.look# dropdown-toggle" ';
+	variables.result &= crlf & '<a class="btn btn-#lcase(attributes.look)# dropdown-toggle" ';
 	variables.result &= 'data-toggle="dropdown" role="button">#attributes.value# <b class="caret"></b></a>';  
 	variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
 	variables.result &= crlf & thisTag.generatedContent;

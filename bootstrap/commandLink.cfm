@@ -64,7 +64,7 @@ case "end" :
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 
 	if(attributes.look == 'link')					variables.result &= '<a class="';				// we don't do anything special so that link look like links
-	if(attributes.look != 'link')					variables.result &= '<a class="btn btn-#attributes.look#';
+	if(attributes.look != 'link')					variables.result &= '<a class="btn btn-#lcase(attributes.look)#';
 	if(attributes.disabled)						variables.result &= ' disabled';
 	if(attributes.dropdown)   					variables.result &= ' datatoggle';
 	if(attributes.size 		!= "")				variables.result &= ' btn-#attributes.size#';

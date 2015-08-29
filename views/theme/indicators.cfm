@@ -17,7 +17,7 @@
      
             <h2>Alerts</h2>
             
-            <b:alert severity="warning" closeable="true">
+            <b:alert look="warning" closeable="true">
   	          <h4>Warning!</h4>
                <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, <a href="#" class="alert-link">vel scelerisque nisl consectetur et</a>.</p>
             </b:alert>
@@ -26,16 +26,16 @@
 </b:row>
 <b:row>
 	<b:column span="4">
-		<b:alert severity="danger" closeable="true"><strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.</b:alert>
+		<b:alert look="danger" closeable="true"><strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.</b:alert>
 	</b:column>
      
      <b:column span="4">
-     	<b:alert severity="success" closeable="true"><strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.</b:alert>
+     	<b:alert look="success" closeable="true"><strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.</b:alert>
      </b:column>
 
      
      <b:column span="4">
-		<b:alert severity="info" closeable="true"> <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.</b:alert>
+		<b:alert look="info" closeable="true"> <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.</b:alert>
      </b:column>
 </b:row>     
 
@@ -44,11 +44,11 @@
       
           <h2>Labels</h2>
           <b:label value="Default" />
-          <b:label value="Primary"	severity="primary" />
-          <b:label value="Success"	severity="success" />
-          <b:label value="Warning"	severity="warning" />
-          <b:label value="Danger"	severity="danger" />
-          <b:label value="Info"	severity="info" />
+          <b:label value="Primary"	look="primary" />
+          <b:label value="Success"	look="success" />
+          <b:label value="Warning"	look="warning" />
+          <b:label value="Danger"	look="danger" />
+          <b:label value="Info"	look="info" />
           	
             
 	</b:column>

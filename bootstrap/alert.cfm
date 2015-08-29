@@ -17,9 +17,9 @@ case "start" :
   
 	param attributes.closable	= false;
 	param attributes.id			= "";
+	param attributes.look		= "warning";
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
-	param attributes.severity	= "warning";
 	param attributes.title		= "";
 	param attributes.tooltip		= "";
      
@@ -28,7 +28,7 @@ case "start" :
      
 case "end" :     
      
-	   							variables.result &= '<div class="alert alert-#attributes.severity#';
+	   							variables.result &= '<div class="alert alert-#lcase(attributes.look)#';
 	if(attributes.closable)			variables.result &= ' alert-dismissible';  							
 	   							variables.result &= '"';
 	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';

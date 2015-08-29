@@ -41,6 +41,12 @@
 			<td>Pass through of HTML <code>id=</code>.</td>
 		</tr>
 		<tr>
+			<td>look</td>
+			<td>warning for b:badge<br />
+				default for b:label</td>
+			<td>This is forces to lower case. ColdFusion is case insensitive and this allows that pattern to continue</td>
+		</tr>
+		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
@@ -49,12 +55,6 @@
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-		</tr>
-		<tr>
-			<td>severity</td>
-			<td>warning for b:badge<br />
-				default for b:label</td>
-			<td>Like look on other tags. This is forces to lower case. ColdFusion is case insensitive and this allows that pattern to continue</td>
 		</tr>
 		<tr>
 			<td>style</td>
@@ -96,13 +96,13 @@
 
 <!--- Lets load up a query --->
 <cfscript>
-rc.qryData = QueryNew("Severity,Badge,Severity2,Badge2");
+rc.qryData = QueryNew("Look, Badge, Look2, Badge2");
 
 
 rc.qryData.AddRow([
-	{Severity = "default", 	Badge = 1,  Severity2 = "success", badge2 = 7 },
-	{Severity = "info", 	Badge = 15, Severity2 = "primary", badge2 = 4 },
-	{Severity = "warning", 	Badge = 7,  Severity2 = "danger",  badge2 = 3 }
+	{Look = "default", 	Badge = 1,  Look2 = "success", badge2 = 7 },
+	{Look = "info", 	Badge = 15, Look2 = "primary", badge2 = 4 },
+	{Look = "warning", 	Badge = 7,  Look2 = "danger",  badge2 = 3 }
 	]
 	); 
 </cfscript>
@@ -116,9 +116,9 @@ rc.qryData.AddRow([
 	<tbody>
 		<cfoutput query="rc.qryData">
 			<tr>
-				<td><b:label value="#severity#" severity="#severity#" /></td>
+				<td><b:label value="#look#" look="#look#" /></td>
 				<td><b:badge value="#badge#" /></td>
-				<td><b:label value="#severity2#" severity="#severity2#" /></td>
+				<td><b:label value="#look2#" look="#look2#" /></td>
 				<td><b:badge value="#badge2#" /></td>
 			</tr>
 		</cfoutput>	

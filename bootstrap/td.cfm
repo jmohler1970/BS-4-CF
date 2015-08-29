@@ -31,7 +31,7 @@ case "start" :
 
 	variables.myClass = "";
 	if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';
-	if(attributes.look		!= "")	variables.myClass &= '#attributes.look# ';
+	if(attributes.look		!= "")	variables.myClass &= '#lcase(attributes.look)# ';
 	switch(attributes.hidden)	{
 		case "md" :					variables.myClass &= 'hidden-xs hidden-sm  hidden-md ';	break;
 		case "sm" :					variables.myClass &= 'hidden-xs hidden-sm ';				break;

@@ -38,7 +38,7 @@ case "end" :
 	
 								variables.result &= '<div class="progress">';
 								variables.result &= variables.crlf & '<div class="progress-bar';
-	if(attributes.look		!= "")	variables.result &= ' progress-bar-#attributes.look#';
+	if(attributes.look		!= "")	variables.result &= ' progress-bar-#lcase(attributes.look)#';
 	if(attributes.stripped)			variables.result &= ' progress-bar-striped';
 	if(attributes.animated)			variables.result &= ' active';
 	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		

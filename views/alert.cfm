@@ -48,6 +48,11 @@
 			<td>Pass through of HTML <code>id=</code>.</td>
 		</tr>
 		<tr>
+			<td>look</td>
+			<td>warning</td>
+			<td>This uses the look because it is assumed that this is message after an action has happened.</td>
+		</tr>
+		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
@@ -57,11 +62,7 @@
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
 		</tr>
-		<tr>
-			<td>severity</td>
-			<td>warning</td>
-			<td>This is like <code>look=</code> on many other tags. This uses the severity attribute because it is assumed that this is message after an action has happened.</td>
-		</tr>
+
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
@@ -85,14 +86,14 @@
 
 <h2>Example</h2>
 
-<b:alert severity="success"><strong>Well done!</strong> You successfully read this important alert message.</b:alert>
-<b:alert severity="info"><strong>Heads up!</strong> This alert needs your attention, but it's not super important. </b:alert>
-<b:alert severity="warning"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
-<b:alert severity="danger"><strong>Oh snap!</strong> Change a few things up and try submitting again. </b:alert>
-<b:alert severity="info" title="Heads up!">This alert needs your attention, but it's not super important. </b:alert>
+<b:alert look="success"><strong>Well done!</strong> You successfully read this important alert message.</b:alert>
+<b:alert look="info"><strong>Heads up!</strong> This alert needs your attention, but it's not super important. </b:alert>
+<b:alert look="warning"><strong>Warning!</strong> Best check yo self, you're not looking too good. </b:alert>
+<b:alert look="danger"><strong>Oh snap!</strong> Change a few things up and try submitting again. </b:alert>
+<b:alert look="info" title="Heads up!">This alert needs your attention, but it's not super important. </b:alert>
 
 
-<h3>Dismissable</h3>
+<h3>Dismissible</h3>
 
-<b:alert severity="info" title="Heads up!" closable="true">This alert needs your attention, but it's not super important. </b:alert>
+<b:alert look="info" title="Heads up!" closable="true">This alert needs your attention, but it's not super important. </b:alert>
 

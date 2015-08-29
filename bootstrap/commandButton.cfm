@@ -60,7 +60,7 @@ case "end" :
 	if(attributes.value != "")											thisTag.generatedContent = xmlFormat(attributes.value);
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 	
-											variables.result &= '<button type="#attributes.type#" class="btn btn-#attributes.look#';
+											variables.result &= '<button type="#attributes.type#" class="btn btn-#lcase(attributes.look)#';
 	if(attributes.size		!= "")				variables.result &= ' btn-#attributes.size#';
 	if(attributes.styleClass	!= "")				variables.result &= ' #attributes.styleClass#';
 											variables.result &= '"';

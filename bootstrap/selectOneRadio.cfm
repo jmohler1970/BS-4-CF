@@ -46,7 +46,7 @@ case "end" :
 		if(thisTag.qryOption.look[variables.myRow] == "" && attributes.square)	variables.result &= '<div class="checkbox checkbox';
 		else												variables.result &= '<div class="#variables.preClass#';
 		
-		if(thisTag.qryOption.look[variables.myRow]		!= "")	variables.result &= ' #variables.preClass#-#thisTag.qryOption.look[variables.myRow]#';
+		if(thisTag.qryOption.look[variables.myRow]		!= "")	variables.result &= ' #variables.preClass#-#lcase(thisTag.qryOption.look[variables.myRow])#';
 		if(attributes.inline)								variables.result &= ' #variables.preClass#-inline';
 														variables.result &= '"';
 	

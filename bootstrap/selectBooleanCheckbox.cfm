@@ -40,7 +40,7 @@ case "end" :
 		
 								variables.result &= '<div class="checkbox';
 	if(attributes.circle)			variables.result &= ' checkbox-circle';						
-	if(attributes.look    	!= "")    variables.result &= ' checkbox-#attributes.look#';
+	if(attributes.look    	!= "")    variables.result &= ' checkbox-#lcase(attributes.look)#';
 	if(attributes.inline)			variables.result &= ' checkbox-inline';
 	   							variables.result &= '"';
 
