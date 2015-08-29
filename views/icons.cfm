@@ -45,6 +45,11 @@
 			<td>Variable that controls what icon to show</td>
 		</tr>
 		<tr>
+			<td>data-*</td>
+			<td>(none)</td>
+			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+		</tr>
+		<tr>
 			<td>flip</td>
 			<td>(none)</td>
 			<td>For <code>&lt;b:iconAwesome&gt;, the icon can be flipped horizontally or vertically. H, V, and blank are valid values</td>
@@ -60,14 +65,14 @@
 			<td>What colors should this have.</td>
 		</tr>
 		<tr>
-			<td>onClick</td>
+			<td>ng-*</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>onClick=</code>.</td>
+			<td>Pass through of all AngularJS attributes</td>
 		</tr>
 		<tr>
-			<td>onMouseOver</td>
+			<td>on*</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>onMouseOver=</code>.</td>
+			<td>Pass through of all Mouse/Pointer events.</td>
 		</tr>
 		<tr>
 			<td>processed</td>
