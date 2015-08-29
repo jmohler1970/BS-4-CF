@@ -27,11 +27,6 @@
 	
 	<tbody>
 		<tr>
-			<td>action</td>
-			<td>(none)</td>
-			<td>For <code>b:commandLink</code> to creates a link to action. This is a pass through of HTML <code>href=</code>.</td>
-		</tr>
-		<tr>
 			<td>ajax</td>
 			<td>(none)</td>
 			<td>Reserved for future use</td>
@@ -91,9 +86,7 @@
 		<tr>
 			<td>look</td>
 			<td>default</td>
-			<td>Valid value for buttons are "default", "primary", "success", "info", "warning", "danger", "link". 
-				If "Link" is chosen on <code>&lt;b:commandLink&gt;</code>, then all the button classes are removed. <!-- I will let you figure out why --></code>
-			</td>
+			<td>Valid value for buttons are "default", "primary", "success", "info", "warning", "danger", "link".</td>
 		</tr>
 		<tr>
 			<td>ng-*</td>
@@ -158,6 +151,50 @@
 	</tbody>
 	</b:table>
 </b:panel>
+
+
+
+
+<b:panel look="info" title="Attributes of &lt;b:commandLink&gt; only">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<b:th text="nowrap">Default value</b:th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<tr>
+			<td>action</td>
+			<td>(none)</td>
+			<td>For <code>b:commandLink</code> to creates an absolute link. 
+				To use this tag, you must set <code>application.stBootstrap.actionRoot</code>.
+			</td>
+		</tr>
+		
+		<tr>
+			<td>href</td>
+			<td>(none)</td>
+			<td>For <code>b:commandLink</code> to creates a link to action. This is a pass through of HTML <code>href=</code>.</td>
+		</tr>
+		<tr>
+			<td>look</td>
+			<td>default</td>
+			<td>Valid value for buttons are "default", "primary", "success", "info", "warning", "danger", "link". 
+				If "Link" is chosen, then all the button classes are removed. <!-- I will let you figure out why --></code>
+			</td>
+		</tr>
+		
+	</tbody>
+	</b:table>
+</b:panel>
+
+<p>If both <code>id=</code>, <code>action=</code>, and <code>href=</code> are all blank or not set, 
+	then a link will be created to <code>application.stBootstrap.actionRoot</code>.
+</p>
+
 
 
 <h3>Where does content come from?</h3>
@@ -398,82 +435,82 @@
 </thead>
 <tbody>
    <tr>
-       <td><b:commandLink action="##" value="Default" icon="map-marker" size="lg" /></td>
-       <td><b:commandLink action="##" value="Default" icon="map-marker" /></td>
-       <td><b:commandLink action="##" value="Default" icon="map-marker" size="sm" /></td>
-       <td><b:commandLink action="##" value="Default" icon="map-marker" size="xs" /></td>
+       <td><b:commandLink href="##" value="Default" icon="map-marker" size="lg" /></td>
+       <td><b:commandLink href="##" value="Default" icon="map-marker" /></td>
+       <td><b:commandLink href="##" value="Default" icon="map-marker" size="sm" /></td>
+       <td><b:commandLink href="##" value="Default" icon="map-marker" size="xs" /></td>
        
        <td>missing</td>
        <td>With Glyphicon</td>
    </tr>
    <tr>
-       <td><b:commandLink action="##" value="Default" icon="map-marker" iconAlign="right" size="lg" /></td>
-       <td><b:commandLink action="##" value="Default" icon="map-marker" iconAlign="right" /></td>
-       <td><b:commandLink action="##" value="Default" icon="map-marker" iconAlign="right" size="sm" /></td>
-       <td><b:commandLink action="##" value="Default" icon="map-marker" iconAlign="right" size="xs" /></td>
+       <td><b:commandLink href="##" value="Default" icon="map-marker" iconAlign="right" size="lg" /></td>
+       <td><b:commandLink href="##" value="Default" icon="map-marker" iconAlign="right" /></td>
+       <td><b:commandLink href="##" value="Default" icon="map-marker" iconAlign="right" size="sm" /></td>
+       <td><b:commandLink href="##" value="Default" icon="map-marker" iconAlign="right" size="xs" /></td>
        
        <td>missing</td>
        <td>With Glyphicon that is aligned right</td>
    </tr>
    <tr>
-       <td><b:commandLink action="##" value="Default" size="lg" /></td>
-       <td><b:commandLink action="##" value="Default" /></td>
-       <td><b:commandLink action="##" value="Default" size="sm" /></td>
-       <td><b:commandLink action="##" value="Default" size="xs" /></td>
+       <td><b:commandLink href="##" value="Default" size="lg" /></td>
+       <td><b:commandLink href="##" value="Default" /></td>
+       <td><b:commandLink href="##" value="Default" size="sm" /></td>
+       <td><b:commandLink href="##" value="Default" size="xs" /></td>
        
        <td>missing</td>
        <td>Standard gray button with gradient</td>
    </tr>
    <tr>
-       <td><b:commandLink action="##" value="Primary" look="primary"  size="lg"/></td>
-       <td><b:commandLink action="##" value="Primary" look="primary"/></td>
-       <td><b:commandLink action="##" value="Primary" look="primary" size="sm"/></td>
-       <td><b:commandLink action="##" value="Primary" look="primary" size="xs"/></td>
+       <td><b:commandLink href="##" value="Primary" look="primary"  size="lg"/></td>
+       <td><b:commandLink href="##" value="Primary" look="primary"/></td>
+       <td><b:commandLink href="##" value="Primary" look="primary" size="sm"/></td>
+       <td><b:commandLink href="##" value="Primary" look="primary" size="xs"/></td>
        
        <td><code>look="primary"</code></td>
        <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
    </tr>
    <tr>
-       <td><b:commandLink action="##" look="info" value="Info"  size="lg"/></td>
-       <td><b:commandLink action="##" look="info" value="Info"/></td>
-       <td><b:commandLink action="##" look="info" value="Info" size="sm"/></td>
-       <td><b:commandLink action="##" look="info" value="Info" size="xs"/></td>
+       <td><b:commandLink href="##" look="info" value="Info"  size="lg"/></td>
+       <td><b:commandLink href="##" look="info" value="Info"/></td>
+       <td><b:commandLink href="##" look="info" value="Info" size="sm"/></td>
+       <td><b:commandLink href="##" look="info" value="Info" size="xs"/></td>
        
        <td><code>look="info"</code></td>
        <td>Used as an alternative to the default styles</td>
    </tr>
    <tr>
-       <td><b:commandLink action="##" look="success" value="Success" size="lg"/></td>
-       <td><b:commandLink action="##" look="success" value="Success"/></td>
-       <td><b:commandLink action="##" look="success" value="Success" size="sm"/></td>
-       <td><b:commandLink action="##" look="success" value="Success" size="xs"/></td>
+       <td><b:commandLink href="##" look="success" value="Success" size="lg"/></td>
+       <td><b:commandLink href="##" look="success" value="Success"/></td>
+       <td><b:commandLink href="##" look="success" value="Success" size="sm"/></td>
+       <td><b:commandLink href="##" look="success" value="Success" size="xs"/></td>
        
        <td><code>look="success"</code></td>
        <td>Indicates a successful or positive action</td>
    </tr>
    <tr>
-       <td><b:commandLink action="##" look="warning" value="Warning" size="lg"/></td>
-       <td><b:commandLink action="##" look="warning" value="Warning"/></td>
-       <td><b:commandLink action="##" look="warning" value="Warning" size="sm"/></td>
-       <td><b:commandLink action="##" look="warning" value="Warning" size="xs"/></td>
+       <td><b:commandLink href="##" look="warning" value="Warning" size="lg"/></td>
+       <td><b:commandLink href="##" look="warning" value="Warning"/></td>
+       <td><b:commandLink href="##" look="warning" value="Warning" size="sm"/></td>
+       <td><b:commandLink href="##" look="warning" value="Warning" size="xs"/></td>
        
        <td><code>look="warning"</code></td>
        <td>Indicates caution should be taken with this action</td>
    </tr>
    <tr>
-       <td><b:commandLink action="##" look="danger" value="Danger" size="lg"/></td>
-       <td><b:commandLink action="##" look="danger" value="Danger"/></td>
-       <td><b:commandLink action="##" look="danger" value="Danger" size="sm"/></td>
-       <td><b:commandLink action="##" look="danger" value="Danger" size="xs"/></td>
+       <td><b:commandLink href="##" look="danger" value="Danger" size="lg"/></td>
+       <td><b:commandLink href="##" look="danger" value="Danger"/></td>
+       <td><b:commandLink href="##" look="danger" value="Danger" size="sm"/></td>
+       <td><b:commandLink href="##" look="danger" value="Danger" size="xs"/></td>
        
        <td><code>look="danger"</code></td>
        <td>Indicates a dangerous or potentially negative action</td>
    </tr>
    <tr>
-       <td><b:commandLink action="##" look="link" value="Link"  size="lg" /></td>
-       <td><b:commandLink action="##" look="link" value="Link" /></td>
-       <td><b:commandLink action="##" look="link" value="Link"  size="sm"/></td>
-       <td><b:commandLink action="##" look="link" value="Link"  size="xs"/></td>
+       <td><b:commandLink href="##" look="link" value="Link"  size="lg" /></td>
+       <td><b:commandLink href="##" look="link" value="Link" /></td>
+       <td><b:commandLink href="##" look="link" value="Link"  size="sm"/></td>
+       <td><b:commandLink href="##" look="link" value="Link"  size="xs"/></td>
        
        <td><code>look="link"</code></td>
        <td>A link that looks like a link. No button class are applied</td>

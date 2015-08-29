@@ -3,8 +3,21 @@
 
 component	{
 	
-this.name="bs-4-cf-3";	
-this.sessionManagement = true;	
+this.name="bs-4-cf-5";
+this.applicationManagement = true;
+this.sessionManagement = true;
+
+
+function onApplicationStart()	{
+application.stBootstrap = {
+	
+	actionRoot 	= cgi.script_name,
+	stImageLibrary	= {
+			assets = "/assets"
+			}		
+		};
+	
+	}
 	
 function onRequestStart()	{
 	

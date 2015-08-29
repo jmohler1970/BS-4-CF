@@ -15,7 +15,7 @@
 			<b:navLink value="Forms" href="?view=forms" />
 			<b:navLink value="Select, Checkbox, Radio" href="?view=select" />
 			<b:navLink value="Awesome Bootstrap Checkboxes" href="?view=awesomecheckbox" />
-			<b:navLink value="Buttons" href="?view=buttons" />
+			<b:navLink value="Buttons & Links" href="?view=buttons" />
 			<b:navLink value="Helper classes" href="?view=helper" />
 		</b:dropMenu>
 		
