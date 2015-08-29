@@ -26,7 +26,7 @@
 			<b:navLink value="Navs" href="?view=nav" />
 			<b:navLink value="Labels & Badges" href="?view=label" />
 			<b:navLink value="Jumbotron" href="?view=jumbotron" />
-			<b:navLink value="Images" href="?view=image" icon="picture" />
+			<b:navLink value="Images, Stylesheet, & JavaScript" href="?view=image" icon="picture" />
 			<b:navLink value="Alerts" href="?view=alert" icon="list-alt" />
 			<b:navLink value="Progress Bars" href="?view=progress" icon= "tasks" />
 			<b:navLink value="Panels" href="?view=panel" />

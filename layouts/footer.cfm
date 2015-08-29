@@ -1,4 +1,4 @@
-
+<cfimport prefix="b" taglib="../bootstrap">
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -15,4 +15,4 @@
 	</small>	
 </p>
 
-<script src="./assets/application.js"></script>
+<b:outputScript name="application.js" />

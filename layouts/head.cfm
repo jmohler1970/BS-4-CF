@@ -1,3 +1,4 @@
+<cfimport prefix="b" taglib="../bootstrap">
 
 
 <title>BS-4-CF - Bootstrap tags for ColdFusion</title>
@@ -34,8 +35,9 @@
 
 
 
-<style type="text/css">
+<b:outputStyleSheet name="application.css" processed="#IIF(url.view EQ 'image', 1, 0)#" />
 
+<b:outputStyleSheet>
 h1,h2	{
 padding-top: 50px;	
 	
@@ -53,5 +55,5 @@ padding-top: 50px;
 	border:1px solid ##ddd;
 	border:1px solid rgba(86,61,124,.2)
 }
-</style>
+</b:outputStyleSheet>
 	

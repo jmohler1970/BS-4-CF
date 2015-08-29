@@ -21,10 +21,11 @@ case "start" :
 	param attributes.binding		= "";
 	param attributes.height		= ""; //creates CSS
      param attributes.id			= "";
+     param attributes.library		= "default";
      param attributes.processed	= true;
 	param attributes.rendered 	= true;
 	param attributes.shape		= ""; //rounded, circle, thumbnail
-	param attributes.src;
+	param attributes.name;
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
@@ -57,7 +58,7 @@ case "end" :
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
 	
-								variables.result &= ' src="#attributes.src#"';
+								variables.result &= ' src="#application.Bootstrap.ImageLibrary[attributes.library]##attributes.name#"';
 	
 	// start style
 	if(attributes.style		!= "" || attributes.height != "" || attributes.width != "")	{
