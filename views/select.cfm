@@ -693,6 +693,21 @@ disabled,display,group,id,look,value,selected,tooltip
 </form>
 
 
+<h3>Look set across all</h3>
+<p>These are all set to info</p>
+
+<b:selectOneRadio name="myRadio3" look="info">
+	<b:selectItem value="C" display="Cat"		id="auto"	selected="true" />
+	<b:selectItem value="D" display="Dog"		id="auto"	/>
+	<b:selectItem value="B" display="Bird"		id="auto"	/>
+	<b:selectItem value="F" display="Fish"		id="auto"	/>
+	<b:selectItem value="R" display="Rat"		id="auto"	/>
+	<b:selectItem value="H" display="Hamster"	id="auto"	/>
+</b:selectOneRadio>
+
+
+<h3>Square Radio</h3>
+
 <p>Now with square radio buttons. (Work in progress, doesn't quite work right)</p>
 
 <b:selectOneRadio name="myRadio1" square="true" inline="true">
@@ -706,7 +721,8 @@ disabled,display,group,id,look,value,selected,tooltip
 
 
 
-<h2>Yet more examples</h2>
+
+<h3>Yet more examples</h3>
 <b:table>
 <thead>
 	<tr>

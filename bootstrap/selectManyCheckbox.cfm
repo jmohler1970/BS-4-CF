@@ -22,6 +22,7 @@ case "start" :
 
 	param attributes.disabled		= false;
 	param attributes.inline			= false;
+	param attributes.look			= "";
 	param attributes.name;
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
@@ -37,6 +38,8 @@ case "end" :
 
 
 	for(variables.myRow = 1; variables.myRow <= thisTag.qryOption.recordcount; variables.myRow++)	{
+		
+		variables.mylook = thisTag.qryOption.look[variables.myRow] == "" ? attributes.look : thisTag.qryOption.look[variables.myRow];
 
 		
 		if(thisTag.qryOption.id[variables.myRow] == "auto")	QuerySetCell(thisTag.qryOption, "id", "auto_" & left(createUUID(), 10), variables.myRow);
@@ -46,7 +49,7 @@ case "end" :
 		if(thisTag.qryOption.look[variables.myRow] == "" && attributes.circle)	variables.result &= '<div class="checkbox checkbox-circle';
 		else												variables.result &= '<div class="checkbox';
 		
-		if(thisTag.qryOption.look[variables.myRow]		!= "")	variables.result &= ' #variables.preClass#-#lcase(thisTag.qryOption.look[variables.myRow])#';
+		if(variables.myLook							!= "")	variables.result &= ' #variables.preClass#-#lcase(variables.myLook)#';
 		if(attributes.inline)								variables.result &= ' #variables.preClass#-inline';
 														variables.result &= '"';
 	
