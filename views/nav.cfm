@@ -111,11 +111,6 @@
 			<td>Aligns icon</td>
 		</tr>		
 		<tr>
-			<td>iconAwesome</td>
-			<td>(none)</td>
-			<td>Adds Font Awesome icon</td>
-		</tr>
-		<tr>
 			<td>header</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>.</td>
@@ -129,6 +124,11 @@
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>.</td>
+		</tr>
+		<tr>
+			<td>library</td>
+			<td>default</td>
+			<td>Which icon library should be used? This is set via: <code>application.Bootstrap.IconLibrary[attributes.library]</code>. This site uses Glyphicons</td>
 		</tr>
 		<tr>
 			<td>ng-*</td>

@@ -22,10 +22,10 @@ case "start" :
 	param attributes.fragment	= false;
 	param attributes.icon		= "";
 	param attributes.iconAlign	= "left";
-	param attributes.iconAwesome	= "";
 	param attributes.id			= "";
 	param attributes.header		= "";
 	param attributes.href		= "";
+	param attributes.library		= "default"; //for icons
 	param attributes.processed	= true;
 	param attributes.rendered 	= true;
 	param attributes.value		= "";
@@ -72,12 +72,15 @@ case "end" :
 		
 		for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
 		
- 												variables.result &= '>';
- 		if(attributes.icon != "" && attributes.iconAlign == "left")				variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';
- 		if(attributes.iconAwesome 	!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="fa fa-#attributes.iconAwesome#"></i> ';
- 																	variables.result &= thisTag.generatedContent; // pass through of content
- 		if(attributes.icon != "" && attributes.iconAlign == "right")			variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';
- 		if(attributes.iconAwesome 	!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="fa fa-#attributes.iconAwesome#"></i>';						
+												variables.result &= '>';
+		if(attributes.icon != "" && attributes.iconAlign == "left")		{
+												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
+												}		
+																	variables.result &= thisTag.generatedContent; // pass through of content
+		if(attributes.icon != "" && attributes.iconAlign == "right")	{
+												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
+												}
+			
 												variables.result &= '</a>';
 												variables.result &= '</li>';
 												variables.result &= variables.crlf;
