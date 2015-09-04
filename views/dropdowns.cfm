@@ -94,6 +94,50 @@
 </b:buttonGroup>
 
 
+<p>&nbsp;</p>
+<h3>Vertical oriented</h3>
+
+
+<b:buttonGroup orientation="vertical">
+    <b:button look="success" value="51" />
+    <b:button look="primary" icon="phone" value="" />
+    <b:dropButton look="warning" value="DropButton">
+            <li><a href="#">Action</a></li>
+		  <li><a href="#">Another action</a></li>
+		  <li><a href="#">Something else here</a></li>
+		  <li><a href="#">Separated link</a></li>
+    </b:dropButton>
+</b:buttonGroup>
+
+
+<p>&nbsp;</p>
+<h3>With drop up</h3>
+
+<b:buttonGroup orientation="up">
+    <b:button look="success" value="51" />
+    <b:button look="primary" icon="phone" value="" />
+    <b:dropButton look="warning" value="DropButton">
+            <li><a href="#">Action</a></li>
+		  <li><a href="#">Another action</a></li>
+		  <li><a href="#">Something else here</a></li>
+		  <li><a href="#">Separated link</a></li>
+    </b:dropButton>
+</b:buttonGroup>
+
+<p>&nbsp;</p>
+<h3>With Disabled and header</h3>
+
+<b:buttonGroup>
+	<b:dropButton value="Dropdown">
+		<b:navLink href="##mixtape3" value="Mix tape" />
+		<b:navLink href="##action3" value="Action" disabled="true" />
+		<b:navLink />
+		<b:navLink header="Completely different section" />
+		<b:navLink href="##" value="Something else here" />
+	</b:dropButton>
+</b:buttonGroup>
+
+
 
 <p>&nbsp;</p>
 <h3>With nav links</h3>
@@ -111,6 +155,10 @@
 </b:buttonGroup>
 
 <p>Also see tabs<p>
+	
+	
+
+	
 
 
 <h3>Invalid Nesting</h3>

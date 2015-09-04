@@ -61,13 +61,13 @@ case "end" :
      
  	if (thisTag.generatedContent != "")				{
      											variables.result &= '<li';
-     	if(attributes.active)						variables.result &= ' class="active"'; 						
-     											variables.result &= '>';
+     	if(attributes.active)						variables.result &= ' class="active"';
+     	if(attributes.disabled)						variables.result &= ' class="disabled"';						  			
+												variables.result &= '>';
 	
 												variables.result &= '<a href="#attributes.href#';
 		if(attributes.fragment != false)				variables.result &= '###attributes.fragment#';
 												variables.result &= '"';
-		if(attributes.disabled)						variables.result &= ' class="disabled"';						  			
 		if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
 		
 		for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
