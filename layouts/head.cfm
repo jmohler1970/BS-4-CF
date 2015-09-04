@@ -12,11 +12,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <cfoutput>
-<cfif session.theme EQ "default">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-<cfelse>	
-	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/#lcase(session.theme)#/bootstrap.min.css" rel="stylesheet">
-</cfif>
+<cfswitch expression="#session.theme#">
+	<cfcase value="default">
+		<b:outputStylesheet />
+	</cfcase>
+	<cfcase value="4alpha">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
+	</cfcase>
+	<cfdefaultcase>
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/#lcase(session.theme)#/bootstrap.min.css" rel="stylesheet">
+	</cfdefaultcase>	
+</cfswitch>
 </cfoutput>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
@@ -26,11 +32,20 @@
 
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+<cfswitch expression="#session.theme#">
+	<cfcase value="4alpha">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+	</cfcase>
+	<cfdefaultcase>
+		<b:outputScript />
+	</cfdefaultcase>
+</cfswitch>		
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
-
-
 <script src="https://cdn.datatables.net/1.10.8/js/dataTables.bootstrap.min.js"></script>
 
 

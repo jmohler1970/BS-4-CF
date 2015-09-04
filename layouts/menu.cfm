@@ -5,7 +5,14 @@
 
 <b:navBar brand="BS-4-CF" brandHref="index.cfm" fixed="top">
 	<b:navbarLinks>
-		<b:navLink value="Getting Started" href="?view=getting_started" active="#IIF(url.view EQ 'getting_started', 1, 0)#" />
+	
+		<b:dropMenu value="Getting Started">
+			<b:navLink value="Introduction" href="?view=getting_started" active="#IIF(url.view EQ 'getting_started', 1, 0)#" />
+			<b:navLink value="Stylesheets & JavaScript" href="?view=ssjs" />
+			<b:navLink />
+			<b:navLink header="Bootstrap 4"/>
+			<b:navLink value="Alpha Release" href="?view=theme&theme=4alpha" />	
+		</b:dropMenu>
 	
 		
 		<b:dropMenu value="CSS" active="#ArrayContains(['grid','typography','tables','forms','select','awesomecheckbox','buttons','helper'], url.view)#">
@@ -26,7 +33,7 @@
 			<b:navLink value="Navs" href="?view=nav" />
 			<b:navLink value="Labels & Badges" href="?view=label" />
 			<b:navLink value="Jumbotron" href="?view=jumbotron" />
-			<b:navLink value="Images, Stylesheet, & JavaScript" href="?view=image" icon="picture" />
+			<b:navLink value="Images" href="?view=image" icon="picture" />
 			<b:navLink value="Alerts" href="?view=alert" icon="list-alt" />
 			<b:navLink value="Progress Bars" href="?view=progress" icon= "tasks" />
 			<b:navLink value="Panels" href="?view=panel" />

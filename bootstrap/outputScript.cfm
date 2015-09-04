@@ -16,7 +16,7 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.library		= "default";
-	param attributes.name		= "";
+	param attributes.name		= "";		// if name is blank, the library better have complete target
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.type		= "application/javascript";
@@ -26,7 +26,7 @@ case "start" :
      
 case "end" :     
      							variables.result &= crlf;
-	   							variables.result &= '<script type="#attributes.type#"';
+	   							variables.result &= '<script ';
 	   							variables.result &= ' src="' & application.Bootstrap.ScriptLibrary[attributes.library] & attributes.name & '"';
 								variables.result &= ' type="#attributes.type#"';              
 								variables.result &= '>';
