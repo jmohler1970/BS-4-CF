@@ -15,6 +15,8 @@ case "start" :
 	variables.result 	= "";
 	variables.crlf =  chr(13) & chr(10);
 	
+
+	
 	thisTag.arTab 		= [];
 	variables.currentTab = 1;
 	variables.needsJS	= false;
