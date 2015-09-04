@@ -24,6 +24,7 @@ case "start" :
 	param attributes.library		= "default";	// for icon
 	param attributes.look		= "default";
 	param attributes.name		= "";
+	param attributes.outline		= false;
 	param attributes.processed	= true;
 	param attributes.rendered	= true;
 	param attributes.rel		= "";
@@ -61,6 +62,7 @@ case "end" :
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 	
 											variables.result &= '<button type="#attributes.type#" class="btn btn-#lcase(attributes.look)#';
+	if(attributes.outline)						variables.result &= "-outline";
 	if(attributes.size		!= "")				variables.result &= ' btn-#attributes.size#';
 	if(attributes.styleClass	!= "")				variables.result &= ' #attributes.styleClass#';
 											variables.result &= '"';

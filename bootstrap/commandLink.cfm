@@ -27,6 +27,7 @@ case "start" :
 	param attributes.id			= "";
 	param attributes.library		= "default";	// for icon
 	param attributes.look	 	= "default";
+	param attributes.outline		= false;
 	param attributes.processed 	= true;
 	param attributes.rel		= "";
 	param attributes.rendered 	= true;
@@ -67,10 +68,11 @@ case "end" :
 
 	if(attributes.look == 'link')					variables.result &= '<a class="';				// we don't do anything special so that link look like links
 	if(attributes.look != 'link')					variables.result &= '<a class="btn btn-#lcase(attributes.look)#';
-	if(attributes.disabled)						variables.result &= ' disabled="disabled"';
-	if(attributes.dropdown)   					variables.result &= ' datatoggle';
-	if(attributes.size 		!= "")				variables.result &= ' btn-#attributes.size#';
-	if(attributes.styleClass != "")				variables.result &= ' #attributes.styleClass#';	
+	if(attributes.outline)						variables.result &= "-outline ";
+	if(attributes.disabled)						variables.result &= 'disabled="disabled" ';
+	if(attributes.dropdown)   					variables.result &= 'datatoggle ';
+	if(attributes.size 		!= "")				variables.result &= 'btn-#attributes.size# ';
+	if(attributes.styleClass != "")				variables.result &= '#attributes.styleClass#';	
 											variables.result &= '"';
 
 	if(attributes.href		!= "")				variables.result &= ' href="#attributes.href#"';

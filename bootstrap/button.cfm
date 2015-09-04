@@ -24,6 +24,7 @@ case "start" :
 	param attributes.lang		= "";
 	param attributes.library		= "default";	// for icon
 	param attributes.look		= "default";
+	param attributes.outline		= false;
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.role		= "button";
@@ -57,6 +58,7 @@ case "end" :
 
 
 											variables.result &= '<button type="button" class="btn btn-#lcase(attributes.look)#';
+	if(attributes.outline)						variables.result &= "-outline";
 	if(attributes.size		!= "")				variables.result &= ' btn-#attributes.size#';
 	if(attributes.styleClass	!= "")				variables.result &= ' #attributes.styleClass#';
 											variables.result &= '"';
