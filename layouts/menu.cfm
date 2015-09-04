@@ -26,7 +26,7 @@
 			<b:navLink value="Helper classes" href="?view=helper" />
 		</b:dropMenu>
 		
-		<b:dropMenu value="Components" active="#ArrayContains(['icons','dropdowns','buttonGroups','nav','label','jumbotron','thumbnail','alert','progress','panel','well','include'], url.view)#">
+		<b:dropMenu value="Components" active="#ArrayContains(['icons','dropdowns','buttonGroups','nav','label','jumbotron','thumbnail','alert','progress','panel','include'], url.view)#">
 			<b:navLink value="Icons" href="?view=icons" icon="picture" />
 		    	<b:navLink value="Dropdowns" href="?view=dropdowns" />
 			<b:navLink value="Button groups" href="?view=buttonGroups" />
@@ -36,8 +36,7 @@
 			<b:navLink value="Images" href="?view=image" icon="picture" />
 			<b:navLink value="Alerts" href="?view=alert" icon="list-alt" />
 			<b:navLink value="Progress Bars" href="?view=progress" icon= "tasks" />
-			<b:navLink value="Panels" href="?view=panel" />
-			<b:navLink value="Wells" href="?view=well" />
+			<b:navLink value="Panels & Wells" href="?view=panel" />
 			<b:navLink value="Include" href="?view=include" />
 		</b:dropMenu>
 	
