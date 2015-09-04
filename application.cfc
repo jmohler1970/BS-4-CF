@@ -3,7 +3,7 @@
 
 component	{
 	
-this.name="bs-4-cf-12";
+this.name="bs-4-cf-13";
 this.applicationManagement = true;
 this.sessionManagement = true;
 

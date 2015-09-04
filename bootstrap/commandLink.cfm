@@ -17,7 +17,7 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
 
 
-	param attributes.action		= "";	// powered by application.stBootstrap.actionRoot;
+	param attributes.action		= "";	// powered by application.Bootstrap.actionRoot;
 	param attributes.binding		= "";
 	param attributes.disabled	= false;
 	param attributes.dropdown	= false;
@@ -63,7 +63,7 @@ case "end" :
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 
 	// no target of any kind was set AND this is not an anchor
-	if((attributes.action != "" || attributes.href == "") && attributes.id == "")	attributes.href = application.stBootstrap.actionRoot & attributes.action;
+	if((attributes.action != "" || attributes.href == "") && attributes.id == "")	attributes.href = application.Bootstrap.actionRoot & attributes.action;
 
 	if(attributes.look == 'link')					variables.result &= '<a class="';				// we don't do anything special so that link look like links
 	if(attributes.look != 'link')					variables.result &= '<a class="btn btn-#lcase(attributes.look)#';

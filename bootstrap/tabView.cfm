@@ -17,7 +17,7 @@ case "start" :
 	
 	thisTag.arTab 		= [];
 	variables.currentTab = 1;
-	
+	variables.needsJS	= false;
   
 	param attributes.activeIndex	= 1;
 	param attributes.processed	= true;
@@ -43,20 +43,32 @@ case "end" :
 								variables.result &= variables.crlf & '<ul class="nav nav-tabs" role="tablist">';
 	// generate tabs
 	for (variables.tab in thisTag.arTab)	{
-								variables.result &= variables.crlf & '<li role="presentation"';
-		if (attributes.activeIndex == variables.currentTab)	variables.result &= ' class="active"';
-		if (variables.tab.disabled)	variables.result &= ' class="disabled"';
-								variables.result &= '>';
-								variables.result &= '<a';
-		if (!variables.tab.disabled)	variables.result &= ' href="###variables.tab.id#"';
-		if (!variables.tab.disabled)	variables.result &= ' aria-controls="#variables.tab.id#"';
-		if (!variables.tab.disabled)	variables.result &= ' role="#variables.tab.id#"';
-		if (!variables.tab.disabled)	variables.result &= ' data-toggle="tab"';
-		if (!variables.tab.disabled && variables.tab.dataUrl != "")	variables.result &= ' data-url="' & variables.tab.dataUrl & '"';
-								variables.result &= ' >#variables.tab.title#</a>';
-								variables.result &= '</li>';
-		variables.currentTab++;
+		if (variables.tab.title != "")	{
+									variables.result &= variables.crlf & '<li role="presentation"';
+			if (attributes.activeIndex == variables.currentTab)	variables.result &= ' class="active"';
+			if (variables.tab.disabled)	variables.result &= ' class="disabled"';
+									variables.result &= '>';
+									variables.result &= '<a';
+			if (!variables.tab.disabled)	variables.result &= ' href="###variables.tab.id#"';
+			if (!variables.tab.disabled)	variables.result &= ' aria-controls="#variables.tab.id#"';
+			if (!variables.tab.disabled)	variables.result &= ' role="#variables.tab.id#"';
+			if (!variables.tab.disabled)	variables.result &= ' data-toggle="tab"';
+			if (!variables.tab.disabled && variables.tab.dataUrl != "")	{
+									variables.needsJS = true;
+									variables.result &= ' data-url="' & variables.tab.dataUrl & '"';
+									}
+									variables.result &= ' >#variables.tab.title#</a>';
+									variables.result &= '</li>';
+			variables.currentTab++;
+			} // end if title exists
 		} // end for
+		
+		if (trim(thisTag.generatedContent) != "")	{
+								variables.result &= variables.crlf & '<li role="presentation" class="dropdown"><!-- Content passthrough -->';
+								variables.result &= thisTag.generatedContent;
+								variables.result &= '</li>';
+								}	
+						
 								variables.result &= variables.crlf & '</ul>';
 
 
@@ -66,26 +78,50 @@ case "end" :
 								
 	variables.currentTab = 1;							
 	for (variables.tab in thisTag.arTab)	{							
-							variables.result &= variables.crlf & '<section role="tabpanel"';
+								variables.result &= variables.crlf & '<section role="tabpanel"';
 		if (attributes.activeIndex == variables.currentTab)	variables.result &= ' class="tab-pane active"';
 		if (attributes.activeIndex != variables.currentTab)	variables.result &= ' class="tab-pane"';
 							
-							variables.result &= ' id="#variables.tab.id#">';
-							variables.result &= variables.tab.generatedContent;
-							variables.result &= variables.crlf & '</section>';
+								variables.result &= ' id="#variables.tab.id#">';
+								variables.result &= variables.tab.generatedContent;	
+								variables.result &= variables.crlf & '</section>';
 		variables.currentTab++;			
 		}	// end for
      
-							variables.result &= variables.crlf & '</div><!-- /. tab-content -->';
-							variables.result &= variables.crlf & '</div><!-- /. tab-panel -->';
-	// end generate tab content						
+								variables.result &= variables.crlf & '</div><!-- /. tab-content -->';
+								variables.result &= variables.crlf & '</div><!-- /. tab-panel -->';
+	// end generate tab content	
+	
+	
+	// Now do Javascript
+	if(variables.needsJS)			{			
+								variables.result &= variables.crlf & '<script type="text/javascript">';
+								variables.result &= variables.crlf & '$( document ).ready(function() {';
+								variables.result &= variables.crlf & '// load active tab no matter what';
+								variables.result &= variables.crlf & '$("section.active").load($("li.active a[data-url]").attr("data-url"), function (data) {';
+								variables.result &= variables.crlf & '$(".active a").tab("show");';
+								variables.result &= variables.crlf & '});';
+								variables.result &= variables.crlf & '// load normal tab clicks';
+								variables.result &= variables.crlf & '$("li a[data-url]").click(function(e) {';
+								variables.result &= variables.crlf & 'e.preventDefault();';
+								variables.result &= variables.crlf & 'var targ = $(this).attr("data-url");';
+								variables.result &= variables.crlf & 'var href = this.hash;';
+								variables.result &= variables.crlf & '$(href).load(targ, function(data) {';
+								variables.result &= variables.crlf & '$(this).tab("show");';
+								variables.result &= variables.crlf & '});';
+								variables.result &= variables.crlf & '});';
+								variables.result &= variables.crlf & '</script>';
+								}
+						
 
-	//thisTag.GeneratedContent = "";    
+	thisTag.GeneratedContent = "";    
 	if (attributes.rendered)			writeOutput(variables.result);
     
 	break;
 	}
 </cfscript>
+
+     
 
 
 <!--- 
@@ -93,34 +129,7 @@ To enable AJAX, you need to include code like
 
 http://stackoverflow.com/questions/8456974/how-to-use-ajax-loading-with-bootstrap-tabs
 
-<script type="text/javascript">	
-$( document ).ready(function() {
-	
-	// load active tab no matter what
-	$('section.active').load($('li.active a[data-url]').attr('data-url'), function (data) {
-		$('.active a').tab('show');
-		});
-		
-	
-	// load normal tab clicks
-	$('li a[data-url]').click(function(e) {
-	    e.preventDefault();
-	    
-	    var targ = $(this).attr('data-url');
-	    
-	    var href = this.hash;
-	    
-		$(href).load(targ, function(data) {
-			$(this).tab('show');
-		});
-	
-	});
-
-
-});
-</script>
-
- --->
+--->
 
 
 

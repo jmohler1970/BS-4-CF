@@ -170,7 +170,7 @@
 			<td>action</td>
 			<td>(none)</td>
 			<td>For <code>b:commandLink</code> to creates an absolute link. 
-				To use this tag, you must set <code>application.stBootstrap.actionRoot</code>.
+				To use this tag, you must set <code>application.Bootstrap.actionRoot</code>.
 			</td>
 		</tr>
 		
@@ -192,7 +192,7 @@
 </b:panel>
 
 <p>If both <code>id=</code>, <code>action=</code>, and <code>href=</code> are all blank or not set, 
-	then a link will be created to <code>application.stBootstrap.actionRoot</code>.
+	then a link will be created to <code>application.Bootstrap.actionRoot</code>.
 </p>
 
 
