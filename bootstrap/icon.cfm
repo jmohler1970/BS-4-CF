@@ -17,6 +17,7 @@ case "start" :
 	param attributes.addon		= false;
 	param attributes.binding		= "";
 	param attributes.id			= "";
+	param attributes.library		= "default";
 	param attributes.look		= "";
 	param attributes.name		= "";
 	param attributes.processed 	= true;
@@ -45,7 +46,7 @@ case "end" :
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.name = xmlFormat(evaluate("caller.rc.#attributes.binding#"));    
      
 	if(attributes.addon)			variables.result &= '<span class="input-group-addon">';
-	   							variables.result &= '<i class="glyphicon glyphicon-#attributes.name#';
+	   							variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.name#';
 	if(attributes.look 		!= "")	variables.result &= ' text-#lcase(attributes.look)#';
 	if(attributes.size 		!= "")	variables.result &= ' fa-#attributes.size#';
 	if(attributes.spin)				variables.result &= ' fa-spin';

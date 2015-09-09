@@ -21,7 +21,7 @@ case "start" :
 	param attributes.justified	= false;
 	param attributes.look		= ""; // this is the default unless over ridden 
 	param attributes.name		= "";
-	param attributes.orientation 	= "horizontal";
+	param attributes.orientation 	= "horizontal"; // horizontal, vertical, up
 	param attributes.processed 	= true;
 	param attributes.pull 		= "";
 	param attributes.rendered	= true;
@@ -38,6 +38,8 @@ case "end" :
 
 	if(attributes.orientation == "horizontal")	variables.result &= '<div class="btn-group';
 	if(attributes.orientation == "vertical")	variables.result &= '<div class="btn-group-vertical';
+	if(attributes.orientation == "up")			variables.result &= '<div class="btn-group dropup';
+	
 
 	if(attributes.size		!= "")	variables.result &= ' btn-group-#attributes.size#';
 	if(attributes.justified)			variables.result &= ' btn-group-justified';

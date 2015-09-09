@@ -14,6 +14,13 @@ case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
+	
+	variables.parentTag = lcase(ListGetAt(getBaseTagList(), 2));
+	variables.validTag = ["cf_tabview"];
+	
+	if(!ArrayContains(variables.validTag, variables.parentTag ) )	{
+		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
+		}
   
 	param attributes.disabled	= false;
 	param attributes.id;					// Tab must have id

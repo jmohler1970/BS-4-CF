@@ -69,7 +69,76 @@
 	<li>&lt;bs:tag&gt;</li><!--- For Bootstrap --->
 	<li>&lt;boot:tag&gt;</li><!--- You will just have to guess the strap part --->
 	<li>&lt;bootstrap:tag&gt;</li><!--- Just spell it all out --->
-</ul>	
+</ul
+
+
+<p>Then add the following to <code>application.cfc</code></p>
+
+<pre>
+function onApplicationStart()	{
+	application.Bootstrap = {
+	
+		actionRoot 		= cgi.script_name,
+		IconLibrary		= {},
+		ImageLibrary		= {},	
+		StyleSheetLibrary	= {},	
+		ScriptLibrary	= {}	
+		};
+		
+	application.Bootstrap.IconLibrary["default"]			= "glyphicon glyphicon-";		// be sure to include ending dash
+	application.Bootstrap.IconLibrary["awesome"]			= "fa fa-";
+	application.Bootstrap.ImageLibrary["default"]		= replace(cgi.script_name, "/index.cfm", "") & "/assets/";		// used by b:graphicImage
+	application.Bootstrap.StyleSheetLibrary["default"] 	= replace(cgi.script_name, "/index.cfm", "") & "/assets/";		// used by b:outputStyleSheet
+	application.Bootstrap.ScriptLibrary["default"]		= replace(cgi.script_name, "/index.cfm", "") & "/assets/";		// used by b:outputScript
+			
+		
+	} // end onApplicationStart
+</pre>	
+
+
+<b:panel look="info" title="Application Variables">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Variable</th>
+			<th>Used in tags</th>
+			<th>Description</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<tr>
+			<td>application.Bootstrap.actionRoot</td>
+			<td><code>b:commandLink</code></td>
+			<td>Used to create href links that stay within the current application</td>
+		</tr>
+		
+		<tr>
+			<td>application.Bootstrap.IconLibrary</td>
+			<td><code>b:button</code>, <code>b:commandButton</code>, <code>b:commandLink</code>, <code>b:icon</code>, <code>b:navlink</code></td>
+			<td>Sets the boiler-plate CSS class.</td>
+		</tr>
+		<tr>
+			<td>application.Bootstrap.ImageLibrary</td>
+			<td><code>b:graphicImage</code></td>
+			<td>Sets path to the image resource</td>
+		</tr>
+		<tr>
+			<td>application.Bootstrap.StyleSheetLibrary</td>
+			<td><code>b:ouptutStylesheet</code></td>
+			<td>Sets path to the CSS resource</td>
+		</tr>
+		<tr>
+			<td>application.Bootstrap.ScriptLibrary</td>
+			<td><code>b:outputScript</code></td>
+			<td>Sets path to the JavaScript resource</td>
+		</tr>
+		
+			
+	</tbody>
+	
+	</b:table>
+</b:panel>	
 
 
 
@@ -255,5 +324,5 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-<pre>
+</pre>
 

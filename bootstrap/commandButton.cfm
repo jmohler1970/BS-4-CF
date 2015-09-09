@@ -19,11 +19,12 @@ case "start" :
 	param attributes.disabled	= false;
 	param attributes.icon		= "";
 	param attributes.iconAlign	= "left";
-	param attributes.iconAwesome	= "";
 	param attributes.id			= "";
 	param attributes.lang		= "";
+	param attributes.library		= "default";	// for icon
 	param attributes.look		= "default";
 	param attributes.name		= "";
+	param attributes.outline		= false;
 	param attributes.processed	= true;
 	param attributes.rendered	= true;
 	param attributes.rel		= "";
@@ -61,6 +62,7 @@ case "end" :
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 	
 											variables.result &= '<button type="#attributes.type#" class="btn btn-#lcase(attributes.look)#';
+	if(attributes.outline)						variables.result &= "-outline";
 	if(attributes.size		!= "")				variables.result &= ' btn-#attributes.size#';
 	if(attributes.styleClass	!= "")				variables.result &= ' #attributes.styleClass#';
 											variables.result &= '"';
@@ -79,13 +81,17 @@ case "end" :
 											variables.result &= '>';
 
 	// space on end is not an accident							
-	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';
-	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="fa fa-#attributes.iconAwesome#"></i> ';
-								variables.result &= thisTag.generatedContent; // pass through of content
+	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	{
+											variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
+											}	
+
+											variables.result &= thisTag.generatedContent; // pass through of content
 
 	// space at start is not an accident
-	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="glyphicon glyphicon-#attributes.icon#"></i>';
-	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="fa fa-#attributes.iconAwesome#"></i>';
+	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	{
+											variables.result &= ' <i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i>';
+											}		
+
 
 											variables.result &= '</button>';
 

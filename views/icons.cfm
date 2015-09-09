@@ -11,7 +11,7 @@
 	<b:column span="12">	
 
 		<b:h1 pageHeader="true">Glyphicon Examples</b:h1>
-		<p>b:icon &amp; b:iconAwesome.</p>
+		<p>b:icon</p>
 	</b:column>	
 </b:row>
 
@@ -22,7 +22,7 @@
 
 <p>If possible, use the icons that are a part of one of the button tags</p>
 
-<b:panel look="info" title="Attributes of &lt;b:icon&gt; &amp; &lt;b:iconAwesome&gt;">
+<b:panel look="info" title="Attributes of &lt;b:icon&gt;">
 
 	<b:table>
 	<thead>
@@ -58,6 +58,11 @@
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>.</td>
+		</tr>
+		<tr>
+			<td>library</td>
+			<td>default</td>
+			<td>Which icon library should be used? This is set via: <code>application.Bootstrap.IconLibrary[attributes.library]</code>. This site uses Glyphicons</td>
 		</tr>
 		<tr>
 			<td>look</td>
@@ -167,7 +172,9 @@
 
 
 
-<h2>Example with &lt;b:iconAwesome&gt;</h2>
+<h2>Example with &lt;b:icon&gt; using Font Awesome</h2>
+
+<p>It is recommended that only one library be used per application. The <code>library=""</code> is used for overrides</p>
 
 <b:table>
 <thead>
@@ -186,12 +193,12 @@
 <cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check" index="rc.i">
 	<tr>
 		<td><cfoutput>#rc.i#</cfoutput></td>
-		<td><b:iconAwesome binding="i" /></td>
-		<td><b:iconAwesome binding="i" look="success"/></td>
-		<td><b:iconAwesome binding="i" look="danger"	/></td>
-		<td><b:iconAwesome binding="i" size="lg" 	/></td>
-		<td><b:iconAwesome binding="i" size="2x" 	/></td>
-		<td><b:iconAwesome binding="i" spin="true"	/></td>
+		<td><b:icon library="awesome" binding="i" /></td>
+		<td><b:icon library="awesome" binding="i" look="success"/></td>
+		<td><b:icon library="awesome" binding="i" look="danger"	/></td>
+		<td><b:icon library="awesome" binding="i" size="lg" 	/></td>
+		<td><b:icon library="awesome" binding="i" size="2x" 	/></td>
+		<td><b:icon library="awesome" binding="i" spin="true"	/></td>
 	</tr>
 </cfloop>
 </tbody>

@@ -16,18 +16,18 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
 
-	if (!structKeyExists(attributes, "id") && !structKeyExists(attributes, "action")) throw("b:commandLink tag must have either an id or an action. Neither have been provided"); 
 
-
-	param attributes.action		= "";
+	param attributes.action		= "";	// powered by application.Bootstrap.actionRoot;
 	param attributes.binding		= "";
 	param attributes.disabled	= false;
 	param attributes.dropdown	= false;
+	param attributes.href		= "";	// any target
 	param attributes.icon		= "";
 	param attributes.iconAlign	= "left";
-	param attributes.iconAwesome	= "";
 	param attributes.id			= "";
+	param attributes.library		= "default";	// for icon
 	param attributes.look	 	= "default";
+	param attributes.outline		= false;
 	param attributes.processed 	= true;
 	param attributes.rel		= "";
 	param attributes.rendered 	= true;
@@ -63,40 +63,44 @@ case "end" :
 	if(attributes.value != "")											thisTag.generatedContent = xmlFormat(attributes.value);	
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
 
+	// no target of any kind was set AND this is not an anchor
+	if((attributes.action != "" || attributes.href == "") && attributes.id == "")	attributes.href = application.Bootstrap.actionRoot & attributes.action;
+
 	if(attributes.look == 'link')					variables.result &= '<a class="';				// we don't do anything special so that link look like links
 	if(attributes.look != 'link')					variables.result &= '<a class="btn btn-#lcase(attributes.look)#';
-	if(attributes.disabled)						variables.result &= ' disabled';
-	if(attributes.dropdown)   					variables.result &= ' datatoggle';
-	if(attributes.size 		!= "")				variables.result &= ' btn-#attributes.size#';
-	if(attributes.styleClass != "")				variables.result &= ' #attributes.styleClass#';	
+	if(attributes.outline)						variables.result &= "-outline ";
+	if(attributes.disabled)						variables.result &= 'disabled="disabled" ';
+	if(attributes.dropdown)   					variables.result &= 'datatoggle ';
+	if(attributes.size 		!= "")				variables.result &= 'btn-#attributes.size# ';
+	if(attributes.styleClass != "")				variables.result &= '#attributes.styleClass#';	
 											variables.result &= '"';
 
-	if(attributes.action	!= "")				variables.result &= ' href="#attributes.action#"';
+	if(attributes.href		!= "")				variables.result &= ' href="#attributes.href#"';
 	if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
 
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
 
 
-
 	if(attributes.rel		!= "")				variables.result &= ' rel="#attributes.rel#"';
 	if(attributes.role		!= "")				variables.result &= ' role="#attributes.role#"';
 	if(attributes.target	!= "")				variables.result &= ' target="#attributes.target#"';
-	if(attributes.tooltip    != "")				variables.result &= ' tooltip="#attributes.tooltip#"';
+	if(attributes.tooltip    != "")				variables.result &= ' title="#attributes.tooltip#"';
 	if(attributes.style    	!= "")				variables.result &= ' style="#attributes.style#"';
 
 	if(attributes.dropdown)						variables.result &= ' data-toggle="dropdown"';
 											variables.result &= '>';
 
 	// space on end is not an accident							
-	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="glyphicon glyphicon-#attributes.icon#"></i> ';
-	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "left")	variables.result &= '<i class="fa fa-#attributes.iconAwesome#"></i> ';
+	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	{
+											variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
+											}
 											variables.result &= thisTag.generatedContent; // pass through of content
 	
 	
 	// space at start is not an accident
-	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="glyphicon glyphicon-#attributes.icon#"></i>';
-	if (attributes.iconAwesome 	!= "" && attributes.iconAlign == "right")	variables.result &= ' <i class="fa fa-#attributes.iconAwesome#"></i>';
-
+	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	{
+											variables.result &= ' <i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i>';
+											}			
 
 	if(attributes.dropdown)						variables.result &= '<span class="caret"></span>';
 											variables.result &= '</a>';

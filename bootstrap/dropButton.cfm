@@ -14,23 +14,34 @@ case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
+	
+	variables.parentTag = lcase(ListGetAt(getBaseTagList(), 2));
+	variables.validTag = ["cf_buttongroup","cf_tabview"];
+	
+	if(!ArrayContains(variables.validTag, variables.parentTag ) )	{
+		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
+		}
   
 
 	param attributes.look		= "default";
 	param attributes.processed 	= true;
 	param attributes.rendered	= true;
+	param attributes.role		= "button";
 	param attributes.value		= "";
 	
 	if (!attributes.processed) exit "exitTag";
 	break;
      
-case "end" : 
-	variables.result &= crlf & '<a class="btn btn-#lcase(attributes.look)# dropdown-toggle" ';
-	variables.result &= 'data-toggle="dropdown" role="button">#attributes.value# <b class="caret"></b></a>';  
+case "end" :
+	if (attributes.look == "tab")		variables.result &= crlf & '<a class="dropdown-toggle" ';
+	if (attributes.look != "tab")		variables.result &= crlf & '<a class="btn btn-#lcase(attributes.look)# dropdown-toggle" ';
+	
+	variables.result &= 'data-toggle="dropdown" role="#attributes.role#">#attributes.value# <b class="caret"></b></a>';  
 	variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
 	variables.result &= crlf & thisTag.generatedContent;
 	variables.result &= crlf & '</ul>';
 	variables.result &= crlf & '<!-- /.end dropdown -->';
+	
 	
      thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);
