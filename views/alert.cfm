@@ -33,6 +33,7 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -41,42 +42,54 @@
 			<td>closable</td>
 			<td>false</td>
 			<td>Does this include a close X?</td>
+			<td>No</td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><code>REFindNoCase('[^0-9A-Za-z ]')</code> is false.
+				 Must be less than  <cfoutput>#application.Bootstrap.limit.id#</cfoutput> characters
+			</td>
 		</tr>
 		<tr>
 			<td>look</td>
 			<td>warning</td>
 			<td>This uses the look because it is assumed that this is message after an action has happened.</td>
+			<td>Must be in valid value list defined in <code>application.cfc</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>No</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>No</td>
 		</tr>
 
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td>No</td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<td>Pass though of CSS class.</td>
+			<td><code>REFindNoCase('[^0-9A-Za-z ]')</code> is false.
+				Must be less than <cfoutput>#application.Bootstrap.limit.styleClass#</cfoutput> characters
+			</td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Pass though of title</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 	</tbody>
 	</b:table>

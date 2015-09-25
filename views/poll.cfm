@@ -25,7 +25,8 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
-		</tr>	
+			<th>Sanitized</th>
+		</tr>
 	</thead>
 	<tbody>
 		<tr>

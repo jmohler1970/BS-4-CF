@@ -44,7 +44,7 @@
 
 	<b:column span="4">
           <h3><b:icon library="awesome" name="cogs" /> Modular</h3>
-          <p>Each tag is in a single file. Update the tags to support the functionality you need for your site</p>
+          <p>Each tag is in a single file. Update the tags to support the functionality you need for your site. tag attributes are sanitized to protect your site from common injection attacts</p>
 	</b:column>          
 
 </b:row>
