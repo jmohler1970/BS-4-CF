@@ -38,23 +38,25 @@ case "start" :
 			} // end if	
 		}	// end for
 
-	
-	
+
+
 	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :
 
 	if(variables.myClass 	== "")			variables.result &= '<tr';
-	if(variables.myClass 	!= "")			variables.result &= '<tr class="#variables.myClass#"';
-	if(attributes.id		!= "")			variables.result &= ' id="#attributes.id#"';
+	if(variables.myClass 	!= "")			variables.result &= '<tr class="#encodeForHTMLAttribute(variables.myClass)#"';
+	if(attributes.id		!= "")			variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-	if(attributes.style		!= "")			variables.result &= ' style="#attributes.style#"';                 
+	if(attributes.style		!= "")			variables.result &= ' style="#encodeForCSS(attributes.style)#"';                 
 										variables.result &= '>';
 										variables.result &= variables.crlf;
+										
 										variables.result &= thisTag.GeneratedContent; // pass through of content
+										
 										variables.result &= variables.crlf;
 										variables.result &= '</tr>';
 										variables.result &= variables.crlf;

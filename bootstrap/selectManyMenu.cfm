@@ -14,29 +14,32 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
 	
-	thisTag.qryOption 			= QueryNew("disabled,display,group,id,look,value,selected,tooltip");
+	thisTag.qryOption 			= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
   
 	if(structKeyExists(attributes, "qryOption")) thisTag.qryOption = attributes.qryOption;
   
-	param attributes.disabled	= false;
-	param attributes.fieldSize	= "";
-	param attributes.help		= "";
-	param attributes.id			= "";
-	param attributes.name;				// required field
-	param attributes.onBlur		= "";
-	param attributes.onClick		= "";
-	param attributes.onChange	= "";
-	param attributes.processed 	= true;
-	param attributes.readonly 	= false;
-	param attributes.rendered 	= true;
-	param attributes.required	= false;
-	param attributes.span		= "";
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
-	param attributes.tooltip		= "";
+	param attributes.disabled		= false;
+	param attributes.fieldSize		= "";
+	param attributes.help			= "";
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= false;
+	param attributes.name;					// required field
+	param attributes.onBlur			= "";
+	param attributes.onClick			= "";
+	param attributes.onChange		= "";
+	param attributes.processed 		= true;
+	param attributes.readonly	 	= false;
+	param attributes.rendered	 	= true;
+	param attributes.required		= false;
+	param attributes.span			= "";
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.tooltip			= "";
+	param attributes.tooltipPosition	= "bottom";
 	
 	// Patch this
-	if(attributes.disabled == "disabled")	attributes.disabled = true;	
+	if(attributes.disabled == "disabled")	attributes.disabled = true;
+	
 	
      if (!attributes.processed) exit "exitTag";
 	break;
@@ -46,15 +49,19 @@ case "end" :
 
 	if(attributes.span		!= "")	variables.result &= '<div class="col-md-#attributes.span#">' & variables.crlf;
 								variables.result &= '<select multiple="multiple" class="form-control';
-	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';
-	if(attributes.fieldSize	!= "")	variables.result &= ' input-#attributes.fieldSize#';
+	if(attributes.styleClass	!= "")	variables.result &= ' #encodeforHTMLAttribute(attributes.styleClass)#';
+	if(attributes.fieldSize	!= "")	variables.result &= ' input-#encodeForHTMLAttribute(attributes.fieldSize)#';
 								variables.result &= '"';
 	if(attributes.disabled)			variables.result &= ' disabled="disabled"';													
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(attributes.readonly)			variables.result &= ' readonly="readonly"';
 	if(attributes.required)			variables.result &= ' required="required"';
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
-	if(attributes.tooltip    != "")	variables.result &=	' title="#attributes.tooltip#"';
+	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	
+	if(attributes.tooltip    != "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
+	
 	if(attributes.onBlur	!= "")	variables.result &= ' onBlur="#attributes.onBlur#"';
 	if(attributes.onClick	!= "")	variables.result &= ' onClick="#attributes.onClick#"';
 	if(attributes.onChange	!= "")	variables.result &= ' onChange="#attributes.onChange#"';
@@ -72,7 +79,7 @@ case "end" :
      					
 	
 								variables.result &= '</select>';
-	if(attributes.help		!= "")	variables.result &= '<span class="help-block">#attributes.help#</span>';						
+	if(attributes.help		!= "")	variables.result &= '<span class="help-block">#encodeForHTML(attributes.help)#</span>';						
      if(attributes.span		!= "")	variables.result &= variables.crlf & '</div><!-- /.col-md-#attributes.span# -->';
 
      thisTag.GeneratedContent = "";

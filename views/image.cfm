@@ -25,7 +25,7 @@
 <p><code>&lt;b:graphicImage&gt;</code> is oriented towards supporting image libraries. This allows the application to globally set look and feel.</p>
 
 
-<b:panel look="info" title="Attributes of &lt;b:graphicImage&gt;">
+<b:panel look="info" title="Attributes of <b:graphicImage>">
 
 	<b:table>
 	<thead>

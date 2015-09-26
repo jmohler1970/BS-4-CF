@@ -16,7 +16,7 @@
 <b:h2>Introduction</b:h2>
 
 
-<b:panel look="info" title="Attributes of &lt;b:modal&gt;">
+<b:panel look="info" title="Attributes of <b:modal>">
 
 	<b:table>
 	<thead>

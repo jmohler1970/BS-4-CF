@@ -21,20 +21,26 @@ case "start" :
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.tooltip		= "";
-     
+	param attributes.tooltipPosition	= "bottom";
+	
+	
      if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
      
 	   							variables.result &= variables.crlf & '<div class="row';
-	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';			
+	if(attributes.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';			
 	   							variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';                         
-	if(attributes.tooltip    != "")    variables.result &= ' title="#attributes.tooltip#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';                         
+	if(attributes.tooltip    != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
 								variables.result &= '>';
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+								
+								variables.result &= thisTag.GeneratedContent; // Warning: not cleaned pass through of content
+								
 								variables.result &= variables.crlf & '</div><!-- /.row -->';
 								variables.result &= variables.crlf;
 								variables.result &= variables.crlf;

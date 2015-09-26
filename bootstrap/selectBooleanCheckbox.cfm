@@ -32,6 +32,10 @@ case "start" :
 	
 	// Patch this
 	if(attributes.disabled == "disabled")	attributes.disabled = true;
+	
+	
+	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
+	
      
      if (!attributes.processed) exit "exitTag";
 	break;
@@ -40,29 +44,29 @@ case "end" :
 		
 								variables.result &= '<div class="checkbox';
 	if(attributes.circle)			variables.result &= ' checkbox-circle';						
-	if(attributes.look    	!= "")    variables.result &= ' checkbox-#lcase(attributes.look)#';
+	if(attributes.look    	!= "")    variables.result &= ' checkbox-#encodeForHTMLAttribute(attributes.look.lcase())#';
 	if(attributes.inline)			variables.result &= ' checkbox-inline';
 	   							variables.result &= '"';
 
-	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
+	if(attributes.tooltip    != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 								variables.result &= '>';
 								
 								
 	
 								variables.result &= '<input type="checkbox"';
-	if(attributes.name		!= "")	variables.result &= ' name="#attributes.name#"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	if(attributes.name		!= "")	variables.result &= ' name="#encodeForHTMLAttribute(attributes.name)#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(attributes.checked)			variables.result &= ' checked="checked"';
 	if(attributes.disabled)			variables.result &= ' disabled="disabled"';
-	if(attributes.tabindex	!= "")	variables.result &= ' tabindex="#attributes.tabindex#"';
+	if(attributes.tabindex	!= "")	variables.result &= ' tabindex="#encodeForHTMLAttribute(attributes.tabindex)#"';
 	
 								variables.result &= ' />';
 								variables.result &= '<label';
-	if(attributes.id		!= "")	variables.result &=	' for="#attributes.id#"';
+	if(attributes.id		!= "")	variables.result &=	' for="#encodeForHTMLAttribute(attributes.id)#"';
 								variables.result &= '>';
 
 	
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+								variables.result &= getSafeHTML(thisTag.GeneratedContent); // pass through of content
 								variables.result &= '</label>';
 								
 								variables.result &= variables.crlf &  '</div>';

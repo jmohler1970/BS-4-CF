@@ -25,7 +25,7 @@
 
 
 
-<b:panel look="info" title="Attributes of &lt;b:alert&gt;">
+<b:panel look="info" title="Attributes of <b:alert>">
 
 	<b:table>
 	<thead>

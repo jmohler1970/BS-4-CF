@@ -45,19 +45,25 @@ case "start" :
 			} // end if	
 		}	// end for
      
+     
+	if (attributes.keyExists("text"))						throw "attributes.text is an invalid option. Don't even think of using it";
+	if (attributes.id.REFindNoCase('[^0-9A-Za-z ]'))			throw "Special characters are not allowed";
+
+     
+     
      if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :
 
-	if(attributes.value != "")											thisTag.generatedContent = xmlFormat(attributes.value);
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
+	if(attributes.value != "")											thisTag.generatedContent = attributes.value;
+	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
 
      
      if (thisTag.generatedContent == "" && attributes.header == "")
      								variables.result &= '<li role="separator" class="divider"></li>';
      
-     if (attributes.header != "")			variables.result &= '<li class="dropdown-header">#attributes.header#</li>';
+     if (attributes.header != "")			variables.result &= '<li class="dropdown-header">#encodeForHTML(attributes.header)#</li>';
      
  	if (thisTag.generatedContent != "")				{
      											variables.result &= '<li';
@@ -68,15 +74,15 @@ case "end" :
 												variables.result &= '<a href="#attributes.href#';
 		if(attributes.fragment != false)				variables.result &= '###attributes.fragment#';
 												variables.result &= '"';
-		if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
+		if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 		
-		for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+		for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 		
 												variables.result &= '>';
 		if(attributes.icon != "" && attributes.iconAlign == "left")		{
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
 												}		
-																	variables.result &= thisTag.generatedContent; // pass through of content
+																	variables.result &= getSafeHTML(thisTag.generatedContent); // pass through of content
 		if(attributes.icon != "" && attributes.iconAlign == "right")	{
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
 												}

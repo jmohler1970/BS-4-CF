@@ -21,7 +21,7 @@
 <p>This is the container for all the tabs</p>
 
 
-<b:panel look="info" title="Attributes of &lt;b:tabView&gt;">
+<b:panel look="info" title="Attributes of <b:tabView>">
 
 	<b:table>
 	<thead>
@@ -76,7 +76,7 @@
 <p>This is the content for each individual container</p>
 
 
-<b:panel look="info" title="Attributes of &lt;b:tab&gt;">
+<b:panel look="info" title="Attributes of <b:tab>">
 
 	<b:table>
 	<thead>

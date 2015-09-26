@@ -1,7 +1,7 @@
 <cfimport prefix="b" taglib="../bootstrap">
 
 
-<title>BS-4-CF - Bootstrap tags for ColdFusion</title>
+<title>Bootstrap for ColdFusion</title>
 
 <meta name="author" content="James Mohler" />
 <meta name="description" content="BS-4-CF, a powerful tag libary that takes the best from Bootstrap for next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
@@ -49,7 +49,7 @@
 <script src="https://cdn.datatables.net/1.10.8/js/dataTables.bootstrap.min.js"></script>
 
 
-
+<!---
 <b:outputStyleSheet name="application.css" processed="#IIF(url.view EQ 'image', 1, 0)#" />
 
 <b:outputStyleSheet>
@@ -71,4 +71,7 @@ padding-top: 50px;
 	border:1px solid rgba(86,61,124,.2)
 }
 </b:outputStyleSheet>
+
+--->
+	
 	

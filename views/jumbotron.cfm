@@ -15,7 +15,7 @@
 
 
 
-<b:panel look="info" title="Attributes of &lt;b:jumbotron&gt;">
+<b:panel look="info" title="Attributes of <b:jumbotron>">
 
 	<b:table>
 	<thead>
@@ -29,12 +29,16 @@
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td>It is expected that <code>&lt;b:h1&gt;</code> and other tags will be with this tag. Make sure that the inner content is clean</td>
+		</tr>
+		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>.</td>
-			<td><code>REFindNoCase('[^0-9A-Za-z ]')</code> is false.
-				 Must be less than  <cfoutput>#application.Bootstrap.limit.id#</cfoutput> characters
-			</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>

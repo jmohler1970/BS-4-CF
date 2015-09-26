@@ -17,6 +17,7 @@ case "start" :
 	param attributes.addon		= false;
 	param attributes.binding		= "";
 	param attributes.id			= "";
+	param attributes.isSafeHTML		= true;
 	param attributes.library		= "default";
 	param attributes.look		= "";
 	param attributes.name		= "";
@@ -27,6 +28,7 @@ case "start" :
      param attributes.style		= "";
      param attributes.styleClass	= "";
      param attributes.tooltip		= "";
+     param attributes.tooltipPosition = "bottom";
      
 
     	variables.arAttrSeries = [];
@@ -39,25 +41,29 @@ case "start" :
 			} // end if	
 		}	// end for
      
-	if (!attributes.processed) exit "exitTag";
+
+	if (!attributes.processed) exit "exitTag";	
 	break;
      
 case "end" :
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.name = xmlFormat(evaluate("caller.rc.#attributes.binding#"));    
+	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.name = evaluate("caller.rc.#attributes.binding#");    
      
 	if(attributes.addon)			variables.result &= '<span class="input-group-addon">';
-	   							variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.name#';
-	if(attributes.look 		!= "")	variables.result &= ' text-#lcase(attributes.look)#';
-	if(attributes.size 		!= "")	variables.result &= ' fa-#attributes.size#';
+	   							variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##encodeForHTMLAttribute(attributes.name)#';
+	if(attributes.look 		!= "")	variables.result &= ' text-#encodeForHTMLAttribute(attributes.look.lcase())#';
+	if(attributes.size 		!= "")	variables.result &= ' fa-#encodeForHTMLAttribute(attributes.size)#';
 	if(attributes.spin)				variables.result &= ' fa-spin';
-	if(attributes.styleClass != "") 	variables.result &= ' #attributes.styleClass#';  							
+	if(attributes.styleClass != "") 	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';  							
 	   							variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-	if(attributes.style 	!= "")	variables.result &= ' style="#attributes.style#"';
-	if(attributes.tooltip    != "")    variables.result &= ' title="#attributes.tooltip#"';
+	if(attributes.style 	!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.tooltip    != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
+	
 								variables.result &= '></i>';
 	if(attributes.addon)			variables.result &= '</span>';
      

@@ -15,13 +15,13 @@
 
 <b:h2>Introduction</b:h2>
 
-<p>BS-4-CF puts only a few wrappers around form elements. The reason is simple. There are simply too many form libraries out there to try to support. Hence. only the basics are included.</p>
+<p>Bootstrap for ColdFusion puts only a few wrappers around form elements. The reason is simple. There are simply too many form libraries out there to try to support. Hence. only the basics are included.</p>
 
 
 
 <b:h2>b:formGroup<a id="formgroup"></a></b:h2>
 
-<b:panel look="info" title="Attributes of &lt;b:selectItem&gt;">
+<b:panel look="info" title="Attributes of <b:formgroup>">
 
 	<b:table>
 	<thead>
@@ -29,6 +29,7 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -37,39 +38,39 @@
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled</td>
+			<td>Must evaluate to boolean. "disabled is treated as true</td>
 		</tr>
 		<tr>
 			<td>display</td>
 			<td>(none)</td>
 			<td>Reserved for future use</td>
+			<td>N/A</td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML id.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
-		<tr>
-			<td>selected</td>
-			<td>false</td>
-			<td>Is this selected on <code>&lt;option&gt;</code> or checked on <code>&lt;input type="radio"&gt;</code></td>
-		</tr>
-
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Used on selectOneRadio</td>
+			<td>Pass though of title</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 	</tbody>
 	</b:table>

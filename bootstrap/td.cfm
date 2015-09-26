@@ -15,16 +15,18 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
 
-	param attributes.binding		= "";
-	param attributes.hidden		= "";
-	param attributes.id			= "";
-	param attributes.look		= "";
-	param attributes.processed	= true; // unknown how to support
-	param attributes.rendered 	= true; // removes content not actual td
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
-	param attributes.text		= "";
-	param attributes.tooltip		= "";
+	param attributes.binding			= "";
+	param attributes.hidden			= "";
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= false;
+	param attributes.look			= "";
+	param attributes.processed		= true; // unknown how to support
+	param attributes.rendered 		= true; // removes content not actual td
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+	param attributes.tooltip			= "";
+	param attributes.tooltipPosition	= "bottom";
 
 
 	if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";
@@ -62,17 +64,25 @@ case "end" :
 
 
 	if(variables.myClass	== "")				variables.result &= '<td';
-	if(variables.myClass	!= "")				variables.result &= '<td class="#variables.myClass#"';
-	if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
+	if(variables.myClass	!= "")				variables.result &= '<td class="#encodeForHTMLAttribute(variables.myClass)#"';
+	if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 
 
-	if(attributes.style		!= "")				variables.result &= ' style="#attributes.style#"';
+	if(attributes.style		!= "")				variables.result &= ' style="#encodeForCSS(attributes.style)#"';
 											variables.result &= '>';
-	if(attributes.tooltip	!= "")				variables.result &= '<span title="#attributes.tooltip#">';
+	
+	if(attributes.tooltip    != "")				variables.result &=	'<span title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")				variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")				variables.result &= ' data-toggle="tooltip"';
+	if(attributes.tooltip    != "")				variables.result &=	'>';
+	
+	
+
 	if (attributes.rendered && attributes.processed)
-											variables.result &= thisTag.GeneratedContent; // pass through of content
+											variables.result &= getSafeHTML(thisTag.GeneratedContent); // pass through of content
+											
 	if(attributes.tooltip	!= "")				variables.result &= '</span>';
 											variables.result &= '</td>';
 											variables.result &= variables.crlf;

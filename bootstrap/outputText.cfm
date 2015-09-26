@@ -1,4 +1,4 @@
-<!---@ Description: Support for outputText --->
+<!---@ Description: Support for outputText. The wraps content in span. This is similar to http://www.jsftoolbox.com/documentation/help/12-TagReference/html/h_outputText.html --->
 
 
 
@@ -15,14 +15,16 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
   
-	param attributes.binding		= "";
-     param attributes.id			= "";
-     param attributes.processed	= true;
-	param attributes.rendered 	= true;
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
-	param attributes.text		= "";
-     param attributes.tooltip		= "";
+	param attributes.binding			= "";
+     param attributes.id				= "";
+     param attributes.isSafeHTML		= false;
+     param attributes.processed		= true;
+	param attributes.rendered 		= true;
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+     param attributes.tooltip			= "";
+     param attributes.tooltipPosition	= "bottom";
      
      
      
@@ -40,29 +42,29 @@ case "start" :
 			} // end if	
 		}	// end for
 		
-     
-
 
      if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
 	
 								variables.result &= variables.crlf;
 	if(variables.myClass == "")		variables.result &= '<span';
-	if(variables.myClass != "")		variables.result &= '<span class="#variables.myClass#"';							
+	if(variables.myClass != "")		variables.result &= '<span class="#encodeForHTMLAttribute(variables.myClass)#"';							
 				
 		   							
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
-	if(attributes.tooltip    != "")	variables.result &=	' title="#attributes.tooltip#"';               
+	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.tooltip    != "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';               
 								variables.result &= '>';
-							
-								variables.result &= trim(thisTag.GeneratedContent); // pass through of content
+								
+								
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean							
 	
 								variables.result &= '</span>';
 								variables.result &= variables.crlf;

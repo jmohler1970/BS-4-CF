@@ -21,6 +21,7 @@ case "start" :
 	param attributes.binding		= "";
 	param attributes.height		= ""; //creates CSS
      param attributes.id			= "";
+     param attributes.isSafeHTML		= true;
      param attributes.library		= "default";
      param attributes.processed	= true;
 	param attributes.rendered 	= true;
@@ -30,7 +31,14 @@ case "start" :
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
      param attributes.tooltip		= "";
+     param attributes.tooltipPosition = "bottom";
      param attributes.width		= ""; // creates CSS
+     
+     
+     if(!isnumeric(attributes.height)) attributes.height = "";
+     if(!isnumeric(attributes.width)) attributes.width = "";
+     
+     
      
      variables.arAttrSeries = [];
 		
@@ -40,25 +48,26 @@ case "start" :
 			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
 			} // end if	
 		}	// end for
-		
+
+
 
 
      if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
 	
 	   							variables.result &= '<img class="';
-	if(attributes.shape		!= "")	variables.result &= ' img-#lcase(attributes.shape)#';
-	if(attributes.text		!= "")	variables.result &= ' text-#attributes.text#';
-	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';
+	if(attributes.shape		!= "")	variables.result &= ' img-#encodeForHTMLAttribute(attributes.shape.lcase())#';
+	if(attributes.text		!= "")	variables.result &= ' text-#encodeForHTMLAttribute(attributes.text)#';
+	if(attributes.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 	   							variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-								variables.result &= ' src="#application.Bootstrap.ImageLibrary[attributes.library]##attributes.name#"';
+								variables.result &= ' src="#application.Bootstrap.ImageLibrary[attributes.library]##encodeForHTMLAttribute(attributes.name)#"';
 	
 	// start style
 	if(attributes.style		!= "" || attributes.height != "" || attributes.width != "")	{
@@ -66,11 +75,11 @@ case "end" :
 								}	
 	if(attributes.height	!= "")	variables.result &= ' height : #attributes.height#px;';
 	if(attributes.width		!= "")	variables.result &= ' width  : #attributes.width#px;';
-								variables.result &= ' #attributes.style#"';
+								variables.result &= ' #encodeForCSS(attributes.style)#"';
 	// end style
 	
-								variables.result &= ' alt="#attributes.alt#"';
-	if(attributes.tooltip    != "")	variables.result &=	' title="#attributes.tooltip#"';               
+								variables.result &= ' alt="#encodeForHTMLAttribute(attributes.alt)#"';
+	if(attributes.tooltip    != "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';               
 								variables.result &= ' />';
 							
 	

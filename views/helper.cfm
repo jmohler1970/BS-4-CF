@@ -27,7 +27,7 @@
 </b:blockquote>
 
 
-<b:panel look="info" title="Tags with &lt;b:text&gt; attribute">
+<b:panel look="info" title="Tags with <b:text> attribute">
 
 	<b:table>
 	<thead>

@@ -18,7 +18,7 @@
 <p>Pulldown menus. They can either be stand alone, or as part of a tab control</p>
 
 
-<b:panel look="info" title="Attributes of &lt;b:dropdown&gt;">
+<b:panel look="info" title="Attributes of <b:dropdown>">
 
 	<b:table>
 	<thead>

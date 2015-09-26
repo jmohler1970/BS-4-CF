@@ -28,6 +28,7 @@ case "start" :
 	param attributes.submitValue		= "Save Changes";
 	
 	
+	
      if (!attributes.processed) exit "exitTag";
 	break;
      
@@ -37,7 +38,7 @@ case "end" :
 	   							variables.result &= variables.crlf & '<div class="modal fade';
 	if(attributes.styleClass != "")	variables.result &= ' #attributes.styleClass#';
 								variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(attributes.backdrop	!= true)	variables.result &= ' data-backdrop="#attributes.backdrop#"';
 	if(!attributes["close-on-escape"])	variables.result &= ' data-keyboard="false"';
 	
@@ -47,16 +48,16 @@ case "end" :
 	   							variables.result &= variables.crlf & '<div class="modal-dialog">';
 	   							variables.result &= variables.crlf & '<div class="modal-content">';
 	   							variables.result &= variables.crlf & '<div class="modal-header">';
-	if(attributes.closable)			variables.result &= variables.crlf & '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';   													variables.result &= '<h4 class="modal-title">#attributes.title#</h4>';
+	if(attributes.closable)			variables.result &= variables.crlf & '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';   													variables.result &= '<h4 class="modal-title">#encodeForHTML(attributes.title)#</h4>';
 								variables.result &= variables.crlf & '</div><!-- /.modal-header -->';
 
 								variables.result &= variables.crlf & '<div class="modal-body">';
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+								variables.result &= getSafeHTML(thisTag.GeneratedContent); // pass through of content
 								variables.result &= variables.crlf & '</div><!-- /.modal-body -->';	
 
 								variables.result &= variables.crlf & '<div class="modal-footer">';
 								variables.result &= variables.crlf & '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-	if(attributes.showSubmit)		variables.result &= variables.crlf & '<button type="submit" class="btn btn-primary">#xmlFormat(attributes.submitValue)#</button>';
+	if(attributes.showSubmit)		variables.result &= variables.crlf & '<button type="submit" class="btn btn-primary">#encodeForHTML(attributes.submitValue)#</button>';
 								variables.result &= variables.crlf & '</div><!-- /.modal-footer -->';
 								variables.result &= variables.crlf & '</div><!-- /.modal-content -->';
 								variables.result &= variables.crlf & '</div><!-- /.modal-dialog -->';

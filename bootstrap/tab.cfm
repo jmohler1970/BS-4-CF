@@ -30,6 +30,11 @@ case "start" :
 	param attributes.style		= "";
      param attributes.title		= "";
 	if (!structKeyExists(attributes, "data-url")) attributes["data-url"]	= "";
+	
+	
+	if (attributes.id.REFindNoCase('[^0-9A-Za-z ]')) 				throw "Special characters are not allowed";
+	if (attributes.id.len() > application.Bootstrap.Limit.ID)		throw "id field is too long";
+	
      
      if (!attributes.processed) exit "exitTag";
 	if (!attributes.rendered) exit "exitTag";	// this is a known bug

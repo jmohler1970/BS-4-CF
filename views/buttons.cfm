@@ -13,7 +13,7 @@
 <h2>Introduction</h2>
 
 
-<b:panel look="info" title="Attributes of &lt;b:button&gt;, &lt;b:commandButton&gt;, &amp;  &lt;b:commandLink&gt;">
+<b:panel look="info" title="Attributes of <b:button>, <b:commandButton>, & <b:commandLink>">
 
 	<b:table>
 	<thead>
@@ -155,7 +155,7 @@
 
 
 
-<b:panel look="info" title="Attributes of &lt;b:commandLink&gt; only">
+<b:panel look="info" title="Attributes of <b:commandLink> only">
 
 	<b:table>
 	<thead>

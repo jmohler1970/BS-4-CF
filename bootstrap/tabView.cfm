@@ -36,11 +36,11 @@ case "end" :
 
 	
 								variables.result &= variables.crlf & '<div class="tab-panel';
-	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';
+	if(attributes.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 								variables.result &= '"';								
-	if(attributes.role		!= "")	variables.result &= ' role="#attributes.role#"';
+	if(attributes.role		!= "")	variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
 	
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
+	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
 								variables.result &= '>';
 								variables.result &= variables.crlf & '<ul class="nav nav-tabs" role="tablist">';
 	// generate tabs
@@ -53,13 +53,13 @@ case "end" :
 									variables.result &= '<a';
 			if (!variables.tab.disabled)	variables.result &= ' href="###variables.tab.id#"';
 			if (!variables.tab.disabled)	variables.result &= ' aria-controls="#variables.tab.id#"';
-			if (!variables.tab.disabled)	variables.result &= ' role="#variables.tab.id#"';
+			if (!variables.tab.disabled)	variables.result &= ' role="#encodeForHTMLAttribute(variables.tab.id)#"';
 			if (!variables.tab.disabled)	variables.result &= ' data-toggle="tab"';
 			if (!variables.tab.disabled && variables.tab.dataUrl != "")	{
 									variables.needsJS = true;
 									variables.result &= ' data-url="' & variables.tab.dataUrl & '"';
 									}
-									variables.result &= ' >#variables.tab.title#</a>';
+									variables.result &= ' >#encodeForHTML(variables.tab.title)#</a>';
 									variables.result &= '</li>';
 			variables.currentTab++;
 			} // end if title exists
@@ -67,7 +67,7 @@ case "end" :
 		
 		if (trim(thisTag.generatedContent) != "")	{
 								variables.result &= variables.crlf & '<li role="presentation" class="dropdown"><!-- Content passthrough -->';
-								variables.result &= thisTag.generatedContent;
+								variables.result &= getSafeHTML(thisTag.generatedContent);
 								variables.result &= '</li>';
 								}	
 						
@@ -84,8 +84,10 @@ case "end" :
 		if (attributes.activeIndex == variables.currentTab)	variables.result &= ' class="tab-pane active"';
 		if (attributes.activeIndex != variables.currentTab)	variables.result &= ' class="tab-pane"';
 							
-								variables.result &= ' id="#variables.tab.id#">';
-								variables.result &= variables.tab.generatedContent;	
+								variables.result &= ' id="#encodeForHTMLAttribute(variables.tab.id)#">';
+								
+								variables.result &= getSafeHTML(variables.tab.generatedContent);	
+	
 								variables.result &= variables.crlf & '</section>';
 		variables.currentTab++;			
 		}	// end for

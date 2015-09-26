@@ -22,7 +22,7 @@
 
 <p>If possible, use the icons that are a part of one of the button tags</p>
 
-<b:panel look="info" title="Attributes of &lt;b:icon&gt;">
+<b:panel look="info" title="Attributes of <b:icon>">
 
 	<b:table>
 	<thead>
@@ -30,6 +30,7 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -58,6 +59,9 @@
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><code>REFindNoCase('[^0-9A-Za-z ]')</code> is false.
+				 Must be less than  <cfoutput>#application.Bootstrap.limit.id#</cfoutput> characters
+			</td>
 		</tr>
 		<tr>
 			<td>library</td>

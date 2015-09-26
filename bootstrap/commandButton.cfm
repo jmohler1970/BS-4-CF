@@ -20,6 +20,7 @@ case "start" :
 	param attributes.icon		= "";
 	param attributes.iconAlign	= "left";
 	param attributes.id			= "";
+	param attributes.isSafeHTML		= true;
 	param attributes.lang		= "";
 	param attributes.library		= "default";	// for icon
 	param attributes.look		= "default";
@@ -33,6 +34,7 @@ case "start" :
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.tooltip		= "";
+	param attributes.tooltipPosition = "bottom";
 	param attributes.type		= "submit";	// as opposed to reset, use button for buttons
 	param attributes.value		= "";
 
@@ -53,30 +55,35 @@ case "start" :
 
 
 
+	if (attributes.id.REFindNoCase('[^0-9A-Za-z ]')) 				throw "Special characters are not allowed";
+	if (attributes.id.len() > application.Bootstrap.Limit.ID)		throw "id field is too long";
+	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
+	
+
 	if (!attributes.processed) exit "exitTag";
 	break;
 
 case "end" :
 
-	if(attributes.value != "")											thisTag.generatedContent = xmlFormat(attributes.value);
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
+	if(attributes.value != "")											thisTag.generatedContent = attributes.value;
+	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
 	
-											variables.result &= '<button type="#attributes.type#" class="btn btn-#lcase(attributes.look)#';
+											variables.result &= '<button type="#attributes.type#" class="btn btn-#attributes.look.lcase()#';
 	if(attributes.outline)						variables.result &= "-outline";
 	if(attributes.size		!= "")				variables.result &= ' btn-#attributes.size#';
 	if(attributes.styleClass	!= "")				variables.result &= ' #attributes.styleClass#';
 											variables.result &= '"';
 	// end class specification
 
-	if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
-	if(attributes.lang		!= "")				variables.result &= ' lang="#attributes.lang#"';
-	if(attributes.name		!= "")				variables.result &= ' name="#attributes.name#"';
+	if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.lang		!= "")				variables.result &= ' lang="#encodeForHTMLAttribute(attributes.lang)#"';
+	if(attributes.name		!= "")				variables.result &= ' name="#encodeForHTMLAttribute(attributes.name)#"';
 
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
 
-	if(attributes.role		!= "")				variables.result &= ' role="#attributes.role#"';
-	if(attributes.style		!= "")				variables.result &= ' style="#attributes.style#"';
-	if(attributes.tooltip	!= "")				variables.result &= ' tooltip="#attributes.tooltip#"';
+	if(attributes.role		!= "")				variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
+	if(attributes.style		!= "")				variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.tooltip	!= "")				variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.disabled)						variables.result &= ' disabled="disabled"';
 											variables.result &= '>';
 

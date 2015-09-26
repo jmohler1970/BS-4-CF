@@ -16,7 +16,7 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
 
-	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip");
+	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 	
 	if(structKeyExists(attributes, "qryOption")) thisTag.qryOption = attributes.qryOption;
 

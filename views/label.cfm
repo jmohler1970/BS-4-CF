@@ -18,7 +18,7 @@
 <b:h2>Introduction</b:h2>
 
 
-<b:panel look="info" title="Attributes of &lt;b:badge&gt; &amp; &lt;b:label&gt;">
+<b:panel look="info" title="Attributes of <b:badge> & <b:label>">
 
 	<b:table>
 	<thead>

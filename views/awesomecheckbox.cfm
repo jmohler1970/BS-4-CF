@@ -37,7 +37,7 @@
 </ol>
 
 
-<b:panel look="info" title="Attributes of &lt;b:well&gt;">
+<b:panel look="info" title="Attributes of <b:checkbox>">
 
 	<b:table>
 	<thead>

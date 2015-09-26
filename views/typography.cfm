@@ -24,19 +24,38 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td>No (default) / <code>getSafeHTML()</code>
+				This is often longer than antisamy limits. Make sure that the inner content is clean.
+				Also see <code>isSafeHTML</code> attribute
+			</td>
+		</tr>
+		<tr>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
+			<td>See generatedContent</td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML id.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
+		</tr>
+		<tr>
+			<td>isSafeHTML</td>
+			<td>true</td>
+			<td>Controls how content is rendered. Content is assumed to be clean, but it can be cleaned if necessary.
+				Set to false to use <code>getSafeHTML()</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>pageHeader</td>
@@ -44,47 +63,56 @@
 			<td>For <code>&lt;b:h1&gt;</code> only. This wraps content in div with page header. 
 				<b:label look="Info" value="BS4" /> This is expected to be removed in Bootstrap 4. BS-4-CF will continue to generate this class, but it may have no effect.
 			</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>lead</td>
 			<td>false</td>
 			<td>This is for <code>&lt;b:p&gt;</code> only. Adds lead class.</td>
+			<td>Must evaluate to boolean. Lead is treated as true</td>
 		</tr>		
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>reverse</td>
 			<td>false</td>
 			<td>This is for <code>&lt;b:blockquote&gt;</code> only. This puts the <code>&lt;blockquote&gt;</code> bar on the opposite of its normal position.</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>static</td>
 			<td>false</td>
 			<td>This is for <code>&lt;b:p&gt;</code> only. This is for static class for use inside of forms. 
 				See <b:commandLink action="?view=forms" look="link">Forms</b:commandLink> for more examples.</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><code>encodeForCSS()</code></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<td>Pass though of CSS class.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Pass though of title</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -94,11 +122,37 @@
 <cfset rc = { heading = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium magna in sem pharetra, gravida tristique nulla ultricies. Suspendisse ornare nulla quis tempus dictum. Random <b> tag. It should be escaped. In at ipsum ut sapien efficitur dictum sed a nibh. Nunc convallis at ligula sed porta. Cras convallis turpis sed eleifend fringilla." }>
 
 
-
 <h3>About &lt;b:outputText&gt;</h3>
 
-
 <p><code>&lt;b:outputText&gt;</code> is not a block element like all the rest. It wraps its content in a <code>&lt;span&gt;</code>. You may find that this tag is overkill in many circumstances. This tag has been included for completeness, but its use is discouraged. Many of the other tags are have closer semantic meaning.</p>
+
+<b:panel look="info" title="Attributes <b:outputText>">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<th>Default value</th>
+			<th>Description</th>
+			<th>Sanitized</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td>Controls how content is rendered. Content is assumed to not be clean</td>
+			<td>Must evaluate to boolean</td>
+		</tr>	
+	
+	</tbody>
+	</b:table>
+</b:panel>
+
+
+
+
+
 
 
 

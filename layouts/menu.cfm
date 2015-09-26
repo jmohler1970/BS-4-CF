@@ -3,7 +3,7 @@
 
 
 
-<b:navBar brand="BS-4-CF" brandHref="index.cfm" fixed="top">
+<b:navBar brand="Bootstrap for ColdFusion" brandHref="index.cfm" fixed="top">
 	<b:navbarLinks>
 	
 		<b:dropMenu value="Getting Started">

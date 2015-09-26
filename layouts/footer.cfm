@@ -15,4 +15,4 @@
 	</small>	
 </p>
 
-<b:outputScript name="application.js" />
+<b:outputScript library="local" name="application.js" />

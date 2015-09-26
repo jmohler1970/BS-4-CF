@@ -20,7 +20,7 @@
 
 <h3>&lt;b:buttonToolbar&gt;</h3>
 
-<b:panel look="info" title="Attributes of &lt;b:buttonToolbar&gt;">
+<b:panel look="info" title="Attributes of <b:buttonToolbar>">
 
 	<b:table>
 	<thead>
@@ -67,7 +67,7 @@
 
 <h3>&lt;b:buttonGroup&gt;</h3>
 
-<b:panel look="info" title="Attributes of &lt;b:buttonGroup&gt;">
+<b:panel look="info" title="Attributes of <b:buttonGroup>">
 
 	<b:table>
 	<thead>

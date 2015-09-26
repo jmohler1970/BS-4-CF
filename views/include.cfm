@@ -15,7 +15,7 @@
 
 <p>This is a passthrough of <code>&lt;cfinclude&gt;</code>. It also has the conditional processing of processed and rendered</p>
 
-<b:panel look="info" title="Attributes of &lt;b:include&gt;">
+<b:panel look="info" title="Attributes of <b:include>">
 
 	<b:table>
 	<thead>

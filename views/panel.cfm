@@ -28,7 +28,7 @@
 
 
 
-<b:panel look="info" title="Attributes for &lt;b:panel&gt;">
+<b:panel look="info" title="Attributes for <b:panel>">
 
 	<b:table>
 	<thead>
@@ -151,7 +151,7 @@
 <p>&nbsp;</p>
 
 
-<panel look="info" title="Attributes of &lt;b:well&gt;">
+<panel look="info" title="Attributes of <b:well>">
 
 	<table>
 	<thead>
@@ -159,10 +159,17 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
+		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td>No, this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
+		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>

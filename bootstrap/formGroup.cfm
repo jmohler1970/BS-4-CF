@@ -16,11 +16,14 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.id			= "";
+	param attributes.isSafeHTML		= true;
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
 	param attributes.style		= "";
 	param attributes.styleClass	= "";
 	param attributes.tooltip		= "";
+	param attributes.tooltipPosition = "bottom";
+     
      
 	if (!attributes.processed) exit "exitTag";
 	break;
@@ -30,9 +33,9 @@ case "end" :
 	   							variables.result &= variables.crlf & '<div class="form-group';
 	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';			
 	   							variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';                         
-	if(attributes.tooltip    != "")    variables.result &= ' tooltip="#attributes.tooltip#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';           
+	if(attributes.tooltip    != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 								variables.result &= '>';
 								variables.result &= thisTag.GeneratedContent; // pass through of content
 								variables.result &= variables.crlf & '</div><!-- /.form-group -->';

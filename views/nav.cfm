@@ -19,7 +19,7 @@
 
 
 
-<b:panel look="info" title="Attributes of &lt;b:dropMenu&gt;">
+<b:panel look="info" title="Attributes of <b:dropMenu>">
 
 	<b:table>
 	<thead>
@@ -63,7 +63,7 @@
 </b:panel>
 
 
-<b:panel look="info" title="Attributes of &lt;b:navLink&gt;">
+<b:panel look="info" title="Attributes of <b:navLink>">
 
 	<b:table>
 	<thead>

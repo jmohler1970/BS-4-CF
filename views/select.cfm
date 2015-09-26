@@ -33,7 +33,7 @@
 
 <p>This loads data one part at a time</p>
 
-<b:panel look="info" title="Attributes of &lt;b:selectItem&gt;">
+<b:panel look="info" title="Attributes of <b:selectItem>">
 
 	<b:table>
 	<thead>
@@ -102,7 +102,7 @@
 
 <p>This converts data from a query</p>
 
-<b:panel look="info" title="Attributes of &lt;b:selectItem&gt;">
+<b:panel look="info" title="Attributes of <b:selectItem>">
 
 	<b:table>
 	<thead>
@@ -206,7 +206,7 @@ rc.qryData.AddRow([
 
 disabled,display,group,id,look,value,selected,tooltip
 
-<b:panel title="Columns of &lt;attributes.qryOption&gt;">
+<b:panel title="Columns of <attributes.qryOption>">
 
 	<b:table>
 	<thead>
@@ -304,7 +304,7 @@ disabled,display,group,id,look,value,selected,tooltip
 <p>&nbsp;</p>
 <h3>b:selectManyCheckbox</h3>
 
-<b:panel look="info" title="Attributes of &lt;b:selectManyCheckbox&gt;">
+<b:panel look="info" title="Attributes of <b:selectManyCheckbox>">
 
 	<b:table>
 	<thead>
@@ -367,7 +367,7 @@ disabled,display,group,id,look,value,selected,tooltip
 <p>The <code>b:selectManyMenu</code> is not expected to be used directly. Most browsers render this in a way that is way too difficult to use.
 	It is expected that a tool like select2 <a href="https://select2.github.io/" target="_blank">https://select2.github.io/</a></p>
 
-<b:panel look="info" title="Attributes of &lt;b:selectManyCheckbox&gt;">
+<b:panel look="info" title="Attributes of <b:selectManyCheckbox>">
 
 	<b:table>
 	<thead>
@@ -488,7 +488,7 @@ disabled,display,group,id,look,value,selected,tooltip
 	
 <p>You can also create content between the tags and that will also be apart of the select one menu.	
 
-<b:panel look="info" title="Attributes of &lt;b:selectOneRadio&gt;">
+<b:panel look="info" title="Attributes of <b:selectOneRadio>">
 	<b:table>
 	<thead>
 		<tr>
@@ -603,7 +603,7 @@ disabled,display,group,id,look,value,selected,tooltip
 <p>&nbsp;</p>
 <h3>b:selectOneRadio</h3>
 
-<b:panel look="info" title="Attributes of &lt;b:selectOneRadio&gt;">
+<b:panel look="info" title="Attributes of <b:selectOneRadio>">
 
 	<b:table>
 	<thead>

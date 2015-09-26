@@ -28,6 +28,7 @@ case "start" :
 	param attributes.size		= "";
 	param attributes.toggle		= false;
 	param attributes.tooltip		= "";
+	param attributes.tooltipPosition	= "bottom";
 
 
 
@@ -41,12 +42,12 @@ case "end" :
 	if(attributes.orientation == "up")			variables.result &= '<div class="btn-group dropup';
 	
 
-	if(attributes.size		!= "")	variables.result &= ' btn-group-#attributes.size#';
+	if(attributes.size		!= "")	variables.result &= ' btn-group-#encodeForHTMLAttribute(attributes.size)#';
 	if(attributes.justified)			variables.result &= ' btn-group-justified';
-	if(attributes.pull		!= "")	variables.result &= ' pull-#attributes.pull#';
+	if(attributes.pull		!= "")	variables.result &= ' pull-#encodeForHTMLAttribute(attributes.pull)#';
 								variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
-	if(attributes.tooltip	!= "")	variables.result &=	' title="#attributes.tooltip#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.tooltip	!= "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.toggle)			variables.result &= ' data-toggle="buttons"';
 								variables.result &= ' role="group">';
 
@@ -57,22 +58,22 @@ case "end" :
 
 		if(thisTag.qryOption.id[variables.myRow] == "auto")	QuerySetCell(thisTag.qryOption, "id", "auto_" & left(createUUID(), 10), variables.myRow);
 			
-													variables.result &= '<label class="btn btn-#lcase(variables.myLook)# ';
+													variables.result &= '<label class="btn btn-#encodeForHTMLAttribute(variables.myLook.lcase())# ';
 		
 		if(thisTag.qryOption.selected[variables.myRow])		variables.result &= ' active';
 													variables.result &= '"';
 	
-		if(thisTag.qryOption.tooltip[variables.myRow] != "")	variables.result &= ' tooltip="#thisTag.qryOption.tooltip[variables.myRow]#"';
+		if(thisTag.qryOption.tooltip[variables.myRow] != "")	variables.result &= ' title="#encodeForHTML(thisTag.qryOption.tooltip[variables.myRow])#"';
 													variables.result &= '>';
 
 
 
 													variables.result &= '<input type="radio"';
-		if(attributes.name					 != "")		variables.result &= ' name="#attributes.name#"';
-		if(thisTag.qryOption.id[variables.myRow] != "")		variables.result &= ' id="#thisTag.qryOption.id[variables.myRow]#"';
+		if(attributes.name					 != "")		variables.result &= ' name="#encodeForHTML(attributes.name)#"';
+		if(thisTag.qryOption.id[variables.myRow] != "")		variables.result &= ' id="#encodeForHTML(thisTag.qryOption.id[variables.myRow])#"';
 		if(thisTag.qryOption.selected[variables.myRow])
 													variables.result &= ' checked="checked"';
-													variables.result &= ' value="#thisTag.qryOption.value[variables.myRow]#"';	
+													variables.result &= ' value="#encodeForHTML(thisTag.qryOption.value[variables.myRow])#"';	
 													variables.result &= ' />';
 		
 													variables.result &= thisTag.qryOption.display[variables.myRow]; // pass through of content

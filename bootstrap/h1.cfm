@@ -17,6 +17,7 @@ case "start" :
   
 	param attributes.binding		= "";
 	param attributes.id			= "";
+	param attributes.isSafeHTML	= true;
 	param attributes.pageHeader	= false;
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true;
@@ -24,6 +25,7 @@ case "start" :
 	param attributes.styleClass	= "";
 	param attributes.text		= "";
 	param attributes.tooltip		= "";
+	param attributes.tooltipPosition = "bottom";
 	
 	
 	variables.myClass = "";
@@ -31,23 +33,28 @@ case "start" :
 	if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';		
 
 
+	
 	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = xmlformat(evaluate("caller.rc.#attributes.binding#"));
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
      
 
 	if(attributes.pageHeader)		variables.result &= '<div class="page-header">';
 	if(variables.myClass == "")		variables.result &= '<h1';
-	if(variables.myClass != "")		variables.result &= '<h1 class="#variables.myClass#"';
+	if(variables.myClass != "")		variables.result &= '<h1 class="#encodeForHTMLAttribute(variables.myClass)#"';
 
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
-	if(attributes.tooltip    != "")	variables.result &=	' title="#attributes.tooltip#"';               
+	if(attributes.id		!= "")	variables.result &= ' id = "#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.style		!= "")	variables.result &= ' style = "#encodeForCSS(attributes.style)#"';
+	if(attributes.tooltip    != "")	variables.result &=	' title = "#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';               
 								variables.result &= '>';
 							
-								variables.result &= trim(thisTag.GeneratedContent); // pass through of content
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean						
+							
 	
 								variables.result &= '</h1>' & variables.crlf;
      if(attributes.pageHeader)		variables.result &= '</div><!-- /.page-header -->';

@@ -40,7 +40,7 @@ rc.qryData.AddRow([
 
 <h2>b:table</h2>
 
-<b:panel look="info" title="Attributes of &lt;b:table&gt;">
+<b:panel look="info" title="Attributes of <b:table>">
 
 	<b:table>
 	<thead>
@@ -48,65 +48,83 @@ rc.qryData.AddRow([
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td>No, this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
+		</tr>
+		<tr>
 			<td>bordered</td>
 			<td>true</td>
 			<td>tables will have borders</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>condensed</td>
 			<td>true</td>
 			<td>The table will have slightly smaller cell padding</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>hover</td>
 			<td>false</td>
 			<td>Hover effect when mouse is over table</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML id.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>responsive</td>
 			<td>true</td>
 			<td>Make tables scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>stripped</td>
 			<td>true</td>
 			<td>Rows will alternate light and dark backgrounds</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><code>encodeForCSS()</code></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<td>Pass though of CSS class.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Pass though of title</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -116,7 +134,7 @@ rc.qryData.AddRow([
 <h2>b:tr</h2>
 	
 	
-<b:panel look="info" title="Attributes of &lt;b:tr&gt;">
+<b:panel look="info" title="Attributes of <b:tr>">
 
 	<b:table>
 	<thead>
@@ -124,60 +142,76 @@ rc.qryData.AddRow([
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
-
+		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td>No, this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
+		</tr>
 		<tr>
 			<td>data-*</td>
 			<td>(none)</td>
 			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML id.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>look</td>
 			<td>(none)</td>
 			<td>This for contextual classes</td>
+			<td>Data must belong to the valid value list set in <code>application.cfc<code></td>
 		</tr>
 		<tr>
 			<td>ng-*</td>
 			<td>(none)</td>
 			<td>Pass through of all AngularJS attributes</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>on*</td>
 			<td>(none)</td>
 			<td>Pass through of all Mouse/Pointer events.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><code>encodeForCSS()</code></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<td>Pass though of CSS class.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Pass though of title</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -186,7 +220,7 @@ rc.qryData.AddRow([
 
 <h2>b:th &amp; b:td</h2>
 
-<b:panel look="info" title="Attributes of &lt;b:td&gt; &amp;  &lt;b:th&gt;">
+<b:panel look="info" title="Attributes of <b:td> & <b:th>">
 
 	<b:table>
 	<thead>
@@ -194,76 +228,96 @@ rc.qryData.AddRow([
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td>No, this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
+		</tr>
+		<tr>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Reserved for future use</td>
+			<td>N/A</td>
 		</tr>
 		<tr>
 			<td>hidden</td>
 			<td>(none)</td>
-			<td>Should this cell be hidden when the screen is small. Unlike Bootstrap hidden, if connect is hidden when sm then xs is hidden too.
-				Likewise, if hidden on md, then sm and xs are hidden too. If the default Bootstrap behavior is desire, then use <code>styleClass=</code> instead.
+			<td>Should this cell be hidden when the screen is small. Unlike Bootstrap hidden, if hidden when sm then xs is hidden too.
+				Likewise, if hidden on md, then sm and xs are hidden too. If the default Bootstrap behavior is desired, then use <code>styleClass=</code> instead.
 			</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML id.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>data-*</td>
 			<td>(none)</td>
 			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>look</td>
 			<td>(none)</td>
 			<td>This for contextual classes</td>
+			<td>Data must belong to the valid value list set in <code>application.cfc<code></td>
 		</tr>
 		<tr>
 			<td>ng-*</td>
 			<td>(none)</td>
 			<td>Pass through of all AngularJS attributes</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>on*</td>
 			<td>(none)</td>
 			<td>Pass through of all Mouse/Pointer events.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This is like a <code>&lt;cfif&gt;</code>, but only for content between tags. <b>Warning:</b> This will also process tags in between the start and end tags.</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code>, but only for content between the tags</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<td>Pass though of CSS class.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>text</td>
 			<td>(none)</td>
 			<td>This is text content classes. This takes care off alignment and wrapping.</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Pass though of title</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 	</tbody>
 	</b:table>
