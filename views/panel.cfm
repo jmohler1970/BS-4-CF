@@ -36,10 +36,17 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
+		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
+		</tr>
 		<tr>
 			<td>binding</td>
 			<td>(none)</td>
@@ -80,11 +87,13 @@
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>style</td>
@@ -111,11 +120,13 @@
 			<td>titleStyle</td>
 			<td>(none)</td>
 			<td>CSS style for title</td>
+			<td><code>encodeForCSS()</code></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Pass though of title</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 	</tbody>
 	</b:table>
