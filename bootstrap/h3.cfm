@@ -17,7 +17,7 @@ case "start" :
 	  
 	param attributes.binding		= "";
 	param attributes.id			= "";
-	param attributes.isSafeHTML	= true;
+	param attributes.isSafeHTML	= false;
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true; 
 	param attributes.style		= "";
@@ -49,7 +49,6 @@ case "end" :
 	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';           
 								variables.result &= '>';
-
 
 	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
 	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean

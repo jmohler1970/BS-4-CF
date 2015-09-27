@@ -17,7 +17,7 @@ case "start" :
   
 	param attributes.binding		= "";
      param attributes.id			= "";
-     param attributes.isSafeHTML	= true;
+     param attributes.isSafeHTML	= false;
      param attributes.processed 	= true;
 	param attributes.rendered 	= true; 
 	param attributes.style		= "";
@@ -41,7 +41,6 @@ case "end" :
      
 	if(variables.myClass == "")		variables.result &= '<h6';
 	if(variables.myClass != "")		variables.result &= '<h6 class="#encodeForHTMLAttribute(variables.myClass)#"';
-
         
 	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';

@@ -38,7 +38,8 @@ case "start" :
 
 case "end" :
 
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.text = evaluate("caller.rc.#attributes.binding#");
+	if(attributes.value != "")											thisTag.generatedContent = attributes.value;
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
 
 
 								variables.result &= '<span class = "badge badge-#encodeForHTMLAttribute(attributes.look.lcase())#"';

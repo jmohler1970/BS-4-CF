@@ -79,9 +79,10 @@ case "end" :
 	if(attributes.tooltip    != "")				variables.result &=	'>';
 	
 	
+	if(attributes.rendered && !attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
+	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // pass through of content
 
-	if (attributes.rendered && attributes.processed)
-											variables.result &= getSafeHTML(thisTag.GeneratedContent); // pass through of content
+
 											
 	if(attributes.tooltip	!= "")				variables.result &= '</span>';
 											variables.result &= '</td>';

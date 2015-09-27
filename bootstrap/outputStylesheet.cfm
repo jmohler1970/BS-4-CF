@@ -33,6 +33,9 @@ case "end" :
 	if(attributes.media		!= "")	variables.result &= ' media="#attributes.media#"';
 								variables.result &= ' rel="#attributes.rel#"';              
 								variables.result &= '>';
+								
+								variables.result &= thisTag.GeneratedContent.trim();
+								
 								variables.result &= '</link>';
 
      

@@ -47,7 +47,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td>No, this is often longer than antisamy limits. Make sure that the inner content is clean</td>
+			<td><b:label look="danger">No</b:label> this is often longer than antisamy limits. Make sure that the inner content is clean</td>
 		</tr>
 		<tr>
 			<td>fluid</td>
@@ -119,7 +119,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td>No, this is often longer than antisamy limits. Make sure that the inner content is clean</td>
+			<td><b:label look="danger">No</b:label> this is often longer than antisamy limits. Make sure that the inner content is clean</td>
 		</tr>
 
 		<tr>
@@ -132,13 +132,13 @@
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>style</td>
@@ -184,32 +184,32 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td>No, this is often longer than antisamy limits. Make sure that the inner content is clean</td>
+			<td><b:label look="danger">No</b:label> this is often longer than antisamy limits. Make sure that the inner content is clean</td>
 		</tr>
 		
 		<tr>
 			<td>colxs</td>
 			<td>(none)</td>
 			<td>Span for extra small screens. Use <code>span=</code> if possible</td>
-			<td></td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
 			<td>colsm</td>
 			<td>(none)</td>
 			<td>Span for small screens. Use <code>span=</code> if possible</td>
-			<td></td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
 			<td>colmd</td>
 			<td>(none)</td>
 			<td>Span for medium screens. Use <code>span=</code> if possible</td>
-			<td></td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>col-lg</td>
+			<td>collg</td>
 			<td>(none)</td>
 			<td>This is now set by default. This has to be manually set if needed.</td>
-			<td></td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
 			<td>id</td>
@@ -221,44 +221,44 @@
 			<td>offset</td>
 			<td>(none)</td>
 			<td>By default, no offset will be done. When provided, this will define the offset for all screen sizes.</td>
-			<td></td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>offset-xs</td>
+			<td>offsetxs</td>
 			<td>(none)</td>
 			<td>Offset for extra small screens</td>
-			<td></td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>offset-sm</td>
+			<td>offsetsm</td>
 			<td>(none)</td>
 			<td>Offset for small screens</td>
-			<td></td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>offset-md</td>
+			<td>offsetmd</td>
 			<td>(none)</td>
 			<td>Offset for medium screens</td>
-			<td></td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>offset-lg</td>
+			<td>offsetlg</td>
 			<td>0</td>
 			<td>This is skipped where there is an offset of 0.</td>
-			<td></td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>span</td>

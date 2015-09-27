@@ -39,10 +39,10 @@
 		  
 	
 	<b:column span="4">
-          <h3><b:icon library="awesome" name="cloud" /> Rendered</h3>
+          <h3><b:icon library="awesome" name="cloud" /> Smarter tags</h3>
           <p>This <q>Rendered</q> option is like wrapping your code in a <code>&lt;cfif&gt;</code>. It is much smarter because it is a part of the tags as opposed to wrapping the content.</p>
           
-          <b:p><b:commandLink href="?view=using_rendered" value="Learn More" look="primary" /></b:p>
+          <b:p><b:commandLink href="?view=common" value="Learn More" look="primary" /></b:p>
 	</b:column>    
 		  
 

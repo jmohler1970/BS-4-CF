@@ -57,7 +57,7 @@ rc.qryData.AddRow([
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td>No, this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
+			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
 		</tr>
 		<tr>
 			<td>bordered</td>
@@ -151,7 +151,7 @@ rc.qryData.AddRow([
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td>No, this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
+			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
 		</tr>
 		<tr>
 			<td>data-*</td>
@@ -237,7 +237,7 @@ rc.qryData.AddRow([
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td>No, this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
+			<td><code>getSafeHTML()</code></td>
 		</tr>
 		<tr>
 			<td>binding</td>
@@ -251,7 +251,7 @@ rc.qryData.AddRow([
 			<td>Should this cell be hidden when the screen is small. Unlike Bootstrap hidden, if hidden when sm then xs is hidden too.
 				Likewise, if hidden on md, then sm and xs are hidden too. If the default Bootstrap behavior is desired, then use <code>styleClass=</code> instead.
 			</td>
-			<td></td>
+			<td><b:label look="danger">No</b:label></td>
 		</tr>
 		<tr>
 			<td>id</td>
@@ -299,7 +299,7 @@ rc.qryData.AddRow([
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
-			<td></td>
+			<td><code>encodeForCSS()</code></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
@@ -311,7 +311,7 @@ rc.qryData.AddRow([
 			<td>text</td>
 			<td>(none)</td>
 			<td>This is text content classes. This takes care off alignment and wrapping.</td>
-			<td></td>
+			<td><b:label look="danger">No</b:label></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
@@ -342,12 +342,12 @@ rc.qryData.AddRow([
 <tbody>
 <cfoutput query="rc.qryData">
 	<b:tr rendered="#IIF(Delete, 0, 1)#">
-		<b:td><b:badge value="#ID#" /></b:td>
-		<b:td data-sort="#ID#"><b:icon name="#icon#" /></b:td>
+		<b:td isSafeHTML="true"><b:badge value="#ID#" /></b:td>
+		<b:td isSafeHTML="true" data-sort="#ID#"><b:icon name="#icon#" /></b:td>
 		<b:td>#Album#</b:td>
 		<b:td>#Message#</b:td>
 		<b:td>#Score#</b:td>
-		<b:td><b:commandLink action="###ID#" size="xs" look="primary">View #id#</b:commandLink></b:td>
+		<b:td isSafeHTML="true"><b:commandLink action="###ID#" size="xs" look="primary">View #id#</b:commandLink></b:td>
 	</b:tr>
 </cfoutput>	
 </tbody>
@@ -372,12 +372,12 @@ rc.qryData.AddRow([
 <tbody>
 <cfoutput query="rc.qryData">
 	<b:tr rendered="#IIF(Delete, 0, 1)#">
-		<b:td hidden="md"><b:badge value="#ID#" /></b:td>
-		<b:td hidden="sm" data-sort="#ID#"><b:icon name="#icon#" /></b:td>
+		<b:td hidden="md" isSafeHTML="true"><b:badge value="#ID#" /></b:td>
+		<b:td hidden="sm" isSafeHTML="true" data-sort="#ID#"><b:icon name="#icon#" /></b:td>
 		<b:td hidden="xs">#Album#</b:td>
 		<b:td>#Message#</b:td>
 		<b:td>#Score#</b:td>
-		<b:td><b:commandLink action="###ID#" size="xs" look="primary">View #id#</b:commandLink></b:td>
+		<b:td isSafeHTML="true"><b:commandLink action="###ID#" size="xs" look="primary">View #id#</b:commandLink></b:td>
 	</b:tr>
 </cfoutput>	
 </tbody>
@@ -412,12 +412,12 @@ DataTables is a plug-in for the jQuery Javascript library. It is a highly flexib
 <tbody>
 <cfoutput query="rc.qryData">
 	<b:tr rendered="#IIF(Delete, 0, 1)#">
-		<b:td><b:badge value="#ID#" /></b:td>
-		<b:td data-sort="#ID#"><b:icon name="#icon#" /></b:td>
+		<b:td isSafeHTML="true"><b:badge value="#ID#" /></b:td>
+		<b:td isSafeHTML="true" data-sort="#ID#"><b:icon name="#icon#" /></b:td>
 		<b:td>#Album#</b:td>
 		<b:td>#Message#</b:td>
 		<b:td>#Score#</b:td>
-		<b:td><b:commandLink action="###ID#" size="xs" look="primary">View #id#</b:commandLink></b:td>
+		<b:td isSafeHTML="true"><b:commandLink action="###ID#" size="xs" look="primary">View #id#</b:commandLink></b:td>
 	</b:tr>
 </cfoutput>	
 </tbody>

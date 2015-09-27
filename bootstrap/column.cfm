@@ -27,15 +27,15 @@ case "start" :
 	param attributes.tooltipPosition	= "bottom";
   
 	// spans for specific screen sizes
-	param attributes.colXs			= attributes.span;
-	param attributes.colSm			= attributes.span;
-	param attributes.colMd			= attributes.span;
-	param attributes.colLg			= "";
+	param attributes.colXs			= attributes.span;		if (!isnumeric(attributes.colXs)) attributes.colXs = attributes.span;
+	param attributes.colSm			= attributes.span;		if (!isnumeric(attributes.colSm)) attributes.colXs = attributes.span;
+	param attributes.colMd			= attributes.span;		if (!isnumeric(attributes.colMd)) attributes.colXs = attributes.span;
+	param attributes.colLg			= "";				if (!isnumeric(attributes.colLg)) attributes.colXs = attributes.span;
 	
-	param attributes.offsetXs		= attributes.offset;
-	param attributes.offsetSm		= attributes.offset;
-	param attributes.offsetMd		= attributes.offset;
-	param attributes.offsetLg		= 0;
+	param attributes.offsetXs		= attributes.offset;	if (!isnumeric(attributes.offsetXs)) attributes.offsetXs = attributes.offset;
+	param attributes.offsetSm		= attributes.offset;	if (!isnumeric(attributes.offsetSm)) attributes.offsetSm = attributes.offset;
+	param attributes.offsetMd		= attributes.offset;	if (!isnumeric(attributes.offsetMd)) attributes.offsetMd = attributes.offset;
+	param attributes.offsetLg		= 0;					if (!isnumeric(attributes.offsetLg)) attributes.offsetLg = attributes.offset;
 
 
  	if (!attributes.processed) exit "exitTag";
@@ -65,7 +65,10 @@ case "end" :
 	
 								variables.result &= '>';
 								variables.result &= variables.crlf;
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+								
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean							
+								
 								variables.result &= variables.crlf & '</div><!-- /.column -->';
 								variables.result &= variables.crlf;
      

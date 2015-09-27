@@ -8,6 +8,7 @@
 	
 		<b:dropMenu value="Getting Started">
 			<b:navLink value="Introduction" href="?view=getting_started" active="#IIF(url.view EQ 'getting_started', 1, 0)#" />
+			<b:navLink value="Smart tags & common features" href="?view=common" />
 			<b:navLink value="Stylesheets & JavaScript" href="?view=ssjs" />
 			<b:navLink />
 			<b:navLink header="Bootstrap 4"/>

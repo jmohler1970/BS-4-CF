@@ -17,7 +17,7 @@ case "start" :
   
 	param attributes.binding		= "";
      param attributes.id			= "";
-     param attributes.isSafeHTML	= true;
+     param attributes.isSafeHTML	= false;
      param attributes.processed 	= true;
 	param attributes.rendered 	= true; 
 	param attributes.style		= "";
@@ -31,7 +31,6 @@ case "start" :
 	if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';		
 	if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';	
 	
-
    
      
      if (!attributes.processed) exit "exitTag";
@@ -42,8 +41,7 @@ case "end" :
      
      
      if(variables.myClass == "")		variables.result &= '<h5';
-	if(variables.myClass != "")		variables.result &= '<h5 class="#variables.myClass#"';
-
+	if(variables.myClass != "")		variables.result &= '<h5 class="#encodeForHTMLAttribute(variables.myClass)#"';
      
 	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';

@@ -33,9 +33,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td>No (default) / <code>getSafeHTML()</code>
-				This is often longer than antisamy limits. Make sure that the inner content is clean.
-				Also see <code>isSafeHTML</code> attribute
+			<td>Yes. Caution this content may be longer than antisamy limits. Make sure that the inner content is clean.
 			</td>
 		</tr>
 		<tr>
@@ -119,39 +117,7 @@
 </b:panel>
 
 
-<cfset rc = { heading = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium magna in sem pharetra, gravida tristique nulla ultricies. Suspendisse ornare nulla quis tempus dictum. Random <b> tag. It should be escaped. In at ipsum ut sapien efficitur dictum sed a nibh. Nunc convallis at ligula sed porta. Cras convallis turpis sed eleifend fringilla." }>
-
-
-<h3>About &lt;b:outputText&gt;</h3>
-
-<p><code>&lt;b:outputText&gt;</code> is not a block element like all the rest. It wraps its content in a <code>&lt;span&gt;</code>. You may find that this tag is overkill in many circumstances. This tag has been included for completeness, but its use is discouraged. Many of the other tags are have closer semantic meaning.</p>
-
-<b:panel look="info" title="Attributes <b:outputText>">
-
-	<b:table>
-	<thead>
-		<tr>
-			<th>Attribute</th>
-			<th>Default value</th>
-			<th>Description</th>
-			<th>Sanitized</th>
-		</tr>	
-	</thead>
-	<tbody>
-		<tr>
-			<td>isSafeHTML</td>
-			<td>false</td>
-			<td>Controls how content is rendered. Content is assumed to not be clean</td>
-			<td>Must evaluate to boolean</td>
-		</tr>	
-	
-	</tbody>
-	</b:table>
-</b:panel>
-
-
-
-
+<cfset rc = { heading = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pretium magna in sem pharetra, gravida tristique nulla ultricies. Suspendisse ornare nulla quis tempus dictum. Random <b> tag. It should be escaped. In at ipsum ut sapien efficitur dictum sed a nibh. Nunc convallis at ligula sed porta. <> ' Cras convallis turpis sed eleifend fringilla." }>
 
 
 

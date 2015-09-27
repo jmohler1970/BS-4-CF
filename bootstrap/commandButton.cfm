@@ -14,29 +14,29 @@ case "start" :
 
 	variables.result = "";
 
-	param attributes.ajax		= ""; // reserved for future use
-	param attributes.binding		= "";
-	param attributes.disabled	= false;
-	param attributes.icon		= "";
-	param attributes.iconAlign	= "left";
-	param attributes.id			= "";
-	param attributes.isSafeHTML		= true;
-	param attributes.lang		= "";
-	param attributes.library		= "default";	// for icon
-	param attributes.look		= "default";
-	param attributes.name		= "";
-	param attributes.outline		= false;
-	param attributes.processed	= true;
-	param attributes.rendered	= true;
-	param attributes.rel		= "";
-	param attributes.role		= "button";
-	param attributes.size		= "";		// large, small, mini
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
-	param attributes.tooltip		= "";
-	param attributes.tooltipPosition = "bottom";
-	param attributes.type		= "submit";	// as opposed to reset, use button for buttons
-	param attributes.value		= "";
+	param attributes.ajax			= ""; // reserved for future use
+	param attributes.binding			= "";
+	param attributes.disabled		= false;
+	param attributes.icon			= "";
+	param attributes.iconAlign		= "left";
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= false;
+	param attributes.lang			= "";
+	param attributes.library			= "default";	// for icon
+	param attributes.look			= "default";
+	param attributes.name			= "";
+	param attributes.outline			= false;
+	param attributes.processed		= true;
+	param attributes.rendered		= true;
+	param attributes.rel			= "";
+	param attributes.role			= "button";
+	param attributes.size			= "";		// large, small, mini
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.tooltip			= "";
+	param attributes.tooltipPosition	= "bottom";
+	param attributes.type			= "submit";	// as opposed to reset, use button for buttons
+	param attributes.value			= "";
 
 
 	// Patch this

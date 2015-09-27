@@ -17,7 +17,7 @@ case "start" :
   
 	param attributes.binding		= "";
 	param attributes.id			= "";
-	param attributes.isSafeHTML	= true;
+	param attributes.isSafeHTML	= false;
 	param attributes.processed 	= true;
 	param attributes.rendered 	= true; 
 	param attributes.style		= "";

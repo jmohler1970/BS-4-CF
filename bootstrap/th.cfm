@@ -58,25 +58,27 @@ case "end" :
 
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
 
-	if(variables.myClass 	== "")	variables.result &= '<th';
-	if(variables.myClass 	!= "")	variables.result &= '<th class="#encodeForHTMLAttribute(variables.myClass)#"';
-	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(variables.myClass 	== "")				variables.result &= '<th';
+	if(variables.myClass 	!= "")				variables.result &= '<th class="#encodeForHTMLAttribute(variables.myClass)#"';
+	if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 
 
-	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
-								variables.result &= '>';
-	if(attributes.tooltip    != "")	variables.result &=	'<span title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
-	if(attributes.tooltip    != "")	variables.result &=	'>';
+	if(attributes.style		!= "")				variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+											variables.result &= '>';
+	if(attributes.tooltip    != "")				variables.result &=	'<span title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")				variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")				variables.result &= ' data-toggle="tooltip"';
+	if(attributes.tooltip    != "")				variables.result &=	'>';
 	
 	
-	if(attributes.rendered)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
+	if(attributes.rendered && !attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
+	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // pass through of content
 	
-	if(attributes.tooltip    != "")	variables.result &=	'</span>';
-								variables.result &= '</th>';
+	
+	if(attributes.tooltip    != "")				variables.result &=	'</span>';
+											variables.result &= '</th>';
 
 
 	thisTag.GeneratedContent = "";

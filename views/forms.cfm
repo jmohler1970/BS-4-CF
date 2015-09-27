@@ -35,6 +35,13 @@
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
+		</tr>
+
+		<tr>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled</td>

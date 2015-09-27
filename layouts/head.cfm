@@ -49,10 +49,10 @@
 <script src="https://cdn.datatables.net/1.10.8/js/dataTables.bootstrap.min.js"></script>
 
 
-<!---
+
 <b:outputStyleSheet name="application.css" processed="#IIF(url.view EQ 'image', 1, 0)#" />
 
-<b:outputStyleSheet>
+<style type="text/css">
 h1,h2	{
 padding-top: 50px;	
 	
@@ -70,8 +70,7 @@ padding-top: 50px;
 	border:1px solid ##ddd;
 	border:1px solid rgba(86,61,124,.2)
 }
-</b:outputStyleSheet>
+</style>
 
---->
 	
 	

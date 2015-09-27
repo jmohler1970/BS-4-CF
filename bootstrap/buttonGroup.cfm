@@ -18,6 +18,7 @@ case "start" :
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip");
 
 	param attributes.id			= "";
+	param attributes.isSafeHTML	= false;
 	param attributes.justified	= false;
 	param attributes.look		= ""; // this is the default unless over ridden 
 	param attributes.name		= "";

@@ -21,7 +21,7 @@ case "start" :
 	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= false;
 	param attributes.lang			= "";
 	param attributes.library			= "default";	// for icon
 	param attributes.look			= "default";

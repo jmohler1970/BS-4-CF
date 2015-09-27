@@ -30,6 +30,9 @@ case "end" :
 	   							variables.result &= ' src="' & application.Bootstrap.ScriptLibrary[attributes.library] & attributes.name & '"';
 								variables.result &= ' type="#encodeForHTMLAttribute(attributes.type)#"';              
 								variables.result &= '>';
+								
+								variables.result &= thisTag.GeneratedContent.trim();
+								
 								variables.result &= '</script>';
 
      
