@@ -15,18 +15,20 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
   
-	param attributes.circle		= false;		// make it look like a radio
-	param attributes.checked		= false;
-	param attributes.disabled	= false;
-	param attributes.id			= "";
-	param attributes.inline		= false;
-	param attributes.look		= "";
-	param attributes.name		= "";
-	param attributes.processed 	= true;
-	param attributes.rendered 	= true;
-	param attributes.tabIndex	= "";
-	param attributes.title		= "";
-	param attributes.tooltip		= "";
+	param attributes.circle			= false;		// make it look like a radio
+	param attributes.checked			= false;
+	param attributes.disabled		= false;
+	param attributes.id				= "";
+	param attributes.inline			= false;
+	param attributes.isSafeHTML		= false;
+	param attributes.look			= "";
+	param attributes.name			= "";
+	param attributes.processed 		= true;
+	param attributes.rendered 		= true;
+	param attributes.tabIndex		= "";
+	param attributes.title			= "";
+	param attributes.tooltip			= "";
+	param attributes.tooltipPosition	= "bottom";
 	
 	if (attributes.id == "auto")	attributes.id = "checkbox_" & left(createUUID(), 10);
 	
@@ -35,6 +37,7 @@ case "start" :
 	
 	
 	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
+	if (!isnumeric(attributes.tabIndex))	attributes.tabIndex = "";
 	
      
      if (!attributes.processed) exit "exitTag";
@@ -49,6 +52,8 @@ case "end" :
 	   							variables.result &= '"';
 
 	if(attributes.tooltip    != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
 								variables.result &= '>';
 								
 								
@@ -65,8 +70,9 @@ case "end" :
 	if(attributes.id		!= "")	variables.result &=	' for="#encodeForHTMLAttribute(attributes.id)#"';
 								variables.result &= '>';
 
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean	
 	
-								variables.result &= getSafeHTML(thisTag.GeneratedContent); // pass through of content
 								variables.result &= '</label>';
 								
 								variables.result &= variables.crlf &  '</div>';
