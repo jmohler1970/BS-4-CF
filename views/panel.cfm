@@ -51,37 +51,44 @@
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
+			<td><b:label look="danger">No</b:label> </td>
 		</tr>
 		<tr>
 			<td>collapsed</td>
 			<td>false</td>
 			<td>Is it collapsed</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>collapsible</td>
 			<td>false</td>
 			<td>can it be collapsed</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>contentClass</td>
 			<td>(none)</td>
 			<td>CSS class for body</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>contentStyle</td>
 			<td>(none)</td>
 			<td>CSS style for body</td>
+			<td><code>encodeForCSS()</code></td>
 		</tr>
 		
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML id.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>look</td>
 			<td>default</td>
 			<td>Look and feel of header and edge</td>
+			<td>Must be on valid value</td>
 		</tr>		
 		<tr>
 			<td>processed</td>
@@ -99,22 +106,26 @@
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><code>encodeForCSS()</code></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<td>Pass though of CSS class.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>title</td>
 			<td>(none)</td>
 			<td>Heading for panel</td>
+			<td><code>encodeForHTML()</code></td>
 		</tr>
 
 		<tr>
 			<td>titleClass</td>
 			<td>(none)</td>
 			<td>CSS class for title</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>titleStyle</td>
