@@ -27,6 +27,17 @@ case "start" :
 	
 	
 	if (attributes.keyExists("text")) 						throw "attributes.text is an invalid option. Don't even think of using it";
+	
+	
+	variables.arAttrSeries = [];
+	
+	
+	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
+	for(variables.myKey in attributes)	{
+		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
+			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
+			} // end if	
+		}	// end for
      
      
      if (!attributes.processed) exit "exitTag";
@@ -34,11 +45,15 @@ case "start" :
      
 case "end" :     
      
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) attributes.text = evaluate("caller.rc.#attributes.binding#");
+     if(attributes.value != "")											thisTag.generatedContent = attributes.value;
+     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
      
 	
 	   							variables.result &= '<span class="label label-#encodeForHTMLAttribute(attributes.look.lcase())#"';
 	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
+		
 	if(attributes.tooltip    != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
