@@ -33,13 +33,13 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content. this is the initial message before the content is AJAX'ed in</td>
-			<td>No, Content is assumed to be clean</td>
+			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
 		</tr>
 		<tr>
 			<td>action</td>
 			<td>required</td>
 			<td>Source for content. Expecting text</td>
-			<td>No, this attributes is assumed to be clean</td>
+			<td><b:label look="danger">No</b:label>  this attributes is assumed to be clean</td>
 		</tr>
 		<tr>
 			<td>id</td>
@@ -47,6 +47,13 @@
 			<td>Pass through of HTML id.</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
+		<tr>
+			<td>interval</td>
+			<td>5000</td>
+			<td>How long until content is reloaded in milliseconds</td>
+			<td><code>isnumeric()</code> must be true</td>
+		</tr>
+		
 		<tr>
 			<td>isSafeHTML</td>
 			<td>true</td>
@@ -62,10 +69,10 @@
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
-			<td>interval</td>
-			<td>5000</td>
-			<td>How long until content is reloaded in milliseconds</td>
-			<td><code>isnumeric()</code> must be true</td>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
@@ -87,6 +94,12 @@
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td>throwOnError</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>timeout</td>
 			<td>5000</td>
 			<td>How long until request is given up in milliseconds</td>
@@ -97,6 +110,12 @@
 			<td>(none)</td>
 			<td>Pass though of title</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
+		</tr>
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>

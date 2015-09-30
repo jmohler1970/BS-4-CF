@@ -15,6 +15,113 @@
 <p>All tags share a rich set of common features</p>
 
 
+<b:panel look="info" title="Attributes for all <b:poll>">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<th>Default value</th>
+			<th>Description</th>
+			<th>Sanitized</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content. this is the initial message before the content is AJAX'ed in</td>
+			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
+		</tr>
+		<tr>
+			<td>data-*</td>
+			<td>(none)</td>
+			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
+		</tr>
+		<tr>
+			<td>id</td>
+			<td>auto</td>
+			<td>Pass through of HTML id.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
+		</tr>
+		<tr>
+			<td>isSafeHTML</td>
+			<td>see chart below</td>
+			<td>Controls how content is rendered. Content is assumed to be clean, but it can be cleaned if necessary.
+				By setting this to false, all content will be cleaned via <code>getSafeHTML()</code></td>
+			<td>Must evaluate to boolean</td>
+		</tr>
+	
+		<tr>
+			<td>ng-*</td>
+			<td>(none)</td>
+			<td>Pass through of all AngularJS attributes</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
+		</tr>
+		<tr>
+			<td>on*</td>
+			<td>(none)</td>
+			<td>Pass through of all Mouse/Pointer events.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
+		</tr>
+
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>Value in <code>application.Bootstrap.profile</code></td>
+			<td>Application specific profile for Antisamy cleanup. If this is set to blank, then server setting will be used</td>
+			<td>Must evaluate to boolean</td>
+		</tr>	
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
+		</tr>
+
+		<tr>
+			<td>style</td>
+			<td>(none)</td>
+			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><code>encodeForCSS()</code></td>
+		</tr>
+		<tr>
+			<td>styleClass</td>
+			<td>(none)</td>
+			<td>Pass though of CSS class.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
+		</tr>
+		<tr>
+			<td>tooltip</td>
+			<td>(none)</td>
+			<td>Pass though of title</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
+		</tr>
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td>Pass though of <code>data-placement=</code></td>
+			<td><code>encodeForHTMLAttribute()</code></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>False</td>
+			<td>Pass through attribute on <code>getSafeHTML(inString, profile, <b>throwOnError</b>)</code></td>
+			<td>Must evaluate to boolean</td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
+
+
+
+
 <h2>generatedContent</h2>
 
 
@@ -25,14 +132,16 @@ One of the cooler new features in the next version of ColdFusion is <code>getSaf
 </b:blockquote>	
 
 
-<p>Any tag with inner content has the isSafeHTML attribute. <i>Bootstrap for ColdFusion</i> will then pass the generatedContent through <code>getSafeHTML()</code>
-	
+<p>Any tag with inner content has the isSafeHTML attribute. <i>Bootstrap for ColdFusion</i> will then pass the generatedContent through <code>getSafeHTML()</code></p>
+
+
+<p><b>Also See</b> <a href="http://stackoverflow.com/tags/sanitization/info">http://stackoverflow.com/tags/sanitization/info</a></p>	
 	
 <b:table>
 <thead>
 	<tr>
-		<th>True by default (Content will not be cleaned)</th>
-		<th>False by default (Content will be cleaned)</th>
+		<th>True by default (Not Sanitized)</th>
+		<th>False by default (Sanitized)</th>
 		<th>Does not use generatedContent</th>
 		<th>Cannot be filtered</th>
 	</tr>
@@ -114,72 +223,80 @@ One of the cooler new features in the next version of ColdFusion is <code>getSaf
 <h5>References</h5>	
 
 
+<h2>data-*</h2>
 
-<b:panel look="info" title="Attributes for all <b:poll>">
+<p>HTML5 data-* attributes</p>
 
-	<b:table>
-	<thead>
-		<tr>
-			<th>Attribute</th>
-			<th>Default value</th>
-			<th>Description</th>
-			<th>Sanitized</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>id</td>
-			<td>auto</td>
-			<td>Pass through of HTML id.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
-		</tr>
-		<tr>
-			<td>isSafeHTML</td>
-			<td>true</td>
-			<td>Controls how content is rendered. Content is assumed to be clean, but it can be cleaned if necessary.
-				By setting this to false, all content will be cleaned via <code>getSafeHTML()</code></td>
-			<td>Must evaluate to boolean</td>
-		</tr>
-		
-		<tr>
-			<td>processed</td>
-			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
-		</tr>
-		<tr>
-			<td>rendered</td>
-			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
-		</tr>
 
-		<tr>
-			<td>style</td>
-			<td>(none)</td>
-			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
-			<td><code>encodeForCSS()</code></td>
-		</tr>
-		<tr>
-			<td>styleClass</td>
-			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
-		</tr>
-		<tr>
-			<td>tooltip</td>
-			<td>(none)</td>
-			<td>Pass though of title</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
-		</tr>
-		<tr>
-			<td>tooltipPosition</td>
-			<td>(none)</td>
-			<td>Pass though of title</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
-		</tr>
-	</tbody>
-	</b:table>
-</b:panel>
+<h2>id</h2>
+
+<p>If attributes exists and is not blank, it is passed through <code>encodeForHTMLAttribute()</code>.</p>
+
+<h2>isSafeHTML, profile, throwOnError</h2>
+
+<p><b>isSafeHTML</b> overrides the default behavior generatedContent behavior. See chart above to determine if this is true or false by default</p>
+
+<p><b>profile</b> checks the profile that <code>getSafeHTML()</code> will be validating against. ColdFusion 11 ships with a medium strength profile that is used server wide.
+	
+ColdFusion 11 does an application wide setting. This functionality adds that capability.	
+</p>
+	
+	
+<p><b>throwOnError</b> 
+
+If there is unwanted content, this will throw an error. Otherwise it could return an empty string.
+This option is not expected to be used much, but it is a native feature of getSafeHTML()
+	
+See <a href="https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-functions/functions-e-g/getsafehtml.html">Link</a> for more details
+
+</p>		
+	
+
+<h2>on*</h2>
+
+<p>Mouse events</p>
+
+<h2>ng-*</h2>
+
+<p>AngularJS attributes</p>
+
+
+<h2>processed</h2>
+
+<p>This like a <code>&lt;cfif&gt;</code> If processed is false, none of the inner tags or content is ran. This is the recommended approach</p>
+
+
+<h2>rendered</h2>
+
+<p>This is like <code>&lt;cfsilent&gt;</code>. All of the inner calculations are still ran. This is a lot like how jsf works and some developers may be more at ease with this approach.</p>
+
+
+<h2>style</h2>
+
+<p>This is a passthrough of the style attribute and uses <code>encodeForCSS()</code>. Bootstrap provides a rich set of classes.
+	It is recommended that developers used the Bootstrap classes rather doing inline styling.
+</p>	
+
+<h2>styleClass</h2>
+
+<p>This is the generic class passthough. It uses <code>encodeForHTMLAttribute()</code> It is recommend that semantic attributes be used instead.</p>
+
+<h5>References</h5>
+
+
+<b:h2>tooltip & tooltipPosition</b:h2>
+
+<p>Tooltip & tooltip Position create three attributes</p>
+
+
+<pre>
+title = ""     			&lt;!-- traditional tool tip tag. If the Bootstrap tooltip fails, then this will revert to standard tooltip --&gt;
+data-placement = "bottom"	&lt;!-- location of rich tooltip --&gt;
+data-toggle = "tooltip"		&lt;!-- this is the hook used by jQuery to apply the tooltip --&gt;
+	
+</pre>	
+
+
+
 		
 		

@@ -32,9 +32,8 @@
 		<tr>
 			<td>generatedContent</td>
 			<td>(none)</td>
-			<td>Pass through of content</td>
-			<td>Yes. Caution this content may be longer than antisamy limits. Make sure that the inner content is clean.
-			</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td>Yes</td>
 		</tr>
 		<tr>
 			<td>binding</td>
@@ -43,17 +42,22 @@
 			<td>See generatedContent</td>
 		</tr>
 		<tr>
+			<td>data-*</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>isSafeHTML</td>
 			<td>true</td>
-			<td>Controls how content is rendered. Content is assumed to be clean, but it can be cleaned if necessary.
-				Set to false to use <code>getSafeHTML()</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>pageHeader</td>
@@ -68,18 +72,36 @@
 			<td>false</td>
 			<td>This is for <code>&lt;b:p&gt;</code> only. Adds lead class.</td>
 			<td>Must evaluate to boolean. Lead is treated as true</td>
-		</tr>		
+		</tr>
+		<tr>
+			<td>ng-*</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>on*</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>reverse</td>
@@ -97,20 +119,32 @@
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
-			<td><code>encodeForCSS()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of title</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>

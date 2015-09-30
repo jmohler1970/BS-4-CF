@@ -1,6 +1,5 @@
 
 <cfimport prefix="b" taglib="../bootstrap">
-<cfimport taglib="../bootstrap">
 
 
 
@@ -155,10 +154,10 @@
 
 
 
-<well>
-    <h3>Well Header</h3>
+<b:well>
+    <b:h3>Well Header</b:h3>
     Well content.
-</well>
+</b:well>
 
 
 <h5>Markup:</h5>
@@ -173,9 +172,9 @@
 <p>&nbsp;</p>
 
 
-<panel look="info" title="Attributes of <b:well>">
+<b:panel look="info" title="Attributes of <b:well>">
 
-	<table>
+	<b:table>
 	<thead>
 		<tr>
 			<th>Attribute</th>
@@ -190,7 +189,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td>No, this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
+			<td><b:label look="danger">No</b:label>  this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
 		</tr>
 		<tr>
 			<td>id</td>
@@ -230,8 +229,8 @@
 
 
 	</tbody>
-	</table>
-</panel>
+	</b:table>
+</b:panel>
 
 
 
@@ -239,16 +238,16 @@
 <h3>Examples</h3>
 
 
-<row>
-	<column span="4">
-		<well size="sm">Look, I'm in a small well!</well>
-	</column>
+<b:row>
+	<b:column span="4">
+		<b:well size="sm">Look, I'm in a small well!</b:well>
+	</b:column>
 
-	<column span="4">
-		<well size="lg">Look, I'm in a large well!</well>
-	</column>
+	<b:column span="4">
+		<b:well size="lg">Look, I'm in a large well!</b:well>
+	</b:column>
 	
-	<column span="4">
-		<well><well>Look, I'm in a well in a well!</well></well>
-	</column>
-</row>	
+	<b:column span="4">
+		<b:well><b:well>Look, I'm in a well in a well!</b:well></b:well>
+	</b:column>
+</b:row>	

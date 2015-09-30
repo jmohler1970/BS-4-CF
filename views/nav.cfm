@@ -27,6 +27,7 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -35,26 +36,31 @@
 			<td>active</td>
 			<td>false</td>
 			<td>Should active class get added?</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>value</td>
 			<td>(none)</td>
 			<td>What is shown</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 
 
@@ -71,6 +77,7 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -79,81 +86,97 @@
 			<td>active</td>
 			<td>false</td>
 			<td>Should active class get added?</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. See note below</td>
+			<td>N/A</td>
 		</tr>
 		<tr>
 			<td>data-*</td>
 			<td>(none)</td>
 			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of <code>disabled="disabled"</code>. If disabled is passed, then it will be treated at true</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>fragment</td>
 			<td>(none)</td>
 			<td>Pass through of Anchor. Some links are anchor only</td>
+			<td><code>encodeForURL</code></td>
 		</tr>
 		<tr>
 			<td>icon</td>
 			<td>(none)</td>
 			<td>Adds Glyphicon</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>iconAlign</td>
 			<td>(none)</td>
 			<td>Aligns icon</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>		
 		<tr>
 			<td>header</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>href</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>href=</code>.</td>
+			<td><b:label look="danger">No</b:label></td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>library</td>
 			<td>default</td>
 			<td>Which icon library should be used? This is set via: <code>application.Bootstrap.IconLibrary[attributes.library]</code>. This site uses Glyphicons</td>
+			<td>Must be valid library</td>
 		</tr>
 		<tr>
 			<td>ng-*</td>
 			<td>(none)</td>
 			<td>Pass through of all AngularJS attributes</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>on*</td>
 			<td>(none)</td>
 			<td>Pass through of all Mouse/Pointer events.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>value</td>
 			<td>(none)</td>
 			<td>What is shown</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 
 

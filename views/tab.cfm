@@ -29,6 +29,7 @@
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -37,36 +38,43 @@
 			<td>activeIndex</td>
 			<td>1</td>
 			<td>Which tab should have focus. </td>
+			<td><code>isnumeric()</code> must be true</td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>id=</code>. </td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>role</td>
 			<td>tabpanel</td>
 			<td>Pass though of HMTL <code>role=</code></div></td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. This is applied to the outer <code>&lt;div&gt;</code></div></td>
+			<td><code>encodeForCSS()</code></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<td>Pass though of CSS class.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -84,52 +92,66 @@
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content. this is the initial message before the content is AJAX'ed in</td>
+			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
+		</tr>
+		<tr>
 			<td>data-url</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>data-url=</code>. This is expected to be used with AJAX</td>
+			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
 		</tr>
 		<tr>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML <code>disabled=</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
 			<td>Pass through of HTML id.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
-
 		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>role</td>
 			<td>tab</td>
 			<td>Pass through of HTML <code>role=</code></td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><code>encodeForCSS()</code></td>
 		</tr>
 
 		<tr>
 			<td>title</td>
 			<td>(none)</td>
 			<td>Content on tab</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 	</tbody>
 	</b:table>

@@ -26,6 +26,7 @@
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
