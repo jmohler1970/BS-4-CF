@@ -21,10 +21,12 @@ case "start" :
 	param attributes.isSafeHTML		= false;
 	param attributes.look			= "";
 	param attributes.processed		= true; // unknown how to support
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true; // removes content not actual td
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
 	param attributes.text			= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 
@@ -79,10 +81,10 @@ case "end" :
 	if(attributes.tooltip    != "")				variables.result &=	'>';
 	
 	
-	if(attributes.rendered && !attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // pass through of content
+	if(attributes.rendered && !attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
-
+		
 											
 	if(attributes.tooltip	!= "")				variables.result &= '</span>';
 											variables.result &= '</td>';

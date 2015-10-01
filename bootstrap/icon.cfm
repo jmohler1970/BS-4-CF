@@ -14,20 +14,22 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
   
-	param attributes.addon		= false;
-	param attributes.binding		= "";
-	param attributes.id			= "";
-	param attributes.isSafeHTML		= true;
-	param attributes.library		= "default";
-	param attributes.look		= "";
-	param attributes.name		= "";
-	param attributes.processed 	= true;
-	param attributes.rendered 	= true;
-	param attributes.size		= "";
-     param attributes.spin		= false;
-     param attributes.style		= "";
-     param attributes.styleClass	= "";
-     param attributes.tooltip		= "";
+	param attributes.addon			= false;
+	param attributes.binding			= "";
+	param attributes.id				= "";
+	//param attributes.isSafeHTML		= true;
+	param attributes.library			= "default";
+	param attributes.look			= "";
+	param attributes.name			= "";
+	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered 		= true;
+	param attributes.size			= "";
+     param attributes.spin			= false;
+     param attributes.style			= "";
+     param attributes.styleClass		= "";
+     param attributes.throwOnError		= application.Bootstrap.throwOnError;
+     param attributes.tooltip			= "";
      param attributes.tooltipPosition = "bottom";
      
 

@@ -17,18 +17,21 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.active		= false;
-	param attributes.binding		= "";
-	param attributes.disabled	= false;
-	param attributes.fragment	= false;
-	param attributes.icon		= "";
-	param attributes.iconAlign	= "left";
-	param attributes.id			= "";
-	param attributes.header		= "";
-	param attributes.href		= "";
-	param attributes.library		= "default"; //for icons
-	param attributes.processed	= true;
-	param attributes.rendered 	= true;
-	param attributes.value		= "";
+	param attributes.binding			= "";
+	param attributes.disabled		= false;
+	param attributes.fragment		= false;
+	param attributes.icon			= "";
+	param attributes.iconAlign		= "left";
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= true;
+	param attributes.header			= "";
+	param attributes.href			= "";
+	param attributes.library			= "default"; //for icons
+	param attributes.processed		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered 		= true;
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.value			= "";
 	
 	
 	// Patch this
@@ -45,10 +48,6 @@ case "start" :
 			} // end if	
 		}	// end for
      
-     
-	if (attributes.keyExists("text"))						throw "attributes.text is an invalid option. Don't even think of using it";
-	if (attributes.id.REFindNoCase('[^0-9A-Za-z ]'))			throw "Special characters are not allowed";
-
      
      
      if (!attributes.processed) exit "exitTag";
@@ -71,8 +70,8 @@ case "end" :
      	if(attributes.disabled)						variables.result &= ' class="disabled"';						  			
 												variables.result &= '>';
 	
-												variables.result &= '<a href="#attributes.href#';
-		if(attributes.fragment != false)				variables.result &= '###attributes.fragment#';
+												variables.result &= '<a href="#encodeForHTMLAttribute(attributes.href)#';
+		if(attributes.fragment != false)				variables.result &= '###encodeForURL(attributes.fragment)#';
 												variables.result &= '"';
 		if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 		
@@ -81,8 +80,13 @@ case "end" :
 												variables.result &= '>';
 		if(attributes.icon != "" && attributes.iconAlign == "left")		{
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
-												}		
-																	variables.result &= getSafeHTML(thisTag.generatedContent); // pass through of content
+												}
+												
+	if (!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if ( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+											
+												
+														
 		if(attributes.icon != "" && attributes.iconAlign == "right")	{
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
 												}

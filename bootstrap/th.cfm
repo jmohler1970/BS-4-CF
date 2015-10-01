@@ -15,16 +15,18 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
 
-	param attributes.binding		= "";
-	param attributes.hidden		= "";
-	param attributes.id			= "";
-	param attributes.isSafeHTML	= false;
-	param attributes.processed	= true; // unknown how to support
-	param attributes.rendered 	= true; // removes content not actual th
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
-	param attributes.text		= "";
-	param attributes.tooltip		= ""; // It is attached to a span so that table layout does not get destroyed
+	param attributes.binding			= "";
+	param attributes.hidden			= "";
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= false;
+	param attributes.processed		= true; // unknown how to support
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered 		= true; // removes content not actual th
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.tooltip			= ""; // It is attached to a span so that table layout does not get destroyed
 	param attributes.tooltipPosition	= "bottom";
 
 
@@ -73,8 +75,8 @@ case "end" :
 	if(attributes.tooltip    != "")				variables.result &=	'>';
 	
 	
-	if(attributes.rendered && !attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // pass through of content
+	if(attributes.rendered && !attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 	
 	
 	if(attributes.tooltip    != "")				variables.result &=	'</span>';

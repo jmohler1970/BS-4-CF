@@ -21,11 +21,13 @@ case "start" :
      param attributes.id				= "";
      param attributes.isSafeHTML		= true; // this is set to true because the content may be very large and td and th should have cleaned it
      param attributes.processed		= true;
+     param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true; // removes content not actuall td
 	param attributes.responsive		= true;
 	param attributes.striped			= true;
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
      param attributes.tooltip			= "";
      param attributes.tooltipPosition	= "bottom";
      
@@ -54,11 +56,12 @@ case "end" :
 	               
 								variables.result &= '>';
 								
-								
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean							
-								
-						
+	
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+
+		
+							
 								variables.result &= '</table>';
      if(attributes.responsive) 		variables.result &= '</div>';    
 	

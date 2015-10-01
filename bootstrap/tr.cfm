@@ -15,12 +15,15 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
   
-	param attributes.id			= "";
-	param attributes.look		= "";
-	param attributes.processed	= true;
-	param attributes.rendered 	= true;
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= true;
+	param attributes.look			= "";
+	param attributes.processed		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered 		= true;
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	
 	if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";
 	
@@ -54,8 +57,11 @@ case "end" :
 	if(attributes.style		!= "")			variables.result &= ' style="#encodeForCSS(attributes.style)#"';                 
 										variables.result &= '>';
 										variables.result &= variables.crlf;
+
 										
-										variables.result &= thisTag.GeneratedContent; // pass through of content
+	if(!attributes.isSafeHTML)				variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)				variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean										
+										
 										
 										variables.result &= variables.crlf;
 										variables.result &= '</tr>';

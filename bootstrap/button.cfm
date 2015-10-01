@@ -27,11 +27,13 @@ case "start" :
 	param attributes.look			= "default";
 	param attributes.outline			= false;
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
 	param attributes.role			= "button";
 	param attributes.size			= "";		// large, small, mini
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 	param attributes.value			= "";
@@ -69,8 +71,8 @@ case "end" :
 	// end class specification
 	
 	if(attributes.dismiss	!= "")				variables.result &= ' data-dismiss="#encodeForHTMLAttribute(attributes.dismiss)#"';
-	if(structKeyExists(attributes, "data-target"))	variables.result &= ' data-target="' & attributes['data-target'] & '"';
-	if(structKeyExists(attributes, "data-toggle"))	variables.result &= ' data-toggle="' & attributes['data-toggle'] & '"';
+	if(attributes.keyExists("data-target"))			variables.result &= ' data-target="' & attributes['data-target'] & '"';
+	if(attributes.keyExists("data-toggle"))			variables.result &= ' data-toggle="' & attributes['data-toggle'] & '"';
 	if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(attributes.lang		!= "")				variables.result &= ' lang="#encodeForHTMLAttribute(attributes.lang)#"';
 		
@@ -87,13 +89,12 @@ case "end" :
 											variables.result &= '>';
 								
 	// space on end is not an accident							
-	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	{
+	if (attributes.icon 	!= "" && attributes.iconAlign == "left")	{
 											variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##encodeForHTMLAttribute(attributes.icon)#"></i> ';
 											}		
 
-
-	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean	
+	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
 
 	

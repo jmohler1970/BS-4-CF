@@ -20,7 +20,9 @@ case "start" :
 	param attributes.isSafeHTML		= false;
 	param attributes.look 			= "default";
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 	param attributes.value			= "";
@@ -60,8 +62,9 @@ case "end" :
  	
 								variables.result &= '>';
 								
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
 	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+							
 
 								variables.result &= '</span>';
    

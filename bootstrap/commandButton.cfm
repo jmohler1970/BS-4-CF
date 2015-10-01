@@ -27,12 +27,14 @@ case "start" :
 	param attributes.name			= "";
 	param attributes.outline			= false;
 	param attributes.processed		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered		= true;
 	param attributes.rel			= "";
 	param attributes.role			= "button";
 	param attributes.size			= "";		// large, small, mini
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 	param attributes.type			= "submit";	// as opposed to reset, use button for buttons
@@ -54,9 +56,6 @@ case "start" :
 		}	// end for
 
 
-
-	if (attributes.id.REFindNoCase('[^0-9A-Za-z ]')) 				throw "Special characters are not allowed";
-	if (attributes.id.len() > application.Bootstrap.Limit.ID)		throw "id field is too long";
 	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
 	
 
@@ -90,9 +89,11 @@ case "end" :
 	// space on end is not an accident							
 	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	{
 											variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
-											}	
+											}
+											
+	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
-											variables.result &= thisTag.generatedContent; // pass through of content
 
 	// space at start is not an accident
 	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	{

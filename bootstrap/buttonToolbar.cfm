@@ -18,8 +18,10 @@ case "start" :
  	param attributes.id				= "";
  	param attributes.isSafeHTML		= false;
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered		= true;
 	param attributes.size			= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 
@@ -37,10 +39,12 @@ case "end" :
 	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';          
 								variables.result &= '>';
 								
-								
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
+	
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
 	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
+
+						
 								variables.result &= '</div><!-- /.btn-toolbar -->';
      
      

@@ -21,9 +21,11 @@ case "start" :
 	param attributes.isSafeHTML		= false;				// make sure to set to true if you want animated loading 
 	param attributes.interval		= variables.defaultTimeframe;		// ms
      param attributes.processed		= true;
+     param attributes.profile			= application.Bootstrap.profile;
      param attributes.rendered 		= true;
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.timeout			= variables.defaultTimeframe;		// ms
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
@@ -54,9 +56,10 @@ case "end" :
 	             
 								variables.result &= '>';
 							
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean	
-								
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+
+							
 	
 								variables.result &= '</span>';
 								variables.result &= variables.crlf;

@@ -24,8 +24,10 @@ case "start" :
 	param attributes.look			= "";
 	param attributes.name			= "";
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
 	param attributes.tabIndex		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.title			= "";
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
@@ -69,10 +71,12 @@ case "end" :
 								variables.result &= '<label';
 	if(attributes.id		!= "")	variables.result &=	' for="#encodeForHTMLAttribute(attributes.id)#"';
 								variables.result &= '>';
-
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean	
+								
 	
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+							
+		
 								variables.result &= '</label>';
 								
 								variables.result &= variables.crlf &  '</div>';

@@ -22,11 +22,14 @@ case "start" :
 
 	param attributes.disabled		= false;
 	param attributes.inline			= false;
+	param attributes.isSafeHTML		= true;
 	param attributes.look			= "";
 	param attributes.name;
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
 	param attributes.square			= false;		// make it look like check
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	
 	// Patch this
 	if(attributes.disabled == "disabled")	attributes.disabled = true;
@@ -73,7 +76,10 @@ case "end" :
 														variables.result &= '>';
 	
 		
-														variables.result &= getSafeHTML(thisTag.qryOption.display[variables.myRow]); // pass through of content
+		if(!attributes.isSafeHTML)							variables.result &= getSafeHTML(thisTag.qryOption.display[variables.myRow].trim(), attributes.profile, attributes.throwOnError); // pass through of content
+		if( attributes.isSafeHTML)							variables.result &= thisTag.qryOption.display[variables.myRow].trim(); // warning content must already be clean								
+
+		
 														variables.result &= '</label>';
 									
 														variables.result &= variables.crlf & '</div><!-- /.radio -->';

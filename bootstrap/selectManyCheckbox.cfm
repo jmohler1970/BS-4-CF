@@ -18,15 +18,18 @@ case "start" :
 
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 	
-	if(structKeyExists(attributes, "qryOption")) thisTag.qryOption = attributes.qryOption;
+	if(attributes.keyExists("qryOption")) thisTag.qryOption = attributes.qryOption;
 
+	param attributes.circle			= false;		// make it look like radio
 	param attributes.disabled		= false;
 	param attributes.inline			= false;
+	param attributes.isSafeHTML		= true;
 	param attributes.look			= "";
 	param attributes.name;
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
-	param attributes.circle			= false;		// make it look like radio
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	
 	// Patch this
 	if(attributes.disabled == "disabled")	attributes.disabled = true;
@@ -71,6 +74,7 @@ case "end" :
 	
 		
 														variables.result &= thisTag.qryOption.display[variables.myRow]; // pass through of content
+														
 														variables.result &= '</label>';
 									
 														variables.result &= variables.crlf & '</div><!-- /.selectManyCheckbox -->';

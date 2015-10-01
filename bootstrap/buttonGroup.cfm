@@ -17,18 +17,20 @@ case "start" :
 	
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip");
 
-	param attributes.id			= "";
-	param attributes.isSafeHTML	= false;
-	param attributes.justified	= false;
-	param attributes.look		= ""; // this is the default unless over ridden 
-	param attributes.name		= "";
-	param attributes.orientation 	= "horizontal"; // horizontal, vertical, up
-	param attributes.processed 	= true;
-	param attributes.pull 		= "";
-	param attributes.rendered	= true;
-	param attributes.size		= "";
-	param attributes.toggle		= false;
-	param attributes.tooltip		= "";
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= false;
+	param attributes.justified		= false;
+	param attributes.look			= ""; // this is the default unless over ridden 
+	param attributes.name			= "";
+	param attributes.orientation 		= "horizontal"; // horizontal, vertical, up
+	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.pull 			= "";
+	param attributes.rendered		= true;
+	param attributes.size			= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.toggle			= false;
+	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 
 
@@ -84,9 +86,11 @@ case "end" :
 
 		} // end for
 								
-							
-								variables.result &= thisTag.GeneratedContent; // pass through of content
-	
+		
+	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+
+
 								variables.result &= '</div><!-- /.btn-group -->';
 								variables.result &= variables.crlf;
 

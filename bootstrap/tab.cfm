@@ -22,18 +22,18 @@ case "start" :
 		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
 		}
   
-	param attributes.disabled	= false;
+	param attributes.disabled		= false;
 	param attributes.id;					// Tab must have id
-	param attributes.processed	= true;
-	param attributes.rendered	= true;
-	param attributes.role 		= "tab";
-	param attributes.style		= "";
-     param attributes.title		= "";
+	param attributes.isSafeHTML		= true;
+	param attributes.processed		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered		= true;
+	param attributes.role 			= "tab";
+	param attributes.style			= "";
+     param attributes.title			= "";
+     param attributes.throwOnError		= application.Bootstrap.throwOnError;
+     
 	if (!structKeyExists(attributes, "data-url")) attributes["data-url"]	= "";
-	
-	
-	if (attributes.id.REFindNoCase('[^0-9A-Za-z ]')) 				throw "Special characters are not allowed";
-	if (attributes.id.len() > application.Bootstrap.Limit.ID)		throw "id field is too long";
 	
      
      if (!attributes.processed) exit "exitTag";

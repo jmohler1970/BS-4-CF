@@ -21,12 +21,15 @@ case "start" :
 	variables.currentTab = 1;
 	variables.needsJS	= false;
   
-	param attributes.activeIndex	= 1;
-	param attributes.processed	= true;
-	param attributes.rendered 	= true;
-	param attributes.role 		= "tabpanel";
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
+	param attributes.activeIndex		= 1;
+	param attributes.isSafeHTML		= true;
+	param attributes.processed		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered 		= true;
+	param attributes.role 			= "tabpanel";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
 	
 	
 	if (!attributes.processed) exit "exitTag";
@@ -66,10 +69,14 @@ case "end" :
 		} // end for
 		
 		if (trim(thisTag.generatedContent) != "")	{
-								variables.result &= variables.crlf & '<li role="presentation" class="dropdown"><!-- Content passthrough -->';
-								variables.result &= getSafeHTML(thisTag.generatedContent);
-								variables.result &= '</li>';
-								}	
+									variables.result &= variables.crlf & '<li role="presentation" class="dropdown"><!-- Content passthrough -->';
+								
+			if(!attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+			if( attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+						
+									variables.result &= '</li>';
+									}	
+						
 						
 								variables.result &= variables.crlf & '</ul>';
 

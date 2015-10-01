@@ -16,7 +16,7 @@ case "start" :
 	
 	thisTag.qryOption 			= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
   
-	if(structKeyExists(attributes, "qryOption")) thisTag.qryOption = attributes.qryOption;
+	if(attributes.keyExists("qryOption")) thisTag.qryOption = attributes.qryOption;
   
 	param attributes.disabled		= false;
 	param attributes.fieldSize		= "";
@@ -28,12 +28,14 @@ case "start" :
 	param attributes.onClick			= "";
 	param attributes.onChange		= "";
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.readonly	 	= false;
 	param attributes.rendered	 	= true;
 	param attributes.required		= false;
 	param attributes.span			= "";
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 	
@@ -80,7 +82,7 @@ case "end" :
 	
 								variables.result &= '</select>';
 	if(attributes.help		!= "")	variables.result &= '<span class="help-block">#encodeForHTML(attributes.help)#</span>';						
-     if(attributes.span		!= "")	variables.result &= variables.crlf & '</div><!-- /.col-md-#attributes.span# -->';
+     if(attributes.span		!= "")	variables.result &= variables.crlf & '</div><!-- /.col-md-#encodeForHTMLAttribute(attributes.span)# -->';
 
      thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);

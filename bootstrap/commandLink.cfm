@@ -30,6 +30,7 @@ case "start" :
 	param attributes.look	 		= "default";
 	param attributes.outline			= false;
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rel			= "";
 	param attributes.rendered 		= true;
 	param attributes.role			= "button";
@@ -37,6 +38,7 @@ case "start" :
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
 	param attributes.target			= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition 	= "bottom";
 	param attributes.value			= "";
@@ -102,10 +104,11 @@ case "end" :
 	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	{
 											variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##encodeForHTMLAttribute(attributes.icon)#"></i> ';
 											}
-											
-	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean										
-											
+	
+	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+
+
 	
 	// space at start is not an accident
 	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	{

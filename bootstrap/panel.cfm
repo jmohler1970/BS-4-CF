@@ -26,12 +26,14 @@ case "start" :
 	param attributes.isSafeHTML		= true;
 	param attributes.look			= "default";
 	param attributes.processed		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
 	param attributes.title			= "";
      param attributes.titleClass		= "";
      param attributes.titleStyle		= "";
+    	param attributes.throwOnError		= application.Bootstrap.throwOnError;
      param attributes.tooltip			= "";
      param attributes.tooltipPosition	= "bottom";
      
@@ -65,10 +67,11 @@ case "end" :
 	if(attributes.contentStyle		!= "")	variables.result &= ' style="#encodeForCSS(attributes.contentStyle)#"';                 
 								variables.result &= '>';
 								
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean	
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+							
 								
-								
+						
 								variables.result &= '</div><!-- /.end panel body -->';
 
 	if (attributes.footer != "") 		variables.result &= '<div class="panel-footer';

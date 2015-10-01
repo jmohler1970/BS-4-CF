@@ -21,11 +21,13 @@ case "start" :
      param attributes.isSafeHTML		= false;
      param attributes.look			= "";
      param attributes.processed		= true;
+     param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
 	param attributes.role 			= "progressbar";
 	param attributes.stripped		= false;	if(attributes.animated) attributes.stripped = true;
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
      param attributes.tooltip			= "";
      param attributes.tooltipPosition	= "bottom";
      param attributes.width			= "";
@@ -57,10 +59,12 @@ case "end" :
 	if (attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if (attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';            
 								variables.result &= '>';
-							
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 								
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+							
+							
+						
 								
 	if(thisTag.GeneratedContent	== "")	variables.result &= '&nbsp;';							
 	

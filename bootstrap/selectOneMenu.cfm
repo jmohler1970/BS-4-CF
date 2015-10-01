@@ -26,14 +26,15 @@ case "start" :
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= false;
 	param attributes.name;					// required field
-
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.readonly 		= false;
 	param attributes.rendered 		= true;
 	param attributes.required		= false;
 	param attributes.span			= "";	// md only. If you want finer control, use b:column
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 
@@ -90,9 +91,10 @@ case "end" :
 		} // end for						
     
     
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim()); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean 
-   		
+    	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+
+		
 	
 									variables.result &= variables.crlf & '</select>';
 	if(attributes.help		!= "")		variables.result &= variables.crlf & '<span class="help-block">#encodeForHTML(attributes.help)#</span>';						
