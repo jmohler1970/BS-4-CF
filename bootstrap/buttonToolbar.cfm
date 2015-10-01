@@ -16,7 +16,7 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
   
  	param attributes.id				= "";
- 	param attributes.isSafeHTML		= false;
+ 	param attributes.isSafeHTML		= true; // really doesn't work with false
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered		= true;

@@ -22,7 +22,7 @@ case "start" :
 		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
 		}
   
-	param attributes.isSafeHTML		= false;
+	param attributes.isSafeHTML		= true; // this really does not work with false
 	param attributes.look			= "default";
 	param attributes.processed	 	= true;
 	param attributes.profile			= application.Bootstrap.profile;
@@ -36,7 +36,7 @@ case "start" :
      
 case "end" :
 	if (attributes.look == "tab")		variables.result &= crlf & '<a class="dropdown-toggle" ';
-	if (attributes.look != "tab")		variables.result &= crlf & '<a class="btn btn-"#encodeForHTMLAttribute(attributes.look.lcase())# dropdown-toggle" ';
+	if (attributes.look != "tab")		variables.result &= crlf & '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())# dropdown-toggle" ';
 	
 								variables.result &= 'data-toggle="dropdown" role="#EncodeForHTMLAttribute(attributes.role)#">#EncodeForHTML(attributes.value)# <b class="caret"></b></a>';  
 								variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
