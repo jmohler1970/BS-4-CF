@@ -24,7 +24,7 @@ case "start" :
   
 	param attributes.disabled		= false;
 	param attributes.id;					// Tab must have id
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("tab");
 	param attributes.processed		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered		= true;

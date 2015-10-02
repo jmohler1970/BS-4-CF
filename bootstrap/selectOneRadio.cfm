@@ -22,7 +22,7 @@ case "start" :
 
 	param attributes.disabled		= false;
 	param attributes.inline			= false;
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectOneRadio");
 	param attributes.look			= "";
 	param attributes.name;
 	param attributes.processed 		= true;

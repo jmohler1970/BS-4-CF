@@ -20,7 +20,7 @@ case "start" :
 	param attributes.disabled		= false;
 	param attributes.id				= "";
 	param attributes.inline			= false;
-	param attributes.isSafeHTML		= false;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectBooleanCheckbox");
 	param attributes.look			= "";
 	param attributes.name			= "";
 	param attributes.processed 		= true;

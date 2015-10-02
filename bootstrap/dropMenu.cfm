@@ -17,7 +17,7 @@ case "start" :
   
 
 	param attributes.active			= false;
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("dropMenu");;
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered		= true;

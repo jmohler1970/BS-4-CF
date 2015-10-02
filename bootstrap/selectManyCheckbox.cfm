@@ -23,7 +23,7 @@ case "start" :
 	param attributes.circle			= false;		// make it look like radio
 	param attributes.disabled		= false;
 	param attributes.inline			= false;
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectManyCheckbox");
 	param attributes.look			= "";
 	param attributes.name;
 	param attributes.processed 		= true;

@@ -17,7 +17,7 @@ case "start" :
   
 	param attributes.fluid			= false;
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= true; // Content holds a lot of data. Consider cleaning the inner data instead
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("container"); // Content holds a lot of data. Consider cleaning the inner data instead
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

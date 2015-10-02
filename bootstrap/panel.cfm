@@ -23,7 +23,7 @@ case "start" :
      param attributes.footerClass		= "";
      param attributes.footerStyle		= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("panel");
 	param attributes.look			= "default";
 	param attributes.processed		= true;
 	param attributes.profile			= application.Bootstrap.profile;

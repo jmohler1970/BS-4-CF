@@ -18,7 +18,7 @@ case "start" :
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= true; // really does not work with true
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("buttonGroup"); // really does not work with true
 	param attributes.justified		= false;
 	param attributes.look			= ""; // this is the default unless over ridden 
 	param attributes.name			= "";

@@ -19,7 +19,7 @@ case "start" :
 	param attributes.closable		= true;
 	if(!structKeyExists(attributes, "close-on-escape")) attributes["close-on-escape"] = true;
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("modal");
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

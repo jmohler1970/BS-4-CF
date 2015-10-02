@@ -23,7 +23,7 @@ case "start" :
 	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("navLink");
 	param attributes.header			= "";
 	param attributes.href			= "";
 	param attributes.library			= "default"; //for icons

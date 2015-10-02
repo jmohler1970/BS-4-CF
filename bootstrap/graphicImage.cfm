@@ -7,7 +7,7 @@
 
 <cfscript>
 if (!thisTag.HasEndTag) 
-	abort "An end tag is required for b:p."; 
+	abort "An end tag is required for b:graphicImage."; 
 	
 	
 
@@ -21,7 +21,7 @@ case "start" :
 	param attributes.binding		= "";
 	param attributes.height		= ""; //creates CSS
      param attributes.id			= "";
-     //param attributes.isSafeHTML		= true;
+     //param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("graphicImage");;
      param attributes.library		= "default";
      param attributes.processed	= true;
      //param attributes.profile			= application.Bootstrap.profile;

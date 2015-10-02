@@ -19,7 +19,7 @@ case "start" :
 	param attributes.brandHref		= "";
 	param attributes.fixed			= "";
 	param attributes.inverse			= false;
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("navbar");
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
      param attributes.rendered 		= true;

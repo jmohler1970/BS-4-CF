@@ -24,7 +24,7 @@ case "start" :
 	param attributes.fieldSize		= "";
 	param attributes.help			= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= false;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectOneMenu");
 	param attributes.name;					// required field
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;

@@ -25,7 +25,7 @@ case "start" :
 	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("commandLink");
 	param attributes.library			= "default";	// for icon
 	param attributes.look	 		= "default";
 	param attributes.outline			= false;

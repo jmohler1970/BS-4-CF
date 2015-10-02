@@ -16,7 +16,7 @@ case "start" :
 
 	param attributes.disabled		= false;
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("fieldset");;
 	param attributes.legend			= "";
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;

@@ -11,7 +11,10 @@ this.sessionManagement = true;
 function onApplicationStart()	{
 	application.Bootstrap = {
 				
-		profile			= "",	// Antisamy profile, blank means use system default
+		// Antisamy options
+		isSafeHTML		= ["buttonGroup","buttonToolbar","column","container","fieldset","formgroup",
+							"jumbotron","modal","panel","row","table","tabview","tr","well"],	// these tags to not run through getSafeHTML		
+		profile			= "",	// blank means use system default
 		throwOnError		= false,	// Default behavior for getSafeHTML()
 		
 	

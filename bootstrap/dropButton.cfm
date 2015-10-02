@@ -22,7 +22,7 @@ case "start" :
 		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
 		}
   
-	param attributes.isSafeHTML		= true; // this really does not work with false
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("dropbutton"); // this really does not work with false
 	param attributes.look			= "default";
 	param attributes.processed	 	= true;
 	param attributes.profile			= application.Bootstrap.profile;

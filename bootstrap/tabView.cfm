@@ -22,7 +22,7 @@ case "start" :
 	variables.needsJS	= false;
   
 	param attributes.activeIndex		= 1;
-	param attributes.isSafeHTML		= true;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("tabView");
 	param attributes.processed		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

@@ -22,7 +22,7 @@ case "start" :
 	param attributes.fieldSize		= "";
 	param attributes.help			= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= false;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectManyMenu");
 	param attributes.name;					// required field
 	param attributes.onBlur			= "";
 	param attributes.onClick			= "";

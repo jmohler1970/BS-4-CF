@@ -17,7 +17,7 @@ case "start" :
 	param attributes.addon			= false;
 	param attributes.binding			= "";
 	param attributes.id				= "";
-	//param attributes.isSafeHTML		= true;
+	//param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("icon");
 	param attributes.library			= "default";
 	param attributes.look			= "";
 	param attributes.name			= "";
