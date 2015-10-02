@@ -59,7 +59,12 @@
 			<td><a href="?view=common">See Common Features</a></td>
 			<td></td>
 		</tr>
-
+		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
@@ -205,7 +210,7 @@
 		<br />
 		<code>&lt;cfselect&gt;</code>
 	</b:td>
-	<b:td>The # is required for the BS-4-CF version. It is not present in the original. You still need to wrap this in either selectOneMenu or SelectMultiMenu</b:td>
+	<b:td>The # is required for the Bootstrap for ColdFusion version. It is not present in the original. You still need to wrap this in either selectOneMenu or SelectMultiMenu</b:td>
 </b:tr>
 <b:tr>
 	<b:td><code>&lt;b:selectOneMenu&gt;</code></b:td>

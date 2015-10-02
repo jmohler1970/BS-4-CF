@@ -6,7 +6,7 @@
 <title>Bootstrap for ColdFusion</title>
 
 <meta name="author" content="James Mohler" />
-<meta name="description" content="BS-4-CF, a powerful tag libary that takes the best from Bootstrap for next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
+<meta name="description" content="Bootstrap tags for ColdFusion, a powerful tag libary that takes the best from Bootstrap for next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
 <meta name="KEYWORDS" content="ColdFusion, bootstrap, framework, java, enterprise, server, faces, jquery, usability, next-gen, web, html5, easy, modern, well-designed, website, state-of-the-art" />
 <meta name="robots" content="index, follow" />
         

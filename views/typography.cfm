@@ -63,7 +63,7 @@
 			<td>pageHeader</td>
 			<td>false</td>
 			<td>For <code>&lt;b:h1&gt;</code> only. This wraps content in div with page header. 
-				<b:label look="Info" value="BS4" /> This is expected to be removed in Bootstrap 4. BS-4-CF will continue to generate this class, but it may have no effect.
+				<b:label look="Info" value="BS4" /> This is expected to be removed in Bootstrap 4. Bootstrap for ColdFusion will continue to generate this class, but it may have no effect.
 			</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
@@ -130,7 +130,7 @@
 		</tr>
 		<tr>
 			<td>throwOnError</td>
-			<td>(none)</td>
+			<td>false</td>
 			<td><a href="?view=common">See Common Features</a></td>
 			<td></td>
 		</tr>
