@@ -1,6 +1,8 @@
 <cfimport prefix="b" taglib="../bootstrap">
 
 
+<b:head>
+
 <title>Bootstrap for ColdFusion</title>
 
 <meta name="author" content="James Mohler" />
@@ -11,7 +13,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<cfoutput>
+
 <cfswitch expression="#session.theme#">
 	<cfcase value="default">
 		<b:outputStylesheet />
@@ -20,10 +22,10 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
 	</cfcase>
 	<cfdefaultcase>
-		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/#lcase(session.theme)#/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/<cfoutput>#lcase(session.theme)#</cfoutput>/bootstrap.min.css" rel="stylesheet">
 	</cfdefaultcase>	
 </cfswitch>
-</cfoutput>
+
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -48,6 +50,7 @@
 <script src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.8/js/dataTables.bootstrap.min.js"></script>
 
+<b:outputScript library="local" name="application.js" />
 
 
 <b:outputStyleSheet name="application.css" processed="#IIF(url.view EQ 'image', 1, 0)#" />
@@ -74,3 +77,4 @@ padding-top: 50px;
 
 	
 	
+</b:head>

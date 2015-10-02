@@ -14,6 +14,14 @@ case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
+	
+	
+	variables.parentTag = getBaseTagList().listGetAt(2).lcase();
+	variables.validTag = ["cf_head"];
+	
+	if(!variables.validTag.contains(variables.parentTag) )	{
+		throw "This tag must be in #variables.validTag.toList()#. It appears to be #variables.parentTag#";
+		}
   
 	param attributes.library		= "default";
 	param attributes.media		= "";

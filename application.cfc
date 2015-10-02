@@ -3,7 +3,7 @@
 
 component	{
 	
-this.name="bs-4-cf-32";
+this.name="bs-4-cf-33";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -12,7 +12,7 @@ function onApplicationStart()	{
 	application.Bootstrap = {
 				
 		// Antisamy options
-		isSafeHTML		= ["buttongroup","buttontoolbar","column","container","dropmenu","fieldset","formgroup",
+		isSafeHTML		= ["buttongroup","buttontoolbar","column","container","dropmenu","fieldset","formgroup","head",
 							"jumbotron","modal","navbar","navbarlinks","navlink","panel","row","table","tabview","tr","well"],	// these tags to not run through getSafeHTML		
 		profile			= "",	// blank means use system default
 		throwOnError		= false,	// Default behavior for getSafeHTML()
