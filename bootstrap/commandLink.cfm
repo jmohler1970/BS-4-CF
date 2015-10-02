@@ -25,7 +25,7 @@ case "start" :
 	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("commandLink");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("commandlink");
 	param attributes.library			= "default";	// for icon
 	param attributes.look	 		= "default";
 	param attributes.outline			= false;
@@ -73,13 +73,13 @@ case "end" :
 	// no target of any kind was set AND this is not an anchor
 	if ((attributes.action != "" || attributes.href == "") && attributes.id == "")	attributes.href = application.Bootstrap.actionRoot & attributes.action;
 
-	if (attributes.look == 'link')					variables.result &= '<a class="';				// we don't do anything special so that link look like links
-	if (attributes.look != 'link')					variables.result &= '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())#';
+	if (attributes.look == 'link')				variables.result &= '<a class="';				// we don't do anything special so that link look like links
+	if (attributes.look != 'link')				variables.result &= '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())#';
 	if (attributes.outline)						variables.result &= "-outline";
-	if (attributes.size 		!= "")				variables.result &= ' btn-#encodeForHTMLAttribute(attributes.size)# '; // space needed
-	if (attributes.styleClass != "")				variables.result &= '#encodeForHTMLAttribute(attributes.styleClass)#';
+	if (attributes.size 		!= "")			variables.result &= ' btn-#encodeForHTMLAttribute(attributes.size)#'; // space needed
+	if (attributes.styleClass != "")				variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 		
-	if (attributes.dropdown)   					variables.result &= 'datatoggle ';
+	if (attributes.dropdown)   					variables.result &= ' datatoggle ';
 	
 											variables.result &= '" '; // end class
 	if (attributes.disabled)						variables.result &= 'disabled="disabled" ';

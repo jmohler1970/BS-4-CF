@@ -17,7 +17,7 @@ case "start" :
 
 	param attributes.binding			= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= falseapplication.Bootstrap.isSafeHTML.contains("badge");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("badge");
 	param attributes.look			= "warning";
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
