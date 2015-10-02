@@ -10,7 +10,7 @@
 <b:row>
 	<b:column span="12">	
 
-		<b:h1 pageHeader="true">Glyphicon Examples</b:h1>
+		<b:h1 pageHeader="true">Icon Examples</b:h1>
 		<p>b:icon</p>
 	</b:column>	
 </b:row>
@@ -18,7 +18,7 @@
 
 <h2>Introduction</h2>
 
-<p>Brings in the power of Glyphicons and Font Awesome. This tag should not have sub tags</p>
+<p>Brings in the power of Glyphicons, Font Awesome, and <small>jQuery-UI</small>. This tag should not have sub tags</p>
 
 <p>If possible, use the icons that are a part of one of the button tags</p>
 
@@ -39,93 +39,123 @@
 			<td>addon</td>
 			<td>(none)</td>
 			<td>Is this a part of an input.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Variable that controls what icon to show</td>
+			<td>N/A</td>
 		</tr>
 		<tr>
 			<td>data-*</td>
 			<td>(none)</td>
-			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>flip</td>
 			<td>(none)</td>
-			<td>For <code>&lt;b:iconAwesome&gt;, the icon can be flipped horizontally or vertically. H, V, and blank are valid values</td>
+			<td>For <code>library="awesome"</code>, the icon can be flipped horizontally or vertically. H, V, and blank are valid values</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>.</td>
-			<td><code>REFindNoCase('[^0-9A-Za-z ]')</code> is false.
-				 Must be less than  <cfoutput>#application.Bootstrap.limit.id#</cfoutput> characters
-			</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>library</td>
 			<td>default</td>
-			<td>Which icon library should be used? This is set via: <code>application.Bootstrap.IconLibrary[attributes.library]</code>. This site uses Glyphicons</td>
+			<td>Which icon library should be used? This is set via: <code>application.Bootstrap.IconLibrary[attributes.library]</code>. This site uses Glyphicons by default</td>
+			<td>N/A</td>
 		</tr>
 		<tr>
 			<td>look</td>
 			<td>(none)</td>
 			<td>What colors should this have.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>ng-*</td>
 			<td>(none)</td>
-			<td>Pass through of all AngularJS attributes</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>on*</td>
 			<td>(none)</td>
-			<td>Pass through of all Mouse/Pointer events.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rotate</td>
 			<td>(none)</td>
-			<td>For <code>&lt;b:iconAwesome&gt;, the icon can be rotated left or right. L, R, and blank are valid values</td>
+			<td>For <code>library="awesome"</code>, the icon can be rotated left or right. L, R, and blank are valid values</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 
 		<tr>
 			<td>size</td>
 			<td>(none)</td>
 			<td>This uses Font Awesome to do the sizing</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>spin</td>
 			<td>(none)</td>
 			<td>This uses Font Awesome to do spinning</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of title</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
-
-
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
 	</tbody>
 	</b:table>
 </b:panel>
@@ -208,4 +238,38 @@
 </tbody>
 
 </b:table>
+
+
+
+<h2>Example with &lt;b:icon&gt; using jQuery UI</h2>
+
+<p>It is recommended that only one library be used per application. The <code>library=""</code> is used for overrides. jQuery UI uses bitmaps not font (vectors). 
+	For this reason it has a hard time resizing or changing colors. It is NOT recommend that his library be used. This sample is included for completeness only</p>
+
+<b:table>
+<thead>
+<tr>
+	<th>Name</th>
+	<th>Default look</th>
+	<th><code>lstyleClass="ui-state-highlight"</code></th>
+	<th><code>styleClass="ui-state-error"</code></th>
+	<th><code>spin="true"</code></th>
+</tr>
+</thead>	
+
+<tbody>
+<cfloop list="tag,note,bookmark,print,image,flag,arrowthickstop-1-s,arrowthickstop-1-n,mail-closed,arrowrefresh-1-w,trash,check" index="rc.i">
+	<tr>
+		<td><cfoutput>#rc.i#</cfoutput></td>
+		<td><b:icon library="jquery-ui" binding="i" /></td>
+		<td><b:icon library="jquery-ui" binding="i" styleClass="ui-state-highlight"/></td>
+		<td><b:icon library="jquery-ui" binding="i" styleClass="ui-state-error"	/></td>
+		<td><b:icon library="jquery-ui" binding="i" spin="true"	/></td>
+	</tr>
+</cfloop>
+</tbody>
+
+</b:table>
+
+
 
