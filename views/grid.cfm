@@ -62,6 +62,12 @@
 			<td></td>
 		</tr>
 		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td><a href="?view=common">See Common Features</a></td>
@@ -93,7 +99,7 @@
 		</tr>
 		<tr>
 			<td>throwOnError</td>
-			<td>(none)</td>
+			<td>false</td>
 			<td><a href="?view=common">See Common Features</a></td>
 			<td></td>
 		</tr>
@@ -147,6 +153,12 @@
 			<td></td>
 		</tr>
 		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td><a href="?view=common">See Common Features</a></td>
@@ -178,7 +190,7 @@
 		</tr>
 		<tr>
 			<td>throwOnError</td>
-			<td>(none)</td>
+			<td>false</td>
 			<td><a href="?view=common">See Common Features</a></td>
 			<td></td>
 		</tr>
@@ -254,6 +266,12 @@
 			<td></td>
 		</tr>
 		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>offset</td>
 			<td>(none)</td>
 			<td>By default, no offset will be done. When provided, this will define the offset for all screen sizes.</td>
@@ -322,7 +340,7 @@
 		</tr>
 		<tr>
 			<td>throwOnError</td>
-			<td>(none)</td>
+			<td>false</td>
 			<td><a href="?view=common">See Common Features</a></td>
 			<td></td>
 		</tr>

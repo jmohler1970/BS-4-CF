@@ -31,26 +31,32 @@
 		<tr>
 			<td>generatedContent</td>
 			<td>(none)</td>
-			<td>Pass through of content</td>
-			<td>It is expected that <code>&lt;b:h1&gt;</code> and other tags will be with this tag. Make sure that the inner content is clean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td></td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>No</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>No</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tight</td>
@@ -59,10 +65,22 @@
 			<td>No</td>
 		</tr>
 		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of title</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>

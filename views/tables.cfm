@@ -84,6 +84,12 @@ rc.qryData.AddRow([
 			<td></td>
 		</tr>
 		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>processed</td>
 			<td>true</td>
 			<td><a href="?view=common">See Common Features</a></td>
@@ -127,7 +133,7 @@ rc.qryData.AddRow([
 		</tr>
 		<tr>
 			<td>throwOnError</td>
-			<td>(none)</td>
+			<td>false</td>
 			<td><a href="?view=common">See Common Features</a></td>
 			<td></td>
 		</tr>
@@ -183,6 +189,12 @@ rc.qryData.AddRow([
 			<td></td>
 		</tr>
 		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
 			<td>look</td>
 			<td>(none)</td>
 			<td>This for contextual classes</td>
@@ -232,7 +244,7 @@ rc.qryData.AddRow([
 		</tr>
 		<tr>
 			<td>throwOnError</td>
-			<td>(none)</td>
+			<td>false</td>
 			<td><a href="?view=common">See Common Features</a></td>
 			<td></td>
 		</tr>
@@ -281,6 +293,13 @@ rc.qryData.AddRow([
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td>data-*</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		
+		<tr>
 			<td>hidden</td>
 			<td>(none)</td>
 			<td>Should this cell be hidden when the screen is small. Unlike Bootstrap hidden, if hidden when sm then xs is hidden too.
@@ -295,8 +314,8 @@ rc.qryData.AddRow([
 			<td></td>
 		</tr>
 		<tr>
-			<td>data-*</td>
-			<td>(none)</td>
+			<td>isSafeHTML</td>
+			<td>false</td>
 			<td><a href="?view=common">See Common Features</a></td>
 			<td></td>
 		</tr>
@@ -357,7 +376,7 @@ rc.qryData.AddRow([
 
 		<tr>
 			<td>throwOnError</td>
-			<td>(none)</td>
+			<td>false</td>
 			<td><a href="?view=common">See Common Features</a></td>
 			<td></td>
 		</tr>

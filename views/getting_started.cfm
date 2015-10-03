@@ -77,22 +77,27 @@
 <pre>
 function onApplicationStart()	{
 	application.Bootstrap = {
+				
+		// Antisamy options
+		isSafeHTML		= ["buttongroup","buttontoolbar","column","container","dropmenu","fieldset","formgroup","head",
+							"jumbotron","modal","navbar","navbarlinks","navlink","panel","row","table","tabview","tr","well"],	// these tags to not run through getSafeHTML		
+		profile			= "",	// blank means use system default
+		throwOnError		= false,	// Default behavior for getSafeHTML()
+		
 	
 		actionRoot 		= cgi.script_name,
-		IconLibrary		= {},
-		ImageLibrary		= {},	
-		StyleSheetLibrary	= {},	
-		ScriptLibrary	= {}	
-		};
+		validLook			= ["", "link", "default", "primary", "success", "info", "warning", "danger"], // There does not guarantee they are valid	
 		
-	application.Bootstrap.IconLibrary["default"]			= "glyphicon glyphicon-";		// be sure to include ending dash
-	application.Bootstrap.IconLibrary["awesome"]			= "fa fa-";
-	application.Bootstrap.ImageLibrary["default"]		= replace(cgi.script_name, "/index.cfm", "") & "/assets/";		// used by b:graphicImage
-	application.Bootstrap.StyleSheetLibrary["default"] 	= replace(cgi.script_name, "/index.cfm", "") & "/assets/";		// used by b:outputStyleSheet
-	application.Bootstrap.ScriptLibrary["default"]		= replace(cgi.script_name, "/index.cfm", "") & "/assets/";		// used by b:outputScript
-			
+		iconLibrary		= {"default" = "glyphicon glyphicon-", "awesome" = "fa fa-", "jquery-ui" = "ui-icon ui-icon-"}, 		// be sure to include ending dashes
+		imageLibrary		= {"default" = replace(cgi.script_name, "/index.cfm", "") & "/assets/"},							// used by b:graphicImage
+		styleSheetLibrary	= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"},				// used by b:outputStyleSheet
+		scriptLibrary		= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js", local="assets/"}	// used by b:outputScript
+		};
+	
+		
 		
 	} // end onApplicationStart
+
 </pre>	
 
 

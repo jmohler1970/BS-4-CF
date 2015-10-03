@@ -30,14 +30,18 @@
 		<tr>
 			<td>generatedContent</td>
 			<td>(none)</td>
-			<td>Pass through of content. this is the initial message before the content is AJAX'ed in</td>
+			<td>Pass through of content</td>
 			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
 		</tr>
 		<tr>
 			<td>data-*</td>
 			<td>(none)</td>
 			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td>
+				Keys: <b:label look="danger">No</b:label> 	
+				<br />	
+				Values <code>encodeForHTMLAttribute()</code>
+			</td>
 		</tr>
 		<tr>
 			<td>id</td>
@@ -47,25 +51,44 @@
 		</tr>
 		<tr>
 			<td>isSafeHTML</td>
-			<td>see chart below</td>
+			<td>IF exists in<code>application.Bootstrap.isSafeHTML</code></td>
 			<td>Controls how content is rendered. Content is assumed to be clean, but it can be cleaned if necessary.
 				By setting this to false, all content will be cleaned via <code>getSafeHTML()</code></td>
 			<td>Must evaluate to boolean</td>
 		</tr>
-	
+		<tr>
+			<td>key</td>
+			<td>(none)</td>
+			<td>Reserved for future use. Eventually it will lookup strings in an i18n language file. Also see placeholder</td>
+			<td>N/A</td>
+		</tr>
 		<tr>
 			<td>ng-*</td>
 			<td>(none)</td>
 			<td>Pass through of all AngularJS attributes</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td class="text-nowrap">
+				Keys: <b:label look="danger">No</b:label> 	
+				<br />	
+				Values <code>encodeForHTMLAttribute()</code>
+			</td>
 		</tr>
 		<tr>
 			<td>on*</td>
 			<td>(none)</td>
 			<td>Pass through of all Mouse/Pointer events.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td>
+				Keys: <b:label look="danger">No</b:label> 	
+				<br />	
+				Values <code>encodeForHTMLAttribute()</code>
+			</td>
 		</tr>
-
+		<tr>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<td>Reserved for future use. Eventually it will be used for substitution points in i18n language files. 
+				Data must come in as either single simple value, or as an array. Simple value will be converted to an array.  Also see key</td>
+			<td><code>encodeForHTML()</code> for each element in the array.</td>
+		</tr>		
 		<tr>
 			<td>processed</td>
 			<td>true</td>
@@ -74,8 +97,9 @@
 		</tr>
 		<tr>
 			<td>profile</td>
-			<td>Value in <code>application.Bootstrap.profile</code></td>
-			<td>Application specific profile for Antisamy cleanup. If this is set to blank, then server setting will be used</td>
+			<td><code>application.Bootstrap.profile</code></td>
+			<td>Application specific profile for Antisamy cleanup. If this is set to blank, then server setting will be used.
+				Pass through attribute on <code>getSafeHTML(inString, <b>profile</b>, throwOnError)</code></td>
 			<td>Must evaluate to boolean</td>
 		</tr>	
 		<tr>
@@ -111,7 +135,7 @@
 		</tr>
 		<tr>
 			<td>throwOnError</td>
-			<td>False</td>
+			<td><code>application.Bootstrap.throwOnError</code></td>
 			<td>Pass through attribute on <code>getSafeHTML(inString, profile, <b>throwOnError</b>)</code></td>
 			<td>Must evaluate to boolean</td>
 		</tr>

@@ -28,6 +28,7 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -35,29 +36,45 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>size</td>
 			<td>(none)</td>
 			<td>reserved for future use</td>
+			<td>N/A</td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of title</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
-
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
 
 	</tbody>
 	</b:table>
@@ -75,6 +92,7 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -82,28 +100,32 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>justified</td>
 			<td>false</td>
 			<td>Stretch buttons over the width of the container.</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>orientation</td>
 			<td>horizontal</td>
 			<td>As opposed to Vertical.</td>
+			<td>Must be their not set, horizontal, or vertical</td>
 		</tr>
-		
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>size</td>
@@ -111,17 +133,23 @@
 			<td>How much padding should this well have</td>
 		</tr>
 		<tr>
-			<td>toggle</td>
+			<td>throwOnError</td>
 			<td>false</td>
-			<td>This is going to contain radio or checkbox that thank list items</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of title</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
-
-
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
 	</tbody>
 	</b:table>
 </b:panel>

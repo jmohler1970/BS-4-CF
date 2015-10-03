@@ -43,20 +43,20 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>. </td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>role</td>
@@ -67,14 +67,14 @@
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td>Pass though of CSS style. This is applied to the outer <code>&lt;div&gt;</code></div></td>
-			<td><code>encodeForCSS()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -115,24 +115,23 @@
 			<td>Pass through of HTML <code>disabled=</code></td>
 			<td>Must evaluate to boolean</td>
 		</tr>
-
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>role</td>
@@ -143,16 +142,17 @@
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
-			<td><code>encodeForCSS()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 
 		<tr>
 			<td>title</td>
 			<td>(none)</td>
-			<td>Content on tab</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td>Content on tab. This is not a tooltip</td>
+			<td><code>encodeForHTML()</code></td>
 		</tr>
+		
 	</tbody>
 	</b:table>
 </b:panel>

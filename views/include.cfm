@@ -23,6 +23,7 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -30,17 +31,20 @@
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>template</td>
 			<td>(required)</td>
 			<td>Pass through of <code>template=</code> attribute. If a relative path is used, it is from the install directory of this tag. It is recommended absolute paths be used</td>
+			<td><b:label look="danger">No</b:label>  Value is assumed to be clean</td>
 		</tr>
 	</tbody>
 	</b:table>

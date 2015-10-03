@@ -41,20 +41,20 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>value</td>
@@ -97,8 +97,8 @@
 		<tr>
 			<td>data-*</td>
 			<td>(none)</td>
-			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>disabled</td>
@@ -139,8 +139,8 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>library</td>
@@ -151,26 +151,26 @@
 		<tr>
 			<td>ng-*</td>
 			<td>(none)</td>
-			<td>Pass through of all AngularJS attributes</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>on*</td>
 			<td>(none)</td>
-			<td>Pass through of all Mouse/Pointer events.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>value</td>
@@ -189,7 +189,7 @@
 
 <h3>Basic</h3>
 
-<b:navBar brand="BS-4-CF" brandHref="##">
+<b:navBar brand="Bootstrap for ColdFusion" brandHref="##">
     <b:navbarLinks>
         <b:navLink value="Home" href="##" />
         <b:navLink value="Link" href="##" />
@@ -231,7 +231,7 @@
 
 
 
-<b:navBar brand="BS-4-CF" brandHref="##" inverse="true">
+<b:navBar brand="Bootstrap for ColdFusion" brandHref="##" inverse="true">
     <b:navbarLinks>
         <b:navLink value="Home"	href="##" active="true" />
         <b:navLink value="Link" 	href="##" />
@@ -251,7 +251,7 @@
 
 <p>This also has a right aligned menu</p>
 
-<b:navBar brand="BS-4-CF" brandHref="##">
+<b:navBar brand="Bootstrap for ColdFusion" brandHref="##">
 
     <!-- Collect the nav links, forms, and other content for toggling -->
    <b:navbarLinks>
