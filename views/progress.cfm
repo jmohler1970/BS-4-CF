@@ -15,6 +15,34 @@
 <h2>Introduction</h2>
 
 
+<b:panel look="info" title="Attributes of <b:progressbar>">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<th>Default value</th>
+			<th>Description</th>
+			<th>Sanitized</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
 
 
 

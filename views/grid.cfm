@@ -27,10 +27,10 @@
 	<footer>Quote from <cite>Bootstrap documentation</cite></footer>
 </b:blockquote>
 
-<p>This rule is not enforced within BS-4-CF</p>
+<p>This rule is not enforced within Bootstrap for ColdFusion</p>
 
 
-<b:panel look="info" title="Attributes of &lt;b:container&gt;">
+<b:panel look="info" title="Attributes of <b:container>">
 
 	<b:table>
 	<thead>
@@ -38,44 +38,82 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td><b:label look="danger">No</b:label> this is often longer than antisamy limits. Make sure that the inner content is clean</td>
+		</tr>
+		<tr>
 			<td>fluid</td>
 			<td>true</td>
 			<td>Is this a fluid container?</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of title</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -88,7 +126,7 @@
 
 
 
-<b:panel look="info" title="Attributes of &lt;b:row&gt;">
+<b:panel look="info" title="Attributes of <b:row>">
 
 	<b:table>
 	<thead>
@@ -96,40 +134,77 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
+		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td><b:label look="danger">No</b:label> this is often longer than antisamy limits. Make sure that the inner content is clean</td>
+		</tr>
 
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of title</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -139,7 +214,7 @@
 <h3>b:column</h3>
 
 
-<b:panel look="info" title="Attributes of &lt;b:column&gt;">
+<b:panel look="info" title="Attributes of <b:column>">
 
 	<b:table>
 	<thead>
@@ -147,93 +222,139 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td><b:label look="danger">No</b:label></td>
+		</tr>
+		
+		<tr>
 			<td>colxs</td>
 			<td>(none)</td>
 			<td>Span for extra small screens. Use <code>span=</code> if possible</td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
 			<td>colsm</td>
 			<td>(none)</td>
 			<td>Span for small screens. Use <code>span=</code> if possible</td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
 			<td>colmd</td>
 			<td>(none)</td>
 			<td>Span for medium screens. Use <code>span=</code> if possible</td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>col-lg</td>
+			<td>collg</td>
 			<td>(none)</td>
 			<td>This is now set by default. This has to be manually set if needed.</td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for form and label.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>offset</td>
 			<td>(none)</td>
 			<td>By default, no offset will be done. When provided, this will define the offset for all screen sizes.</td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>offset-xs</td>
+			<td>offsetxs</td>
 			<td>(none)</td>
 			<td>Offset for extra small screens</td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>offset-sm</td>
+			<td>offsetsm</td>
 			<td>(none)</td>
 			<td>Offset for small screens</td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>offset-md</td>
+			<td>offsetmd</td>
 			<td>(none)</td>
 			<td>Offset for medium screens</td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
-			<td>offset-lg</td>
+			<td>offsetlg</td>
 			<td>0</td>
 			<td>This is skipped where there is an offset of 0.</td>
+			<td><code>isnumeric()</code></td>
 		</tr>
 		
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>span</td>
 			<td>(none)</td>
 			<td>How many columns should this content span?  When provided, this will define the span for all screen sizes.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
-
-		
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of title</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>

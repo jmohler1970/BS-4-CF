@@ -15,4 +15,3 @@
 	</small>	
 </p>
 
-<b:outputScript name="application.js" />

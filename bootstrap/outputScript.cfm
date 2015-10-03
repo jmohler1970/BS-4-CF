@@ -14,6 +14,15 @@ case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
+	
+	
+	variables.parentTag = getBaseTagList().listGetAt(2).lcase();
+	variables.validTag = ["cf_head"];
+	
+	if(!variables.validTag.contains(variables.parentTag) )	{
+		throw "This tag must be in #variables.validTag.toList()#. It appears to be #variables.parentTag#";
+		}
+	
   
 	param attributes.library		= "default";
 	param attributes.name		= "";		// if name is blank, the library better have complete target
@@ -28,8 +37,11 @@ case "end" :
      							variables.result &= crlf;
 	   							variables.result &= '<script ';
 	   							variables.result &= ' src="' & application.Bootstrap.ScriptLibrary[attributes.library] & attributes.name & '"';
-								variables.result &= ' type="#attributes.type#"';              
+								variables.result &= ' type="#encodeForHTMLAttribute(attributes.type)#"';              
 								variables.result &= '>';
+								
+								variables.result &= thisTag.GeneratedContent.trim();
+								
 								variables.result &= '</script>';
 
      

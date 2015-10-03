@@ -1,8 +1,7 @@
-# BS-4-CF
-Bootstrap tags for Adobe ColdFusion
+# Bootstrap for ColdFusion
 
 
-Simplify Bootstrap and ColdFusion
+Simplifying both Bootstrap and ColdFusion
 
 
 # Why is this interesting?
@@ -14,7 +13,7 @@ The two put together are highly unreadable and difficult to debug. This is where
 BootsFaces for JSF shows the way to a cleaner approach. So what I have done is created a similar library for ColdFusion.
 
 
-### Without BS-4-CF
+### Without Bootstrap for ColdFusion
 ```
 <cfif showme>	
      <button type="button" class="btn btn-default btn-lg">
@@ -25,7 +24,7 @@ BootsFaces for JSF shows the way to a cleaner approach. So what I have done is c
 ```	
 
 
-### With BS-4-CF
+### With Bootstrap for ColdFusion
 
 ```
 <b:button processed="#showme#" binding="savelabel" icon="floppy-disk" size="lg" />	

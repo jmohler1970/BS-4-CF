@@ -15,26 +15,39 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
   
-	param attributes.id			= "";
-	param attributes.processed	= true;
-	param attributes.rendered 	= true;
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
-	param attributes.tooltip		= "";
-     
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("row");
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
+	param attributes.processed		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered 		= true;
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.tooltip			= "";
+	param attributes.tooltipPosition	= "bottom";
+	
+	
      if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :     
      
 	   							variables.result &= variables.crlf & '<div class="row';
-	if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';			
+	if(attributes.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';			
 	   							variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';                         
-	if(attributes.tooltip    != "")    variables.result &= ' title="#attributes.tooltip#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';                         
+	if(attributes.tooltip    != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
 								variables.result &= '>';
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+								
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+							
+								
 								variables.result &= variables.crlf & '</div><!-- /.row -->';
 								variables.result &= variables.crlf;
 								variables.result &= variables.crlf;

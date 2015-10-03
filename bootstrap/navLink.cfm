@@ -17,18 +17,23 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.active		= false;
-	param attributes.binding		= "";
-	param attributes.disabled	= false;
-	param attributes.fragment	= false;
-	param attributes.icon		= "";
-	param attributes.iconAlign	= "left";
-	param attributes.id			= "";
-	param attributes.header		= "";
-	param attributes.href		= "";
-	param attributes.library		= "default"; //for icons
-	param attributes.processed	= true;
-	param attributes.rendered 	= true;
-	param attributes.value		= "";
+	param attributes.binding			= "";
+	param attributes.disabled		= false;
+	param attributes.fragment		= false;
+	param attributes.icon			= "";
+	param attributes.iconAlign		= "left";
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("navLink");
+	param attributes.header			= "";
+	param attributes.href			= "";
+	param attributes.key			= "";
+	param attributes.library			= "default"; //for icons
+	param attributes.processed		= true;
+	param attributes.placeholder		= [];
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered 		= true;
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.value			= "";
 	
 	
 	// Patch this
@@ -45,19 +50,21 @@ case "start" :
 			} // end if	
 		}	// end for
      
+     
+     
      if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :
 
-	if(attributes.value != "")											thisTag.generatedContent = xmlFormat(attributes.value);
-	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = xmlFormat(evaluate("caller.rc.#attributes.binding#"));
+	if(attributes.value != "")											thisTag.generatedContent = attributes.value;
+	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
 
      
      if (thisTag.generatedContent == "" && attributes.header == "")
      								variables.result &= '<li role="separator" class="divider"></li>';
      
-     if (attributes.header != "")			variables.result &= '<li class="dropdown-header">#attributes.header#</li>';
+     if (attributes.header != "")			variables.result &= '<li class="dropdown-header">#encodeForHTML(attributes.header)#</li>';
      
  	if (thisTag.generatedContent != "")				{
      											variables.result &= '<li';
@@ -65,18 +72,23 @@ case "end" :
      	if(attributes.disabled)						variables.result &= ' class="disabled"';						  			
 												variables.result &= '>';
 	
-												variables.result &= '<a href="#attributes.href#';
-		if(attributes.fragment != false)				variables.result &= '###attributes.fragment#';
+												variables.result &= '<a href="#encodeForHTMLAttribute(attributes.href)#';
+		if(attributes.fragment != false)				variables.result &= '###encodeForURL(attributes.fragment)#';
 												variables.result &= '"';
-		if(attributes.id		!= "")				variables.result &= ' id="#attributes.id#"';
+		if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 		
-		for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+		for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 		
 												variables.result &= '>';
 		if(attributes.icon != "" && attributes.iconAlign == "left")		{
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
-												}		
-																	variables.result &= thisTag.generatedContent; // pass through of content
+												}
+												
+	if (!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if ( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+											
+												
+														
 		if(attributes.icon != "" && attributes.iconAlign == "right")	{
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
 												}

@@ -33,11 +33,13 @@
 <ol>
 	<li>They have done a very good job making checkboxes and radio buttons look great</li>
 	<li>By abstracting checkboxes and radio buttons, it will be easy to swap in new libraries when that day comes</li>
-
 </ol>
 
 
-<b:panel look="info" title="Attributes of &lt;b:well&gt;">
+<p><b>Note:</b> Not all Awesome Bootstrap Checkboxes look awesome on all themes. Verify before using</p>
+
+
+<b:panel look="info" title="Attributes of <b:checkbox>">
 
 	<b:table>
 	<thead>
@@ -45,84 +47,131 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td>Yes.</td>
+		</tr>
+	
+		<tr>
 			<td>circle</td>
 			<td>false</td>
 			<td>Show a circle instead of square</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>checked</td>
 			<td>false</td>
 			<td>Pass through of HTML <code>checked="checked"</code>.</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML <code>disabled="disabled"</code>.</td>
+			<td>Must evaluate to boolean</td>
 		</tr>		
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>inline</td>
 			<td>(none)</td>
-			<td>Should all these checkboxes be in a row?.</td>
+			<td>Should all these checkboxes be in a row?</td>
+			<td>Must evaluate to boolean</td>
+		</tr>
+		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>look</td>
 			<td>(none)</td>
 			<td>It will still look slightly larger than a normal checkbox.</td>
+			<td>Must be one of: <cfoutput>#application.Bootstrap.validLook.toList()#</cfoutput></td>
 		</tr>	
 		<tr>
 			<td>name</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>name=</code>.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>size</td>
 			<td>(none)</td>
 			<td>How much padding should this well have</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tabIndex</td>
 			<td>(none)</td>
 			<td>Pass though of tabindex</td>
+			<td><code>isnumeric()</code></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>title</td>
 			<td>(none)</td>
 			<td>Content next to checkbox. If it is blank, perhaps the content is nearby</td>
+			<td><code>encodeForHTML()</code></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of <code>title=</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -147,20 +196,20 @@
 		<td></td>
      
 		<td>missing</td>
-		<td>Standard HTML checkbox</td>
+		<td>Standard HTML checkbox. Many themes will make the label bold</td>
 	</tr>
 	
    <tr>
-       <td><b:selectBooleanCheckbox checked="true" name="myc" id="auto">Checkbox</b:selectBooleanCheckbox></td>
-       <td><b:selectBooleanCheckbox circle="true" id="auto" checked="true">Checkbox</b:selectBooleanCheckbox></td>
+       <td><b:selectBooleanCheckbox checked="true" name="myc" id="auto" tooltip="Hello, World!">Checkbox with tooltip</b:selectBooleanCheckbox></td>
+       <td><b:selectBooleanCheckbox circle="true" id="auto" checked="true" tooltip="Hello, World!">Checkbox with tooltip</b:selectBooleanCheckbox></td>
      
        <td>missing</td>
        <td>Standard gray button with gradient. This tends to be larger.</td>
    </tr>
 
    <tr>
-       <td><b:selectBooleanCheckbox	look="primary" 			id="auto" checked="true">Checkbox</b:selectBooleanCheckbox></td>
-       <td><b:selectBooleanCheckbox	look="primary" circle="true" name="myc" checked="true"id="auto">Checkbox</b:selectBooleanCheckbox></td>
+       <td><b:selectBooleanCheckbox	look="primary" 			id="auto" checked="true" tooltip="Hello, World!">Checkbox with tooltip</b:selectBooleanCheckbox></td>
+       <td><b:selectBooleanCheckbox	look="primary" circle="true" name="myc" checked="true"id="auto" tooltip="Hello, World!">Checkbox with tooltip</b:selectBooleanCheckbox></td>
        <td><code>look="primary"</code></td>
        <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
    </tr>

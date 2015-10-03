@@ -22,25 +22,34 @@ case "start" :
 		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
 		}
   
-
-	param attributes.look		= "default";
-	param attributes.processed 	= true;
-	param attributes.rendered	= true;
-	param attributes.role		= "button";
-	param attributes.value		= "";
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("dropbutton"); // this really does not work with false
+	param attributes.key			= "";
+	param attributes.look			= "default";
+	param attributes.placeholder		= [];
+	param attributes.processed	 	= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered		= true;
+	param attributes.role			= "button";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.value			= "";
 	
 	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :
 	if (attributes.look == "tab")		variables.result &= crlf & '<a class="dropdown-toggle" ';
-	if (attributes.look != "tab")		variables.result &= crlf & '<a class="btn btn-#lcase(attributes.look)# dropdown-toggle" ';
+	if (attributes.look != "tab")		variables.result &= crlf & '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())# dropdown-toggle" ';
 	
-	variables.result &= 'data-toggle="dropdown" role="#attributes.role#">#attributes.value# <b class="caret"></b></a>';  
-	variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
-	variables.result &= crlf & thisTag.generatedContent;
-	variables.result &= crlf & '</ul>';
-	variables.result &= crlf & '<!-- /.end dropdown -->';
+								variables.result &= 'data-toggle="dropdown" role="#EncodeForHTMLAttribute(attributes.role)#">#EncodeForHTML(attributes.value)# <b class="caret"></b></a>';  
+								variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
+	
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+
+	
+	
+								variables.result &= crlf & '</ul>';
+								variables.result &= crlf & '<!-- /.end dropdown -->';
 	
 	
      thisTag.GeneratedContent = "";

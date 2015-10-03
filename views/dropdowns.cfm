@@ -18,7 +18,7 @@
 <p>Pulldown menus. They can either be stand alone, or as part of a tab control</p>
 
 
-<b:panel look="info" title="Attributes of &lt;b:dropdown&gt;">
+<b:panel look="info" title="Attributes of <b:dropbutton">
 
 	<b:table>
 	<thead>
@@ -26,6 +26,7 @@
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
@@ -34,27 +35,32 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>. </td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>look</td>
 			<td>default</td>
 			<td>This does a passthrough to <code>btn-</code>. If <code>look="tab"</code> then no button classes are applied. This is so that to will look proper in a tab.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>	
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>role</td>
 			<td>role</td>
 			<td>Pass though of HMTL <code>role=</code></div></td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 
 	</tbody>

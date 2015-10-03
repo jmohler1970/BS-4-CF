@@ -3,12 +3,13 @@
 
 
 
-<b:navBar brand="BS-4-CF" brandHref="index.cfm" fixed="top">
+<b:navBar brand="Bootstrap for ColdFusion" brandHref="index.cfm" fixed="top">
 	<b:navbarLinks>
 	
 		<b:dropMenu value="Getting Started">
 			<b:navLink value="Introduction" href="?view=getting_started" active="#IIF(url.view EQ 'getting_started', 1, 0)#" />
-			<b:navLink value="Stylesheets & JavaScript" href="?view=ssjs" />
+			<b:navLink value="Smart tags & common features" href="?view=common" />
+			<b:navLink value="Head, JS, & CSS tags" href="?view=head" />
 			<b:navLink />
 			<b:navLink header="Bootstrap 4"/>
 			<b:navLink value="Alpha Release" href="?view=theme&theme=4alpha" />	
@@ -53,7 +54,7 @@
 			<b:navLink />
 			<b:navLink header="By Bootswatch"/>
 			<cfloop index="rc.i" list="Cerulean,Cosmo,Cyborg,Darkly,Flatly,Journal,Lumen,Paper,Readable,Sandstone,Simplex,Slate,Spacelab,Superhero,United,Yeti">
-				<b:navLink href="?view=theme&amp;theme=#rc.i#" binding="i" disabled="#IIF(session.theme EQ rc.i , 1, 0)#" />
+				<b:navLink href="?view=theme&theme=#rc.i#" binding="i" disabled="#IIF(session.theme EQ rc.i , 1, 0)#" />
 			</cfloop>		
 		</b:dropMenu>
 		

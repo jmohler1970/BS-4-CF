@@ -20,7 +20,7 @@
 
 <p>This library promotes a relaxed style of writing Bootstrap / ColdFusion code. The code becomes much more intuitive and self describing, and therefore easier to maintain.</p>
 
-<b:h3>Without BS-4-CF</b:h3>
+<b:h3>Without Bootstrap for ColdFusion</b:h3>
 <pre>
 &lt;cfif showme&gt;	
      &lt;button type="button" class="btn btn-default"&gt;&lt;i class="glyphicon glyphicon-floppy-disk&gt;&lt;/i&gt;&lt;cfoutput&gt;#rc.savelabel#&lt;cfoutput&gt;&lt;/button&gt;
@@ -29,7 +29,7 @@
 </pre>	
 
 
-<b:h3>With BS-4-CF</b:h3>
+<b:h3>With Bootstrap for ColdFusion</b:h3>
 
 
 <pre>
@@ -77,22 +77,27 @@
 <pre>
 function onApplicationStart()	{
 	application.Bootstrap = {
+				
+		// Antisamy options
+		isSafeHTML		= ["buttongroup","buttontoolbar","column","container","dropmenu","fieldset","formgroup","head",
+							"jumbotron","modal","navbar","navbarlinks","navlink","panel","row","table","tabview","tr","well"],	// these tags to not run through getSafeHTML		
+		profile			= "",	// blank means use system default
+		throwOnError		= false,	// Default behavior for getSafeHTML()
+		
 	
 		actionRoot 		= cgi.script_name,
-		IconLibrary		= {},
-		ImageLibrary		= {},	
-		StyleSheetLibrary	= {},	
-		ScriptLibrary	= {}	
-		};
+		validLook			= ["", "link", "default", "primary", "success", "info", "warning", "danger"], // There does not guarantee they are valid	
 		
-	application.Bootstrap.IconLibrary["default"]			= "glyphicon glyphicon-";		// be sure to include ending dash
-	application.Bootstrap.IconLibrary["awesome"]			= "fa fa-";
-	application.Bootstrap.ImageLibrary["default"]		= replace(cgi.script_name, "/index.cfm", "") & "/assets/";		// used by b:graphicImage
-	application.Bootstrap.StyleSheetLibrary["default"] 	= replace(cgi.script_name, "/index.cfm", "") & "/assets/";		// used by b:outputStyleSheet
-	application.Bootstrap.ScriptLibrary["default"]		= replace(cgi.script_name, "/index.cfm", "") & "/assets/";		// used by b:outputScript
-			
+		iconLibrary		= {"default" = "glyphicon glyphicon-", "awesome" = "fa fa-", "jquery-ui" = "ui-icon ui-icon-"}, 		// be sure to include ending dashes
+		imageLibrary		= {"default" = replace(cgi.script_name, "/index.cfm", "") & "/assets/"},							// used by b:graphicImage
+		styleSheetLibrary	= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"},				// used by b:outputStyleSheet
+		scriptLibrary		= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js", local="assets/"}	// used by b:outputScript
+		};
+	
+		
 		
 	} // end onApplicationStart
+
 </pre>	
 
 
@@ -148,16 +153,16 @@ function onApplicationStart()	{
 <a id="bind"></a>
 <b:h3>Using Binding</b:h3>
 
-<p>BS-4-CF was written with frameworks such as FW/1 by Sean Corfield in mind. All of the variables that are outputted should be in the <code>rc</code> scope. We can take advantage of that and make our code much simple. Consider the following</p>
+<p>Bootstrap for ColdFusion was written with frameworks such as FW/1 by Sean Corfield in mind. All of the variables that are outputted should be in the <code>rc</code> scope. We can take advantage of that and make our code much simple. Consider the following</p>
 
 
-<b:h3>Without BS-4-CF</b:h3>
+<b:h3>Without Bootstrap for ColdFusion</b:h3>
 <pre>
 &lt;button type="button" class="btn btn-default"&gt;&lt;cfoutput&gt;#rc.savelabel#&lt;cfoutput&gt;&lt;/button&gt;	
 </pre>	
 
 
-<b:h3>With BS-4-CF</b:h3>
+<b:h3>With Bootstrap for ColdFusion</b:h3>
 <pre>
 &lt;b:button binding="savelabel" /&gt;	
 </pre>
@@ -170,7 +175,7 @@ function onApplicationStart()	{
 <p><code>&lt;cfif&gt;</code> is used to conditionally show blocks of code. <code>&lt;cfif&gt;</code> can span dozens if not hundreds of lines of code. Bootstrap uses lots and lots of <code>&lt;div&gt;</code> tags. You can find yourself at the end of a large block code with nothing but <code>&lt;/cfif&gt;</code> and <code>&lt;/div&gt;</code>. One small mistake can mean wasting hours finding that stray tag.</p>	
 
 
-<b:h3>Without BS-4-CF</b:h3>
+<b:h3>Without Bootstrap for ColdFusion</b:h3>
 
 <pre>
 &lt;cfif showme&gt;
@@ -185,7 +190,7 @@ function onApplicationStart()	{
 </pre>
 
 
-<b:h3>With BS-4-CF</b:h3>
+<b:h3>With Bootstrap for ColdFusion</b:h3>
 
 
 <pre>
@@ -264,7 +269,7 @@ rc.savelabel = "Save this data";
 </cfscript>
 
 
-<b:h3>Without BS-4-CF</b:h3>
+<b:h3>Without Bootstrap for ColdFusion</b:h3>
 <pre>
 &lt;cfif showme&gt;	
      &lt;button type="button" class="btn btn-default"&gt;&lt;i class="glyphicon glyphicon-floppy-disk&gt;&lt;/i&gt;&lt;cfoutput&gt;#rc.savelabel#&lt;cfoutput&gt;&lt;/button&gt;
@@ -273,7 +278,7 @@ rc.savelabel = "Save this data";
 </pre>	
 
 
-<b:h3>With BS-4-CF</b:h3>
+<b:h3>With Bootstrap for ColdFusion</b:h3>
 
 
 <pre>

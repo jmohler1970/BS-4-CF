@@ -16,7 +16,7 @@
 <b:h2>Introduction</b:h2>
 
 
-<b:panel look="info" title="Attributes of &lt;b:modal&gt;">
+<b:panel look="info" title="Attributes of <b:modal>">
 
 	<b:table>
 	<thead>
@@ -24,58 +24,89 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content. this is the initial message before the content is AJAX'ed in</td>
+			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
+		</tr>
+		<tr>
 			<td>backdrop</td>
 			<td>true</td>
-			<td>By default, you can close a modal dialog by clicking somewhere outside the modal. Set <code>backdrop="false"</code> to disable this feature. .</td>
+			<td>By default, you can close a modal dialog by clicking somewhere outside the modal. Set <code>backdrop="false"</code> to disable this feature.</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>closable</td>
 			<td>true</td>
 			<td>Can modal be closed. Creates close button on Title bar</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>close-on-escape</td>
 			<td>true</td>
 			<td>By default, users can close modal dialogs by hitting the <kbd>ESC</kbd> key. Set <code>close-on-escape="false"</code> to disable this feature. </td>
+			<td>Must evaluate to boolean</td>
 		</tr>
-		
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
+		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>look</td>
+			<td>default</td>
+			<td>Look and feel of header and edge</td>
+			<td>Must be on valid value</td>
+		</tr>		
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>size</td>
 			<td>(none)</td>
 			<td>How much padding should this well have</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
-
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>title</td>
 			<td>(none)</td>
 			<td>Bold Title displayed in Modal's header.</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
-
 
 	</tbody>
 	</b:table>

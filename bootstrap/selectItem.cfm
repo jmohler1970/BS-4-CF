@@ -24,9 +24,9 @@ case "start" :
 	param attributes.rendered 	= true;
 	param attributes.selected	= false;
 	param attributes.tooltip		= "";
+	param attributes.tooltipPosition	= "bottom";
 	param attributes.value		= attributes.display; 
 	
-
 
      if (!attributes.processed) exit "exitTag";
 	break;
@@ -35,13 +35,15 @@ case "end" :
 	
 
 	QueryAddRow( thisTag.Parent.thisTag.qryOption);
-     QuerySetCell(thisTag.Parent.thisTag.qryOption, "disabled", 	attributes.disabled);
-     QuerySetCell(thisTag.Parent.thisTag.qryOption, "id", 		attributes.id);
-     QuerySetCell(thisTag.Parent.thisTag.qryOption, "display", 	attributes.display);
-     QuerySetCell(thisTag.Parent.thisTag.qryOption, "look", 	attributes.look);
-     QuerySetCell(thisTag.Parent.thisTag.qryOption, "value", 	attributes.value);
-     QuerySetCell(thisTag.Parent.thisTag.qryOption, "selected",	attributes.selected);
-     QuerySetCell(thisTag.Parent.thisTag.qryOption, "tooltip",	attributes.tooltip);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "disabled",		 	attributes.disabled);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "id", 				attributes.id);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "display", 			attributes.display);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "look",			 	attributes.look);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "value",		 	attributes.value);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "selected",			attributes.selected);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "tooltip",			attributes.tooltip);
+     QuerySetCell(thisTag.Parent.thisTag.qryOption, "tooltipPosition",	attributes.tooltipPosition);
+     
      
 	
 		

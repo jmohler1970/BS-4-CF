@@ -22,14 +22,21 @@ case "start" :
 		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
 		}
   
-	param attributes.disabled	= false;
+	param attributes.disabled		= false;
 	param attributes.id;					// Tab must have id
-	param attributes.processed	= true;
-	param attributes.rendered	= true;
-	param attributes.role 		= "tab";
-	param attributes.style		= "";
-     param attributes.title		= "";
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("tab");
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
+	param attributes.processed		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered		= true;
+	param attributes.role 			= "tab";
+	param attributes.style			= "";
+     param attributes.title			= "";
+     param attributes.throwOnError		= application.Bootstrap.throwOnError;
+     
 	if (!structKeyExists(attributes, "data-url")) attributes["data-url"]	= "";
+	
      
      if (!attributes.processed) exit "exitTag";
 	if (!attributes.rendered) exit "exitTag";	// this is a known bug

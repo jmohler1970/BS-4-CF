@@ -14,19 +14,29 @@ case "start" :
 
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
+	variables.defaultTimeframe = 5000; // in milliseconds
   
 	param attributes.action;			// required
-	param attributes.id			= "auto";
-	param attributes.interval	= 5000;		// ms
-     param attributes.processed	= true;
-     param attributes.rendered 	= true;
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
-	param attributes.timeout		= 5000;		// ms
-	param attributes.tooltip		= "";
+	param attributes.id				= "auto";
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("poll");				// make sure to set to true if you want animated loading 
+	param attributes.interval		= variables.defaultTimeframe;		// ms
+     param attributes.key			= "";
+	param attributes.placeholder		= [];
+     param attributes.processed		= true;
+     param attributes.profile			= application.Bootstrap.profile;
+     param attributes.rendered 		= true;
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.timeout			= variables.defaultTimeframe;		// ms
+	param attributes.tooltip			= "";
+	param attributes.tooltipPosition	= "bottom";
      
      if (attributes.id == "auto")	attributes.id = "poll_" & left(createUUID(), 10);
-
+     
+     if (!isnumeric(attributes.interval)) 	attributes.interval = variables.defaultTimeframe;
+     if (!isnumeric(attributes.timeout)) 	attributes.timeout = variables.defaultTimeframe;
+     
 
      if (!attributes.processed) exit "exitTag";
 	break;
@@ -35,16 +45,23 @@ case "end" :
 	
 								variables.result &= variables.crlf;
 	if(attributes.styleClass == "")	variables.result &= '<span';
-	if(attributes.styleClass != "")	variables.result &= '<span class="#attributes.styleClass#"';							
+	if(attributes.styleClass != "")	variables.result &= '<span class="#encodeForHTMLAttribute(attributes.styleClass)#"';							
 				
 		   							
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
-	if(attributes.tooltip    != "")	variables.result &=	' title="#attributes.tooltip#"';               
+	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.tooltip    != "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
+	
+	             
 								variables.result &= '>';
 							
-								variables.result &= trim(thisTag.GeneratedContent); // pass through of content
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+
+							
 	
 								variables.result &= '</span>';
 								variables.result &= variables.crlf;

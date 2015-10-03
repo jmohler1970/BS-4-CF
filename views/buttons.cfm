@@ -13,7 +13,7 @@
 <h2>Introduction</h2>
 
 
-<b:panel look="info" title="Attributes of &lt;b:button&gt;, &lt;b:commandButton&gt;, &amp;  &lt;b:commandLink&gt;">
+<b:panel look="info" title="Attributes of <b:button>, <b:commandButton>, & <b:commandLink>">
 
 	<b:table>
 	<thead>
@@ -21,80 +21,101 @@
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td>Yes</td>
+		</tr>
+		<tr>
 			<td>ajax</td>
 			<td>(none)</td>
 			<td>Reserved for future use</td>
+			<td>N/A</td>
 		</tr>
 		
 		<tr>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. See note below</td>
+			<td>N/A</td>
 		</tr>
 		<tr>
 			<td>data-*</td>
 			<td>(none)</td>
-			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML <code>disabled="disabled"</code>.</td>
+			<td>Must evaluate to boolean, disabled is treated as true</td>
 		</tr>
 		<tr>
 			<td>dismiss</td>
 			<td>false</td>
 			<td>Sets <code> data-dismiss=</code></td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>dropdown</td>
 			<td>false</td>
 			<td>For <code>b:button</code>, this activates a dropdown menu</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>icon</td>
 			<td>(none)</td>
 			<td>Adds Glyphicon</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>iconAlign</td>
 			<td>(none)</td>
 			<td>Aligns icon</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML <code>id=</code>.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>lang</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>lang=</code></td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>library</td>
 			<td>default</td>
 			<td>Which icon library should be used? This is set via: <code>application.Bootstrap.IconLibrary[attributes.library]</code>. This site uses Glyphicons</td>
+			<td>Must be valid library</td>
 		</tr>
 		<tr>
 			<td>look</td>
 			<td>default</td>
-			<td>Valid value for buttons are "default", "primary", "success", "info", "warning", "danger", "link".</td>
+			<td>Must be one of: <cfoutput>#application.Bootstrap.validLook.toList()#</cfoutput></td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>ng-*</td>
 			<td>(none)</td>
-			<td>Pass through of all AngularJS attributes</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>on*</td>
 			<td>(none)</td>
-			<td>Pass through of all Mouse/Pointer events.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>outline</td>
@@ -102,51 +123,73 @@
 			<td>This will create a button with a thin outline. 
 				When you hover over it, it will fill in <b:label look="Info" value="BS4" />
 			</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>role</td>
 			<td>button</td>
 			<td>Pass through of HTML <code>role=</code></td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>size</td>
 			<td>(none)</td>
 			<td>How big</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td>Pass though of CSS class.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of <code>title=</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td>Pass though of <code>data-placement=</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>value</td>
 			<td>(none)</td>
 			<td>Content to be displayed. Tag also support <code>thisTag.GeneratedContent</code> See note below</td>
+			<td><code>encodeForHTML()</code></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -155,7 +198,7 @@
 
 
 
-<b:panel look="info" title="Attributes of &lt;b:commandLink&gt; only">
+<b:panel look="info" title="Attributes of <b:commandLink> only">
 
 	<b:table>
 	<thead>
@@ -163,6 +206,7 @@
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -172,11 +216,13 @@
 			<td>For <code>b:commandLink</code> to creates an absolute link. 
 				To use this tag, you must set <code>application.Bootstrap.actionRoot</code>.
 			</td>
+			<td><b:label look="danger">No</b:label></td>
 		</tr>
 		<tr>
 			<td>href</td>
 			<td>(none)</td>
 			<td>For <code>b:commandLink</code> to creates a link to action. This is a pass through of HTML <code>href=</code>.</td>
+			<td><b:label look="danger">No</b:label></td>
 		</tr>
 		<tr>
 			<td>look</td>
@@ -184,11 +230,13 @@
 			<td>Valid value for buttons are "default", "primary", "success", "info", "warning", "danger", "link". 
 				If "Link" is chosen, then all the button classes are removed. <!-- I will let you figure out why --></code>
 			</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>target</td>
 			<td>(none)</td>
 			<td>Pass though of <code>target=</code> for <code>&lt;b:commandLink&gt;</code></td>
+			<td><code>encodeForURL()</code></td>
 		</tr>
 	</tbody>
 	</b:table>

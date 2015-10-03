@@ -15,12 +15,17 @@ case "start" :
 	variables.result = "";
 	variables.crlf =  chr(13) & chr(10);
   
-	param attributes.id			= "";
-	param attributes.look		= "";
-	param attributes.processed	= true;
-	param attributes.rendered 	= true;
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("tr");
+	param attributes.look			= "";
+	//	param attributes.key			= "";	//	content not directly generated, do not put td,th in language files
+	//	param attributes.placeholder		= [];	//	see key
+	param attributes.processed		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered 		= true;
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	
 	if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";
 	
@@ -38,23 +43,28 @@ case "start" :
 			} // end if	
 		}	// end for
 
-	
-	
+
+
 	if (!attributes.processed) exit "exitTag";
 	break;
      
 case "end" :
 
 	if(variables.myClass 	== "")			variables.result &= '<tr';
-	if(variables.myClass 	!= "")			variables.result &= '<tr class="#variables.myClass#"';
-	if(attributes.id		!= "")			variables.result &= ' id="#attributes.id#"';
+	if(variables.myClass 	!= "")			variables.result &= '<tr class="#encodeForHTMLAttribute(variables.myClass)#"';
+	if(attributes.id		!= "")			variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
+	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-	if(attributes.style		!= "")			variables.result &= ' style="#attributes.style#"';                 
+	if(attributes.style		!= "")			variables.result &= ' style="#encodeForCSS(attributes.style)#"';                 
 										variables.result &= '>';
 										variables.result &= variables.crlf;
-										variables.result &= thisTag.GeneratedContent; // pass through of content
+
+										
+	if(!attributes.isSafeHTML)				variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)				variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean										
+										
+										
 										variables.result &= variables.crlf;
 										variables.result &= '</tr>';
 										variables.result &= variables.crlf;

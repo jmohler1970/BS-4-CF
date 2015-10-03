@@ -13,38 +13,47 @@ switch (thisTag.ExecutionMode)     {
 case "start" :
 
 	variables.result = "";
-  
-	param attributes.disabled	= false;
-	param attributes.id			= "";
-	param attributes.legend		= "";
-	param attributes.processed 	= true;
-     param attributes.rendered 	= true; // removes content not actuall td
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
-	
+
+	param attributes.disabled		= false;
+	param attributes.id				= "";
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("fieldset");;
+	param attributes.key			= "";
+	param attributes.legend			= "";
+	param attributes.placeholder		= [];
+	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.rendered	 	= true; 
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+
 	if (!attributes.processed) exit "exitTag";
 	break;
-     
-case "end" :     
 
-          
-	   							variables.result &= '<fieldset class="';
-		if(attributes.styleClass	!= "")	variables.result &= ' #attributes.styleClass#';		
-	   							variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#attributes.id#"';
-	if(attributes.style		!= "")	variables.result &= ' style="#attributes.style#"';
-	if(attributes.disabled)			variables.result &= ' disabled="disabled"';                
+case "end" :
+
+
+								variables.result &= '<fieldset class="';
+	if(attributes.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
+								variables.result &= '"';
+	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.disabled)			variables.result &= ' disabled="disabled"';
 								variables.result &= '>';
-	if(attributes.legend	!= "")	variables.result &= '<legend>#attributes.legend#</legend>';							
-								variables.result &= thisTag.GeneratedContent; // pass through of content
+	if(attributes.legend	!= "")	variables.result &= '<legend>#encodeForHTML(attributes.legend)#</legend>';
+	
+	
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+
 								variables.result &= '</fieldset>';
-     
-     
-     thisTag.GeneratedContent = "";
+
+
+	thisTag.GeneratedContent = "";
 	if (attributes.rendered)			 writeOutput(variables.result);
-     
+
 	break;
 	}
-     
- 
+
+
 </cfscript>

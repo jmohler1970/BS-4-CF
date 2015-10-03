@@ -27,7 +27,7 @@
             </p>
 
             <p>
-	         <b:commandLink href="##">Default</b:commandLink>
+	         <b:commandLink href="##" disabled="true">Default</b:commandLink>
               <b:commandLink href="##" disabled="true" look="primary">Primary</b:commandLink>
               <b:commandLink href="##" disabled="true" look="success">Success</b:commandLink>
               <b:commandLink href="##" disabled="true" look="info">Info</b:commandLink>

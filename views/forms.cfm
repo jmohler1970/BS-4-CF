@@ -15,13 +15,13 @@
 
 <b:h2>Introduction</b:h2>
 
-<p>BS-4-CF puts only a few wrappers around form elements. The reason is simple. There are simply too many form libraries out there to try to support. Hence. only the basics are included.</p>
+<p>Bootstrap for ColdFusion puts only a few wrappers around form elements. The reason is simple. There are simply too many form libraries out there to try to support. Hence. only the basics are included.</p>
 
 
 
 <b:h2>b:formGroup<a id="formgroup"></a></b:h2>
 
-<b:panel look="info" title="Attributes of &lt;b:selectItem&gt;">
+<b:panel look="info" title="Attributes of <b:formgroup>">
 
 	<b:table>
 	<thead>
@@ -29,47 +29,89 @@
 			<th>Attribute</th>
 			<th>Default value</th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
+		</tr>
+
+		<tr>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled</td>
+			<td>Must evaluate to boolean. "disabled is treated as true</td>
 		</tr>
 		<tr>
 			<td>display</td>
 			<td>(none)</td>
 			<td>Reserved for future use</td>
+			<td>N/A</td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id.</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
-
+		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
-
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
-			<td>selected</td>
-			<td>false</td>
-			<td>Is this selected on <code>&lt;option&gt;</code> or checked on <code>&lt;input type="radio"&gt;</code></td>
+			<td>style</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
-
+		<tr>
+			<td>styleClass</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Used on selectOneRadio</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -168,7 +210,7 @@
 		<br />
 		<code>&lt;cfselect&gt;</code>
 	</b:td>
-	<b:td>The # is required for the BS-4-CF version. It is not present in the original. You still need to wrap this in either selectOneMenu or SelectMultiMenu</b:td>
+	<b:td>The # is required for the Bootstrap for ColdFusion version. It is not present in the original. You still need to wrap this in either selectOneMenu or SelectMultiMenu</b:td>
 </b:tr>
 <b:tr>
 	<b:td><code>&lt;b:selectOneMenu&gt;</code></b:td>

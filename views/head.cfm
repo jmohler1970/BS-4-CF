@@ -36,7 +36,7 @@
 </pre>
 
 
-<p>Inside of <code>&lt;Head&gt;</code> of the generated content. In FW/1 this is the layout file</p>
+<p>Inside of <code>&lt;b:head&gt;</code> of the generated content. In FW/1 this is the layout file</p>
 
 
 <pre>
@@ -53,14 +53,14 @@
 
 <!--- And Bob's your uncle --->
 
-<h3>Also note</h3>
 
-<p>Icons and libraries are setup in a similar way</p>
+<h2>Head Tag</h2>
+
+<p>The primary purpose of this tag is the be the container for <code>b:outputStylesheet</code> and <code>b:outputScript</code>.
+	It is possible to set processed or render to false. These were included for completeness</p>
 
 
-<h2>Stylesheets</h2>
-
-<b:panel look="info" title="Attributes of &lt;b:outputStyleSheet&gt;">
+<b:panel look="info" title="Attributes of <b:head>">
 
 	<b:table>
 	<thead>
@@ -68,6 +68,65 @@
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<tr>
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<td>Pass through of content</td>
+			<td><b:label look="danger">No</b:label> Default Antisamy wouldn't work anyway</td>
+		</tr>
+		<tr>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>processed</td>
+			<td>true</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>profile</td>
+			<td>(none)</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>rendered</td>
+			<td>true</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>throwOnError</td>
+			<td>false</td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
+
+
+<h2>Stylesheets</h2>
+
+<p>These must be inside of b:head.</p>
+
+
+<b:panel look="info" title="Attributes of <b:outputStyleSheet>">
+
+	<b:table>
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<b:th text="nowrap">Default value</b:th>
+			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	<tbody>
@@ -75,34 +134,39 @@
 			<td>library</td>
 			<td>(none)</td>
 			<td>Defaults to <code>application.Bootstrap.StyleSheetLibrary.default</code></td>
+			<td>N/A</td>
 		</tr>
 		
 		<tr>
 			<td>media</td>
 			<td>all</td>
 			<td>Pass through of <code>media=</code> attribute</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		
 		<tr>
 			<td>name</td>
 			<td>Required</td>
 			<td>This is a relative path, the library is prepended. If name is blank, then library better have complete target</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
-		
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rel</td>
 			<td>stylesheet</td>
 			<td>Pass through of <code>rel=</code> attribute</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -118,9 +182,11 @@
 
 <h3>Javascript</h3>
 
+<p>These must be inside of b:head.</p>
+
 <p>This is used for local Javascript libraries</p>
 
-<b:panel look="info" title="Attributes of &lt;b:outputScript&gt;">
+<b:panel look="info" title="Attributes of <b:outputScript>">
 
 	<b:table>
 	<thead>
@@ -128,6 +194,7 @@
 			<th>Attribute</th>
 			<b:th text="nowrap">Default value</b:th>
 			<th>Description</th>
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	<tbody>
@@ -135,6 +202,7 @@
 			<td>library</td>
 			<td>(none)</td>
 			<td>Defaults to <code>application.Bootstrap.ScriptLibrary.default</code>.</td>
+			<td>N/A</td>
 		</tr>
 		<tr>
 			<td>name</td>
@@ -143,16 +211,19 @@
 				This is slightly different from JSF.
 				If no name set, then the content between the start and end tags is rendered in style tags. Provided that processed and rendered are true.
 			</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="?view=common">See Common Features</a></td>
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>
