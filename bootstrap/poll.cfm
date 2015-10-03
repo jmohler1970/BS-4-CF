@@ -20,6 +20,8 @@ case "start" :
 	param attributes.id				= "auto";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("poll");				// make sure to set to true if you want animated loading 
 	param attributes.interval		= variables.defaultTimeframe;		// ms
+     param attributes.key			= "";
+	param attributes.placeholder		= [];
      param attributes.processed		= true;
      param attributes.profile			= application.Bootstrap.profile;
      param attributes.rendered 		= true;

@@ -19,6 +19,8 @@ case "start" :
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("badge");
 	param attributes.look			= "warning";
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

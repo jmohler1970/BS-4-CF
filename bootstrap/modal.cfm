@@ -20,6 +20,8 @@ case "start" :
 	if(!structKeyExists(attributes, "close-on-escape")) attributes["close-on-escape"] = true;
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("modal");
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

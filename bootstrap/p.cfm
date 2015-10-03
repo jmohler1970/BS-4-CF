@@ -18,7 +18,9 @@ case "start" :
 	param attributes.binding			= "";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("p");
+	param attributes.key			= "";
 	param attributes.lead			= false;
+	param attributes.placeholder		= [];
 	param attributes.processed		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

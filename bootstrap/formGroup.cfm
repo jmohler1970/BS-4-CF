@@ -16,7 +16,9 @@ case "start" :
 	variables.crlf =  chr(13) & chr(10);
   
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("formgroup");;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("formgroup");
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

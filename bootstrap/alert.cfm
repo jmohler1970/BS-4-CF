@@ -18,6 +18,8 @@ case "start" :
 	param attributes.closable		= false;
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("alert");
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.look			= "warning";
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;

@@ -19,6 +19,8 @@ case "start" :
 	param attributes.hidden			= "";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("th");
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.processed		= true; // unknown how to support
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true; // removes content not actual th

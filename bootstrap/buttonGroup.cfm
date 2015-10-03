@@ -19,10 +19,12 @@ case "start" :
 
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("buttongroup"); // really does not work with true
+	param attributes.key			= "";
 	param attributes.justified		= false;
 	param attributes.look			= ""; // this is the default unless over ridden 
 	param attributes.name			= "";
 	param attributes.orientation 		= "horizontal"; // horizontal, vertical, up
+	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.pull 			= "";

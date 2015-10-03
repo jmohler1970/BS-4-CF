@@ -22,10 +22,12 @@ case "start" :
 	param attributes.iconAlign		= "left";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("button");;
+	param attributes.key			= "";
 	param attributes.lang			= "";
 	param attributes.library			= "default";	// for icon
 	param attributes.look			= "default";
 	param attributes.outline			= false;
+	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

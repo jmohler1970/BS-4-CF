@@ -23,7 +23,9 @@ case "start" :
 		}
   
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("dropbutton"); // this really does not work with false
+	param attributes.key			= "";
 	param attributes.look			= "default";
+	param attributes.placeholder		= [];
 	param attributes.processed	 	= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered		= true;

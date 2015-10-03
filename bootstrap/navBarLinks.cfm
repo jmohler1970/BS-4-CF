@@ -17,9 +17,11 @@ case "start" :
 
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("navbarlinks");
+	//param attributes.key			= "";
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.pull			= "";
+	//param attributes.placeholder		= [];
 	param attributes.rendered 		= true;
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";

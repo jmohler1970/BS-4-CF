@@ -18,10 +18,12 @@ case "start" :
 	param attributes.brand			= "";
 	param attributes.brandHref		= "";
 	param attributes.fixed			= "";
+	param attributes.key			= "";
 	param attributes.inverse			= false;
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("navbar");
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.placeholder		= [];
      param attributes.rendered 		= true;
 	param attributes.static			= false;
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;

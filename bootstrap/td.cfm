@@ -20,6 +20,8 @@ case "start" :
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("td");
 	param attributes.look			= "";
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.processed		= true; // unknown how to support
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true; // removes content not actual td

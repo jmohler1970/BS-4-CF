@@ -17,18 +17,20 @@ case "start" :
 	param attributes.addon			= false;
 	param attributes.binding			= "";
 	param attributes.id				= "";
-	//param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("icon");
+	// param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("icon");
 	param attributes.library			= "default";
 	param attributes.look			= "";
+	// param attributes.key			= "";
 	param attributes.name			= "";
+	// param attributes.placeholder		= [];
 	param attributes.processed 		= true;
-	param attributes.profile			= application.Bootstrap.profile;
+	// param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
 	param attributes.size			= "";
      param attributes.spin			= false;
      param attributes.style			= "";
      param attributes.styleClass		= "";
-     param attributes.throwOnError		= application.Bootstrap.throwOnError;
+     // param attributes.throwOnError		= application.Bootstrap.throwOnError;
      param attributes.tooltip			= "";
      param attributes.tooltipPosition = "bottom";
      

@@ -20,12 +20,14 @@ case "start" :
 	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("commandButton");;
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("commandButton");
+	param attributes.key			= "";
 	param attributes.lang			= "";
 	param attributes.library			= "default";	// for icon
 	param attributes.look			= "default";
 	param attributes.name			= "";
 	param attributes.outline			= false;
+	param attributes.placeholder		= [];
 	param attributes.processed		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered		= true;

@@ -17,7 +17,9 @@ case "start" :
   
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("column"); // this content is very large. Make sure it is clean before passing in
+	param attributes.key			= "";
 	param attributes.offset			= 0;
+	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

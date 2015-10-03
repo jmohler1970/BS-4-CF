@@ -20,6 +20,9 @@ case "start" :
      param attributes.hover			= false;
      param attributes.id				= "";
      param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("table"); // this is set to true because the content may be very large and td and th should have cleaned it
+    	//	param attributes.key			= "";	//	content not directly generated, do not put td,th in language files
+	//	param attributes.placeholder		= [];	//	see key
+  
      param attributes.processed		= true;
      param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true; // removes content not actuall td

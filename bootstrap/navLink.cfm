@@ -26,8 +26,10 @@ case "start" :
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("navLink");
 	param attributes.header			= "";
 	param attributes.href			= "";
+	param attributes.key			= "";
 	param attributes.library			= "default"; //for icons
 	param attributes.processed		= true;
+	param attributes.placeholder		= [];
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;

@@ -23,6 +23,8 @@ case "start" :
   
 	param attributes.activeIndex		= 1;
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("tabView");
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.processed		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
