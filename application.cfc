@@ -1,14 +1,33 @@
 
 
 
-component	{
+component extends="framework.one"	{
 	
-this.name="bs-4-cf-34";
+this.name="bs-4-cf-55";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
 
-function onApplicationStart()	{
+variables.framework	=	{
+	home	= "main.home",
+	baseURL = 'useCGIScriptName',
+	defaultItem = "home",
+	generateSES = true,
+	SESomitIndex = false
+	};
+	
+variables.framework.routes	= [
+	{ "_bootstrap"	= "302:/main/home"		},
+	{ "common"	= "docs/common"		},
+	{ "theme/:id"	= "main/theme/theme/:id"	},
+	{ "theme"		= "main/theme"			}
+	];	
+
+
+function setupApplication()	{
+	
+	application.initialized = now();
+	
 	application.Bootstrap = {
 				
 		// Antisamy options
@@ -29,19 +48,26 @@ function onApplicationStart()	{
 	
 		
 		
-	} // end onApplicationStart
+	} // end setupApplication
+	
+	
+function setupSession()	{
+	
+	session.themeX = "default";
+	}	
+
 
 	
-function onRequestStart()	{
-	
-	param session.theme = "default";
-	
-
-	if(structkeyExists(url, "theme"))	{
+function after()	{
 		
-		session.theme = url.theme;
+
+	if(rc.keyExists("theme") and rc.theme != "assets")	{
+		
+		session.themeX = rc.theme;
 		}
-	}	// end onRequestStart
+		
+	
+	}
 
 }
 

@@ -1,4 +1,4 @@
-<cfimport prefix="b" taglib="../bootstrap">
+<cfimport prefix="b" taglib="../views/_bootstrap">
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
