@@ -1,14 +1,39 @@
 
 
 
-component	{
+component extends="framework.one" accessors="true"	{
 	
-this.name="bs-4-cf-34";
+
+this.name="bs-4-cf-98";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
 
-function onApplicationStart()	{
+variables.framework	=	{
+	home	= "main.home",
+	baseURL = 'useCGIScriptName',
+	defaultItem = "home",
+	generateSES = true,
+	SESomitIndex = false
+	};
+	
+variables.framework.routes	= [
+	{ "_bootstrap"	= "302:/main/home"		},
+	{ "common"	= "docs/common"		},
+	{ "theme/:id"	= "main/theme/theme/:id"	},
+	{ "theme"		= "main/theme"			}
+	];
+	
+	
+	
+
+
+
+
+function setupApplication()	{
+	
+	application.initialized = now();
+	
 	application.Bootstrap = {
 				
 		// Antisamy options
@@ -17,6 +42,7 @@ function onApplicationStart()	{
 		profile			= "",	// blank means use system default
 		throwOnError		= false,	// Default behavior for getSafeHTML()
 		
+		langRoot			= expandPath("lang") & "/",
 	
 		actionRoot 		= cgi.script_name,
 		validLook			= ["", "link", "default", "primary", "success", "info", "warning", "danger"], // There does not guarantee they are valid	
@@ -29,19 +55,72 @@ function onApplicationStart()	{
 	
 		
 		
-	} // end onApplicationStart
-
+	// load i18n
+	local.languageService = new model.services.language();
 	
-function onRequestStart()	{
+	application.Bootstrap.i18n = {};
+	application.Bootstrap.i18n.append( local.languageService.readPHP(		expandPath("lang") 	& "/") );				// traditional language file
+	// simple append won't work
+	local.stTitle = local.languageService.readProperties(	expandPath(".") 	& "/title.properties" );
 	
-	param session.theme = "default";
-	
-
-	if(structkeyExists(url, "theme"))	{
-		
-		session.theme = url.theme;
+	for (local.languageKey in local.stTitle)	{
+		application.Bootstrap.i18n[local.languageKey].append( local.stTitle[local.languageKey] );	// titles are here
 		}
-	}	// end onRequestStart
+		
+
+		
+		
+	application.geti18n = function(required string key, any placeholder = []) output="false"	{
+	
+		if (!isArray(arguments.placeholder)) arguments.placeholder = [arguments.placeholder];
+		
+		
+		if (application.Bootstrap.i18n.keyExists(session.lang) && application.Bootstrap.i18n[session.lang].keyExists(arguments.key))	{
+			
+			var myString = application.Bootstrap.i18n[session.lang][arguments.key];
+			
+			
+			for (var i in arguments.placeholder)	{
+			
+				myString = replace(myString, '%s', i); // only does first match, needs to be enhanced to cover multiple
+				}
+		
+			return myString;
+			}
+			
+		
+		return "{#arguments.key#}";
+		}; // end function
+	 		
+		
+		
+		
+		
+	} // end setupApplication
+	
+	
+function setupSession()	{
+	
+	session.themeX = "default";
+	session.lang	= "en_US";
+	}	
+
+
+	
+function after()	{
+		
+	if(rc.keyExists("lang"))	{
+		session.lang = rc.lang;
+		}
+		
+
+	if(rc.keyExists("theme") and rc.theme != "assets")	{
+		
+		session.themeX = rc.theme;
+		}
+		
+	
+	}
 
 }
 
