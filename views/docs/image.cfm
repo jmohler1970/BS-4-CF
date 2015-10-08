@@ -12,7 +12,7 @@
 
 
 
-<h2>Introduction</h2>
+<b:h1 key="introduction" />
 
 
 <b:blockquote>
@@ -27,95 +27,110 @@
 
 <b:panel look="info" title="Attributes of <b:graphicImage>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<b:th text="nowrap">Default value</b:th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	<tbody>
 		<tr>
+			<td></td>
 			<td>alt</td>
 			<td>(none)</td>
 			<td>Passthough of <code>alt</code>.</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>height</td>
 			<td>(none)</td>
 			<td>Creates the height part of style</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>library</td>
 			<td>(none)</td>
 			<td>Defaults to <code>application.Bootstrap.ImageLibrary.default</code></td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>name</td>
 			<td>(none)</td>
 			<td>This is a relative path, the library is prepended. If this is not set, perhaps you are doing a binding with AngularJS.</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>ng-*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>on*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>shape</td>
 			<td>(none)</td>
 			<td>Such as rounded, circle, thumbnail</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>titleClass</td>
 			<td>(none)</td>
 			<td>CSS class for title</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>titleStyle</td>
 			<td>(none)</td>
 			<td>CSS style for title</td>
@@ -123,18 +138,21 @@
 		</tr>
 
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>width</td>
 			<td>(none)</td>
 			<td>Creates the width part of style</td>
@@ -147,7 +165,7 @@
 
 
 
-<h2>Examples</h2>
+<b:h1 key="examples" />
 
 
 <h3>Rounded</h3>

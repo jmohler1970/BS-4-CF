@@ -12,7 +12,7 @@
 
 
 
-<h2>Introduction</h2>
+<b:h1 key="introduction" />
 
 <p>Content in the action is checked periodically and then displayed on the screen.</p>
 
@@ -22,9 +22,9 @@
 	<b:table>
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>
 	</thead>
@@ -71,7 +71,7 @@
 		<tr>
 			<td>profile</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -96,7 +96,7 @@
 		<tr>
 			<td>throwOnError</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -114,7 +114,7 @@
 		<tr>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 	</tbody>

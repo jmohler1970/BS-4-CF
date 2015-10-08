@@ -31,7 +31,13 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	break;
      
-case "end" :     
+case "end" :
+
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
+																	   
      
      if (!attributes.inverse)			variables.result &= '<nav class="navbar navbar-default';
      if (attributes.inverse)			variables.result &= '<nav class="navbar navbar-inverse';
@@ -47,7 +53,7 @@ case "end" :
 								variables.result &= crlf & '<span class="icon-bar"></span>';
      							variables.result &= crlf & '</button>';
 
-	if (attributes.brand != "" && attributes.brandHref == "")	variables.result &= '<a class="navbar-brand" href="##">#encodeForHTMLAttribute(attributes.Brand)#</a>';						
+	if (attributes.brand != "" && attributes.brandHref == "")	variables.result &= '<a class="navbar-brand" href="~/">#encodeForHTMLAttribute(attributes.Brand)#</a>';						
 	if (attributes.brand != "" && attributes.brandHref != "")	variables.result &= '<a class="navbar-brand" href="#encodeForHTMLAttribute(attributes.brandHref)#">#encodeForHTML(attributes.Brand)#</a>';						
 
 								variables.result &= '</div><!-- /.navbar-header -->';	// end of Brand and Hamburger area

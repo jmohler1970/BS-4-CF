@@ -5,14 +5,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<b:head>
+<b:head key="brand">
 
-<title>Bootstrap for ColdFusion</title>
-
-<meta name="author" content="James Mohler" />
-<meta name="description" content="Bootstrap tags for ColdFusion, a powerful tag libary that takes the best from Bootstrap for next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
-<meta name="KEYWORDS" content="ColdFusion, bootstrap, framework, java, enterprise, server, faces, jquery, usability, next-gen, web, html5, easy, modern, well-designed, website, state-of-the-art" />
-<meta name="robots" content="index, follow" />
+	<meta name="author" content="James Mohler" />
+	<meta name="description" content="Bootstrap tags for ColdFusion, a powerful tag libary that takes the best from Bootstrap for next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
+	<meta name="KEYWORDS" content="ColdFusion, bootstrap, framework, java, enterprise, server, faces, jquery, usability, next-gen, web, html5, easy, modern, well-designed, website, state-of-the-art" />
+	<meta name="robots" content="index, follow" />
         
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,6 +80,25 @@ padding-top: 50px;
 }
 </style>
 
+
+<script type="text/javascript">
+$( document ).ready(function() {
+
+
+
+  $('[data-toggle="popover"]').popover();
+  $('[data-toggle="tooltip"]').tooltip();
+
+
+  $('select.select2').select2();
+  
+  $('table.datatables').DataTable({
+	paging : false,
+	order  : [[ 1, "asc" ]]
+  	});
+
+});
+</script>
 	
 	
 </b:head>

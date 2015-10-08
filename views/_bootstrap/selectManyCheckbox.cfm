@@ -26,8 +26,8 @@ case "start" :
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectManyCheckbox");
 	param attributes.look			= "";
 	param attributes.name;
-	param attributes.key			= "";
-	param attributes.placeholder		= [];
+	//param attributes.key			= "";
+	//param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

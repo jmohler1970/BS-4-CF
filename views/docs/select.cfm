@@ -13,7 +13,8 @@
 
 
 
-<b:h2>Introduction</b:h2>
+<b:h1 key="Introduction" />
+
 
 
 <p><code>b:selectManyCheckbox</code>, <code>b:selectManyMenu</code>, <code>b:selectOneMenu</code>, and <code>b:selectOneRadio</code> are all similar selection mechanisms. They can be loaded with</p>
@@ -35,74 +36,83 @@
 
 <b:panel look="info" title="Attributes of <b:selectItem>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>display</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
-
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>look</td>
 			<td>(none)</td>
 			<td>For selectOneRadio, this will control the look and feel. This is done through Awesome Bootstrap Checkboxes</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
-
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>selected</td>
 			<td>false</td>
 			<td>Is this selected on <code>&lt;option&gt;</code> or checked on <code>&lt;input type="radio"&gt;</code></td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Used on selectOneRadio</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td>Pass though of <code>data-placement=</code></td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>value</td>
 			<td>(none)</td>
 			<td>Pass through of value</td>
@@ -120,18 +130,20 @@
 
 <b:panel look="info" title="Attributes of <b:selectItem>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>binding</td>
 			<td>required</td>
 			<td>Which database recordset column should be used for value</td>
@@ -139,66 +151,77 @@
 		</tr>
 		
 		<tr>
+			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>displayBinding</td>
 			<td>required</td>
 			<td>Which database recordset column should be for the display</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>group</td>
 			<td>(none)</td>
 			<td>Reserved for future use. This will be used to group <code>cfoutput</code>s</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
-			<td>auto</td>
-			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for <code>for</code> and <code>label</code>.</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<td>(none)</td>
+			<td><a href="~/common">See Common Features</a>  For selectOneRadio, set this the "auto" so that an id can be created for <code>for</code> and <code>label</code>.</td>
+			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>look</td>
 			<td>(none)</td>
 			<td>For selectOneRadio, this will control the look and feel. This is done through Awesome Bootstrap Checkboxes</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>query</td>
 			<td>required</td>
 			<td>This the recordset that will be processed</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>selected</td>
 			<td>false</td>
 			<td>Is this selected on <code>&lt;option&gt;</code> or checked on <code>&lt;input type="radio"&gt;</code></td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>selectedValue</td>
 			<td>(none)</td>
 			<td>This can be either a single value or an array. If the binding value matches this, then selected is set to true</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>tooltipBinding</td>
 			<td>(none)</td>
 			<td>Used on selectOneRadio</td>
@@ -237,18 +260,20 @@ disabled,display,group,id,look,value,selected,tooltip
 
 <b:panel title="Columns of <attributes.qryOption>">
 
-	<b:table>
+	<b:table class="datatables">
 	<thead>
 		<tr>
+			<th></th>
 			<th>Column</th>
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>binding</td>
 			<td>required</td>
 			<td>Which database recordset column should be used for value</td>
@@ -256,66 +281,100 @@ disabled,display,group,id,look,value,selected,tooltip
 		</tr>
 		
 		<tr>
+			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>displayBinding</td>
 			<td>required</td>
 			<td>Which database recordset column should be for the display</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>group</td>
 			<td>(none)</td>
 			<td>Reserved for future use. This will be used to group <code>cfoutput</code>s</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>auto</td>
 			<td>Pass through of HTML id. For selectOneRadio, set this the "auto" so that an id can be created for <code>for</code> and <code>label</code>.</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		
+		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>look</td>
 			<td>(none)</td>
 			<td>For selectOneRadio, this will control the look and feel. This is done through Awesome Bootstrap Checkboxes</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="~/common">See Common Features</a> <b>Warning:</b> This will also process tags in between the start and end tags.</td>
+			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>profile</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>query</td>
 			<td>required</td>
 			<td>This the recordset that will be processed</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="~/common">See Common Features</a> but only for content between the tags</td>
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>selected</td>
 			<td>false</td>
 			<td>Is this selected on <code>&lt;option&gt;</code> or checked on <code>&lt;input type="radio"&gt;</code></td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>selectedValue</td>
 			<td>(none)</td>
 			<td>This can be either a single value or an array. If the binding value matches this, then selected is set to true</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>throwOnError</td>
+			<td>false</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		
+		<tr>
+			<td></td>
 			<td>tooltipBinding</td>
 			<td>(none)</td>
 			<td>Used on selectOneRadio</td>
@@ -348,54 +407,82 @@ disabled,display,group,id,look,value,selected,tooltip
 
 <b:panel look="info" title="Attributes of <b:selectManyCheckbox>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>circle</td>
 			<td>false</td>
 			<td>Make checkbox look round like a radio</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled. If the string "disabled" is passed in, it will be treated as true.</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>inline</td>
 			<td>false</td>
 			<td>Show all radio buttons on the same row</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>name</td>
 			<td>required</td>
 			<td>All the check boxes get the same name</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="~/common">See Common Features</a> <b>Warning:</b> This will also process tags in between the start and end tags.</td>
+			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>profile</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
-			<td>Must evaluate to boolean</td>
+			<td><a href="~/common">See Common Features</a> but only for content between the tags</td>
+			<td></td>
 		</tr>
-
+		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>throwOnError</td>
+			<td>false</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		
 
 	</tbody>
 	</b:table>
@@ -421,9 +508,9 @@ disabled,display,group,id,look,value,selected,tooltip
 	<b:table>
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
@@ -551,81 +638,116 @@ disabled,display,group,id,look,value,selected,tooltip
 <p>You can also create content between the tags and that will also be apart of the select one menu.	
 
 <b:panel look="info" title="Attributes of <b:selectOneRadio>">
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
-		</tr>	
+			<b:th key="plugin_desc" />
+			<th>Sanitized</th>
+		</tr>		
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
-			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>disabled</td>
 			<td>false</td>
-			<td>Pass through of HTML disabled. If the string "disabled" is passed in, it will be treated as true.</td>
+			<td>Pass through of HTML disabled.</td>
+			<td>must evaluate to boolean. If the string "disabled" is passed in, it will be treated as true.</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>fieldSize</td>
 			<td>(none)</td>
 			<td>Bootstrap control size</td>
+			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>help</td>
 			<td>(none)</td>
 			<td>Bootstrap help text below control</td>
+			<td><code>encodeForHTML()</code></td>
 		</tr>
 		
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td>Pass through of HTML id.</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>name</td>
 			<td>required</td>
 			<td>All the check boxes get the same name</td>
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>ng-*</td>
 			<td>(none)</td>
-			<td>Pass through of all AngularJS attributes</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>on*</td>
 			<td>(none)</td>
-			<td>Pass through of all Mouse/Pointer events.</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>readonly</td>
 			<td>false</td>
 			<td>Pass through of HTML readonly. If the string "readonly" is passed in, it will be treated as true/</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>required</td>
 			<td>false</td>
 			<td>Pass through of HTML required. If the string "required" is passed in, it will be treated as true</td>
+			<td>Must evaluate to boolean</td>
 		</tr>		
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of <code>title=</code></td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td><b:label>Bootstrap</b:label></td>
+			<td>tooltipPosition</td>
+			<td>bottom</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 	</tbody>
 	</b:table>
@@ -667,47 +789,81 @@ disabled,display,group,id,look,value,selected,tooltip
 
 <b:panel look="info" title="Attributes of <b:selectOneRadio>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
+			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled. If the string "disabled" is passed in, it will be treated as true.</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>inline</td>
 			<td>false</td>
 			<td>Show all radio buttons on the same row</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>isSafeHTML</td>
+			<td>false</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>name</td>
 			<td>required</td>
 			<td>All the check boxes get the same name</td>
+			<td>Yes</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td><a href="~/common">See Common Features</a> <b>Warning:</b> This will also process tags in between the start and end tags.</td>
+			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>profile</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td><a href="~/common">See Common Features</a> but only for content between the tags</td>
+			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>square</td>
 			<td>false</td>
 			<td>Make radio button look square like a checkbox</td>
+			<td>Must evaluate to boolean</td>
 		</tr>
-
+		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>throwOnError</td>
+			<td>false</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
 	</tbody>
 	</b:table>
 </b:panel>

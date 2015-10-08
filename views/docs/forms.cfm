@@ -13,7 +13,7 @@
 
 
 
-<b:h2>Introduction</b:h2>
+<b:h1 key="Introduction" />
 
 <p>Bootstrap for ColdFusion puts only a few wrappers around form elements. The reason is simple. There are simply too many form libraries out there to try to support. Hence. only the basics are included.</p>
 
@@ -23,99 +23,116 @@
 
 <b:panel look="info" title="Attributes of <b:formgroup>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>generatedContent</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
 		</tr>
 
 		<tr>
+			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled</td>
 			<td>Must evaluate to boolean. "disabled is treated as true</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>display</td>
 			<td>(none)</td>
 			<td>Reserved for future use</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>profile</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 	</tbody>
 	</b:table>
 </b:panel>
+
+
+<b:h1 key="examples" />
 
 
 <p>Individual form controls automatically receive some global styling. All textual <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> elements with <code>.form-control</code> are set to <code>width: 100%;</code> by default. Wrap labels and controls in <code>b:form-group</code> for optimum spacing.</p>

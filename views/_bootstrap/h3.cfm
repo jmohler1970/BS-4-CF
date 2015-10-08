@@ -52,7 +52,11 @@ case "start" :
 	break;
 
 case "end" :     
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+     if(attributes.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
      
      
      if(variables.myClass == "")		variables.result &= '<h3';

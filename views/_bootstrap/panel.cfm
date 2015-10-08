@@ -43,7 +43,12 @@ case "start" :
      if (!attributes.processed) exit "exitTag";
 	break;
      
-case "end" :     
+case "end" :
+
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	   
      
 	   							variables.result &= '<div class="panel panel-#encodeForHTMLAttribute(attributes.look.lcase())#';
 	if (attributes.styleClass != "") 	variables.result &= ' #encodeForHTMLAttribute(attribites.styleClass)#';						

@@ -29,48 +29,55 @@
 
 <b:panel look="info" title="Attributes for <b:panel>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>generatedContent</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
 			<td><b:label look="danger">No</b:label> </td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>collapsed</td>
 			<td>false</td>
 			<td>Is it collapsed</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>collapsible</td>
 			<td>false</td>
 			<td>can it be collapsed</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>contentClass</td>
 			<td>(none)</td>
 			<td>CSS class for body</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>contentStyle</td>
 			<td>(none)</td>
 			<td>CSS style for body</td>
@@ -78,72 +85,99 @@
 		</tr>
 		
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>key</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		
+		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>look</td>
 			<td>default</td>
 			<td>Look and feel of header and edge</td>
 			<td>Must be on valid value</td>
-		</tr>		
+		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>	
+		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>profile</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>title</td>
 			<td>(none)</td>
 			<td>Heading for panel</td>
 			<td><code>encodeForHTML()</code></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>titleClass</td>
 			<td>(none)</td>
 			<td>CSS class for title</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>titleStyle</td>
 			<td>(none)</td>
 			<td>CSS style for title</td>
@@ -151,15 +185,17 @@
 		</tr>
 
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 	</tbody>
@@ -198,87 +234,114 @@
 
 <b:panel look="info" title="Attributes of <b:well>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
 			<td><b:label look="danger">No</b:label>  this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>
-			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<td>true</td>
+			<td><a href="~/common">See Common Features</a> </td>
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>key</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>profile</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>size</td>
 			<td>(none)</td>
 			<td>How much padding should this well have</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 	</tbody>

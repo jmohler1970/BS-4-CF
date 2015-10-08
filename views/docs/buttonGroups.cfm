@@ -13,8 +13,7 @@
 
 
 
-
-<b:h2>Introduction</b:h2>
+<b:h1 key="Introduction" />
 
 
 
@@ -25,9 +24,9 @@
 	<b:table>
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
@@ -36,19 +35,19 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -60,19 +59,19 @@
 		<tr>
 			<td>throwOnError</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 
@@ -89,9 +88,9 @@
 	<b:table>
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
@@ -100,7 +99,7 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -118,13 +117,13 @@
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -135,19 +134,19 @@
 		<tr>
 			<td>throwOnError</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 	</tbody>

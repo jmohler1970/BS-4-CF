@@ -10,29 +10,32 @@
 </b:row>
 
 
-<h2>Introduction</h2>
+<b:h1 key="introduction" />
 
 
 <b:panel look="info" title="Attributes of <b:button>, <b:commandButton>, & <b:commandLink>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<b:th text="nowrap">Default value</b:th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>generatedContent</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td>Yes</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>ajax</td>
 			<td>(none)</td>
 			<td>Reserved for future use</td>
@@ -40,84 +43,98 @@
 		</tr>
 		
 		<tr>
+			<td></td>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. See note below</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML <code>disabled="disabled"</code>.</td>
 			<td>Must evaluate to boolean, disabled is treated as true</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>dismiss</td>
 			<td>false</td>
 			<td>Sets <code> data-dismiss=</code></td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>dropdown</td>
 			<td>false</td>
 			<td>For <code>b:button</code>, this activates a dropdown menu</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>icon</td>
 			<td>(none)</td>
 			<td>Adds Glyphicon</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>iconAlign</td>
 			<td>(none)</td>
 			<td>Aligns icon</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>lang</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>lang=</code></td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>library</td>
 			<td>default</td>
 			<td>Which icon library should be used? This is set via: <code>application.Bootstrap.IconLibrary[attributes.library]</code>. This site uses Glyphicons</td>
 			<td>Must be valid library</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>look</td>
 			<td>default</td>
 			<td>Must be one of: <cfoutput>#application.Bootstrap.validLook.toList()#</cfoutput></td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>ng-*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>on*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>outline</td>
 			<td>false</td>
 			<td>This will create a button with a thin outline. 
@@ -126,66 +143,77 @@
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>profile</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>role</td>
 			<td>button</td>
 			<td>Pass through of HTML <code>role=</code></td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>size</td>
 			<td>(none)</td>
 			<td>How big</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>value</td>
 			<td>(none)</td>
 			<td>Content to be displayed. Tag also support <code>thisTag.GeneratedContent</code> See note below</td>
@@ -200,17 +228,19 @@
 
 <b:panel look="info" title="Attributes of <b:commandLink> only">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<b:th text="nowrap">Default value</b:th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
+			<td></td>
 			<td>action</td>
 			<td>(none)</td>
 			<td>For <code>b:commandLink</code> to creates an absolute link. 
@@ -219,12 +249,14 @@
 			<td><b:label look="danger">No</b:label></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>href</td>
 			<td>(none)</td>
 			<td>For <code>b:commandLink</code> to creates a link to action. This is a pass through of HTML <code>href=</code>.</td>
 			<td><b:label look="danger">No</b:label></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>look</td>
 			<td>default</td>
 			<td>Valid value for buttons are "default", "primary", "success", "info", "warning", "danger", "link". 
@@ -233,6 +265,7 @@
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>target</td>
 			<td>(none)</td>
 			<td>Pass though of <code>target=</code> for <code>&lt;b:commandLink&gt;</code></td>
@@ -261,7 +294,7 @@
 <p>Not is not expected that all three will be loaded. Generated Content and Value are very similar. It is expected that one or the other will be used</p>
 
 
-<h2>Examples</h2>
+<b:h1 key="examples" />
 
 <h3>&lt;b:button&gt;</h3>
 <p>Buttons have a type of button</p>
@@ -276,7 +309,7 @@
 		<th><code>size="xs"</code></th>
 		<th><code>outline="true" </code> <b:label look="Info" value="BS4" /></th>
 		<th><code>look</code> attribute</th>
-		<th>Description</th>
+		<b:th key="plugin_desc" />
 	</tr>
 </thead>
 <tbody>
@@ -380,7 +413,7 @@
 		<th><code>size="xs"</code></th>
 		<th><code>outline="true" </code> <b:label look="Info" value="BS4" /></th>
 		<th><code>look</code> attribute</th>
-		<th>Description</th>
+		<b:th key="plugin_desc" />
 	</tr>
 </thead>
 <tbody>
@@ -484,7 +517,7 @@
 		<th><code>size="xs"</code></th>
 		<th><code>outline="true" </code> <b:label look="Info" value="BS4" /></th>
 		<th><code>look</code> attribute</th>
-		<th>Description</th>
+		<b:th key="plugin_desc" />
 </tr>
 </thead>
 <tbody>
@@ -493,7 +526,8 @@
 		<td><b:commandLink href="##" value="Default" icon="map-marker" /></td>
 		<td><b:commandLink href="##" value="Default" icon="map-marker" size="sm" /></td>
 		<td><b:commandLink href="##" value="Default" icon="map-marker" size="xs" /></td>
-		
+		<td><b:commandLink href="##" value="Default" icon="map-marker" outline="true" /></td>
+				
 		<td>missing</td>
 		<td>With Glyphicon</td>
 	</tr>
@@ -502,6 +536,8 @@
 		<td><b:commandLink href="##" value="Default" icon="map-marker" iconAlign="right" /></td>
 		<td><b:commandLink href="##" value="Default" icon="map-marker" iconAlign="right" size="sm" /></td>
 		<td><b:commandLink href="##" value="Default" icon="map-marker" iconAlign="right" size="xs" /></td>
+		<td><b:commandLink href="##" value="Default" icon="map-marker" iconAlign="right" outline="true" /></td>
+		
 		
 		<td>missing</td>
 		<td>With Glyphicon that is aligned right</td>
@@ -511,6 +547,7 @@
 		<td><b:commandLink href="##" value="Default" /></td>
 		<td><b:commandLink href="##" value="Default" size="sm" /></td>
 		<td><b:commandLink href="##" value="Default" size="xs" /></td>
+		<td><b:commandLink href="##" value="Default" outline="true" /></td>
 		
 		<td>missing</td>
 		<td>Standard gray button with gradient</td>
@@ -520,6 +557,8 @@
 		<td><b:commandLink href="##" value="Primary" look="primary"/></td>
 		<td><b:commandLink href="##" value="Primary" look="primary" size="sm"/></td>
 		<td><b:commandLink href="##" value="Primary" look="primary" size="xs"/></td>
+		<td><b:commandLink href="##" value="Primary" look="primary" outline="true"/></td>
+		
 		
 		<td><code>look="primary"</code></td>
 		<td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
@@ -529,6 +568,8 @@
 		<td><b:commandLink href="##" look="info" value="Info"/></td>
 		<td><b:commandLink href="##" look="info" value="Info" size="sm"/></td>
 		<td><b:commandLink href="##" look="info" value="Info" size="xs"/></td>
+		<td><b:commandLink href="##" look="info" value="Info" outline="true"/></td>
+		
 		
 		<td><code>look="info"</code></td>
 		<td>Used as an alternative to the default styles</td>
@@ -538,7 +579,8 @@
 		<td><b:commandLink href="##" look="success" value="Success"/></td>
 		<td><b:commandLink href="##" look="success" value="Success" size="sm"/></td>
 		<td><b:commandLink href="##" look="success" value="Success" size="xs"/></td>
-		
+		<td><b:commandLink href="##" look="success" value="Success" outline="true"/></td>
+				
 		<td><code>look="success"</code></td>
 		<td>Indicates a successful or positive action</td>
    </tr>
@@ -547,6 +589,8 @@
 		<td><b:commandLink href="##" look="warning" value="Warning"/></td>
 		<td><b:commandLink href="##" look="warning" value="Warning" size="sm"/></td>
 		<td><b:commandLink href="##" look="warning" value="Warning" size="xs"/></td>
+		<td><b:commandLink href="##" look="warning" value="Warning" outline="true"/></td>
+		
 		
 		<td><code>look="warning"</code></td>
 		<td>Indicates caution should be taken with this action</td>
@@ -556,6 +600,8 @@
 		<td><b:commandLink href="##" look="danger" value="Danger"/></td>
 		<td><b:commandLink href="##" look="danger" value="Danger" size="sm"/></td>
 		<td><b:commandLink href="##" look="danger" value="Danger" size="xs"/></td>
+		<td><b:commandLink href="##" look="danger" value="Danger" outline="true"/></td>
+		
 		
 		<td><code>look="danger"</code></td>
 		<td>Indicates a dangerous or potentially negative action</td>
@@ -565,6 +611,8 @@
 		<td><b:commandLink href="##" look="link" value="Link" /></td>
 		<td><b:commandLink href="##" look="link" value="Link"  size="sm"/></td>
 		<td><b:commandLink href="##" look="link" value="Link"  size="xs"/></td>
+		<td><b:commandLink href="##" look="link" value="Link"  outline="true"/></td>
+		
 		
 		<td><code>look="link"</code></td>
 		<td>A link that looks like a link. No button class are applied</td>

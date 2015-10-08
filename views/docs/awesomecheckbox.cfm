@@ -13,7 +13,8 @@
 
 
 
-<b:h2>Introduction</b:h2>
+<b:h1 key="Introduction" />
+
 
 
 <h2>Awesome Bootstrap Checkboxes</h2>
@@ -41,136 +42,171 @@
 
 <b:panel look="info" title="Attributes of <b:checkbox>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>generatedContent</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td>Yes.</td>
 		</tr>
 	
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>circle</td>
 			<td>false</td>
 			<td>Show a circle instead of square</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>checked</td>
 			<td>false</td>
 			<td>Pass through of HTML <code>checked="checked"</code>.</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML <code>disabled="disabled"</code>.</td>
 			<td>Must evaluate to boolean</td>
 		</tr>		
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>inline</td>
 			<td>(none)</td>
 			<td>Should all these checkboxes be in a row?</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>key</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>look</td>
 			<td>(none)</td>
 			<td>It will still look slightly larger than a normal checkbox.</td>
 			<td>Must be one of: <cfoutput>#application.Bootstrap.validLook.toList()#</cfoutput></td>
 		</tr>	
 		<tr>
+			<td></td>
 			<td>name</td>
 			<td>(none)</td>
 			<td>Pass through of HTML <code>name=</code>.</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>profile</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>size</td>
 			<td>(none)</td>
 			<td>How much padding should this well have</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>tabIndex</td>
 			<td>(none)</td>
 			<td>Pass though of tabindex</td>
 			<td><code>isnumeric()</code></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>title</td>
 			<td>(none)</td>
-			<td>Content next to checkbox. If it is blank, perhaps the content is nearby</td>
+			<td>Content next to checkbox. If it is blank, perhaps the content is nearby. This is not a tooltip</td>
 			<td><code>encodeForHTML()</code></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 	</tbody>
@@ -178,7 +214,7 @@
 </b:panel>
 
 
-<h2>Examples</h2>
+<b:h1 key="examples" />
 
 
 <b:table>
@@ -187,7 +223,7 @@
        <th>Checkbox</th>
        <th>Checkbox round</th>
        <th><code>look</code> attribute</th>
-       <th>Description</th>
+       <b:th key="plugin_desc" />
    </tr>
 </thead>
 <tbody>

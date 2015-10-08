@@ -15,7 +15,7 @@
 
 
 
-<b:h2>Introduction</b:h2>
+<b:h1 key="introduction" />
 
 
 <b:panel look="info" title="Attributes of <b:badge> & <b:label>">
@@ -23,9 +23,9 @@
 	<b:table>
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
@@ -34,7 +34,7 @@
 		<tr>
 			<td>generatedContent</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td>Yes</td>
 		</tr>
 		<tr>
@@ -46,19 +46,25 @@
 		<tr>
 			<td>data-*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>isSafeHTML</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td>key</td>
+			<td>(none)</td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -71,43 +77,49 @@
 		<tr>
 			<td>ng-*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>on*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>profile</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -119,19 +131,19 @@
 		<tr>
 			<td>throwOnError</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -150,7 +162,7 @@
 
 
 
-<h2>Examples</h2>
+<b:h1 key="examples" />
 
 <!--- Lets load up a query --->
 <cfscript>
@@ -186,27 +198,29 @@ rc.qryData.AddRow([
 
 
 <h3>Inside of headers</h3>
-<p>This also uses isSafeHTML attribute</p>
+<p>This also uses isSafeHTML and key attributes. Content may vary depending on your current language settings</p>
 
 
-<b:h1 isSafeHTML="true">Example heading <b:label value="New" /></b:h1>
-<b:h2 isSafeHTML="true">Example heading <b:label value="New" /></b:h2>
-<b:h3 isSafeHTML="true">Example heading <b:label value="New" /></b:h3>
-<b:h4 isSafeHTML="true">Example heading <b:label value="New" /></b:h4>
-<b:h5 isSafeHTML="true">Example heading <b:label value="New" /></b:h5>
-<b:h6 isSafeHTML="true">Example heading <b:label value="New" /></b:h6>
+<b:h1 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h1>
+<b:h2 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h2>
+<b:h3 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h3>
+<b:h4 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h4>
+<b:h5 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h5>
+<b:h6 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h6>
 
 
 
 
 <h3>Inside of headers</h3>
-<p>Using plain header tags</p>
+<p>Using plain header tags and static values. This does not vary by language</p>
 
-<h1>Example heading <b:label value="New" /></h1>
-<h2>Example heading <b:label value="New" /></h2>
-<h3>Example heading <b:label value="New" /></h3>
-<h4>Example heading <b:label value="New" /></h4>
-<h5>Example heading <b:label value="New" /></h5>
-<h6>Example heading <b:label value="New" /></h6>
+<b:well>
 
+<h1>Example heading <b:label value="New Page" /></h1>
+<h2>Example heading <b:label value="New Page" /></h2>
+<h3>Example heading <b:label value="New Page" /></h3>
+<h4>Example heading <b:label value="New Page" /></h4>
+<h5>Example heading <b:label value="New Page" /></h5>
+<h6>Example heading <b:label value="New Page" /></h6>
 
+</b:well>

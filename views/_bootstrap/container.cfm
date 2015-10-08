@@ -33,7 +33,13 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	break;
      
-case "end" :     
+case "end" :
+
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
+
      
 	if(attributes.fluid)				variables.result &= '<div class="container-fluid';
 	if(!attributes.fluid)				variables.result &= '<div class="container';

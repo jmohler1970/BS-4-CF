@@ -4,7 +4,8 @@ component	accessors="true"	{
 	property	framework;
 	
 	property	sampledataService;
-	
+
+
 	
 void function tables(required struct rc)	{
 	

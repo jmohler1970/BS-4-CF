@@ -43,6 +43,10 @@ case "start" :
      
 case "end" :
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+     if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
 	
 								variables.result &= '<div class="progress">';
 								variables.result &= variables.crlf & '<div class="progress-bar';

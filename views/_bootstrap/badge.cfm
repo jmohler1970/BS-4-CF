@@ -53,6 +53,12 @@ case "start" :
 
 case "end" :
 
+	if(attributes.key 		!= "")		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
+
+
 	if(attributes.value != "")											thisTag.generatedContent = attributes.value;
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
 

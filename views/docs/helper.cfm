@@ -18,7 +18,8 @@
 </div>
 
 
-<b:h2>Introduction</b:h2>
+<b:h1 key="Introduction" />
+
 
 <b:blockquote>
 	<p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
@@ -34,7 +35,7 @@
 		<tr>
 			<th>Tag</th>
 			<b:th text="nowrap">Default value</b:th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 		</tr>	
 	</thead>
 	

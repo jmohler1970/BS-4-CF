@@ -17,23 +17,26 @@
 
 <b:panel look="info" title="Attributes for all <b:poll>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
+			<td></td>
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
 			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
 			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
@@ -44,12 +47,14 @@
 			</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>auto</td>
 			<td>Pass through of HTML id.</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>
 			<td>IF exists in<code>application.Bootstrap.isSafeHTML</code></td>
 			<td>Controls how content is rendered. Content is assumed to be clean, but it can be cleaned if necessary.
@@ -57,12 +62,14 @@
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
 			<td>key</td>
 			<td>(none)</td>
 			<td>Reserved for future use. Eventually it will lookup strings in an i18n language file. Also see placeholder</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>ng-*</td>
 			<td>(none)</td>
 			<td>Pass through of all AngularJS attributes</td>
@@ -73,6 +80,7 @@
 			</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>on*</td>
 			<td>(none)</td>
 			<td>Pass through of all Mouse/Pointer events.</td>
@@ -83,6 +91,7 @@
 			</td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
 			<td>placeholder</td>
 			<td>(none)</td>
 			<td>Reserved for future use. Eventually it will be used for substitution points in i18n language files. 
@@ -90,12 +99,14 @@
 			<td><code>encodeForHTML()</code> for each element in the array.</td>
 		</tr>		
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
 			<td>This like a <code>&lt;cfif&gt;</code></td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>profile</td>
 			<td><code>application.Bootstrap.profile</code></td>
 			<td>Application specific profile for Antisamy cleanup. If this is set to blank, then server setting will be used.
@@ -103,6 +114,7 @@
 			<td>Must evaluate to boolean</td>
 		</tr>	
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
 			<td>This is like <code>&lt;cfsilent&gt;</code></td>
@@ -110,30 +122,35 @@
 		</tr>
 
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
 			<td>Pass though of CSS style. Use Bootstrap classes instead if possible</td>
 			<td><code>encodeForCSS()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<td>Pass though of CSS class.</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<td>Pass though of title</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
 			<td>Pass though of <code>data-placement=</code></td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td><code>application.Bootstrap.throwOnError</code></td>
 			<td>Pass through attribute on <code>getSafeHTML(inString, profile, <b>throwOnError</b>)</code></td>

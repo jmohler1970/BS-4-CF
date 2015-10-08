@@ -36,7 +36,13 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	break;
      
-case "end" :     
+case "end" :
+
+	if(attributes.key 		!= "")		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
+
      
 	   							variables.result &= '<div class="alert alert-#encodeForHTMLAttribute(attributes.look.lcase())#';
 	if(attributes.closable)			variables.result &= ' alert-dismissible';  							

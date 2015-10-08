@@ -42,6 +42,12 @@ case "start" :
 	break;
      
 case "end" :
+
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}
+																	
 	
 								variables.result &= variables.crlf;
 	if(attributes.styleClass == "")	variables.result &= '<span';

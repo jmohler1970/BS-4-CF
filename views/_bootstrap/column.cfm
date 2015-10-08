@@ -32,9 +32,9 @@ case "start" :
   
 	// spans for specific screen sizes
 	param attributes.colXs			= attributes.span;		if (!isnumeric(attributes.colXs)) attributes.colXs = attributes.span;
-	param attributes.colSm			= attributes.span;		if (!isnumeric(attributes.colSm)) attributes.colXs = attributes.span;
-	param attributes.colMd			= attributes.span;		if (!isnumeric(attributes.colMd)) attributes.colXs = attributes.span;
-	param attributes.colLg			= "";				if (!isnumeric(attributes.colLg)) attributes.colXs = attributes.span;
+	param attributes.colSm			= attributes.span;		if (!isnumeric(attributes.colSm)) attributes.colSm = attributes.span;
+	param attributes.colMd			= attributes.span;		if (!isnumeric(attributes.colMd)) attributes.colMs = attributes.span;
+	param attributes.colLg			= "";				if (!isnumeric(attributes.colLg)) attributes.colLg = attributes.span;
 	
 	param attributes.offsetXs		= attributes.offset;	if (!isnumeric(attributes.offsetXs)) attributes.offsetXs = attributes.offset;
 	param attributes.offsetSm		= attributes.offset;	if (!isnumeric(attributes.offsetSm)) attributes.offsetSm = attributes.offset;
@@ -45,7 +45,13 @@ case "start" :
  	if (!attributes.processed) exit "exitTag";
 	break;
      
-case "end" :     
+case "end" :
+
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
+
      
 	   							variables.result &= variables.crlf & '<div class="';
 	   							variables.result &= 'col-xs-#encodeForHTMLAttribute(attributes.colXs)# ';

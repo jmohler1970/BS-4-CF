@@ -16,7 +16,7 @@
 </b:row>
 
 
-<h2>Introduction</h2>
+<b:h1 key="introduction" />
 
 <p>Brings in the power of Glyphicons, Font Awesome, and <small>jQuery-UI</small>. This tag should not have sub tags</p>
 
@@ -24,90 +24,97 @@
 
 <b:panel look="info" title="Attributes of <b:icon>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>addon</td>
 			<td>(none)</td>
 			<td>Is this a part of an input.</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Variable that controls what icon to show</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>flip</td>
 			<td>(none)</td>
 			<td>For <code>library="awesome"</code>, the icon can be flipped horizontally or vertically. H, V, and blank are valid values</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>library</td>
 			<td>default</td>
 			<td>Which icon library should be used? This is set via: <code>application.Bootstrap.IconLibrary[attributes.library]</code>. This site uses Glyphicons by default</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>look</td>
 			<td>(none)</td>
 			<td>What colors should this have.</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>ng-*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>on*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
-			<td>profile</td>
-			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
 			<td></td>
-		</tr>
-		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rotate</td>
 			<td>(none)</td>
 			<td>For <code>library="awesome"</code>, the icon can be rotated left or right. L, R, and blank are valid values</td>
@@ -115,45 +122,45 @@
 		</tr>
 
 		<tr>
+			<td></td>
 			<td>size</td>
 			<td>(none)</td>
 			<td>This uses Font Awesome to do the sizing</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>spin</td>
 			<td>(none)</td>
 			<td>This uses Font Awesome to do spinning</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
-			<td>throwOnError</td>
-			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
-			<td></td>
-		</tr>
-		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 	</tbody>

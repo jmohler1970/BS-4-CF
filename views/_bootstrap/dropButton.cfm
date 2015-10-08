@@ -37,6 +37,13 @@ case "start" :
 	break;
      
 case "end" :
+
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}
+
+
 	if (attributes.look == "tab")		variables.result &= crlf & '<a class="dropdown-toggle" ';
 	if (attributes.look != "tab")		variables.result &= crlf & '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())# dropdown-toggle" ';
 	

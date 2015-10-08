@@ -60,7 +60,12 @@ case "start" :
      if (!attributes.processed) exit "exitTag";
 	break;
      
-case "end" :     
+case "end" :
+
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
 	
 
 	if(attributes.span		!= "")		variables.result &= '<div class="col-md-#attributes.span#">' & variables.crlf;

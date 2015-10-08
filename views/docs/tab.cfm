@@ -16,7 +16,7 @@
 
 
 
-<b:h2>Introduction</b:h2>
+<b:h1 key="introduction" />
 
 <p>This is the container for all the tabs</p>
 
@@ -26,9 +26,9 @@
 	<b:table>
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<b:th key="panel_attribute" />
 			<b:th text="nowrap">Default value</b:th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
@@ -43,19 +43,19 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -67,13 +67,13 @@
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 	</tbody>
@@ -89,9 +89,9 @@
 	<b:table>
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<b:th key="panel_attribute" />
 			<b:th text="nowrap">Default value</b:th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
@@ -118,19 +118,19 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -142,7 +142,7 @@
 		<tr>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 
@@ -159,7 +159,7 @@
 
 
 
-<h2>Examples</h2>
+<b:h1 key="examples" />
 
 <h3>Inline content</h3>
 

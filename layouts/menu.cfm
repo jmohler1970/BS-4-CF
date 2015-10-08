@@ -2,12 +2,12 @@
 
 
 
-<b:navBar brand="Bootstrap for ColdFusion" brandHref="index.cfm" fixed="top">
+<b:navBar brand="Bootstrap for ColdFusion" fixed="top">
 	<b:navbarLinks>
 	
 		<b:dropMenu value="Getting Started">
-			<b:navLink value="Introduction" href="~/docs/getting_started" active="#IIF(getItem() EQ 'getting_started', 1, 0)#" />
-			<b:navLink value="Smart tags & common features" href="~/docs/common" />
+			<b:navLink key="Introduction" href="~/docs/getting_started" active="#IIF(getItem() EQ 'getting_started', 1, 0)#" />
+			<b:navLink value="Smart tags & common features" href="~/common" />
 			<b:navLink value="Head, JS, & CSS tags" href="~/docs/head" />
 			<b:navLink />
 			<b:navLink header="Bootstrap 4"/>
@@ -55,6 +55,14 @@
 			<cfloop index="rc.i" list="Cerulean,Cosmo,Cyborg,Darkly,Flatly,Journal,Lumen,Paper,Readable,Sandstone,Simplex,Slate,Spacelab,Superhero,United,Yeti">
 				<b:navLink href="~/theme/#rc.i#" binding="i" disabled="#IIF(session.themeX EQ rc.i , 1, 0)#" />
 			</cfloop>		
+		</b:dropMenu>
+		
+		
+		<b:dropMenu value="Current Language : #session.lang#" active="#ArrayContains(['lang'], getSection())#">
+		    	<b:navLink value="en_US"	href="?lang=en_US" />
+		    	<b:navLink value="es_ES"	href="?lang=es_ES" />
+		    	<b:navLink value="it_IT"	href="?lang=it_IT" />
+		    	<b:navLink value="pt_BR"	href="?lang=pt_BR" />
 		</b:dropMenu>
 		
 	</b:navbarLinks>

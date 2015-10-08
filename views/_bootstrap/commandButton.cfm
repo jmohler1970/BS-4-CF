@@ -68,6 +68,10 @@ case "end" :
 
 	if(attributes.value != "")											thisTag.generatedContent = attributes.value;
 	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
 	
 											variables.result &= '<button type="#attributes.type#" class="btn btn-#attributes.look.lcase()#';
 	if(attributes.outline)						variables.result &= "-outline";

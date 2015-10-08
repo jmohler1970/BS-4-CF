@@ -52,6 +52,10 @@ case "start" :
      
 case "end" :
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+     if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
 	
 								variables.result &= variables.crlf;
 	if(variables.myClass == "")		variables.result &= '<span';

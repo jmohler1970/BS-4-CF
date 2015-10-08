@@ -71,6 +71,11 @@ case "end" :
 	
 	if (attributes.value != "")											thisTag.generatedContent = attributes.value;	
 	if (attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
+	
 
 	// no target of any kind was set AND this is not an anchor
 	if ((attributes.action != "" || attributes.href == "") && attributes.id == "")	attributes.href = application.Bootstrap.actionRoot & attributes.action;

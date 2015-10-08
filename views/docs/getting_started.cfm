@@ -108,7 +108,7 @@ function onApplicationStart()	{
 		<tr>
 			<th>Variable</th>
 			<th>Used in tags</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 		</tr>	
 	</thead>
 	<tbody>

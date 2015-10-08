@@ -65,6 +65,10 @@ case "end" :
 
 // This needs to be smart enough to iterate
 //	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+	if(attributes.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.isSafeHTML 	= true;				
+																	}	
 
 
 	if(variables.myClass	== "")				variables.result &= '<td';

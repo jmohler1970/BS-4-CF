@@ -12,8 +12,8 @@
 
 
 
+<b:h1 key="Introduction" />
 
-<b:h2>Introduction</b:h2>
 
 <p>Pulldown menus. They can either be stand alone, or as part of a tab control</p>
 
@@ -23,9 +23,9 @@
 	<b:table>
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<b:th key="panel_attribute" />
 			<b:th text="nowrap">Default value</b:th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
@@ -35,7 +35,7 @@
 		<tr>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -47,13 +47,13 @@
 		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
@@ -68,7 +68,7 @@
 </b:panel>
 
 
-<h2>Examples</h2>
+<b:h1 key="examples" />
 
 <p>This uses <code>&lt;li&gt;</code> to generate content</p>
 

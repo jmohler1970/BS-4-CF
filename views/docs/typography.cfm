@@ -13,53 +13,88 @@
 
 
 
-<b:h2>Introduction</b:h2>
+<b:h1 key="Introduction" />
 
 
 <b:panel look="info" title="Attributes for all typographical tags">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
-			<th>Attribute</th>
+			<th></th>
+			<b:th key="panel_attribute" />
 			<th>Default value</th>
-			<th>Description</th>
+			<b:th key="plugin_desc" />
 			<th>Sanitized</th>
 		</tr>	
 	</thead>
 	
 	<tbody>
 		<tr>
+			<td></td>	
 			<td>generatedContent</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td>Yes</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
 			<td>See generatedContent</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>key</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>	
+		<tr>
+			<td><b:label>Bootstrap</b:label></td>
+			<td>lead</td>
+			<td>false</td>
+			<td>This is for <code>&lt;b:p&gt;</code> only. Adds lead class.</td>
+			<td>Must evaluate to boolean. Lead is treated as true</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>ng-*</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>on*</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>pageHeader</td>
 			<td>false</td>
 			<td>For <code>&lt;b:h1&gt;</code> only. This wraps content in div with page header. 
@@ -67,49 +102,44 @@
 			</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
+		
 		<tr>
-			<td>lead</td>
-			<td>false</td>
-			<td>This is for <code>&lt;b:p&gt;</code> only. Adds lead class.</td>
-			<td>Must evaluate to boolean. Lead is treated as true</td>
-		</tr>
-		<tr>
-			<td>ng-*</td>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
-			<td>on*</td>
-			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
 			<td></td>
-		</tr>
-		<tr>
 			<td>processed</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>profile</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>reverse</td>
 			<td>false</td>
 			<td>This is for <code>&lt;b:blockquote&gt;</code> only. This puts the <code>&lt;blockquote&gt;</code> bar on the opposite of its normal position.</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>static</td>
 			<td>false</td>
 			<td>This is for <code>&lt;b:p&gt;</code> only. This is for static class for use inside of forms. 
@@ -117,33 +147,38 @@
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>false</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
-			<td><a href="~/common">See Common Features</a></td>
+			<b:td key="common" />
 			<td></td>
 		</tr>
 	</tbody>
@@ -158,12 +193,12 @@
 
 
 
-<h2>Examples</h2>
+<b:h1 key="examples" />
 
 
 
 <b:h1 pageHeader="true">I am a page header. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h1>
-<b:h1 onmouseover="alert('Hi, mom!')">I am h1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h1>
+<b:h1 >I am h1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h1>
 <b:h2>I am h2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h2>
 <b:h3>I am h3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h3>
 <b:h4>I am h4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h4>
@@ -179,6 +214,19 @@
 
 <p><b:outputText binding="heading" /></p>
 <!-- you should have just done the binding to p -->
+
+
+<h2>i18n language file examples</h2>
+<p>Your content may vary depending on your current language setting</p>
+
+<b:h1 key="API_DISCLAIMER" />
+<b:h2 key="API_DISCLAIMER" />
+<b:h3 key="API_DISCLAIMER" />
+<b:h4 key="API_DISCLAIMER" />
+<b:h5 key="API_DISCLAIMER" />
+<b:h6 key="API_DISCLAIMER" />
+<b:p key="API_DISCLAIMER" />
+<b:blockquote key="API_DISCLAIMER" />
 
 
 
