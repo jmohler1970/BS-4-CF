@@ -12,10 +12,13 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)	{
 case "start" :
 
-	variables.result = "";
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
 
 	param attributes.ajax			= ""; // reserved for future use
 	param attributes.binding			= "";
+	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
@@ -59,9 +62,17 @@ case "start" :
 
 
 	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
-	
+		
 
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+	
+	
 	break;
 
 case "end" :
@@ -109,9 +120,10 @@ case "end" :
 
 											variables.result &= '</button>';
 
+	if (attributes.cacheid != "")					CachePut(variables.fullCacheid, variables.result);
 
 	thisTag.GeneratedContent = "";
-	if (attributes.rendered)			writeOutput(variables.result);
+	if (attributes.rendered)						writeOutput(variables.result);
 
 	break;
 	}

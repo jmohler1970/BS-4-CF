@@ -37,6 +37,15 @@
 			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td></td>
 		</tr>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		
+		<tr>
 			<td></td>
 			<td>id</td>
 			<td>(none)</td>

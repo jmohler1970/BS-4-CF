@@ -61,7 +61,14 @@
 			<b:td key="common" />
 			<td>Yes.</td>
 		</tr>
-	
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
 		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>circle</td>

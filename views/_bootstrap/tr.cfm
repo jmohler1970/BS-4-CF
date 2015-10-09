@@ -12,9 +12,11 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
   
+	param attributes.cacheid			= "";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("tr");
 	param attributes.look			= "";
@@ -46,6 +48,14 @@ case "start" :
 
 
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+     
+	
 	break;
      
 case "end" :
@@ -69,9 +79,10 @@ case "end" :
 										variables.result &= '</tr>';
 										variables.result &= variables.crlf;
      
+	if (attributes.cacheid != "")				CachePut(variables.fullCacheid, variables.result);
      
      thisTag.GeneratedContent = "";
-	if (attributes.rendered)			 writeOutput(variables.result);
+	if (attributes.rendered)					writeOutput(variables.result);
      
 	break;
 	}

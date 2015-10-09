@@ -4,7 +4,7 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-98";
+this.name="bs-4-cf-08";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -42,7 +42,12 @@ function setupApplication()	{
 		profile			= "",	// blank means use system default
 		throwOnError		= false,	// Default behavior for getSafeHTML()
 		
+		// Cacheing
+		region			= "Bootstrap", // Only Bootstrap should use this
+		
+		// i18n options
 		langRoot			= expandPath("lang") & "/",
+		arLang			= [],
 	
 		actionRoot 		= cgi.script_name,
 		validLook			= ["", "link", "default", "primary", "success", "info", "warning", "danger"], // There does not guarantee they are valid	
@@ -53,10 +58,19 @@ function setupApplication()	{
 		scriptLibrary		= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js", local="assets/"}	// used by b:outputScript
 		};
 	
+	
+	
+	for(local.langFile in DirectoryList(application.Bootstrap.langRoot, false, "path", "*.php"))	{
+		application.Bootstrap.arLang.append(local.langFile.listLast("/").listFirst("."));
+		}
 		
+	
 		
 	// load i18n
 	local.languageService = new model.services.language();
+		
+
+	
 	
 	application.Bootstrap.i18n = {};
 	application.Bootstrap.i18n.append( local.languageService.readPHP(		expandPath("lang") 	& "/") );				// traditional language file
@@ -82,10 +96,10 @@ function setupApplication()	{
 			
 			for (var i in arguments.placeholder)	{
 			
-				myString = replace(myString, '%s', i); // only does first match, needs to be enhanced to cover multiple
+				myString = myString.replace('%s', i); // only does first match
 				}
 		
-			return myString;
+			return getSafeHTML(myString);
 			}
 			
 		

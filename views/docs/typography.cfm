@@ -45,6 +45,14 @@
 			<td>See generatedContent</td>
 		</tr>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		
+		<tr>
 			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
@@ -197,6 +205,10 @@
 
 
 
+
+<h2>Headers</h2>
+
+
 <b:h1 pageHeader="true">I am a page header. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h1>
 <b:h1 >I am h1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h1>
 <b:h2>I am h2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h2>
@@ -262,7 +274,7 @@
 </b:well>
 
 
-<h2>Stress test is false</h2>
+<h2>Stress test with rendering set to false</h2>
 <p>There over 100 rows inside of the hidden well. Check you debug code to see how fast it ran</p>
 
 <b:well rendered="false">
@@ -282,4 +294,25 @@
 
 
 
+<h2>Cheating</h2>
+<p>There over 100 rows inside of the hidden well. Cacheing is also turned on. Check you debug code to see how fast it ran</p>
+
+<b:well rendered="false">
+
+	<cfloop from = "0" to="101" index="i">
+		<b:h1 binding="heading" cacheid="cheat" />
+		<b:h2 binding="heading" cacheid="cheat" />
+		<b:h3 binding="heading" cacheid="cheat" />
+		<b:h4 binding="heading" cacheid="cheat" />
+		<b:h5 binding="heading" cacheid="cheat" />
+		<b:h6 binding="heading" cacheid="cheat" />
+		<b:p binding="heading" cacheid="cheat" />
+		<b:blockquote binding="heading" cacheid="cheat" />
+	</cfloop>
+
+</b:well>
+
+<p>View the cache status tracker to see how well the cacheing worked</p>
+
+ <p><b:commandLink href="~/main/cache" value="Check Cache" look="primary" /></p>
       

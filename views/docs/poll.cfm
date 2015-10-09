@@ -42,6 +42,15 @@
 			<td><b:label look="danger">No</b:label>  this attributes is assumed to be clean</td>
 		</tr>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		
+		<tr>
 			<td>id</td>
 			<td>auto</td>
 			<td>Pass through of HTML id.</td>

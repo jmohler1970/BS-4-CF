@@ -12,10 +12,12 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)	{
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
 
 	param attributes.binding			= "";
+	param attributes.cacheid			= "";	
 	param attributes.hidden			= "";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("td");
@@ -36,8 +38,8 @@ case "start" :
 	if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";
 
 	variables.myClass = "";
-	if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';
-	if(attributes.look		!= "")	variables.myClass &= '#lcase(attributes.look)# ';
+	if(attributes.text		!= "")		variables.myClass &= 'text-#attributes.text# ';
+	if(attributes.look		!= "")		variables.myClass &= '#lcase(attributes.look)# ';
 	switch(attributes.hidden)	{
 		case "md" :					variables.myClass &= 'hidden-xs hidden-sm  hidden-md ';	break;
 		case "sm" :					variables.myClass &= 'hidden-xs hidden-sm ';				break;
@@ -57,6 +59,12 @@ case "start" :
 			} // end if	
 		}	// end for
 
+
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
 
 
 	break;
@@ -95,7 +103,8 @@ case "end" :
 	if(attributes.tooltip	!= "")				variables.result &= '</span>';
 											variables.result &= '</td>';
 											variables.result &= variables.crlf;
-
+											
+	if (attributes.cacheid != "")					CachePut(variables.fullCacheid, variables.result);											
 
 	thisTag.GeneratedContent = "";
 	writeOutput(variables.result);

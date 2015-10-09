@@ -9,12 +9,14 @@ if (!thisTag.HasEndTag)
 	
 	
 
-switch (thisTag.ExecutionMode)     {
+switch (thisTag.ExecutionMode)	{
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
-  
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
+
+	param attributes.cacheid			= "";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("row");
 	param attributes.key			= "";
@@ -29,40 +31,49 @@ case "start" :
 	param attributes.tooltipPosition	= "bottom";
 	
 	
-     if (!attributes.processed) exit "exitTag";
+	if (!attributes.processed) exit "exitTag";
+
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+
 	break;
-     
-case "end" :     
-     
+
+case "end" :
+
 	if(attributes.key 		!= "" )		{
 																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
-     
-	   							variables.result &= variables.crlf & '<div class="row';
-	if(attributes.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';			
-	   							variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';                         
-	if(attributes.tooltip    != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
-								variables.result &= '>';
-								
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-							
-								
-								variables.result &= variables.crlf & '</div><!-- /.row -->';
-								variables.result &= variables.crlf;
-								variables.result &= variables.crlf;
-     
-     
-     thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
-     
+																	attributes.isSafeHTML 	= true;
+																	}
+
+									variables.result &= variables.crlf & '<div class="row';
+	if(attributes.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
+									variables.result &= '"';
+	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.tooltip    != "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
+									variables.result &= '>';
+
+	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean
+
+
+
+									variables.result &= variables.crlf & '</div><!-- /.row -->';
+									variables.result &= variables.crlf;
+									variables.result &= variables.crlf;
+
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
+
+	thisTag.GeneratedContent = "";
+	if (attributes.rendered)				writeOutput(variables.result);
+
 	break;
 	}
-     
- 
+
+
 </cfscript>

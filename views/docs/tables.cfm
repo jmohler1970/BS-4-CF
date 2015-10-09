@@ -51,6 +51,14 @@
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		
+		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>condensed</td>
 			<td>true</td>
@@ -176,6 +184,13 @@
 			<td>(none)</td>
 			<b:td key="common" />
 			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
+		</tr>
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -309,6 +324,13 @@
 			<td>(none)</td>
 			<td>Reserved for future use</td>
 			<td>N/A</td>
+		</tr>
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
 			<td></td>

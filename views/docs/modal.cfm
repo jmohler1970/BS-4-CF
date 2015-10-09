@@ -42,6 +42,14 @@
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		<tr>
 			<td>closable</td>
 			<td>true</td>
 			<td>Can modal be closed. Creates close button on Title bar</td>

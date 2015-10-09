@@ -49,6 +49,15 @@
 	
 	<tbody>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		
+		<tr>
 			<td></td>
 			<td>disabled</td>
 			<td>false</td>
@@ -420,6 +429,15 @@ disabled,display,group,id,look,value,selected,tooltip
 	
 	<tbody>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		
+		<tr>
 			<td></td>
 			<td>circle</td>
 			<td>false</td>
@@ -516,6 +534,13 @@ disabled,display,group,id,look,value,selected,tooltip
 	</thead>
 	
 	<tbody>
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
 
 		<tr>
 			<td>disabled</td>
@@ -650,6 +675,15 @@ disabled,display,group,id,look,value,selected,tooltip
 	</thead>
 	
 	<tbody>
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		
 		<tr>
 			<td></td>
 			<td>data-*</td>
@@ -801,6 +835,15 @@ disabled,display,group,id,look,value,selected,tooltip
 	</thead>
 	
 	<tbody>
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		
 		<tr>
 			<td></td>
 			<td>disabled</td>

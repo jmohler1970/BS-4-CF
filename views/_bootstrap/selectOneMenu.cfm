@@ -12,14 +12,16 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
+	
 	
 	thisTag.qryOption 			= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 	
 	if(structKeyExists(attributes, "qryOption")) thisTag.qryOption = attributes.qryOption;
   
+	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.fieldSize		= "";
 	param attributes.help			= "";
@@ -58,6 +60,13 @@ case "start" :
 	
 
      if (!attributes.processed) exit "exitTag";
+     
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+     
 	break;
      
 case "end" :
@@ -78,12 +87,12 @@ case "end" :
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttributes(variables.myAttr.value)#"';
 	
-	if(attributes.readonly)				variables.result &= ' readonly="readonly"';
-	if(attributes.required)				variables.result &= ' required="required"';
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
-	if(attributes.tooltip    != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
+	if (attributes.readonly)				variables.result &= ' readonly="readonly"';
+	if (attributes.required)				variables.result &= ' required="required"';
+	if (attributes.style	!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if (attributes.tooltip   != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if (attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if (attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
 
 	
 									variables.result &= ' >';
@@ -104,9 +113,11 @@ case "end" :
 		
 	
 									variables.result &= variables.crlf & '</select>';
-	if(attributes.help		!= "")		variables.result &= variables.crlf & '<span class="help-block">#encodeForHTML(attributes.help)#</span>';						
-     if(attributes.span		!= "")		variables.result &= variables.crlf & '</div><!-- /.col-md-#attributes.span# -->';
+	if (attributes.help		!= "")		variables.result &= variables.crlf & '<span class="help-block">#encodeForHTML(attributes.help)#</span>';						
+     if (attributes.span		!= "")		variables.result &= variables.crlf & '</div><!-- /.col-md-#attributes.span# -->';
 	
+	
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
 
      thisTag.GeneratedContent = "";
      if (attributes.rendered)				writeOutput(variables.result);

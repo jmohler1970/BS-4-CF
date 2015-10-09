@@ -11,13 +11,15 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
 	
 	thisTag.qryOption 			= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
   
 	if(attributes.keyExists("qryOption")) thisTag.qryOption = attributes.qryOption;
   
+	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.fieldSize		= "";
 	param attributes.help			= "";
@@ -46,48 +48,57 @@ case "start" :
 	
 	
      if (!attributes.processed) exit "exitTag";
+     
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+     
 	break;
      
 case "end" :     
 	
 
-	if(attributes.span		!= "")	variables.result &= '<div class="col-md-#attributes.span#">' & variables.crlf;
-								variables.result &= '<select multiple="multiple" class="form-control';
-	if(attributes.styleClass	!= "")	variables.result &= ' #encodeforHTMLAttribute(attributes.styleClass)#';
-	if(attributes.fieldSize	!= "")	variables.result &= ' input-#encodeForHTMLAttribute(attributes.fieldSize)#';
-								variables.result &= '"';
-	if(attributes.disabled)			variables.result &= ' disabled="disabled"';													
-	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.readonly)			variables.result &= ' readonly="readonly"';
-	if(attributes.required)			variables.result &= ' required="required"';
-	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if (attributes.span		!= "")		variables.result &= '<div class="col-md-#attributes.span#">' & variables.crlf;
+									variables.result &= '<select multiple="multiple" class="form-control';
+	if (attributes.styleClass	!= "")	variables.result &= ' #encodeforHTMLAttribute(attributes.styleClass)#';
+	if (attributes.fieldSize	!= "")		variables.result &= ' input-#encodeForHTMLAttribute(attributes.fieldSize)#';
+									variables.result &= '"';
+	if (attributes.disabled)				variables.result &= ' disabled="disabled"';													
+	if (attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if (attributes.readonly)				variables.result &= ' readonly="readonly"';
+	if (attributes.required)				variables.result &= ' required="required"';
+	if (attributes.style	!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
 	
-	if(attributes.tooltip    != "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
+	if (attributes.tooltip   != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if (attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if (attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
 	
-	if(attributes.onBlur	!= "")	variables.result &= ' onBlur="#attributes.onBlur#"';
-	if(attributes.onClick	!= "")	variables.result &= ' onClick="#attributes.onClick#"';
-	if(attributes.onChange	!= "")	variables.result &= ' onChange="#attributes.onChange#"';
+	if (attributes.onBlur	!= "")		variables.result &= ' onBlur="#attributes.onBlur#"';
+	if (attributes.onClick	!= "")		variables.result &= ' onClick="#attributes.onClick#"';
+	if (attributes.onChange	!= "")		variables.result &= ' onChange="#attributes.onChange#"';
 	
-								variables.result &= ' >';
+									variables.result &= ' >';
 
 	for(variables.myRow = 1; variables.myRow <= thisTag.qryOption.recordcount; variables.myRow++)	{							
-								variables.result &= '<option';
-								variables.result &= ' value="#thisTag.qryOption.value[variables.myRow]#"';
+									variables.result &= '<option';
+									variables.result &= ' value="#thisTag.qryOption.value[variables.myRow]#"';
 		if(thisTag.qryOption.selected[variables.myRow])	variables.result &= ' selected="selected"';
-								variables.result &= ' >';
-								variables.result &= thisTag.qryOption.display[variables.myRow];
-								variables.result &= '</option>';
+									variables.result &= ' >';
+									variables.result &= thisTag.qryOption.display[variables.myRow];
+									variables.result &= '</option>';
 		} // end for						
      					
 	
-								variables.result &= '</select>';
-	if(attributes.help		!= "")	variables.result &= '<span class="help-block">#encodeForHTML(attributes.help)#</span>';						
-     if(attributes.span		!= "")	variables.result &= variables.crlf & '</div><!-- /.col-md-#encodeForHTMLAttribute(attributes.span)# -->';
+									variables.result &= '</select>';
+	if(attributes.help		!= "")		variables.result &= '<span class="help-block">#encodeForHTML(attributes.help)#</span>';						
+     if(attributes.span		!= "")		variables.result &= variables.crlf & '</div><!-- /.col-md-#encodeForHTMLAttribute(attributes.span)# -->';
+     
+     if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
 
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
+     if (attributes.rendered)				writeOutput(variables.result);
      
 	break;
 	}

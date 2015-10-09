@@ -12,10 +12,12 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
   
 	param attributes.binding			= "";
+	param attributes.cacheid			= "";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("h1");
 	param attributes.key			= "";
@@ -48,6 +50,13 @@ case "start" :
 		
 	
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+	
 	break;
      
 case "end" :     
@@ -58,35 +67,35 @@ case "end" :
 																	}	
      
 
-	if(attributes.pageHeader)		variables.result &= '<div class="page-header">';
-	if(variables.myClass == "")		variables.result &= '<h1';
-	if(variables.myClass != "")		variables.result &= '<h1 class="#encodeForHTMLAttribute(variables.myClass)#"';
+	if(attributes.pageHeader)			variables.result &= '<div class="page-header">';
+	if(variables.myClass == "")			variables.result &= '<h1';
+	if(variables.myClass != "")			variables.result &= '<h1 class="#encodeForHTMLAttribute(variables.myClass)#"';
 
-	if(attributes.id		!= "")	variables.result &= ' id = "#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.id		!= "")		variables.result &= ' id = "#encodeForHTMLAttribute(attributes.id)#"';
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
 	
-	if(attributes.style		!= "")	variables.result &= ' style = "#encodeForCSS(attributes.style)#"';
-	if(attributes.tooltip    != "")	variables.result &=	' title = "#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';               
-								variables.result &= '>';
+	if(attributes.style		!= "")		variables.result &= ' style = "#encodeForCSS(attributes.style)#"';
+	if(attributes.tooltip    != "")		variables.result &=	' title = "#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';               
+									variables.result &= '>';
 							
 							
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-
+	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+	
 							
 	
-								variables.result &= '</h1>' & variables.crlf;
-     if(attributes.pageHeader)		variables.result &= '</div><!-- /.page-header -->';
+									variables.result &= '</h1>' & variables.crlf;
+     if(attributes.pageHeader)			variables.result &= '</div><!-- /.page-header -->';
      
      
-     
+     if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
      
 	thisTag.GeneratedContent = "";
-	if (attributes.rendered)			writeOutput(variables.result);
+	if (attributes.rendered)				writeOutput(variables.result);
     
  	break;
 	}

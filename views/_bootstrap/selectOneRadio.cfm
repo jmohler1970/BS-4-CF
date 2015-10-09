@@ -12,14 +12,16 @@ switch (thisTag.ExecutionMode)     {
 case "start" :
 
 
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
 
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 	
 	if(structKeyExists(attributes, "qryOption")) thisTag.qryOption = attributes.qryOption;
 
+	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.inline			= false;
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectOneRadio");
@@ -40,6 +42,12 @@ case "start" :
 	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
 
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
 	break;
 
 case "end" :
@@ -91,10 +99,10 @@ case "end" :
 
 
 
-
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
 
 	thisTag.GeneratedContent = "";
-	if (attributes.rendered)			writeOutput(variables.result);
+	if (attributes.rendered)				writeOutput(variables.result);
 
 	break;
 	}

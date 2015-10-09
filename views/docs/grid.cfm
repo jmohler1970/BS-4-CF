@@ -51,6 +51,15 @@
 			<td>Pass through of content</td>
 			<td><b:label look="danger">No</b:label> this is often longer than antisamy limits. Make sure that the inner content is clean</td>
 		</tr>
+		
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
 		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>fluid</td>
@@ -174,6 +183,13 @@
 			<b:td key="common" />
 			<td><b:label look="danger">No</b:label> this is often longer than antisamy limits. Make sure that the inner content is clean</td>
 		</tr>
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
 
 		<tr>
 			<td></td>
@@ -275,7 +291,14 @@
 			<b:td key="common" />
 			<td><b:label look="danger">No</b:label></td>
 		</tr>
-		
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
 		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>colxs</td>
@@ -445,32 +468,33 @@
 <b:p>Using a single set of <code>span=</code> grid attributes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any <code>b:row</code>.</b:p>
 
 
-<b:row styleClass="show-grid">
-	<cfloop from="1" to="12" index="i">
-		<b:column span="1">span="1"</b:column>
-	</cfloop>	
-</b:row>
+<b:container cacheid="stacked-to-horizontal">
 
+	<b:row styleClass="show-grid">
+		<cfloop from="1" to="12" index="i">
+			<b:column span="1">span="1"</b:column>
+		</cfloop>	
+	</b:row>
+	
+	
+	<b:row styleClass="show-grid">
+		<b:column span="8">span="8"</b:column>
+		<b:column span="4">span="4"</b:column>
+	</b:row>
+	
+	<b:row styleClass="show-grid">
+		<b:column span="4">span="4"</b:column>
+		<b:column span="4">span="4"</b:column>
+		<b:column span="4">span="4"</b:column>
+	</b:row>
+	
+	
+	<b:row styleClass="show-grid">
+		<b:column span="6">span="6"</b:column>
+		<b:column span="6">span="6"</b:column>
+	</b:row>
 
-<b:row styleClass="show-grid">
-	<b:column span="8">span="8"</b:column>
-	<b:column span="4">span="4"</b:column>
-</b:row>
-
-<b:row styleClass="show-grid">
-	<b:column span="4">span="4"</b:column>
-	<b:column span="4">span="4"</b:column>
-	<b:column span="4">span="4"</b:column>
-</b:row>
-
-
-<b:row styleClass="show-grid">
-	<b:column span="6">span="6"</b:column>
-	<b:column span="6">span="6"</b:column>
-</b:row>
-
-
-
+</b:container>
 
 
 
@@ -479,13 +503,13 @@
   
   
 
-<b:row styleClass="show-grid">
+<b:row styleClass="show-grid" cacheid="just a row in the mobile">
 	<b:column colxs="12" 	colmd="8">colxs="12" colmd="8"</b:column>
 	<b:column colxs="6" 	colmd="4">colxs="6" colmd="4"</b:column>
 </b:row>
 
 <b:row styleClass="show-grid">
-	<b:column colxs="6" 	colmd="4">colxs="6" colmd="4"</b:column>
+	<b:column colxs="6" 	colmd="4" cacheid="just a column in the mobile">colxs="6" colmd="4"</b:column>
 	<b:column colxs="6" 	colmd="4">colxs="6" colmd="4"</b:column>
 	<b:column colxs="6" 	colmd="4">colxs="6" colmd="4"</b:column>
 </b:row>

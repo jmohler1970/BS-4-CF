@@ -11,10 +11,9 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-
-
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
 
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 	
@@ -37,6 +36,13 @@ case "start" :
 	if(attributes.disabled == "disabled")	attributes.disabled = true;
 
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+	
 	break;
 
 case "end" :
@@ -85,7 +91,7 @@ case "end" :
 
 
 
-
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
 
 	thisTag.GeneratedContent = "";
 	if (attributes.rendered)			writeOutput(variables.result);

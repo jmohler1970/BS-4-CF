@@ -5,32 +5,49 @@
 
 <cfif !thisTag.HasEndTag> 
 	<cfabort showerror="An end tag is required for b:include.">
-</cfif>	
-	
-	
+</cfif>
+
+
 
 <cfswitch expression="#thisTag.ExecutionMode#">
 <cfcase value="start">
 
 	<cfscript>
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
-  
-	param attributes.processed 	= true;
-	param attributes.rendered 	= true;
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
+
+	param attributes.cacheid			= ""; 
+	param attributes.processed 		= true;
+	param attributes.rendered 		= true;
 	param attributes.template;
 
-     
+
 	if (!attributes.processed) exit "exitTag";
+
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+
 	</cfscript>
 </cfcase>
-     
-<cfcase value = "end">     
-     
-     <!-- include -->
-     <cfif attributes.rendered><cfinclude template="../views/#attributes.template#"></cfif>
-     <!-- /include -->	
-     
+
+<cfcase value = "end">
+
+	<cfsavecontent variable="variables.result">
+		<!-- include -->
+		<cfinclude template="../views/#attributes.template#">
+		<!-- /include -->
+	</cfsavecontent>
+
+	<cfscript>
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
+
+	thisTag.GeneratedContent = "";
+
+	if (attributes.rendered)				writeOutput(variables.result);
+	</cfscript>
 </cfcase>
-</cfswitch>     
-     
+</cfswitch>

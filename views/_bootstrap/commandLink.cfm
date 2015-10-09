@@ -13,12 +13,14 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
 
 
 	param attributes.action			= "";	// powered by application.Bootstrap.actionRoot;
 	param attributes.binding			= "";
+	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.dropdown		= false;
 	param attributes.href			= "";	// any target
@@ -64,6 +66,13 @@ case "start" :
 
 	
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+	
 	break;
 
 case "end" :
@@ -124,10 +133,13 @@ case "end" :
 
 	if (attributes.dropdown)						variables.result &= '<span class="caret"></span>';
 											variables.result &= '</a>';
+											
+											
+	if (attributes.cacheid != "")					CachePut(variables.fullCacheid, variables.result);										
 
 
 	thisTag.GeneratedContent = ""; // This tag does not have pass through
-	if (attributes.rendered)			writeOutput(variables.result);
+	if (attributes.rendered)						writeOutput(variables.result);
 
 	break;
 	}

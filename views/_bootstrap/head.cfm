@@ -11,7 +11,9 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 	
-	variables.result = "";
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
 
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("head");
 	param attributes.key 			= "";
@@ -23,6 +25,13 @@ case "start" :
 	param attributes.title			= "";
 
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullcacheid));
+							exit "exitTag";
+							}
+	
 	break;
 case "end" :   
 	
@@ -38,9 +47,10 @@ case "end" :
 	
 													variables.result &= thisTag.GeneratedContent.trim();
 	
+	if (attributes.cacheid != "")							CachePut(variables.fullCacheid, variables.result);
 		
 	thisTag.GeneratedContent = "";
-	if (attributes.rendered)			writeOutput(variables.result);	
+	if (attributes.rendered)								writeOutput(variables.result);	
 
  	break;
 	}
