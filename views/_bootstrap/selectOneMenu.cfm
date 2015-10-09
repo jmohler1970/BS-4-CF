@@ -26,7 +26,7 @@ case "start" :
 	param attributes.fieldSize		= "";
 	param attributes.help			= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectOneMenu");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.name;					// required field
 	param attributes.key			= "";
 	param attributes.placeholder		= [];
@@ -62,7 +62,7 @@ case "start" :
      if (!attributes.processed) exit "exitTag";
      
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}

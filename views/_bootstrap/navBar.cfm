@@ -22,7 +22,7 @@ case "start" :
 	param attributes.fixed			= "";
 	param attributes.key			= "";
 	param attributes.inverse			= false;
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("navbar");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.placeholder		= [];
@@ -36,7 +36,7 @@ case "start" :
 	
 
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}

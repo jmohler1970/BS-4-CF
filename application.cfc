@@ -4,7 +4,7 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-44";
+this.name="bs-4-cf-45";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -37,8 +37,10 @@ function setupApplication()	{
 	application.Bootstrap = {
 				
 		// Antisamy options
-		isSafeHTML		= ["buttongroup","buttontoolbar","column","container","dropmenu","fieldset","formgroup","head",
-							"jumbotron","modal","navbar","navbarlinks","navlink","panel","row","table","tabview","tr","well"],	// these tags to not run through getSafeHTML		
+		isSafeHTML		= [	"cf_buttongroup",	"cf_buttontoolbar",	"cf_column",	"cf_container",	"cf_dropmenu",
+							"cf_fieldset",		"cf_formgroup",	"cf_head",
+							"cf_jumbotron",	"cf_modal",		"cf_navbar",	"cf_navbarlinks",	"cf_navlink",
+							"cf_panel",		"cf_row",			"cf_table",	"cf_tabview",		"cf_tr","cf_well"],	// these tags to not run through getSafeHTML		
 		profile			= "",	// blank means use system default
 		throwOnError		= false,	// Default behavior for getSafeHTML()
 		

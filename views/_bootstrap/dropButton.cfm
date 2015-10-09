@@ -24,7 +24,7 @@ case "start" :
 		}
  
 	param attributes.cacheid			= ""; 
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("dropbutton"); // this really does not work with false
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase()); // this really does not work with false
 	param attributes.key			= "";
 	param attributes.look			= "default";
 	param attributes.placeholder		= [];
@@ -38,7 +38,7 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}

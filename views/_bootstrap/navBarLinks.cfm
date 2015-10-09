@@ -18,7 +18,7 @@ case "start" :
 
 	param attributes.cacheid			= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("navbarlinks");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.key			= ""; // Doesn't read a language file. This is included so than fullCacheid is generated identically
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
@@ -33,7 +33,7 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}

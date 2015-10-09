@@ -24,7 +24,7 @@ case "start" :
 	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.inline			= false;
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectOneRadio");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "";
 	param attributes.name;
 	param attributes.key			= "";
@@ -44,7 +44,7 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}

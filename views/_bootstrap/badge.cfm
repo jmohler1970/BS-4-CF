@@ -19,7 +19,7 @@ case "start" :
 	param attributes.binding			= "";
 	param attributes.cacheid			= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("badge");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "warning";
 	param attributes.key			= "";
 	param attributes.placeholder		= [];
@@ -53,7 +53,7 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}

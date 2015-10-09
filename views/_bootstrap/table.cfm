@@ -21,7 +21,7 @@ case "start" :
      param attributes.condensed		= true;
      param attributes.hover			= false;
      param attributes.id				= "";
-     param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("table"); // this is set to true because the content may be very large and td and th should have cleaned it
+     param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase()); // this is set to true because the content may be very large and td and th should have cleaned it
 	param attributes.key			= "";	//	content should not directly generated, do not put td, th in language files
 	param attributes.placeholder		= [];	//	see key
   
@@ -41,7 +41,7 @@ case "start" :
 	
 		
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}

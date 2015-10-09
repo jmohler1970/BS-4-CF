@@ -17,16 +17,19 @@
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
 
-	param attributes.cacheid			= ""; 
+	param attributes.cacheid			= "";
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase()); 
 	param attributes.processed 		= true;
+	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
+	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.template;
 
 
 	if (!attributes.processed) exit "exitTag";
 
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
