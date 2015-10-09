@@ -2,7 +2,7 @@
 
 
 
-<b:navBar brand="Bootstrap for ColdFusion" fixed="top" cacheid="menu_#getItem()#">
+<b:navBar brand="Bootstrap for ColdFusion" fixed="top">
 	<b:navbarLinks>
 	
 		<b:dropMenu value="Getting Started">

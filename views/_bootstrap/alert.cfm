@@ -40,7 +40,7 @@ case "start" :
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
 	if (attributes.cacheid != "" && cacheidExists(variables.fullCacheid) && attributes.rendered)	{
-							writeOutput(cacheGet(variables.fullCacheid));
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
 	break;
@@ -77,7 +77,7 @@ case "end" :
 									variables.result &= '</div><!-- /.alert -->';
 									variables.result &= variables.crlf;
      
-     if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
+     if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
      thisTag.GeneratedContent = "";
      if (attributes.rendered)				writeOutput(variables.result);

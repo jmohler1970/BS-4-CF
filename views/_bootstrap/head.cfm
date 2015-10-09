@@ -15,6 +15,7 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
 
+	param attributes.cacheid			= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("head");
 	param attributes.key 			= "";
 	param attributes.placeholder		= [];
@@ -28,7 +29,7 @@ case "start" :
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
 	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
-							writeOutput(cacheGet(variables.fullcacheid));
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
 	
@@ -47,7 +48,7 @@ case "end" :
 	
 													variables.result &= thisTag.GeneratedContent.trim();
 	
-	if (attributes.cacheid != "")							CachePut(variables.fullCacheid, variables.result);
+	if (attributes.cacheid != "")							CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 		
 	thisTag.GeneratedContent = "";
 	if (attributes.rendered)								writeOutput(variables.result);	

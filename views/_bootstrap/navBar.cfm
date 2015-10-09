@@ -37,7 +37,7 @@ case "start" :
 
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
 	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
-							writeOutput(cacheGet(variables.fullcacheid));
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
 	break;

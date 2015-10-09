@@ -22,8 +22,8 @@ case "start" :
      param attributes.hover			= false;
      param attributes.id				= "";
      param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("table"); // this is set to true because the content may be very large and td and th should have cleaned it
-    	//	param attributes.key			= "";	//	content not directly generated, do not put td,th in language files
-	//	param attributes.placeholder		= [];	//	see key
+	param attributes.key			= "";	//	content should not directly generated, do not put td, th in language files
+	param attributes.placeholder		= [];	//	see key
   
      param attributes.processed		= true;
      param attributes.profile			= application.Bootstrap.profile;
@@ -42,7 +42,7 @@ case "start" :
 		
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
 	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
-							writeOutput(cacheGet(variables.fullcacheid));
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
 		
@@ -79,7 +79,7 @@ case "end" :
      if(attributes.responsive) 					variables.result &= '</div>';    
 	
 	
-	if (attributes.cacheid != "")					CachePut(variables.fullCacheid, variables.result);
+	if (attributes.cacheid != "")					CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
      if (attributes.rendered)						writeOutput(variables.result);

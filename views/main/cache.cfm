@@ -23,9 +23,12 @@
 
 <p>These are the current cacheids on this site</p>
 
+
+
 <b:table styleClass="datatables">
 <thead>
 <tr>
+	<th>Region</th>
 	<th>Cacheid</th>
 	<th style="text-align : center;">Created Time</th>
 	<th style="text-align : center;">Last Updated</th>
@@ -37,22 +40,32 @@
 </thead>
 
 <cfoutput>
-	<cfloop index="cache" array="#cacheGetAllIds()#">
-	<cfset metaData = cacheGetMetadata(cache)>
-	<tr>
-		<td>#cache#</td>
-		<td style="text-align : center;">#LSTimeFormat(metadata.createdTime, "h:mm:ss")#</td>
-		<td style="text-align : center;">#LSTimeFormat(metadata.lastHit, "h:mm:ss")#</td>
-		<td style="text-align : center;">#LSTimeFormat(metadata.lastupdated, "h:mm:ss")#</td>
-		<td style="text-align : right;">#metadata.hitcount#</td>
-		<td style="text-align : right;"><cfset percent_of_hits = 100.0 * metadata.hitcount / metadata.cache_hitcount>
-			#LSNumberFormat(percent_of_hits, '999.9')# %
-		</td>
-		<td style="text-align : right;">#LSNumberFormat(metadata.size)#</td>
-	</tr>
+	<cfloop index="region" array="#rc.arRegions#">
+		<cfloop index="cache" array="#cacheGetAllIds(region)#">
+			<cfset metaData = cacheGetMetadata(cache, "template", region)>
+			
+			<tr>
+				<td>#region#</td>
+				<td>#cache#</td>
+				<td style="text-align : center;">#LSTimeFormat(metadata.createdTime, "h:mm:ss")#</td>
+				<td style="text-align : center;">#LSTimeFormat(metadata.lastupdated, "h:mm:ss")#</td>
+				<td style="text-align : center;">#LSTimeFormat(metadata.lastHit, "h:mm:ss")#</td>
+				<td style="text-align : right;">#metadata.hitcount#</td>
+				<td style="text-align : right;">
+					<cfif metadata.cache_hitcount GT 0>
+						<cfset percent_of_hits = 100.0 * metadata.hitcount / metadata.cache_hitcount>
+						#LSNumberFormat(percent_of_hits, '999.9')# %
+					</cfif>
+				</td>
+				<td style="text-align : right;">#LSNumberFormat(metadata.size)#</td>
+			</tr>
+		
+		</cfloop>
 	</cfloop>
 </cfoutput>	
-</b:table>	
+</b:table>
+
+
 
 
 <b:commandLink href="~/main/cache?flush=1" look="danger" value="Flush Cache" />

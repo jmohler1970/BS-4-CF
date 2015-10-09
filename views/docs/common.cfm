@@ -74,7 +74,7 @@
 			<td> <b:label look="success">i18n</b:label></td>
 			<td>key</td>
 			<td>(none)</td>
-			<td>Reserved for future use. Eventually it will lookup strings in an i18n language file. Also see placeholder</td>
+			<td>Use for lookup strings in an i18n language file. Also see placeholder and cacheid</td>
 			<td>N/A</td>
 		</tr>
 		<tr>

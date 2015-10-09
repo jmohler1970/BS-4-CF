@@ -17,6 +17,7 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
   
 	param attributes.binding			= "";
+	param attributes.cacheid			= "";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("label");
 	param attributes.look 			= "default";
@@ -49,7 +50,7 @@ case "start" :
      
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
 	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
-							writeOutput(cacheGet(variables.fullcacheid));
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
      
@@ -82,7 +83,7 @@ case "end" :
 
 									variables.result &= '</span>';
    
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
 	thisTag.GeneratedContent = ""; 		// This tag does not have pass through
      if (attributes.rendered)				writeOutput(variables.result);

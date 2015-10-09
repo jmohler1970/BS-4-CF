@@ -55,7 +55,7 @@ case "start" :
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
 	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid) && attributes.rendered)	{
-							writeOutput(cacheGet(variables.fullcacheid));
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
 	
@@ -89,7 +89,7 @@ case "end" :
 									variables.result &= '</h2>' & variables.crlf;
      
      
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result);
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
 	thisTag.GeneratedContent = "";
  	if (attributes.rendered)				writeOutput(variables.result);
