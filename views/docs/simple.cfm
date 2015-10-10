@@ -1,1 +1,1 @@
-This page does not have any real content. It is just not blank
+Hello! I am a separate file. I look forward to being included into your page. This page does not have any real content. It is just not blank. Right now it is <cfoutput>#Now()#</cfoutput>

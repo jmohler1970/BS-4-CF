@@ -36,11 +36,38 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
-
+		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>isSafeHTML</td>
+			<td>true</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>key</td>
+			<td>(none)</td>
+			<td>This not used to pull content from a language file. This is used for a pass through to generate the full cacheid. This field is included that that cacheids are created the same way on all tags.</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<td>See key</td>
+			<td></td>
+		</tr>		
 		<tr>
 			<td></td>
 			<td>processed</td>
 			<td>true</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>profile</td>
+			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
@@ -67,6 +94,18 @@
 <h2>Example</h2>
 
 
-<b:include template="../docs/simple.cfm" />
+<b:well>
+	<b:include template="../docs/simple.cfm" />
+</b:well>
 
+
+<h2>Example with cacheing</h2>
+
+<p>If you do a refresh on this page (or visit this page again), the cached content below will not have an updated time.</p>
+
+<p><b:commandLink href="~/docs/include" look="primary" icon="refresh" value="Reload" /></p>
+
+<b:well>
+	<b:include template="../docs/simple.cfm" cacheid="Simple Cache Test" />
+</b:well>
 

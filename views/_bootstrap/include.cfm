@@ -18,7 +18,9 @@
 	variables.tagStack	= getBaseTagList().listToArray();
 
 	param attributes.cacheid			= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase()); 
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
@@ -39,13 +41,17 @@
 
 <cfcase value = "end">
 
-	<cfsavecontent variable="variables.result">
-		<!-- include -->
+	
+	<cfsavecontent variable="variables.result"> 
 		<cfinclude template="../views/#attributes.template#">
-		<!-- /include -->
 	</cfsavecontent>
-
+	
 	<cfscript>
+	if(attributes.rendered && !attributes.isSafeHTML)	variables.result = getSafeHTML(variables.result.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result = variables.result.trim(); // warning content must already be clean								
+
+	
+		
 	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
 	thisTag.GeneratedContent = "";
