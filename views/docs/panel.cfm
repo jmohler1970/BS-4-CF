@@ -27,7 +27,7 @@
 
 
 
-<b:panel look="info" title="Attributes for <b:panel>">
+<b:panel look="info" title="Attributes for <b:panel>" cacheid="panel documentation">
 
 	<b:table styleClass="datatables">
 	<thead>
@@ -211,8 +211,14 @@
 	</b:table>
 </b:panel>
 
+<h2>Examples</h2>
 
-<p>All of the attributes listing are panels. No additional examples are needed</p>
+<p>All of the documentation on this site use panels. No additional examples are needed</p>
+
+<p>The panel above even uses cacheing</p>
+
+
+
 
 
 <h2>Introduction to Wells</h2>

@@ -24,6 +24,7 @@
 <p>These are the current cacheids on this site</p>
 
 
+<cfset totalSize = 0>
 
 <b:table styleClass="datatables">
 <thead>
@@ -35,7 +36,7 @@
 	<th style="text-align : center;">Last Hit</th>
 	<th style="text-align : right;">Hit Count</th>
 	<th style="text-align : right;">Hit Count %</th>
-	<th style="text-align : right;">Size</th>
+	<th style="text-align : right;">Size (KB)</th>
 </tr>
 </thead>
 
@@ -43,6 +44,7 @@
 	<cfloop index="region" array="#rc.arRegions#">
 		<cfloop index="cache" array="#cacheGetAllIds(region)#">
 			<cfset metaData = cacheGetMetadata(cache, "template", region)>
+			<cfset totalSize += metadata.size>
 			
 			<tr>
 				<td>#region#</td>
@@ -57,12 +59,25 @@
 						#LSNumberFormat(percent_of_hits, '999.9')# %
 					</cfif>
 				</td>
-				<td style="text-align : right;">#LSNumberFormat(metadata.size)#</td>
+				<td style="text-align : right;">#LSNumberFormat(metadata.size \ 1024)#</td>
 			</tr>
 		
 		</cfloop>
 	</cfloop>
-</cfoutput>	
+</cfoutput>
+<tfoot>
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th style="text-align : right;"><cfoutput>#LSNumberFormat(totalSize \ 1024)#</cfoutput></th>
+	</tr>	
+</tfoot>	
+
 </b:table>
 
 
