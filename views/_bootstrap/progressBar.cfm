@@ -34,7 +34,7 @@ case "start" :
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
      param attributes.tooltip			= "";
      param attributes.tooltipPosition	= "bottom";
-     param attributes.width			= "";
+     param attributes.width			= 0;
      
      
      
@@ -60,13 +60,13 @@ case "end" :
 											variables.result &= '<div class="progress">';
 											variables.result &= variables.crlf & '<div class="progress-bar';
 	if(attributes.look		!= "")				variables.result &= ' progress-bar-#encodeForHTMLAttribute(attributes.look.lcase())#';
-	if(attributes.stripped)						variables.result &= ' progress-bar-striped';
+	if(attributes.stripped || attributes.animated)	variables.result &= ' progress-bar-striped';
 	if(attributes.animated)						variables.result &= ' active';
 	if(attributes.styleClass	!= "")				variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
 											variables.result &= '"';
 	if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(attributes.role		!= "")				variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
-											variables.result &= ' style="width : #encodeForHTMLAttribute(attributes.width)#;';
+											variables.result &= ' style="width : #encodeForHTMLAttribute(attributes.width)#%;';
 	if(attributes.style		!= "")				variables.result &= ' #encodeForCSS(attributes.style)#';
 											variables.result &= '"';
 	
