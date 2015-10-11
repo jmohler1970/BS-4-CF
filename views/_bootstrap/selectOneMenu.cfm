@@ -36,6 +36,7 @@ case "start" :
 	param attributes.rendered 		= true;
 	param attributes.required		= false;
 	param attributes.span			= "";	// md only. If you want finer control, use b:column
+	param attributes.selectedValue	= "";	// value of selected item
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
@@ -78,7 +79,7 @@ case "end" :
 	
 
 	if(attributes.span		!= "")		variables.result &= '<div class="col-md-#attributes.span#">' & variables.crlf;
-									variables.result &= '<select class="form-control';
+									variables.result &= '<select name="#encodeForHTMLAttribute(attributes.name)#" class="form-control';
 	if(attributes.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 	if(attributes.fieldSize	!= "")		variables.result &= ' input-#attributes.fieldSize#';
 									variables.result &= '"';
@@ -100,7 +101,7 @@ case "end" :
 	for(variables.myRow = 1; variables.myRow <= thisTag.qryOption.recordcount; variables.myRow++)	{							
 									variables.result &= '<option';
 									variables.result &= ' value="#thisTag.qryOption.value[variables.myRow]#"';
-		if(thisTag.qryOption.selected[variables.myRow])	variables.result &= ' selected="selected"';
+		if(thisTag.qryOption.selected[variables.myRow] || thisTag.qryOption.value[variables.myRow] == attributes.selectedValue)	variables.result &= ' selected="selected"';
 									variables.result &= ' >';
 									variables.result &= thisTag.qryOption.display[variables.myRow];
 									variables.result &= '</option>';

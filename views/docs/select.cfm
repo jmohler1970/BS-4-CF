@@ -770,6 +770,13 @@ disabled,display,group,id,look,value,selected,tooltip
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
+			<td>selectedValue</td>
+			<td>(none)</td>
+			<td>Which value is pre selected</td>
+			<td>N/A</td>
+		</tr>	
+		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>

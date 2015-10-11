@@ -43,8 +43,6 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
-
-		
 		<tr>
 			<td></td>
 			<td>id</td>
@@ -141,9 +139,9 @@
 
 <h2>Example with buttongroup</h2>
 
-<p> It also uses i18n language files</p>
+<p> This also uses i18n language files and cacheing</p>
 
-<b:jumbotron tight="true">
+<b:jumbotron tight="true" cacheid="example">
 	<b:buttonGroup list="true" pull="right">
 		<b:commandLink href="##" icon="user" value="James Mohler" />
 		<b:commandLink href="##" icon="envelope" value="News" />
