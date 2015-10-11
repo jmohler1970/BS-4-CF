@@ -19,19 +19,21 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
   
 	param attributes.alt			= ""; // alt="" will be rendered
+	param attributes.base64			= "";
+	param attributes.base64mime		= "image/png";
 	param attributes.binding			= "";
 	param attributes.cacheid			= "";
 	param attributes.height			= ""; //creates CSS
      param attributes.id				= "";
      // param attributes.isSafeHTML	= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-     // param attributes.key			= "";
+	param attributes.key			= "";
 	param attributes.library			= "default";
-     // param attributes.placeholder	= [];
+     param attributes.placeholder		= [];
      param attributes.processed		= true;
      //param attributes.profile		= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
 	param attributes.shape			= ""; //rounded, circle, thumbnail
-	param attributes.name;
+	param attributes.name			= ""; // if blank, base64 must be supplied		
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
 	param attributes.text			= "";
@@ -81,7 +83,8 @@ case "end" :
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-									variables.result &= ' src="#application.Bootstrap.ImageLibrary[attributes.library]##encodeForHTMLAttribute(attributes.name)#"';
+	if (attributes.base64 != "")			variables.result &= ' src="data:#encodeForHTMLAttribute(attributes.base64mime)#;base64,#attributes.base64#"';
+	if (attributes.base64 == "")			variables.result &= ' src="#application.Bootstrap.ImageLibrary[attributes.library]##encodeForHTMLAttribute(attributes.name)#"';
 	
 	// start style
 	if(attributes.style		!= "" || attributes.height != "" || attributes.width != "")	{
