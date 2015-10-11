@@ -168,10 +168,19 @@
 
 <h2>i18n language file</h2>
 
-<b:alert look="danger" key="SERVICE_UNAVAILABLE" />
+<p>This also does cacheing</p>
+
+<b:alert look="danger" key="SERVICE_UNAVAILABLE" closable="true" cacheid="service_unavailable" />
+
+<p>This also does cacheing</p>
 
 
-<b:alert look="success" key="SITE_UPDATED" />
+<b:alert look="success" key="SITE_UPDATED" closable="true" cacheid="site_updated" />
+
+
+<p>This does cacheing and has a placeholder. If you refresh the page, the original time will be shown. The real time is <cfoutput>#LSTimeFormat(now(), 'h:mm:ss')#</cfoutput></p>
+
+<b:alert look="warning" key="CLONE_ERROR" placeholder="#LSTimeFormat(now(), 'h:mm:ss')#" closable="true" cacheid="clone_error" />
 
 
 

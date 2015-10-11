@@ -115,12 +115,14 @@
 			<td><code>isnumeric()</code> must be true</td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
-			<td>Pass though of title</td>
-			<td><code>encodeForHTMLAttribute()</code></td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
 			<b:td key="common" />

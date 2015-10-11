@@ -366,7 +366,7 @@
 
 
 
-<h3>Examples</h3>
+<h2>Examples</h2>
 
 
 <b:row>
@@ -382,3 +382,16 @@
 		<b:well><b:well>Look, I'm in a well in a well!</b:well></b:well>
 	</b:column>
 </b:row>	
+
+
+
+<h2>Cached well with key</h2>
+
+<pre>&lt;b:well key=&quot;WELCOME_P&quot; cacheid=&quot;well well well&quot; /&gt;</pre>
+
+
+<b:well key="WELCOME_P" cacheid="well well well" />
+
+
+
+

@@ -32,12 +32,14 @@
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td>Yes</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Finds data in <code>rc.*</code> scope</td>
@@ -50,33 +52,36 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
-
-		
 		<tr>
+			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
 			<td>key</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>look</td>
 			<b:td text="nowrap">warning for b:badge<br />
 				default for b:label</b:td>
@@ -84,48 +89,56 @@
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>ng-*</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>on*</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
 			<td>placeholder</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>profile</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<b:td key="common" />
@@ -138,18 +151,21 @@
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>false</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
 			<b:td key="common" />

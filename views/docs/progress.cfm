@@ -17,7 +17,7 @@
 
 <b:panel look="info" title="Attributes of <b:progressbar>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
 			<th></th>
