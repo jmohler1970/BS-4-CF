@@ -12,13 +12,15 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
   
 	param attributes.animated		= false;
 	param attributes.binding			= "";
+	param attributes.cacheid			= "";
      param attributes.id				= "";
-     param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("progressBar");
+     param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
      param attributes.look			= "";
 	param attributes.key			= "";
 	param attributes.placeholder		= [];
@@ -32,13 +34,20 @@ case "start" :
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
      param attributes.tooltip			= "";
      param attributes.tooltipPosition	= "bottom";
-     param attributes.width			= "";
+     param attributes.width			= 0;
      
      
      
-     if (attributes.keyExists("text")) 						throw "attributes.text is an invalid option. Don't even think of using it";
+     if (attributes.keyExists("text")) 						throw "attributes.text is an invalid option. Don't even think of using it!";
      
      if (!attributes.processed) exit "exitTag";
+     
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+     
 	break;
      
 case "end" :
@@ -48,39 +57,40 @@ case "end" :
 																	attributes.isSafeHTML 	= true;				
 																	}	
 	
-								variables.result &= '<div class="progress">';
-								variables.result &= variables.crlf & '<div class="progress-bar';
-	if(attributes.look		!= "")	variables.result &= ' progress-bar-#encodeForHTMLAttribute(attributes.look.lcase())#';
-	if(attributes.stripped)			variables.result &= ' progress-bar-striped';
-	if(attributes.animated)			variables.result &= ' active';
-	if(attributes.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
-								variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.role		!= "")	variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
-								variables.result &= ' style="width : #encodeForHTMLAttribute(attributes.width)#;';
-	if(attributes.style		!= "")	variables.result &= ' #encodeForCSS(attributes.style)#';
-								variables.result &= '"';
+											variables.result &= '<div class="progress">';
+											variables.result &= variables.crlf & '<div class="progress-bar';
+	if(attributes.look		!= "")				variables.result &= ' progress-bar-#encodeForHTMLAttribute(attributes.look.lcase())#';
+	if(attributes.stripped || attributes.animated)	variables.result &= ' progress-bar-striped';
+	if(attributes.animated)						variables.result &= ' active';
+	if(attributes.styleClass	!= "")				variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
+											variables.result &= '"';
+	if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.role		!= "")				variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
+											variables.result &= ' style="width : #encodeForHTMLAttribute(attributes.width)#%;';
+	if(attributes.style		!= "")				variables.result &= ' #encodeForCSS(attributes.style)#';
+											variables.result &= '"';
 	
-	if(attributes.tooltip    != "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if (attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if (attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';            
-								variables.result &= '>';
+	if(attributes.tooltip    != "")				variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if (attributes.tooltip	!= "")				variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if (attributes.tooltip	!= "")				variables.result &= ' data-toggle="tooltip"';            
+											variables.result &= '>';
 								
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 							
 							
 						
 								
-	if(thisTag.GeneratedContent	== "")	variables.result &= '&nbsp;';							
+	if(thisTag.GeneratedContent	== "")			variables.result &= '&nbsp;';							
 	
-								variables.result &= variables.crlf & '</div><!-- /.progress-bar -->';
-								variables.result &= variables.crlf & '</div><!-- /.progress -->';
+											variables.result &= variables.crlf & '</div><!-- /.progress-bar -->';
+											variables.result &= variables.crlf & '</div><!-- /.progress -->';
 								
      
+	if (attributes.cacheid != "")					CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
+     if (attributes.rendered)						writeOutput(variables.result);
      
 	break;
 	}

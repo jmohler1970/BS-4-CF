@@ -12,13 +12,15 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
 	variables.defaultTimeframe = 5000; // in milliseconds
   
 	param attributes.action;			// required
+	param attributes.cacheid			= "";
 	param attributes.id				= "auto";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("poll");				// make sure to set to true if you want animated loading 
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());	// make sure to set to true if you want animated loading 
 	param attributes.interval		= variables.defaultTimeframe;		// ms
      param attributes.key			= "";
 	param attributes.placeholder		= [];
@@ -39,6 +41,15 @@ case "start" :
      
 
      if (!attributes.processed) exit "exitTag";
+     
+     
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+     
+     
 	break;
      
 case "end" :
@@ -94,6 +105,7 @@ case "end" :
      
 								variables.result &= variables.crlf & '</script>';
 								
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
      
      thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);

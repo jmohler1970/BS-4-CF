@@ -4,7 +4,7 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-98";
+this.name="bs-4-cf-45";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -37,12 +37,19 @@ function setupApplication()	{
 	application.Bootstrap = {
 				
 		// Antisamy options
-		isSafeHTML		= ["buttongroup","buttontoolbar","column","container","dropmenu","fieldset","formgroup","head",
-							"jumbotron","modal","navbar","navbarlinks","navlink","panel","row","table","tabview","tr","well"],	// these tags to not run through getSafeHTML		
+		isSafeHTML		= [	"cf_buttongroup",	"cf_buttontoolbar",	"cf_column",	"cf_container",	"cf_dropmenu",
+							"cf_fieldset",		"cf_formgroup",	"cf_head",
+							"cf_jumbotron",	"cf_modal",		"cf_navbar",	"cf_navbarlinks",	"cf_navlink",
+							"cf_panel",		"cf_row",			"cf_table",	"cf_tabview",		"cf_tr","cf_well"],	// these tags to not run through getSafeHTML		
 		profile			= "",	// blank means use system default
 		throwOnError		= false,	// Default behavior for getSafeHTML()
 		
+		// Cacheing
+		cache			= {content = "Bootstrap", language = "i18n" }, // Only Bootstrap should use this
+				
+		// i18n options
 		langRoot			= expandPath("lang") & "/",
+		arLang			= [],
 	
 		actionRoot 		= cgi.script_name,
 		validLook			= ["", "link", "default", "primary", "success", "info", "warning", "danger"], // There does not guarantee they are valid	
@@ -53,20 +60,8 @@ function setupApplication()	{
 		scriptLibrary		= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js", local="assets/"}	// used by b:outputScript
 		};
 	
-		
-		
-	// load i18n
-	local.languageService = new model.services.language();
 	
-	application.Bootstrap.i18n = {};
-	application.Bootstrap.i18n.append( local.languageService.readPHP(		expandPath("lang") 	& "/") );				// traditional language file
-	// simple append won't work
-	local.stTitle = local.languageService.readProperties(	expandPath(".") 	& "/title.properties" );
-	
-	for (local.languageKey in local.stTitle)	{
-		application.Bootstrap.i18n[local.languageKey].append( local.stTitle[local.languageKey] );	// titles are here
-		}
-		
+
 
 		
 		
@@ -75,18 +70,24 @@ function setupApplication()	{
 		if (!isArray(arguments.placeholder)) arguments.placeholder = [arguments.placeholder];
 		
 		
-		if (application.Bootstrap.i18n.keyExists(session.lang) && application.Bootstrap.i18n[session.lang].keyExists(arguments.key))	{
+		if (CacheIdExists(session.lang, application.Bootstrap.cache.language))	{
 			
-			var myString = application.Bootstrap.i18n[session.lang][arguments.key];
+			local.stLang = cacheGet(session.lang, application.Bootstrap.cache.language);
+	
 			
 			
-			for (var i in arguments.placeholder)	{
+			if (local.stLang.keyExists(arguments.key))	{
 			
-				myString = replace(myString, '%s', i); // only does first match, needs to be enhanced to cover multiple
-				}
-		
-			return myString;
-			}
+				local.myString = local.stLang[arguments.key]; 
+			
+				for (var i in arguments.placeholder)	{
+			
+					local.myString = local.myString.replace('%s', i); // only does first match
+					}
+					
+				return getSafeHTML(local.myString);
+				} // end keyExists
+			} // end cacheIdExists
 			
 		
 		return "{#arguments.key#}";
@@ -105,6 +106,50 @@ function setupSession()	{
 	session.lang	= "en_US";
 	}	
 
+
+
+function setupRequest()	{
+	
+	
+	if(application.Bootstrap.arLang.isEmpty())	{
+		for(local.langFile in DirectoryList(application.Bootstrap.langRoot, false, "path", "*.php"))	{
+			application.Bootstrap.arLang.append(local.langFile.listLast("/").listFirst("."));
+			}
+		}	
+	
+	
+	
+	if(!cacheRegionExists(application.Bootstrap.cache.content))  CacheRegionNew(application.Bootstrap.cache.content);
+	if(!cacheRegionExists(application.Bootstrap.cache.language)) CacheRegionNew(application.Bootstrap.cache.language);
+	
+	
+	if(cacheGetAllIds(application.Bootstrap.cache.language).isEmpty())	{	
+				
+		
+			
+		// load i18n
+		local.languageService = new model.services.language();
+			
+	
+		
+		
+		local.i18n = {};
+		local.i18n.append( local.languageService.readPHP(		expandPath("lang") 	& "/") );				// traditional language file
+		// simple append won't work
+		local.stTitle = local.languageService.readProperties(	expandPath(".") 	& "/title.properties" );
+		
+		for (local.languageKey in local.stTitle)	{
+			
+			local.i18n[local.languageKey].append( local.stTitle[local.languageKey] );	// titles are here
+			}
+		
+		for (local.languageKey in local.i18n)	{
+			CachePut(local.languageKey, local.i18n[local.languageKey], 1, 1, application.Bootstrap.cache.language);
+			}
+		
+		}
+
+	} // end setupRequest
 
 	
 function after()	{

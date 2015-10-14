@@ -134,7 +134,7 @@ $( document ).ready(function() {
 
 
 <p>Made by <a href="https://github.com/jmohler1970" rel="nofollow">James Mohler</a>.</p>
-<p>Code released under the MIT License.</p>
+<p>Code released under the MIT License and is maintained at <a target="_blank" href="https://github.com/jmohler1970">GitHub</a>.</p>
 <p>	<small>Based on and inspired by <a href="http://getbootstrap.com" rel="nofollow">Bootstrap</a>,
 	<a href="http://bootswatch.com/" rel="nofollow">Bootswatch</a>, and
 	<a href="http://bootsfaces.net/" rel="nofollow">Bootsfaces</a><br />

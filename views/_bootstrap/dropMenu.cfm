@@ -12,12 +12,13 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
   
-
+	param attributes.cacheid			= "";
 	param attributes.active			= false;
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("dropmenu");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.key			= "";
 	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
@@ -27,6 +28,12 @@ case "start" :
 	param attributes.value			= "";
 	
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
 	break;
      
 case "end" :
@@ -37,21 +44,23 @@ case "end" :
 																	}	
 
     
-     						variables.result &= crlf & '<li class="dropdown';
-     if (attributes.active)		variables.result &=' active';
-							variables.result &= '">';
-							variables.result &= crlf & '<a class="dropdown-toggle" data-toggle="dropdown" role="button">';
-							variables.result &= attributes.value;
-							variables.result &= '<b class="caret"></b></a>';
-							variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
+								variables.result &= crlf & '<li class="dropdown';
+     if (attributes.active)			variables.result &=' active';
+								variables.result &= '">';
+								variables.result &= crlf & '<a class="dropdown-toggle" data-toggle="dropdown" role="button">';
+								variables.result &= attributes.value;
+								variables.result &= '<b class="caret"></b></a>';
+								variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
 						
-	if(!attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
 					
 						
 						
-							variables.result &= crlf & '</ul></li>';
+								variables.result &= crlf & '</ul></li>';
+							
+	if (attributes.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);						
 	
      thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);

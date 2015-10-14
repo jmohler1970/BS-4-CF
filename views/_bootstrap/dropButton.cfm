@@ -12,8 +12,9 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
 	
 	variables.parentTag = lcase(ListGetAt(getBaseTagList(), 2));
 	variables.validTag = ["cf_buttongroup","cf_tabview"];
@@ -21,8 +22,9 @@ case "start" :
 	if(!ArrayContains(variables.validTag, variables.parentTag ) )	{
 		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
 		}
-  
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("dropbutton"); // this really does not work with false
+ 
+	param attributes.cacheid			= ""; 
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase()); // this really does not work with false
 	param attributes.key			= "";
 	param attributes.look			= "default";
 	param attributes.placeholder		= [];
@@ -34,6 +36,13 @@ case "start" :
 	param attributes.value			= "";
 	
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+	
 	break;
      
 case "end" :
@@ -44,23 +53,24 @@ case "end" :
 																	}
 
 
-	if (attributes.look == "tab")		variables.result &= crlf & '<a class="dropdown-toggle" ';
-	if (attributes.look != "tab")		variables.result &= crlf & '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())# dropdown-toggle" ';
+	if (attributes.look == "tab")			variables.result &= crlf & '<a class="dropdown-toggle" ';
+	if (attributes.look != "tab")			variables.result &= crlf & '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())# dropdown-toggle" ';
 	
-								variables.result &= 'data-toggle="dropdown" role="#EncodeForHTMLAttribute(attributes.role)#">#EncodeForHTML(attributes.value)# <b class="caret"></b></a>';  
-								variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
+									variables.result &= 'data-toggle="dropdown" role="#EncodeForHTMLAttribute(attributes.role)#">#EncodeForHTML(attributes.value)# <b class="caret"></b></a>';  
+									variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
 	
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
 	
 	
-								variables.result &= crlf & '</ul>';
-								variables.result &= crlf & '<!-- /.end dropdown -->';
+									variables.result &= crlf & '</ul>';
+									variables.result &= crlf & '<!-- /.end dropdown -->';
 	
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 	
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
+     if (attributes.rendered)				writeOutput(variables.result);
      
 	break;
 	}

@@ -12,11 +12,13 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
-  
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
+ 
+	param attributes.cacheid			= "";
  	param attributes.id				= "";
- 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("buttonToolbar"); // really doesn't work with false
+ 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase()); // really doesn't work with false
 	param attributes.key			= "";
 	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
@@ -29,6 +31,14 @@ case "start" :
 
 
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+	
+	
 	break;
      
 case "end" :
@@ -54,6 +64,7 @@ case "end" :
 						
 								variables.result &= '</div><!-- /.btn-toolbar -->';
      
+     if (attributes.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
 	thisTag.GeneratedContent = "";
 	if (attributes.rendered)			writeOutput(variables.result);

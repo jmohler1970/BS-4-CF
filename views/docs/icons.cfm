@@ -51,6 +51,14 @@
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		<tr>
 			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
@@ -178,6 +186,56 @@
 
 <p>Font Awesome package is required</p>
 
+
+<b:h2 key="try_me" />
+	
+<p>You may want to go to getBootstrap.com to see the icon names</p>	
+	
+<b:well>	
+	
+<cfparam name="rc.icon" default="home" />	
+<form class="form-inline">
+  <div class="form-group">
+    <label for="exampleInputName2">Icon name</label>
+    <input type="text" class="form-control" name="icon" placeholder="" value="<cfoutput>#EncodeforHTMLAttribute(rc.icon)#</cfoutput>" />
+  </div>
+  <button type="submit" class="btn btn-default">Show icons</button>
+</form>	
+
+
+
+<b:table rendered="#IIF(rc.icon EQ "", 0, 1)#">
+<thead>
+<tr>
+	<th>Default look</th>
+	<th><code>look="success</code></th>
+	<th><code>look="danger"</code></th>
+	<th><code>size="lg"</code></th>
+	<th><code>size="2x"</code></th>
+	<th><code>spin="true"</code></th>
+</tr>
+</thead>	
+	<tr>
+		<td>Glyphicon</td>
+		<td><b:icon binding="icon" look="success"	/></td>
+		<td><b:icon binding="icon" look="danger"	/></td>
+		<td><b:icon binding="icon" size="lg" 		/></td>
+		<td><b:icon binding="icon" size="2x" 		/></td>
+		<td><b:icon binding="icon" spin="true"		/></td>
+	</tr>
+	
+	<tr>
+		<td>Font-Awesome</td>
+		<td><b:icon library="awesome" binding="icon" look="success"	/></td>
+		<td><b:icon library="awesome" binding="icon" look="danger"	/></td>
+		<td><b:icon library="awesome" binding="icon" size="lg" 	/></td>
+		<td><b:icon library="awesome" binding="icon" size="2x" 	/></td>
+		<td><b:icon library="awesome" binding="icon" spin="true"	/></td>
+	</tr>
+	
+</b:table>
+
+</b:well>
 
 <h2>Example with &lt;b:icon&gt;</h2>
 

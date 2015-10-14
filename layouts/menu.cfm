@@ -7,11 +7,18 @@
 	
 		<b:dropMenu value="Getting Started">
 			<b:navLink key="Introduction" href="~/docs/getting_started" active="#IIF(getItem() EQ 'getting_started', 1, 0)#" />
+			<b:navLink value="Setup" href="~/main/setup" />
+			<b:navLink value="I18n" href="~/main/i18n" />
+			
 			<b:navLink value="Smart tags & common features" href="~/common" />
-			<b:navLink value="Head, JS, & CSS tags" href="~/docs/head" />
+			<b:navLink value="Antisamy" href="~/main/antisamy" />
+			<b:navLink value="Cacheing" href="~/main/cache" />
+		
+			<!---
 			<b:navLink />
 			<b:navLink header="Bootstrap 4"/>
-			<b:navLink value="Alpha Release" href="~/docs/theme?theme=4alpha" />	
+			<b:navLink value="Alpha Release" href="~/docs/theme?theme=4alpha" />
+			--->
 		</b:dropMenu>
 	
 		
@@ -44,6 +51,8 @@
 		    	<b:navLink value="Modal"	href="~/docs/modal" icon="modal-window" />
 		    	<b:navLink value="Tab"	href="~/docs/tab" icon="folder-close" />
 		    	<b:navLink value="Poll"	href="~/docs/poll" icon="refresh" />
+		    	<b:navLink />
+	    		<b:navLink value="Head, JS, & CSS tags" href="~/docs/setup" />
 		</b:dropMenu>
 	
 
@@ -59,10 +68,9 @@
 		
 		
 		<b:dropMenu value="Current Language : #session.lang#" active="#ArrayContains(['lang'], getSection())#">
-		    	<b:navLink value="en_US"	href="?lang=en_US" />
-		    	<b:navLink value="es_ES"	href="?lang=es_ES" />
-		    	<b:navLink value="it_IT"	href="?lang=it_IT" />
-		    	<b:navLink value="pt_BR"	href="?lang=pt_BR" />
+			<cfloop index="lang" list="#application.Bootstrap.arLang.ToList()#">
+			    	<b:navLink value="#lang#"	href="?lang=#lang#" />
+			</cfloop>
 		</b:dropMenu>
 		
 	</b:navbarLinks>

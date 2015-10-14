@@ -36,6 +36,15 @@
 			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
 		</tr>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<td>When not blank, the content generated within this tags will be cached for the standard timeframe. The overall key is created from
+				<code>b:tagname</code> <code>key</code> <code>cacheid</code>. This is done so that it is easier to know which tag is cacheing and because different keys by definition are different 
+			</td>
+			<td>N/A</td>
+		</tr>	
+		<tr>
 			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
@@ -65,7 +74,7 @@
 			<td> <b:label look="success">i18n</b:label></td>
 			<td>key</td>
 			<td>(none)</td>
-			<td>Reserved for future use. Eventually it will lookup strings in an i18n language file. Also see placeholder</td>
+			<td>Use for lookup strings in an i18n language file. Also see placeholder and cacheid</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
@@ -102,7 +111,7 @@
 			<td></td>
 			<td>processed</td>
 			<td>true</td>
-			<td>This like a <code>&lt;cfif&gt;</code></td>
+			<td>This like a <code>&lt;cfif&gt;</code>. If this is set to false, content cacheing will not occur.</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 		<tr>
@@ -117,7 +126,7 @@
 			<td></td>
 			<td>rendered</td>
 			<td>true</td>
-			<td>This is like <code>&lt;cfsilent&gt;</code></td>
+			<td>This is like <code>&lt;cfsilent&gt;</code> If this is set to false, content will still be cached</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
 

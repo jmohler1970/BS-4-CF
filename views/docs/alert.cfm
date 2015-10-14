@@ -27,7 +27,7 @@
 
 <b:panel look="info" title="Attributes of <b:alert>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
 			<th></th>
@@ -47,12 +47,27 @@
 			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td></td>
 		</tr>
 		<tr>
+			<td></td>
+			<td>binding</td>
+			<td>(none)</td>
+			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
+			<td>See generatedContent</td>
+		</tr>	
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>closable</td>
 			<td>false</td>
 			<td>Does this include a close X?</td>
 			<td>No</td>
 		</tr>
+
 		<tr>
 			<td></td>
 			<td>id</td>
@@ -153,13 +168,69 @@
 
 <h2>i18n language file</h2>
 
-<b:alert look="danger" key="SERVICE_UNAVAILABLE" />
+<p>This also does cacheing</p>
+
+<b:alert look="danger" key="SERVICE_UNAVAILABLE" closable="true" cacheid="service_unavailable" />
+
+<p>This also does cacheing</p>
 
 
-<b:alert look="success" key="SITE_UPDATED" />
+<b:alert look="success" key="SITE_UPDATED" closable="true" cacheid="site_updated" />
+
+
+<p>This does cacheing and has a placeholder. If you refresh the page, the original time will be shown. The real time is <cfoutput>#LSTimeFormat(now(), 'h:mm:ss')#</cfoutput></p>
+
+<b:alert look="warning" key="CLONE_ERROR" placeholder="#LSTimeFormat(now(), 'h:mm:ss')#" closable="true" cacheid="clone_error" />
 
 
 
 
 
 
+
+<b:h1 key="try_me" />
+
+
+<cfsavecontent variable="horrible">
+
+Your news article
+
+<iframe><b>Bold text</b>
+""""""""<>>! script
+<script type="text/javascript">destroy_you_website()</script>
+
+<blink>hahahah</blink>
+
+<table>
+<tr>
+<td>
+
+
+</cfsavecontent>
+
+<cfparam name="rc.content" default="#horrible#">
+
+
+<b:well>
+
+	<form action="?" method="post">
+		<b:formGroup>
+			<label for="exampleInputEmail1">Content to be echoed</label>
+			<cfoutput>
+			<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
+			</cfoutput>
+		</b:formGroup>
+		
+  
+		<b:commandButton value="Submit" />
+	</form>
+</b:well>
+
+
+
+
+<h2>Alert with i18n</h2>
+
+<pre>&lt;b:alert key=&quot;ER_YOUR_CHANGES&quot; placeholder=&quot;#rc.content#&quot; /&gt;</pre>
+
+<b:alert key="ER_YOUR_CHANGES" placeholder="#rc.content#" />

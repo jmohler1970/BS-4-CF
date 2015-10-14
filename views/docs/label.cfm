@@ -32,42 +32,56 @@
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td>Yes</td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Finds data in <code>rc.*</code> scope</td>
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
 			<td>key</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>look</td>
 			<b:td text="nowrap">warning for b:badge<br />
 				default for b:label</b:td>
@@ -75,48 +89,56 @@
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>ng-*</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>on*</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
 			<td>placeholder</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>profile</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<b:td key="common" />
@@ -129,18 +151,21 @@
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>false</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltipPosition</td>
 			<td>bottom</td>
 			<b:td key="common" />
@@ -197,30 +222,109 @@ rc.qryData.AddRow([
 </b:well>
 
 
-<h3>Inside of headers</h3>
-<p>This also uses isSafeHTML and key attributes. Content may vary depending on your current language settings</p>
-
-
-<b:h1 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h1>
-<b:h2 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h2>
-<b:h3 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h3>
-<b:h4 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h4>
-<b:h5 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h5>
-<b:h6 isSafeHTML="true">Example heading <b:label key="New_page" /></b:h6>
 
 
 
 
-<h3>Inside of headers</h3>
+<h2>Inside of headers</h2>
 <p>Using plain header tags and static values. This does not vary by language</p>
+
+
+<pre>&lt;h1&gt;Example heading &lt;b:label value=&quot;New Page&quot; /&gt;&lt;/h1&gt;</pre>
+
+
+<b:well>
+	<h1>Example heading <b:label value="New Page" /></h1>
+	<h2>Example heading <b:label value="New Page" /></h2>
+	<h3>Example heading <b:label value="New Page" /></h3>
+	<h4>Example heading <b:label value="New Page" /></h4>
+	<h5>Example heading <b:label value="New Page" /></h5>
+	<h6>Example heading <b:label value="New Page" /></h6>
+</b:well>
+
+
+
+
+
+<h2>Inside of headers</h2>
+<p>This also uses isSafeHTML and key attributes. Content may vary depending on your current language settings. This is also cached</p>
+
+
+<pre>&lt;b:h1 isSafeHTML=&quot;true&quot;&gt;Example heading &lt;b:label key=&quot;New_page&quot; cacheid=&quot;h1&quot; /&gt;&lt;/b:h1&gt;</pre>
 
 <b:well>
 
-<h1>Example heading <b:label value="New Page" /></h1>
-<h2>Example heading <b:label value="New Page" /></h2>
-<h3>Example heading <b:label value="New Page" /></h3>
-<h4>Example heading <b:label value="New Page" /></h4>
-<h5>Example heading <b:label value="New Page" /></h5>
-<h6>Example heading <b:label value="New Page" /></h6>
+	<b:h1 isSafeHTML="true">Example heading <b:label key="New_page" cacheid="h1" /></b:h1>
+	<b:h2 isSafeHTML="true">Example heading <b:label key="New_page" cacheid="h2" /></b:h2>
+	<b:h3 isSafeHTML="true">Example heading <b:label key="New_page" cacheid="h3" /></b:h3>
+	<b:h4 isSafeHTML="true">Example heading <b:label key="New_page" cacheid="h4" /></b:h4>
+	<b:h5 isSafeHTML="true">Example heading <b:label key="New_page" cacheid="h5" /></b:h5>
+	<b:h6 isSafeHTML="true">Example heading <b:label key="New_page" cacheid="h6" /></b:h6>
 
 </b:well>
+
+
+
+
+<b:h1 key="try_me" />
+
+
+<cfsavecontent variable="horrible">
+
+Your news article
+
+<iframe><b>Bold text</b>
+""""""""<>>! script
+<script type="text/javascript">destroy_you_website()</script>
+
+<blink>hahahah</blink>
+
+<table>
+<tr>
+<td>
+
+
+</cfsavecontent>
+
+<cfparam name="rc.look" default="primary">
+<cfparam name="rc.content" default="#horrible#">
+
+
+<b:well>
+
+	<form action="?" method="post">
+		<b:formGroup>
+			<label for="exampleInputEmail1">Content to be echoed</label>
+			<cfoutput>
+			<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
+			</cfoutput>
+		</b:formGroup>
+		
+		<b:formGroup>
+			<label for="exampleInputEmail1">Content to be echoed</label>
+			
+			
+			
+			<b:selectOneMenu name="look" selectedValue="#rc.look#">
+				<cfloop index="look" list="primary,warning,info,success,danger">
+					<b:selectItem display="#look#" />
+				</cfloop>
+			</b:selectOneMenu>
+		</b:formGroup>	
+			
+  
+		<b:commandButton value="Submit" />
+	</form>
+</b:well>
+
+
+
+
+<h2>Alert with i18n</h2>
+
+<pre>Sample label &lt;b:label value=&quot;#rc.content#&quot; /&gt;</pre>
+
+<p>Sample label <b:label value="#rc.content#" look="#rc.look#" /></p>
+
+
+

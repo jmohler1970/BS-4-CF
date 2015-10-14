@@ -26,6 +26,7 @@
 	<b:table>
 	<thead>
 		<tr>
+			<td></td>
 			<b:th key="panel_attribute" />
 			<b:th text="nowrap">Default value</b:th>
 			<b:th key="plugin_desc" />
@@ -35,42 +36,58 @@
 	
 	<tbody>
 		<tr>
+			<td></td>
 			<td>activeIndex</td>
 			<td>1</td>
 			<td>Which tab should have focus. </td>
 			<td><code>isnumeric()</code> must be true</td>
 		</tr>
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		
+		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>role</td>
 			<td>tabpanel</td>
 			<td>Pass though of HMTL <code>role=</code></div></td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>style</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
 			<td>styleClass</td>
 			<td>(none)</td>
 			<b:td key="common" />

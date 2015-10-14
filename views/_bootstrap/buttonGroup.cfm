@@ -12,13 +12,15 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)	{
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
 	
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 
+	param attributes.cacheid			= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("buttongroup"); // really does not work with true
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase()); // really does not work with true
 	param attributes.key			= "";
 	param attributes.justified		= false;
 	param attributes.look			= ""; // this is the default unless over ridden 
@@ -38,6 +40,14 @@ case "start" :
 
 
 	if (!attributes.processed) exit "exitTag";
+	
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+	
 	break;
 
 case "end" :
@@ -47,14 +57,14 @@ case "end" :
 	if(attributes.orientation == "up")			variables.result &= '<div class="btn-group dropup';
 	
 
-	if(attributes.size		!= "")	variables.result &= ' btn-group-#encodeForHTMLAttribute(attributes.size)#';
-	if(attributes.justified)			variables.result &= ' btn-group-justified';
-	if(attributes.pull		!= "")	variables.result &= ' pull-#encodeForHTMLAttribute(attributes.pull)#';
-								variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.tooltip	!= "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.toggle)			variables.result &= ' data-toggle="buttons"';
-								variables.result &= ' role="group">';
+	if(attributes.size		!= "")			variables.result &= ' btn-group-#encodeForHTMLAttribute(attributes.size)#';
+	if(attributes.justified)					variables.result &= ' btn-group-justified';
+	if(attributes.pull		!= "")			variables.result &= ' pull-#encodeForHTMLAttribute(attributes.pull)#';
+										variables.result &= '"';
+	if(attributes.id		!= "")			variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.tooltip	!= "")			variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.toggle)					variables.result &= ' data-toggle="buttons"';
+										variables.result &= ' role="group">';
 
 
 	for(variables.myRow = 1; variables.myRow <= thisTag.qryOption.recordcount; variables.myRow++)	{							
@@ -89,16 +99,18 @@ case "end" :
 		} // end for
 								
 		
-	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+	if(!attributes.isSafeHTML)				variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)				variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
 
-								variables.result &= '</div><!-- /.btn-group -->';
-								variables.result &= variables.crlf;
+										variables.result &= '</div><!-- /.btn-group -->';
+										variables.result &= variables.crlf;
+								
+	if (attributes.cacheid != "")				CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
 
 
 	thisTag.GeneratedContent = "";
-	if (attributes.rendered)			writeOutput(variables.result);
+	if (attributes.rendered)					writeOutput(variables.result);
 
 	break;
 	}

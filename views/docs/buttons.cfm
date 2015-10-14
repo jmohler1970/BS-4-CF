@@ -41,13 +41,19 @@
 			<td>Reserved for future use</td>
 			<td>N/A</td>
 		</tr>
-		
 		<tr>
 			<td></td>
 			<td>binding</td>
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. See note below</td>
 			<td>N/A</td>
+		</tr>
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
 			<td></td>

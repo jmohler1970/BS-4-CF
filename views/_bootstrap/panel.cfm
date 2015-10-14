@@ -12,9 +12,11 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
   
+	param attributes.cacheid			= ""; 
 	param attributes.collapsed		= false;
 	param attributes.collapsible		= true;
 	param attributes.contentClass		= "";
@@ -23,7 +25,7 @@ case "start" :
      param attributes.footerClass		= "";
      param attributes.footerStyle		= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("panel");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "default";
 	param attributes.key			= "";
 	param attributes.placeholder		= [];
@@ -41,57 +43,65 @@ case "start" :
      
      
      if (!attributes.processed) exit "exitTag";
+     
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+     
 	break;
      
 case "end" :
 
 	if(attributes.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	   
+									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+									attributes.isSafeHTML 	= true;				
+									}	   
      
-	   							variables.result &= '<div class="panel panel-#encodeForHTMLAttribute(attributes.look.lcase())#';
-	if (attributes.styleClass != "") 	variables.result &= ' #encodeForHTMLAttribute(attribites.styleClass)#';						
-	   							variables.result &= '"';
-	if (attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if (attributes.style	!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
-	if (attributes.tooltip   != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if (attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if (attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
-	   							variables.result &= '>';
+									variables.result &= '<div class="panel panel-#encodeForHTMLAttribute(attributes.look.lcase())#';
+	if (attributes.styleClass != "") 		variables.result &= ' #encodeForHTMLAttribute(attribites.styleClass)#';						
+	   								variables.result &= '"';
+	if (attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if (attributes.style	!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if (attributes.tooltip   != "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if (attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if (attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
+	   								variables.result &= '>';
 	   							
 	   							
-	if (attributes.title != "") 		variables.result &= '<div class="panel-heading';
+	if (attributes.title != "") 			variables.result &= '<div class="panel-heading';
 	if (attributes.title != "" && attributes.titleClass != "") 	variables.result &= encodeForHTMLAttribute(attributes.titleClass);
-	if (attributes.title != "")		variables.result &= '"'; // end class
+	if (attributes.title != "")			variables.result &= '"'; // end class
 	if (attributes.title != "" && attributes.titleStyle != "")	variables.result &= ' style="#encodeForCSS(attributes.titleStyle)#"';
-	if (attributes.title != "")		variables.result &= '>#encodeForHTML(attributes.title)#</div>';  							
+	if (attributes.title != "")			variables.result &= '>#encodeForHTML(attributes.title)#</div>';  							
 	   							
-								variables.result &= '<div class="panel-body'; 
+									variables.result &= '<div class="panel-body'; 
 	if(attributes.contentClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.contentClass)#';		
-	   							variables.result &= '"';
+	   								variables.result &= '"';
 	
-	if(attributes.contentStyle		!= "")	variables.result &= ' style="#encodeForCSS(attributes.contentStyle)#"';                 
-								variables.result &= '>';
+	if(attributes.contentStyle	!= "")	variables.result &= ' style="#encodeForCSS(attributes.contentStyle)#"';                 
+									variables.result &= '>';
 								
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 							
 								
 						
-								variables.result &= '</div><!-- /.end panel body -->';
+									variables.result &= '</div><!-- /.end panel body -->';
 
-	if (attributes.footer != "") 		variables.result &= '<div class="panel-footer';
+	if (attributes.footer != "") 			variables.result &= '<div class="panel-footer';
 	if (attributes.footer != "" && attributes.footerClass != "") 	variables.result &= encodeForHTMLAttribute(attributes.footerClass);
-	if (attributes.footer != "")		variables.result &= '"'; // end class
+	if (attributes.footer != "")			variables.result &= '"'; // end class
 	if (attributes.footer != "" && attributes.footerStyle != "")	variables.result &= ' style="#encodeForCSS(attributes.footerStyle)#"';
-	if (attributes.footer != "")		variables.result &= '>#encodeForHTML(attributes.footer)#</div>';  							
+	if (attributes.footer != "")			variables.result &= '>#encodeForHTML(attributes.footer)#</div>';  							
 								
-								variables.result &= '</div><!-- /.end panel -->';
-								
+									variables.result &= '</div><!-- /.end panel -->';
+	
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);						
      
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
+     if (attributes.rendered)				writeOutput(variables.result);
      
 	break;
 	}

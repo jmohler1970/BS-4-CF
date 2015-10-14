@@ -27,7 +27,7 @@
 
 
 
-<b:panel look="info" title="Attributes for <b:panel>">
+<b:panel look="info" title="Attributes for <b:panel>" cacheid="panel documentation">
 
 	<b:table styleClass="datatables">
 	<thead>
@@ -55,6 +55,15 @@
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
 			<td><b:label look="danger">No</b:label> </td>
 		</tr>
+		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		
 		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>collapsed</td>
@@ -202,8 +211,14 @@
 	</b:table>
 </b:panel>
 
+<h2>Examples</h2>
 
-<p>All of the attributes listing are panels. No additional examples are needed</p>
+<p>All of the documentation on this site use panels. No additional examples are needed</p>
+
+<p>The panel above even uses cacheing</p>
+
+
+
 
 
 <h2>Introduction to Wells</h2>
@@ -351,7 +366,7 @@
 
 
 
-<h3>Examples</h3>
+<h2>Examples</h2>
 
 
 <b:row>
@@ -367,3 +382,16 @@
 		<b:well><b:well>Look, I'm in a well in a well!</b:well></b:well>
 	</b:column>
 </b:row>	
+
+
+
+<h2>Cached well with key</h2>
+
+<pre>&lt;b:well key=&quot;WELCOME_P&quot; cacheid=&quot;well well well&quot; /&gt;</pre>
+
+
+<b:well key="WELCOME_P" cacheid="well well well" />
+
+
+
+

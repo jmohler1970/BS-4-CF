@@ -12,13 +12,15 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)	{
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
 
 	param attributes.binding			= "";
+	param attributes.cacheid			= "";
 	param attributes.hidden			= "";
 	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("th");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.key			= "";
 	param attributes.placeholder		= [];
 	param attributes.processed		= true; // unknown how to support
@@ -55,7 +57,12 @@ case "start" :
 
 	// if (!attributes.processed) exit "exitTag";
 	
-	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+		
 	break;
 
 case "end" :
@@ -88,6 +95,8 @@ case "end" :
 	if(attributes.tooltip    != "")				variables.result &=	'</span>';
 											variables.result &= '</th>';
 
+
+	if (attributes.cacheid != "")					CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
 	thisTag.GeneratedContent = "";
 	writeOutput(variables.result);

@@ -21,9 +21,10 @@
 
 <b:panel look="info" title="Attributes of <b:dropMenu>">
 
-	<b:table>
+	<b:table styleClass="datatables">
 	<thead>
 		<tr>
+			<td></td>
 			<b:th key="panel_attribute" />
 			<th>Default value</th>
 			<b:th key="plugin_desc" />
@@ -33,30 +34,79 @@
 	
 	<tbody>
 		<tr>
+			<td><b:label>Bootstrap</b:label></td>
 			<td>active</td>
 			<td>false</td>
 			<td>Should active class get added?</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
+
 		<tr>
+			<td><b:label look="warning">Ehcache</b:label></td>
+			<td>cacheid</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+
+		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>isSafeHTML</td>
+			<td>true</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>key</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>	
+		<tr>
+			<td></td>
 			<td>processed</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>profile</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>rendered</td>
 			<td>true</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
 		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>throwOnError</td>
+			<td>false</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>value</td>
 			<td>(none)</td>
 			<td>What is shown</td>
@@ -67,6 +117,29 @@
 	</tbody>
 	</b:table>
 </b:panel>
+
+<h2>Example</h2>
+
+<p>This navbar has two drop menus. The first is always recalculated, the second is cached.</p>
+
+
+<b:navBar>
+	<b:navbarLinks>
+		<b:dropMenu value="Not Cached">
+			<b:navLink value="Something else here" href="##" />
+			<b:navLink value="Separated link" href="##" />
+          	<b:navLink value="One more separated link" href="##" />
+		</b:dropMenu>
+		<b:dropMenu value="Cached" cacheid="sample">
+			<b:navLink value="Something else here" href="##" />
+			<b:navLink value="Separated link" href="##" />
+          	<b:navLink value="One more separated link" href="##" />
+		</b:dropMenu>
+     </b:navbarLinks>
+</b:navBar>
+
+
+
 
 
 <b:panel look="info" title="Attributes of <b:navLink>">
@@ -247,7 +320,9 @@
 
 
 
-<h3>With inner inner form</h3>
+<h2>With inner inner form</h2>
+
+
 
 <p>This also has a right aligned menu</p>
 

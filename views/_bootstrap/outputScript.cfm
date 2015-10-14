@@ -12,8 +12,9 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
 	
 	
 	variables.parentTag = getBaseTagList().listGetAt(2).lcase();
@@ -23,30 +24,41 @@ case "start" :
 		throw "This tag must be in #variables.validTag.toList()#. It appears to be #variables.parentTag#";
 		}
 	
-  
-	param attributes.library		= "default";
-	param attributes.name		= "";		// if name is blank, the library better have complete target
-	param attributes.processed 	= true;
-	param attributes.rendered 	= true;
-	param attributes.type		= "application/javascript";
+	param attributes.cacheid			= "";  
+	param attributes.key			= ""; // Doesn't read a language file. This is included so than fullCacheid is generated identically
+	param attributes.library			= "default";
+	param attributes.name			= "";		// if name is blank, the library better have complete target
+	param attributes.processed 		= true;
+	param attributes.rendered 		= true;
+	param attributes.type			= "application/javascript";
      
 	if (!attributes.processed) exit "exitTag";
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+	
+	
 	break;
      
 case "end" :     
-     							variables.result &= crlf;
-	   							variables.result &= '<script ';
-	   							variables.result &= ' src="' & application.Bootstrap.ScriptLibrary[attributes.library] & attributes.name & '"';
-								variables.result &= ' type="#encodeForHTMLAttribute(attributes.type)#"';              
-								variables.result &= '>';
+     								variables.result &= crlf;
+	   								variables.result &= '<script ';
+	   								variables.result &= ' src="' & application.Bootstrap.ScriptLibrary[attributes.library] & attributes.name & '"';
+									variables.result &= ' type="#encodeForHTMLAttribute(attributes.type)#"';              
+									variables.result &= '>';
 								
-								variables.result &= thisTag.GeneratedContent.trim();
+									variables.result &= thisTag.GeneratedContent.trim();
 								
-								variables.result &= '</script>';
+									variables.result &= '</script>';
+								
 
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
+     if (attributes.rendered)				writeOutput(variables.result);
      
 	break;
 	}

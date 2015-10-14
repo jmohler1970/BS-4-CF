@@ -12,15 +12,16 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
   
 	param attributes.circle			= false;		// make it look like a radio
 	param attributes.checked			= false;
 	param attributes.disabled		= false;
 	param attributes.id				= "";
 	param attributes.inline			= false;
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("selectBooleanCheckbox");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "";
 	param attributes.name			= "";
 	param attributes.key			= "";
@@ -45,6 +46,13 @@ case "start" :
 	
      
      if (!attributes.processed) exit "exitTag";
+     
+    	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+     
 	break;
      
 case "end" :
@@ -54,43 +62,44 @@ case "end" :
 																	attributes.isSafeHTML 	= true;				
 																	}	 
 		
-								variables.result &= '<div class="checkbox';
-	if(attributes.circle)			variables.result &= ' checkbox-circle';						
-	if(attributes.look    	!= "")    variables.result &= ' checkbox-#encodeForHTMLAttribute(attributes.look.lcase())#';
-	if(attributes.inline)			variables.result &= ' checkbox-inline';
-	   							variables.result &= '"';
+									variables.result &= '<div class="checkbox';
+	if(attributes.circle)				variables.result &= ' checkbox-circle';						
+	if(attributes.look    	!= "")		variables.result &= ' checkbox-#encodeForHTMLAttribute(attributes.look.lcase())#';
+	if(attributes.inline)				variables.result &= ' checkbox-inline';
+	   								variables.result &= '"';
 
-	if(attributes.tooltip    != "")    variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
-								variables.result &= '>';
+	if(attributes.tooltip    != "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
+									variables.result &= '>';
 								
 								
 	
-								variables.result &= '<input type="checkbox"';
-	if(attributes.name		!= "")	variables.result &= ' name="#encodeForHTMLAttribute(attributes.name)#"';
-	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.checked)			variables.result &= ' checked="checked"';
-	if(attributes.disabled)			variables.result &= ' disabled="disabled"';
-	if(attributes.tabindex	!= "")	variables.result &= ' tabindex="#encodeForHTMLAttribute(attributes.tabindex)#"';
+									variables.result &= '<input type="checkbox"';
+	if(attributes.name		!= "")		variables.result &= ' name="#encodeForHTMLAttribute(attributes.name)#"';
+	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes.checked)				variables.result &= ' checked="checked"';
+	if(attributes.disabled)				variables.result &= ' disabled="disabled"';
+	if(attributes.tabindex	!= "")		variables.result &= ' tabindex="#encodeForHTMLAttribute(attributes.tabindex)#"';
 	
-								variables.result &= ' />';
-								variables.result &= '<label';
-	if(attributes.id		!= "")	variables.result &=	' for="#encodeForHTMLAttribute(attributes.id)#"';
-								variables.result &= '>';
+									variables.result &= ' />';
+									variables.result &= '<label';
+	if(attributes.id		!= "")		variables.result &=	' for="#encodeForHTMLAttribute(attributes.id)#"';
+									variables.result &= '>';
 								
 	
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 							
 		
-								variables.result &= '</label>';
+									variables.result &= '</label>';
 								
-								variables.result &= variables.crlf &  '</div>';
+									variables.result &= variables.crlf &  '</div>';
      
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
+     if (attributes.rendered)				writeOutput(variables.result);
      
 	break;
 	}

@@ -12,28 +12,42 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
   
 	param attributes.brand			= "";
 	param attributes.brandHref		= "";
+	param attributes.cacheid			= "";
 	param attributes.fixed			= "";
 	param attributes.key			= "";
 	param attributes.inverse			= false;
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("navbar");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.placeholder		= [];
      param attributes.rendered 		= true;
 	param attributes.static			= false;
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+
+
 	
 	if (!attributes.processed) exit "exitTag";
+	
+
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
 	break;
      
 case "end" :
 
-	if(attributes.key 		!= "" )		{
+
+							
+
+	if (attributes.key 		!= "" )		{
 																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
 																	attributes.isSafeHTML 	= true;				
 																	}	
@@ -72,7 +86,10 @@ case "end" :
 								variables.result &= '</nav>';
 							
      
-      thisTag.GeneratedContent = "";
+     if (attributes.cacheid != "")		CachePut(attributes.cacheid, variables.result);
+     
+     
+     thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);
      
 	break;

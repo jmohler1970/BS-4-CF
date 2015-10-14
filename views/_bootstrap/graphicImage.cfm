@@ -14,29 +14,33 @@ if (!thisTag.HasEndTag)
 switch (thisTag.ExecutionMode)     {
 case "start" :
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result 	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().listToArray();
   
-	param attributes.alt		= ""; // alt="" will be rendered
-	param attributes.binding		= "";
-	param attributes.height		= ""; //creates CSS
-     param attributes.id			= "";
-     // param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("graphicImage");
-     // param attributes.key			= "";
-	param attributes.library		= "default";
-     // param attributes.placeholder		= [];
-     param attributes.processed	= true;
-     //param attributes.profile			= application.Bootstrap.profile;
-	param attributes.rendered 	= true;
-	param attributes.shape		= ""; //rounded, circle, thumbnail
-	param attributes.name;
-	param attributes.style		= "";
-	param attributes.styleClass	= "";
-	param attributes.text		= "";
-	//param attributes.throwOnError		= application.Bootstrap.throwOnError;
-     param attributes.tooltip		= "";
-     param attributes.tooltipPosition = "bottom";
-     param attributes.width		= ""; // creates CSS
+	param attributes.alt			= ""; // alt="" will be rendered
+	param attributes.base64			= "";
+	param attributes.base64mime		= "image/png";
+	param attributes.binding			= "";
+	param attributes.cacheid			= "";
+	param attributes.height			= ""; //creates CSS
+     param attributes.id				= "";
+     // param attributes.isSafeHTML	= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
+	param attributes.key			= "";
+	param attributes.library			= "default";
+     param attributes.placeholder		= [];
+     param attributes.processed		= true;
+     //param attributes.profile		= application.Bootstrap.profile;
+	param attributes.rendered 		= true;
+	param attributes.shape			= ""; //rounded, circle, thumbnail
+	param attributes.name			= ""; // if blank, base64 must be supplied		
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+	//param attributes.throwOnError	= application.Bootstrap.throwOnError;
+     param attributes.tooltip			= "";
+     param attributes.tooltipPosition	= "bottom";
+     param attributes.width			= ""; // creates CSS
      
      
      if(!isnumeric(attributes.height)) attributes.height = "";
@@ -57,39 +61,48 @@ case "start" :
 
 
      if (!attributes.processed) exit "exitTag";
+     
+     
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+     
 	break;
      
 case "end" :
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
 	
-	   							variables.result &= '<img class="';
-	if(attributes.shape		!= "")	variables.result &= ' img-#encodeForHTMLAttribute(attributes.shape.lcase())#';
-	if(attributes.text		!= "")	variables.result &= ' text-#encodeForHTMLAttribute(attributes.text)#';
-	if(attributes.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
-	   							variables.result &= '"';
-	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	   								variables.result &= '<img class="';
+	if(attributes.shape		!= "")		variables.result &= ' img-#encodeForHTMLAttribute(attributes.shape.lcase())#';
+	if(attributes.text		!= "")		variables.result &= ' text-#encodeForHTMLAttribute(attributes.text)#';
+	if(attributes.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
+	   								variables.result &= '"';
+	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-								variables.result &= ' src="#application.Bootstrap.ImageLibrary[attributes.library]##encodeForHTMLAttribute(attributes.name)#"';
+	if (attributes.base64 != "")			variables.result &= ' src="data:#encodeForHTMLAttribute(attributes.base64mime)#;base64,#attributes.base64#"';
+	if (attributes.base64 == "")			variables.result &= ' src="#application.Bootstrap.ImageLibrary[attributes.library]##encodeForHTMLAttribute(attributes.name)#"';
 	
 	// start style
 	if(attributes.style		!= "" || attributes.height != "" || attributes.width != "")	{
-								variables.result &= ' style="';
-								}	
-	if(attributes.height	!= "")	variables.result &= ' height : #attributes.height#px;';
-	if(attributes.width		!= "")	variables.result &= ' width  : #attributes.width#px;';
-								variables.result &= ' #encodeForCSS(attributes.style)#"';
+									variables.result &= ' style="';
+									}	
+	if(attributes.height	!= "")		variables.result &= ' height : #attributes.height#px;';
+	if(attributes.width		!= "")		variables.result &= ' width  : #attributes.width#px;';
+									variables.result &= ' #encodeForCSS(attributes.style)#"';
 	// end style
 	
-								variables.result &= ' alt="#encodeForHTMLAttribute(attributes.alt)#"';
-	if(attributes.tooltip    != "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';               
-								variables.result &= ' />';
+									variables.result &= ' alt="#encodeForHTMLAttribute(attributes.alt)#"';
+	if(attributes.tooltip    != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';               
+									variables.result &= ' />';
 							
-	
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)			writeOutput(variables.result);
+     if (attributes.rendered)				writeOutput(variables.result);
      
 	break;
 	}

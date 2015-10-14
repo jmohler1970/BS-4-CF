@@ -12,8 +12,9 @@ case "start" :
 
 	thisTag.Parent = GetBaseTagData( "cf_tabView" );
 
-	variables.result = "";
-	variables.crlf =  chr(13) & chr(10);
+	variables.result	= "";
+	variables.crlf 	= chr(13) & chr(10);
+	variables.tagStack	= getBaseTagList().ListToArray();
 	
 	variables.parentTag = lcase(ListGetAt(getBaseTagList(), 2));
 	variables.validTag = ["cf_tabview"];
@@ -22,9 +23,10 @@ case "start" :
 		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
 		}
   
+	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.id;					// Tab must have id
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains("tab");
+	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.key			= "";
 	param attributes.placeholder		= [];
 	param attributes.processed		= true;
@@ -40,6 +42,13 @@ case "start" :
      
      if (!attributes.processed) exit "exitTag";
 	if (!attributes.rendered) exit "exitTag";	// this is a known bug
+	
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
+	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
+							exit "exitTag";
+							}
+	
 	break;
      
 case "end" :
@@ -54,9 +63,11 @@ case "end" :
 		generatedContent = thisTag.generatedContent
 		};
      
-     ArrayAppend(thisTag.Parent.thisTag.arTab, 			variables.Data);
-
 	
+	thisTag.Parent.thisTag.arTab.append(variables.Data);
+
+
+	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 		
 	thisTag.generatedContent = "";
 	break;
