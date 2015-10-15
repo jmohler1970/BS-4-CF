@@ -315,4 +315,104 @@
 <p>View the cache status tracker to see how well the cacheing worked</p>
 
  <p><b:commandLink href="~/main/cache" value="Check Cache" look="primary" /></p>
+ 
+ 
+ <h1>b:verbatim</h1>
+ 
+ <p>The tag you never want to use</p>
+ 
+ 
+ <p><code>b:verbatim</code> does a simple pass through of its content. It provides no context. For this reason, there is almost always a better tag. <code>b:outputText</code> might be a good alternative. This tag is only included for completeness.</p> 
+ 
+ 
+ <b:panel look="info" title="Attributes for all typographical tags">
+
+	<b:table styleClass="datatables">
+	<thead>
+		<tr>
+			<th></th>
+			<b:th key="panel_attribute" />
+			<th>Default value</th>
+			<b:th key="plugin_desc" />
+			<th>Sanitized</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+		<tr>
+			<td></td>	
+			<td>generatedContent</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td><b:label look="danger">No</b:label> </td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>binding</td>
+			<td>(none)</td>
+			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
+			<td>See generatedContent</td>
+		</tr>
+		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>isSafeHTML</td>
+			<td>true</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>key</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>	
+		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>processed</td>
+			<td>true</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>profile</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>rendered</td>
+			<td>true</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td><b:label look="info">Antisamy</b:label></td>
+			<td>throwOnError</td>
+			<td>false</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>
+	</tbody>
+	</b:table>
+</b:panel>
+ 
+ 
+ <h2>Example</h2>
+ 
+ 
+ <p>This is a sample of text that is being displayed <b:verbatim cacheid="sample">verbatim</b:verbatim>. Note how this would have been better if <code>b:p</code> tag was used</p>
+ 
+ 
+ 
+ 
       
