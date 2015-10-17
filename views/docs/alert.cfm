@@ -207,19 +207,26 @@ Your news article
 
 <b:well>
 
-	<form action="?" method="post">
+	<form action="?" method="post" class="form-horizontal">
 		<b:formGroup>
-			<label for="exampleInputEmail1">Content to be echoed</label>
-			<cfoutput>
-			<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
-			</cfoutput>
+			<label for="exampleInputEmail1" class="col-sm-3 control-label">Content to be echoed</label>
+			
+			<b:column span="9">
+				<cfoutput>
+					<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
+				</cfoutput>
+			</b:column>	
 		</b:formGroup>
 		
-  
-		<b:commandButton value="Submit" />
+		
+  		
+		<b:formGroup>
+			<b:column offset="3" span="9">
+				<b:commandButton value="Submit" />
+			</b:column>
+		</b:formGroup>		
 	</form>
 </b:well>
-
 
 
 
