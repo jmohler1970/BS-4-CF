@@ -178,3 +178,82 @@
 <b:progressBar width="65" look="info" cacheid="sample progress bar">The year is <cfoutput>#year(now())#</cfoutput></b:progressBar>
 
 
+
+
+<b:h1 key="try_me" />
+
+
+<cfsavecontent variable="horrible">
+
+Your news article
+
+<iframe><b>Bold text</b>
+""""""""<>>! script
+<script type="text/javascript">destroy_you_website()</script>
+
+<blink>hahahah</blink>
+
+<table>
+<tr>
+<td>
+
+
+</cfsavecontent>
+
+<cfparam name="rc.size" default="60">
+<cfparam name="rc.look" default="primary">
+<cfparam name="rc.content" default="#horrible#">
+
+
+<b:well>
+
+	<form action="?" method="post" class="form-horizontal">
+		<b:formGroup>
+			<label for="exampleInputEmail1" class="col-sm-3 control-label">Content to be echoed</label>
+			
+			<b:column span="9">
+				<cfoutput>
+					<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
+				</cfoutput>
+			</b:column>	
+		</b:formGroup>
+		
+		<b:formGroup>
+			<label for="exampleInputEmail1" class="col-sm-3 control-label">Colors</label>
+			
+			
+			<b:column span="9">
+			<b:selectOneMenu name="look" selectedValue="#rc.look#">
+				<cfloop index="look" list="primary,warning,info,success,danger">
+					<b:selectItem display="#look#" />
+				</cfloop>
+			</b:selectOneMenu>
+			</b:column>
+		</b:formGroup>	
+			
+		<b:formGroup>
+			<label class="col-sm-3 control-label">Width</label>	
+			
+			<b:column span="9">
+				<b:selectOneRadio name="size" selectedValue="#rc.size#" inline="true">
+					<cfloop index="size" list="10,20,40,60,80,100">
+						<b:selectItem display="#size#" />
+					</cfloop>
+				</b:selectOneRadio>
+			</b:column>
+		</b:formGroup>	
+  		
+		<b:formGroup>
+			<b:column offset="3" span="9">
+				<b:commandButton value="Submit" />
+			</b:column>
+		</b:formGroup>		
+	</form>
+</b:well>
+
+
+
+<b:progressBar width="#rc.size#" look="#rc.look#" binding="content" />
+
+
+
