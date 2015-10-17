@@ -88,13 +88,13 @@
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
-		</tr>	
+		</tr>
 		<tr>
-			<td><b:label>Bootstrap</b:label></td>
-			<td>look</td>
-			<td>warning</td>
-			<td>This uses the look because it is assumed that this is message after an action has happened.</td>
-			<td>Must be in valid value list defined in <code>application.cfc</code></td>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -110,13 +110,7 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
-		<tr>
-			<td> <b:label look="success">i18n</b:label></td>
-			<td>placeholder</td>
-			<td>(none)</td>
-			<b:td key="common" />
-			<td></td>
-		</tr>
+
 		<tr>
 			<td></td>
 			<td>rendered</td>

@@ -20,10 +20,10 @@ case "start" :
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.key			= ""; // Doesn't read a language file. This is included so than fullCacheid is generated identically
+	param attributes.placeholder		= []; // see key
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.pull			= "";
-	param attributes.placeholder		= []; // see key
 	param attributes.rendered 		= true;
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";

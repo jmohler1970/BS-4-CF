@@ -210,7 +210,7 @@ Message on button
 
 <b:well>
 
-	<form action="?" method="post">
+	<form action="?" method="post" class="form-horizontal">
 		<b:formGroup>
 			<label for="exampleInputEmail1">Content to be echoed</label>
 			<cfoutput>
@@ -219,7 +219,7 @@ Message on button
 		</b:formGroup>
 		
 		<b:formGroup>
-			<label for="exampleInputEmail1">Content to be echoed</label>
+			<label for="exampleInputEmail1">Color</label>
 			
 			
 			
