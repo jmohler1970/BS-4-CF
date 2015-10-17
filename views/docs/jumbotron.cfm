@@ -153,3 +153,74 @@
 
 
 
+<b:h1 key="try_me" />
+
+
+<cfsavecontent variable="horrible">
+
+This is a Jumbotron
+
+<iframe><b>Bold text</b>
+""""""""<>>! script
+<script type="text/javascript">destroy_you_website()</script>
+
+<blink>hahahah</blink>
+
+<table>
+<tr>
+<td>
+
+
+</cfsavecontent>
+
+
+<cfparam name="rc.content" default="#horrible#">
+
+
+<b:well>
+
+	<form action="?" method="post" class="form-horizontal">
+		<b:formGroup>
+			<label for="exampleInputEmail1" class="col-sm-3 control-label">Content to be echoed</label>
+			
+			<b:column span="9">
+				<cfoutput>
+					<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
+				</cfoutput>
+			</b:column>	
+		</b:formGroup>
+		
+		
+  		
+		<b:formGroup>
+			<b:column offset="3" span="9">
+				<b:commandButton value="Submit" />
+			</b:column>
+		</b:formGroup>		
+	</form>
+</b:well>
+
+<p>The <code>b:h1</code> tag is going to do the Antisamy cleanup</p>
+
+
+<b:jumbotron>
+    <b:h1 binding="content" />
+    <b:p>O Fortuna
+velut luna
+statu variabilis,
+semper crescis
+aut decrescis;
+vita detestabilis
+nunc obdurat
+et tunc curat
+ludo mentis aciem,
+egestatem,
+potestatem
+dissolvit ut glaciem.</b:p>
+    <b:p><b:commandLink action="~/docs/jumbotron">Learn more</b:commandLink></b:p>
+</b:jumbotron>
+
+
+
+
+
