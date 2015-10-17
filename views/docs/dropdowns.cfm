@@ -195,3 +195,53 @@
 </cftry>
 
 
+
+
+
+<b:h1 key="try_me" />
+
+
+<cfsavecontent variable="horrible">
+Message on button
+</cfsavecontent>
+
+<cfparam name="rc.content" default="#horrible#">
+<cfparam name="rc.look" default="primary">
+
+<b:well>
+
+	<form action="?" method="post">
+		<b:formGroup>
+			<label for="exampleInputEmail1">Content to be echoed</label>
+			<cfoutput>
+			<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
+			</cfoutput>
+		</b:formGroup>
+		
+		<b:formGroup>
+			<label for="exampleInputEmail1">Content to be echoed</label>
+			
+			
+			
+			<b:selectOneMenu name="look" selectedValue="#rc.look#">
+				<cfloop index="look" list="primary,warning,info,success,danger">
+					<b:selectItem display="#look#" />
+				</cfloop>
+			</b:selectOneMenu>
+		</b:formGroup>	
+  
+		<b:commandButton value="Generate Dropdown" />
+	</form>
+</b:well>
+
+
+
+<b:buttonGroup>
+	<b:dropButton value="#rc.content#" look="#rc.look#">
+		<b:navLink href="##mixtape3" value="Mix tape" />
+		<b:navLink href="##action3" value="Action" />
+		<b:navLink />
+		<b:navLink href="##" value="Something else here" />
+	</b:dropButton>
+</b:buttonGroup>
+

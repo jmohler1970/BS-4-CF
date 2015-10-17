@@ -189,7 +189,7 @@
 
 <b:h2 key="try_me" />
 	
-<p>You may want to go to getBootstrap.com to see the icon names</p>	
+<p>You may want to go to getBootstrap.com to see the icon names. <a href="http://getbootstrap.com/components/" target="_blank">http://getbootstrap.com/components/</a></p>	
 	
 <b:well>	
 	
