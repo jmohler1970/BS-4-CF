@@ -35,6 +35,7 @@ case "start" :
 	param attributes.title			= "";
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
+	param attributes.value			= 1;
 
 	if (attributes.id == "auto")	attributes.id = "checkbox_" & left(createUUID(), 10);
 
@@ -82,6 +83,7 @@ case "end" :
 	if(attributes.checked)				variables.result &= ' checked="checked"';
 	if(attributes.disabled)				variables.result &= ' disabled="disabled"';
 	if(attributes.tabindex	!= "")		variables.result &= ' tabindex="#encodeForHTMLAttribute(attributes.tabindex)#"';
+									variables.result &= ' value="#encodeForHTMLAttribute(attributes.value)#"';
 
 									variables.result &= ' />';
 									variables.result &= '<label';

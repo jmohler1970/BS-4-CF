@@ -2,7 +2,7 @@
  * of the key things about the widget is that it allows you to do your own styling!
  */
 
-#editor {
+.wysiwyg {
 	max-height: 250px;
 	height: 250px;
 	background-color: white;
@@ -35,8 +35,6 @@ div[data-role="editor-toolbar"] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  margin-top:10px;margin-bottom:10px;
 }
 
-.dropdown-menu a {
-  cursor: pointer;
-}

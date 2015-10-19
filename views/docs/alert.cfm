@@ -52,7 +52,7 @@
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
 			<td>See generatedContent</td>
-		</tr>	
+		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
@@ -207,14 +207,14 @@ Your news article
 
 <b:well>
 
-	<form action="?" method="post" class="form-horizontal">
+	<form action="?" method="post" class="form-horizontal" id="postSubmit">
 		<b:formGroup>
 			<label for="exampleInputEmail1" class="col-sm-3 control-label">Content to be echoed</label>
 			
 			<b:column span="9">
-				<cfoutput>
-					<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
-				</cfoutput>
+				
+				<b:wysiwyg name="content"><cfoutput>#rc.content#</cfoutput></b:wysiwyg>
+				
 			</b:column>	
 		</b:formGroup>
 		
@@ -235,3 +235,6 @@ Your news article
 <pre>&lt;b:alert key=&quot;ER_YOUR_CHANGES&quot; placeholder=&quot;#rc.content#&quot; /&gt;</pre>
 
 <b:alert key="ER_YOUR_CHANGES" placeholder="#rc.content#" />
+
+
+
