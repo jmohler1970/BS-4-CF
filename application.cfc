@@ -4,7 +4,7 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-45";
+this.name="bs-4-cf-51";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -48,7 +48,7 @@ function setupApplication()	{
 		cache			= {content = "Bootstrap", language = "i18n" }, // Only Bootstrap should use this
 				
 		// i18n options
-		langRoot			= expandPath("lang") & "/",
+		langRoot			= expandPath("vendor/lang") & "/",
 		arLang			= [],
 	
 		actionRoot 		= cgi.script_name,
@@ -56,8 +56,18 @@ function setupApplication()	{
 		
 		iconLibrary		= {"default" = "glyphicon glyphicon-", "awesome" = "fa fa-", "jquery-ui" = "ui-icon ui-icon-"}, 		// be sure to include ending dashes
 		imageLibrary		= {"default" = replace(cgi.script_name, "/index.cfm", "") & "/assets/"},							// used by b:graphicImage
-		styleSheetLibrary	= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"},				// used by b:outputStyleSheet
-		scriptLibrary		= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js", local="assets/"}	// used by b:outputScript
+		
+		// used by b:outputStyleSheet
+		styleSheetLibrary	= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",
+							 local  = replace(cgi.script_name, "/index.cfm", "") & "/assets/",
+							 vendor = replace(cgi.script_name, "/index.cfm", "") & "/vendor/"
+							 },
+							 
+		// used by b:outputScript
+		scriptLibrary		= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js",
+							 local  = replace(cgi.script_name, "/index.cfm", "") & "/assets/",
+							 vendor = replace(cgi.script_name, "/index.cfm", "") & "/vendor/"
+							 }
 		};
 	
 	
@@ -134,7 +144,7 @@ function setupRequest()	{
 		
 		
 		local.i18n = {};
-		local.i18n.append( local.languageService.readPHP(		expandPath("lang") 	& "/") );				// traditional language file
+		local.i18n.append( local.languageService.readPHP(application.Bootstrap.langroot) );				// traditional language file
 		// simple append won't work
 		local.stTitle = local.languageService.readProperties(	expandPath(".") 	& "/title.properties" );
 		

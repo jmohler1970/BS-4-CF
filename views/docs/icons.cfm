@@ -189,7 +189,7 @@
 
 <b:h2 key="try_me" />
 	
-<p>You may want to go to getBootstrap.com to see the icon names</p>	
+<p>You may want to go to getBootstrap.com to see the icon names. <a href="http://getbootstrap.com/components/" target="_blank">http://getbootstrap.com/components/</a></p>	
 	
 <b:well>	
 	
@@ -202,19 +202,9 @@
   <button type="submit" class="btn btn-default">Show icons</button>
 </form>	
 
+<cfset colHeaders = 'Default look,<code>look="success</code>,<code>look="danger"</code>,<code>size="lg"</code>,<code>size="2x"</code>,<code>spin="true"</code>'>
 
-
-<b:table rendered="#IIF(rc.icon EQ "", 0, 1)#">
-<thead>
-<tr>
-	<th>Default look</th>
-	<th><code>look="success</code></th>
-	<th><code>look="danger"</code></th>
-	<th><code>size="lg"</code></th>
-	<th><code>size="2x"</code></th>
-	<th><code>spin="true"</code></th>
-</tr>
-</thead>	
+<b:table colHeaders='#colHeaders#' colFooters='#colHeaders#' rendered="#IIF(rc.icon EQ "", 0, 1)#">
 	<tr>
 		<td>Glyphicon</td>
 		<td><b:icon binding="icon" look="success"	/></td>
@@ -239,19 +229,7 @@
 
 <h2>Example with &lt;b:icon&gt;</h2>
 
-<b:table>
-<thead>
-<tr>
-	<th>Name</th>
-	<th>Default look</th>
-	<th><code>look="success</code></th>
-	<th><code>look="danger"</code></th>
-	<th><code>size="lg"</code></th>
-	<th><code>size="2x"</code></th>
-	<th><code>spin="true"</code></th>
-</tr>
-</thead>	
-
+<b:table colHeaders='Name,Default look,<code>look="success</code>,<code>look="danger"</code>,<code>size="lg"</code>,<code>size="2x"</code>,<code>spin="true"</code>'>
 <tbody>
 <cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check" index="rc.i">
 	<tr>
@@ -275,19 +253,7 @@
 
 <p>It is recommended that only one library be used per application. The <code>library=""</code> is used for overrides</p>
 
-<b:table>
-<thead>
-<tr>
-	<th>Name</th>
-	<th>Default look</th>
-	<th><code>look="success</code></th>
-	<th><code>look="danger"</code></th>
-	<th><code>size="lg"</code></th>
-	<th><code>size="2x"</code></th>
-	<th><code>spin="true"</code></th>
-</tr>
-</thead>	
-
+<b:table colHeaders='Name,Default look,<code>look="success</code>,<code>look="danger"</code>,<code>size="lg"</code>,<code>size="2x"</code>,<code>spin="true"</code>'>
 <tbody>
 <cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check" index="rc.i">
 	<tr>
@@ -311,17 +277,7 @@
 <p>It is recommended that only one library be used per application. The <code>library=""</code> is used for overrides. jQuery UI uses bitmaps not font (vectors). 
 	For this reason it has a hard time resizing or changing colors. It is NOT recommend that his library be used. This sample is included for completeness only</p>
 
-<b:table>
-<thead>
-<tr>
-	<th>Name</th>
-	<th>Default look</th>
-	<th><code>lstyleClass="ui-state-highlight"</code></th>
-	<th><code>styleClass="ui-state-error"</code></th>
-	<th><code>spin="true"</code></th>
-</tr>
-</thead>	
-
+<b:table colHeaders='Name,Default look,<code>lstyleClass="ui-state-highlight"</code>,<code>styleClass="ui-state-error"</code>,<code>spin="true"</code>'>
 <tbody>
 <cfloop list="tag,note,bookmark,print,image,flag,arrowthickstop-1-s,arrowthickstop-1-n,mail-closed,arrowrefresh-1-w,trash,check" index="rc.i">
 	<tr>

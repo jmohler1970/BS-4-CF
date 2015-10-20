@@ -52,7 +52,7 @@
 			<td>(none)</td>
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
 			<td>See generatedContent</td>
-		</tr>	
+		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
@@ -88,13 +88,13 @@
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
-		</tr>	
+		</tr>
 		<tr>
-			<td><b:label>Bootstrap</b:label></td>
-			<td>look</td>
-			<td>warning</td>
-			<td>This uses the look because it is assumed that this is message after an action has happened.</td>
-			<td>Must be in valid value list defined in <code>application.cfc</code></td>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td key="common" />
+			<td></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -110,13 +110,7 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
-		<tr>
-			<td> <b:label look="success">i18n</b:label></td>
-			<td>placeholder</td>
-			<td>(none)</td>
-			<b:td key="common" />
-			<td></td>
-		</tr>
+
 		<tr>
 			<td></td>
 			<td>rendered</td>
@@ -213,19 +207,26 @@ Your news article
 
 <b:well>
 
-	<form action="?" method="post">
+	<form action="?" method="post" class="form-horizontal" id="postSubmit">
 		<b:formGroup>
-			<label for="exampleInputEmail1">Content to be echoed</label>
-			<cfoutput>
-			<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
-			</cfoutput>
+			<label for="exampleInputEmail1" class="col-sm-3 control-label">Content to be echoed</label>
+			
+			<b:column span="9">
+				
+				<b:wysiwyg name="content"><cfoutput>#rc.content#</cfoutput></b:wysiwyg>
+				
+			</b:column>	
 		</b:formGroup>
 		
-  
-		<b:commandButton value="Submit" />
+		
+  		
+		<b:formGroup>
+			<b:column offset="3" span="9">
+				<b:commandButton value="Submit" />
+			</b:column>
+		</b:formGroup>		
 	</form>
 </b:well>
-
 
 
 
@@ -234,3 +235,6 @@ Your news article
 <pre>&lt;b:alert key=&quot;ER_YOUR_CHANGES&quot; placeholder=&quot;#rc.content#&quot; /&gt;</pre>
 
 <b:alert key="ER_YOUR_CHANGES" placeholder="#rc.content#" />
+
+
+

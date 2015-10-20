@@ -16,6 +16,7 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
   
+	param attributes.binding			= ""; 
 	param attributes.cacheid			= "";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
@@ -55,11 +56,11 @@ case "start" :
 	break;
      
 case "end" :
-
+	if(attributes.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
 	if(attributes.key 		!= "" )		{
 									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
 									attributes.isSafeHTML 	= true;				
-									}	
+									}
   
 									variables.result &= crlf;
 	   								variables.result &= '<div class="well';

@@ -29,8 +29,8 @@ case "start" :
 	param attributes.onBlur			= "";
 	param attributes.onClick			= "";
 	param attributes.onChange		= "";
-	//param attributes.key			= "";
-	//param attributes.placeholder		= [];
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.readonly	 	= false;

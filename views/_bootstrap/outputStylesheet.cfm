@@ -54,7 +54,6 @@ case "end" :
 								
 									variables.result &= thisTag.GeneratedContent.trim();
 								
-									variables.result &= '</link>';
 
 
 	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);

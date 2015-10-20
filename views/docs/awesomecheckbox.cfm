@@ -123,7 +123,7 @@
 			<td>look</td>
 			<td>(none)</td>
 			<td>It will still look slightly larger than a normal checkbox.</td>
-			<td>Must be one of: <cfoutput>#application.Bootstrap.validLook.toList()#</cfoutput></td>
+			<td>Must be one of: <i>Blank</i><cfoutput>#application.Bootstrap.validLook.toList()#</cfoutput></td>
 		</tr>	
 		<tr>
 			<td></td>

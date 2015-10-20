@@ -59,12 +59,30 @@
 		</tr>
 		
 		<tr>
+			<td></td>
+			<td>colFooters</td>
+			<td>(none)</td>
+			<td>This generates <code>&lt;tfoot&gt;</code> section of your table. This should make it easier to keep table footers consistent. This accepts a comma separated list.</td>
+			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+		</tr>	
+		
+		<tr>
+			<td></td>
+			<td>colHeaders</td>
+			<td>(none)</td>
+			<td>This generates <code>&lt;thead&gt;</code> section of your table. This should make it easier to keep table columns consistent. This accepts a comma separated list.</td>
+			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+		</tr>	
+		
+		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>condensed</td>
 			<td>true</td>
 			<td>The table will have slightly smaller cell padding</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
+		
+
 		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>hover</td>
@@ -84,6 +102,20 @@
 			<td>isSafeHTML</td>
 			<td>false</td>
 			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>key</td>
+			<td>(none)</td>
+			<b:td key="key_for_cache" />
+			<td></td>
+		</tr>
+		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td>See key</b:td>
 			<td></td>
 		</tr>
 		<tr>
@@ -159,6 +191,9 @@
 	</tbody>
 	</b:table>
 </b:panel>
+
+
+<p>All icon examples use colHeaders <b:commandLink action="~/docs/icons" value="See Icons" /></p>
 	
 
 <h2>b:tr</h2>
@@ -214,6 +249,14 @@
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>key</td>
+			<td>(none)</td>
+			<b:td key="key_for_cache" />
+			<td></td>
+		</tr>
+
+		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>look</td>
 			<td>(none)</td>
@@ -232,6 +275,13 @@
 			<td>on*</td>
 			<td>(none)</td>
 			<b:td key="common" />
+			<td></td>
+		</tr>
+		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>placeholder</td>
+			<td>(none)</td>
+			<b:td>See key</b:td>
 			<td></td>
 		</tr>
 		<tr>
@@ -541,18 +591,7 @@ DataTables is a plug-in for the jQuery Javascript library. It is a highly flexib
 <p>This example also includes supplemental Bootstrap look and feel</p>
 
 
-<b:table styleClass="datatables">
-<thead> 
-<tr>
-	<th>ID</th>
-	<th>Icon</th>
-	<th>Album</th>
-	<b:th key="plugin_desc" />
-	<b:th key="plugin_ver"  />
-	<th></th> 
-</tr>
-</thead>	
-
+<b:table styleClass="datatables" colHeaders="ID,Icon,Album,Description,Version,&nbsp;">
 <tbody>
 <cfoutput query="rc.qryData">
 	<b:tr rendered="#IIF(Delete, 0, 1)#">

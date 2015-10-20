@@ -23,8 +23,8 @@ case "start" :
 	param attributes.activeIndex		= 1;
 	param attributes.cacheid			= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-	//param attributes.key			= "";
-	//param attributes.placeholder		= [];
+	param attributes.key			= "";
+	param attributes.placeholder		= [];
 	param attributes.processed		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

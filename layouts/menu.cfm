@@ -47,7 +47,8 @@
 			<b:navLink value="Include" href="~/docs/include" />
 		</b:dropMenu>
 	
-		<b:dropMenu value="JavaScript" active="#ArrayContains(['modal','tab','poll'], getItem())#">
+		<b:dropMenu value="JavaScript" active="#ArrayContains(['wysiwyg','modal','tab','poll'], getItem())#">
+		    	<b:navLink value="WYSIWIG Editor"	href="~/docs/wysiwyg" icon="pencil" />
 		    	<b:navLink value="Modal"	href="~/docs/modal" icon="modal-window" />
 		    	<b:navLink value="Tab"	href="~/docs/tab" icon="folder-close" />
 		    	<b:navLink value="Poll"	href="~/docs/poll" icon="refresh" />

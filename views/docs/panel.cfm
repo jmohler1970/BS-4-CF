@@ -270,6 +270,13 @@
 		</tr>
 		<tr>
 			<td></td>
+			<td>binding</td>
+			<td>(none)</td>
+			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
+			<td>See generatedContent</td>
+		</tr>
+		<tr>
+			<td></td>
 			<td>id</td>
 			<td>(none)</td>
 			<b:td key="common" />
@@ -392,6 +399,59 @@
 
 <b:well key="WELCOME_P" cacheid="well well well" />
 
+
+
+
+<b:h1 key="try_me" />
+
+
+<cfsavecontent variable="horrible">
+Sors immanis
+et inanis,
+rota tu volubilis,
+status malus,
+vana salus
+semper dissolubilis,
+obumbrata
+et velata
+michi quoque niteris;
+nunc per ludum
+dorsum nudum
+fero tui sceleris.
+
+</cfsavecontent>
+
+
+<cfparam name="rc.content" default="#horrible#">
+
+<b:well>
+
+	<form action="?" method="post" class="form-horizontal">
+		<b:formGroup>
+			<label for="exampleInputEmail1" class="col-sm-3 control-label">Content to be echoed</label>
+			
+			<b:column span="9">
+				<cfoutput>
+					<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
+				</cfoutput>
+			</b:column>	
+		</b:formGroup>
+		
+		
+  		
+		<b:formGroup>
+			<b:column offset="3" span="9">
+				<b:commandButton value="Submit" />
+			</b:column>
+		</b:formGroup>		
+	</form>
+</b:well>
+
+
+<pre>&lt;b:well binding=&quot;content&quot; /&gt;</pre>
+
+
+<b:well binding="content" />
 
 
 

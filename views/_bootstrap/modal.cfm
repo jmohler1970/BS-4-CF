@@ -17,6 +17,7 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
   
 	param attributes.backdrop		= true;
+	param attributes.cacheid			= "";
 	param attributes.closable		= true;
 	if(!structKeyExists(attributes, "close-on-escape")) attributes["close-on-escape"] = true;
 	param attributes.id				= "";

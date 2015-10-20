@@ -32,6 +32,7 @@ case "start" :
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
+	param attributes.selectedValue	= "";	// value of selected item
 	param attributes.square			= false;		// make it look like check
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	
@@ -77,7 +78,7 @@ case "end" :
 														variables.result &= '<input type="radio"';
 		if(attributes.name							!= "")	variables.result &= ' name="#encodeForHTMLAttribute(attributes.name)#"';
 		if(thisTag.qryOption.id[variables.myRow]		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(thisTag.qryOption.id[variables.myRow])#"';
-		if(thisTag.qryOption.selected[variables.myRow])			variables.result &= ' checked="checked"';
+		if(thisTag.qryOption.selected[variables.myRow] || thisTag.qryOption.value[variables.myRow] == attributes.selectedValue)			variables.result &= ' checked="checked"';
 		if(attributes.disabled)								variables.result &= ' disabled="disabled"';
 														variables.result &= ' value="#encodeForHTMLAttribute(thisTag.qryOption.value[variables.myRow])#"';	
 														variables.result &= ' />';

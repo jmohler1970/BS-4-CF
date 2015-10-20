@@ -20,8 +20,8 @@ case "start" :
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "";
-	//	param attributes.key			= "";	//	content not directly generated, do not put td,th in language files
-	//	param attributes.placeholder		= [];	//	see key
+	param attributes.key			= "";	//	content not directly generated, do not put td,th in language files
+	param attributes.placeholder		= [];	//	see key
 	param attributes.processed		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;

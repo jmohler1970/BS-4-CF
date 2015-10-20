@@ -16,10 +16,10 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
 	
-	variables.parentTag = lcase(ListGetAt(getBaseTagList(), 2));
-	variables.validTag = ["cf_buttongroup","cf_tabview"];
+	variables.parentTag = getBaseTagList().listGetAt(2).lcase();
+	variables.validTag = ["cf_buttongroup","cf_navbarlinks","cf_tabview"];
 	
-	if(!ArrayContains(variables.validTag, variables.parentTag ) )	{
+	if(!variables.validTag.contains(variables.parentTag) )	{
 		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
 		}
  
@@ -36,6 +36,8 @@ case "start" :
 	param attributes.value			= "";
 	
 	if (!attributes.processed) exit "exitTag";
+	
+	if(variables.parentTag == "cf_navbarlinks") attributes.look = "tab";
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
 	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{

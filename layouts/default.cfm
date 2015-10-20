@@ -37,6 +37,9 @@
 <!--- jQuery UI support --->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
 
+<!--- bootstrap.wysihtml5 --->
+<b:outputStyleSheet library="vendor" name="bootstrap-wysiwyg.css" />
+
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -55,7 +58,11 @@
 <script src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.8/js/dataTables.bootstrap.min.js"></script>
 
-<b:outputScript library="local" name="application.js" />
+
+<!--- bootstrap.wysihtml5 --->
+<b:outputScript library="local"	name="hotkeys.js" />
+<b:outputScript library="vendor"	name="bootstrap-wysiwyg.js" />
+<b:outputScript library="local"	name="application.js" />
 
 
 <b:outputStyleSheet name="application.css" processed="#IIF(getItem() EQ 'image', 1, 0)#" />
@@ -78,33 +85,18 @@ padding-top: 50px;
 	border:1px solid ##ddd;
 	border:1px solid rgba(86,61,124,.2)
 }
+
+#editor {overflow:scroll; max-height:300px}
 </style>
 
 
-<script type="text/javascript">
-$( document ).ready(function() {
-
-
-
-  $('[data-toggle="popover"]').popover();
-  $('[data-toggle="tooltip"]').tooltip();
-
-
-  $('select.select2').select2();
-  
-  $('table.datatables').DataTable({
-	paging : false,
-	order  : [[ 1, "asc" ]]
-  	});
-
-});
-</script>
-	
 	
 </b:head>
 
 <body>
 
+	<a href="https://github.com/jmohler1970/BS-4-CF"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 2000" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+ 
 
 	<b:container>
 	

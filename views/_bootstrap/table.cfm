@@ -18,6 +18,8 @@ case "start" :
 
 	param attributes.bordered		= false;
 	param attributes.cacheid			= "";
+	param attributes.colFooters		= "";
+     param attributes.colHeaders		= "";
      param attributes.condensed		= true;
      param attributes.hover			= false;
      param attributes.id				= "";
@@ -50,7 +52,7 @@ case "start" :
      
 case "end" :     
           
-          
+
      if(attributes.responsive) 					variables.result &= '<div class="table-responsive">';  
      										variables.result &= variables.crlf;  
 	   										variables.result &= '<table class="table';
@@ -67,12 +69,28 @@ case "end" :
 	if(attributes.tooltip	!= "")				variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")				variables.result &= ' data-toggle="tooltip"';						
 	               
-											variables.result &= '>';
+											variables.result &= '>' & variables.crlf;
+											
+	if(attributes.colHeaders != "")		{
+											variables.result &= '<thead>' & variables.crlf & '<tr>' & variables.crlf;
+									for (variables.colHeader in attributes.colHeaders.listToArray())	{
+											variables.result &= '<th>' & variables.colHeader & '</th>'& variables.crlf;
+											}
+											variables.result &= '</tr>' & variables.crlf & '</thead>' & variables.crlf;
+									} // end thead
 								
 	
 	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
 	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
+	
+	if(attributes.colFooters != "")		{
+											variables.result &= '<tfoot>' & variables.crlf & '<tr>' & variables.crlf;
+									for (variables.colFooter in attributes.colFooters.listToArray())	{
+											variables.result &= '<th>' & variables.colFooter & '</th>'& variables.crlf;
+											}
+											variables.result &= '</tr>' & variables.crlf & '</tfoot>' & variables.crlf;
+									} // end thead
 		
 							
 											variables.result &= '</table>';

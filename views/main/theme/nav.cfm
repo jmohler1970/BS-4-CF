@@ -12,7 +12,7 @@
 
 
 <b:row>
-	<b:column span="6">
+	<b:column span="4">
      	<b:h2 id="nav-tabs">Tabs</b:h2>
             
            
@@ -38,4 +38,117 @@
           
             
 	</b:column>
+	
+	<b:column span="4">
+	<h2 id="nav-pills">Pills</h2>
+
+		
+          <b:navbarlinks pills="true">    
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li class="disabled"><a href="#">Disabled</a></li>
+                <li class="dropdown">
+                    <b:dropButton  value="DropButton">
+			     	<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li><a href="#">Separated link</a></li>
+			    </b:dropButton>
+
+                </li>
+          </b:navbarlinks>	                
+              
+ 		<br>
+
+		<b:navbarlinks pills="true" stacked="true">    	
+
+   	            <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li class="disabled"><a href="#">Disabled</a></li>
+                <li class="dropdown">
+                    <b:dropButton  value="DropButton">
+			            <li><a href="#">Action</a></li>
+					  <li><a href="#">Another action</a></li>
+					  <li><a href="#">Something else here</a></li>
+					  <li><a href="#">Separated link</a></li>
+			    </b:dropButton>
+                </li>
+          </b:navbarlinks>
+		
+	</b:column>
+	
+	<b:column span="4">
+	       <h2 id="nav-breadcrumbs">Breadcrumbs</h2>
+           
+              <ul class="breadcrumb">
+                <li class="active">Home</li>
+              </ul>
+
+              <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Library</li>
+              </ul>
+
+              <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Library</a></li>
+                <li class="active">Data</li>
+              </ul>
+
+     </b:column>     
+</b:row>
+
+
+<b:row>
+	<b:column span="4">
+
+            <h2 id="pagination">Pagination</h2>
+
+              <ul class="pagination">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+
+              <ul class="pagination pagination-lg">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+
+              <ul class="pagination pagination-sm">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+	</b:column>
+	
+	<b:column span="4">
+
+            <h2 id="pager">Pager</h2>
+
+              <ul class="pager">
+                <li><a href="#">Previous</a></li>
+                <li><a href="#">Next</a></li>
+              </ul>
+
+              <ul class="pager">
+                <li class="previous disabled"><a href="#">&larr; Older</a></li>
+                <li class="next"><a href="#">Newer &rarr;</a></li>
+              </ul>
+	</b:column>
+	
+	<b:column span="4">
+
+     </b:column>     
 </b:row>
