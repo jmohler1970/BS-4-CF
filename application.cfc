@@ -4,7 +4,7 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-49";
+this.name="bs-4-cf-51";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -144,7 +144,7 @@ function setupRequest()	{
 		
 		
 		local.i18n = {};
-		local.i18n.append( local.languageService.readPHP(		expandPath("lang") 	& "/") );				// traditional language file
+		local.i18n.append( local.languageService.readPHP(application.Bootstrap.langroot) );				// traditional language file
 		// simple append won't work
 		local.stTitle = local.languageService.readProperties(	expandPath(".") 	& "/title.properties" );
 		
