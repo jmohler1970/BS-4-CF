@@ -13,7 +13,7 @@
 </div>
 
 
-<b:row>
+<b:row tag="section">
 	<b:column span="12">
 
 
@@ -131,6 +131,13 @@
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
+			<td>tag</td>
+			<td>div</td>
+			<td>Div tag always works but is generic. Consider setting to <code>section</code>, <code>article</code>, or <code>aside</code>. </td>
+			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+		</tr>	
+		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>false</td>
@@ -240,6 +247,13 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
+		<tr>
+			<td></td>
+			<td>tag</td>
+			<td>div</td>
+			<td>Div tag always works but is generic. Consider setting to <code>section</code>, <code>article</code>, or <code>aside</code>. </td>
+			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+		</tr>	
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
@@ -433,6 +447,13 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
+		<tr>
+			<td></td>
+			<td>tag</td>
+			<td>div</td>
+			<td>Div tag always works but is generic. Consider setting to <code>section</code>, <code>article</code>, or <code>aside</code>. </td>
+			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+		</tr>	
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>

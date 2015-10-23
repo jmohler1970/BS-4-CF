@@ -110,7 +110,6 @@ padding-top: 50px;
 		#menu.replacelist("~/", cgi.script_name & "/")#
 	
 		#body.replacelist("~/", cgi.script_name & "/")#
-	
 	</cfoutput>
 	
 	

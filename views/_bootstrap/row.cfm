@@ -26,6 +26,7 @@ case "start" :
 	param attributes.rendered 		= true;
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.tag 			= 'div';
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
@@ -48,7 +49,7 @@ case "end" :
 																	attributes.isSafeHTML 	= true;
 																	}
 
-									variables.result &= variables.crlf & '<div class="row';
+									variables.result &= variables.crlf & '<#attributes.tag# class="row';
 	if(attributes.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 									variables.result &= '"';
 	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
@@ -63,7 +64,7 @@ case "end" :
 
 
 
-									variables.result &= variables.crlf & '</div><!-- /.row -->';
+									variables.result &= variables.crlf & '</#attributes.tag#><!-- /.row -->';
 									variables.result &= variables.crlf;
 									variables.result &= variables.crlf;
 

@@ -28,6 +28,7 @@ case "start" :
 	param attributes.span			= 0;
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.tag 			= 'div';
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
@@ -62,7 +63,7 @@ case "end" :
 																	}
 
 
-																	variables.result &= variables.crlf & '<div class="';
+									variables.result &= variables.crlf & '<#attributes.tag# class="';
 									variables.result &= 'col-xs-#encodeForHTMLAttribute(attributes.colXs)# ';
 									variables.result &= 'col-sm-#encodeForHTMLAttribute(attributes.colSm)# ';
 									variables.result &= 'col-md-#encodeForHTMLAttribute(attributes.colMd)# ';
@@ -89,7 +90,7 @@ case "end" :
 	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean
 
 
-									variables.result &= variables.crlf & '</div><!-- /.column -->';
+									variables.result &= variables.crlf & '</#attributes.tag#><!-- /.column -->';
 									variables.result &= variables.crlf;
 
 	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
