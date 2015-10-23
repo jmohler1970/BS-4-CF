@@ -14,7 +14,7 @@
 
 
 <b:row>
-	<b:column span="4" colsm="6" colxs="12">
+	<b:column span="4">
             <h3><b:icon library="awesome" name="file-o" /> Easy to Setup</h3>
             <p>Simply download the custom tag library, setup some default options and <code>&lt;cfimport&gt;</code> wherever you need it.</p>
             
@@ -24,7 +24,7 @@
 		 
 
           
-	<b:column span="4" colsm="6" colxs="12">
+	<b:column span="4">
             <h3><b:icon library="awesome" name="css3" /> Themes</h3>
             <p>Use the standard Bootstrap theme or Bootswatch Themes. This site show the various Bootswatch themes in action</p>
             
@@ -33,17 +33,19 @@
 
 
 
-	<b:column span="4" colsm="6" colxs="12">
+	<b:column span="4" >
           <h3><b:icon library="awesome" name="link" /> i18n</h3>
           <p>Internationalization support is built in. Supports both ColdFusion and PHP language files. Write less code and do more.</p>
           
           <p><b:commandLink href="~/common" value="Learn More" look="primary" /></p>
 	</b:column> 
+</b:row>
 
 
-		  
+<b:row> 
 	
-	<b:column span="4" colsm="6" colxs="12">
+	
+	<b:column span="4">
           <h3><b:icon library="awesome" name="tag" />  Smart tags</h3>
           <p>This <q>Rendered</q> option is like wrapping your code in a <code>&lt;cfif&gt;</code>. It is much smarter because it is a part of the tags as opposed to wrapping the content. 
 	          <q>Binding</q> outputs data without using <code>&lt;cfoutput&gt;</code> tags.</p>
@@ -52,7 +54,7 @@
 	</b:column>    
 		  
 
-	<b:column span="4" colsm="6" colxs="12">
+	<b:column span="4">
           <h3><b:icon library="awesome" name="cogs" /> Antisamy</h3>
           <p>Most tag attributes are sanitized to protect your site from common injection attacks</p>
           
@@ -60,7 +62,7 @@
 	</b:column>          
 
 	
-	<b:column span="4" colsm="6" colxs="12">
+	<b:column span="4">
             <h3><b:icon library="awesome" name="github" /> Open Source</h3>
             <p>Bootstrap for ColdFusion is released under the MIT License and is maintained at <a target="_blank" href="https://github.com/jmohler1970">GitHub</a>.</p>
             

@@ -2,7 +2,7 @@
 
 
 
-<b:navBar brand="Bootstrap for ColdFusion" fixed="top">
+<b:navBar brand="Bootstrap for ColdFusion" fixed="top" inverse="true" style="background-image : linear-gradient(45deg, ##0A1855 0px, ##DA0024 100%)">
 	<b:navbarLinks>
 	
 		<b:dropMenu value="Getting Started">
