@@ -7,7 +7,7 @@ struct function readProperties(required string propertyfile)		{
 		
 	local.stResult = {};
 	
-	local.stSection = getProfileSections(arguments.propertyfile);
+	local.stSection = getProfileSections(arguments.propertyfile.replace("\", "/", "all"));
   
      
 	for(local.section in local.stSection)	{
@@ -40,6 +40,8 @@ struct function readPHP(required string phpPath)	{
     
 	    
 	for (local.phpFile in local.arDirectory)	{
+		
+		local.phpFile = local.phpFile.replace("\", "/", "all");
 		
 		local.languageKey = local.phpFile.listLast("/").listFirst(".");
 
