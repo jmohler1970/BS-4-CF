@@ -1,0 +1,19 @@
+/* Development */	
+	
+	Programmer:James Mohler
+	Contact: james [dot] mohler [at] me [dot] come
+	From:Orange County, California, USA
+	
+	
+/* 3rd Party Technologies */
+
+jQuery
+jQueryUI
+Bootstrap
+Bootswatch
+Mindmup Bootstrap Wysiwyg
+Bootfaces
+Datatables.net
+Font Awesome
+Select2
+	
