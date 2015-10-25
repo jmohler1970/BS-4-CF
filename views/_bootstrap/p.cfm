@@ -37,8 +37,8 @@ case "start" :
 
 	variables.myClass = "";
 	if(attributes.lead == "lead")		variables.lead = true;
-	if(attributes.lead)				variables.result &= 'lead ';
-	if(attributes.static)			variables.result &= 'form-control-static ';
+	if(attributes.lead)				variables.myClass &= 'lead ';
+	if(attributes.static)			variables.myClass &= 'form-control-static ';
 	if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';
 	if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';
 
@@ -80,7 +80,7 @@ case "end" :
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';	
 	
-	if(attributes.style		!= "")		variables.result &= ' style = "#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")		variables.result &= ' style = "#encodeForHTMLAttribute(attributes.style)#"';
 	if(attributes.tooltip	!= "")		variables.result &=	' title = "#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';

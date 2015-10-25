@@ -67,7 +67,7 @@ case "end" :
 	if(attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(attributes.role		!= "")				variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
 											variables.result &= ' style="width : #encodeForHTMLAttribute(attributes.width)#%;';
-	if(attributes.style		!= "")				variables.result &= ' #encodeForCSS(attributes.style)#';
+	if(attributes.style		!= "")				variables.result &= ' #encodeForHTMLAttribute(attributes.style)#';
 											variables.result &= '"';
 	
 	if(attributes.tooltip    != "")				variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';

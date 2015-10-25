@@ -31,6 +31,7 @@ case "start" :
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
      param attributes.tooltip			= "";
      param attributes.tooltipPosition	= "bottom";
+     param attributes.value			= "";
      
      
      
@@ -61,6 +62,7 @@ case "start" :
 	break;
      
 case "end" :
+	if(attributes.value 	!= "")										thisTag.generatedContent = attributes.value;
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
      if(attributes.key 		!= "" )		{
 																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
@@ -76,7 +78,7 @@ case "end" :
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 	if(attributes.tooltip    != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';           

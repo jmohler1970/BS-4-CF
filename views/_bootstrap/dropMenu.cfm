@@ -38,10 +38,9 @@ case "start" :
      
 case "end" :
 
-	if(attributes.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
+	if(attributes.key 		!= "" )				{
+											attributes.value	= application.geti18n(attributes.key, attributes.placeholder);
+											}	
 
     
 								variables.result &= crlf & '<li class="dropdown';

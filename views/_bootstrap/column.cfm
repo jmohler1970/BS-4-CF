@@ -77,7 +77,7 @@ case "end" :
 	if(attributes.styleClass	!= "")		variables.result &= ' #attributes.styleClass#';
 									variables.result &= '"';
 	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 
 	if(attributes.tooltip	!= "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';

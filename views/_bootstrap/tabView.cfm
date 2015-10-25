@@ -54,7 +54,7 @@ case "end" :
 								variables.result &= '"';								
 	if(attributes.role		!= "")	variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
 	
-	if(attributes.style		!= "")	variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")	variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 								variables.result &= '>';
 								variables.result &= variables.crlf & '<ul class="nav nav-tabs" role="tablist">';
 	// generate tabs
