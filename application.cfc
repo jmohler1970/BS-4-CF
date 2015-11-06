@@ -4,13 +4,13 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-51";
+this.name="bs-4-cf-186";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
 
 variables.framework	=	{
-	home	= "main.home",
+	home	= "docs.home",		// For PlumaCMS, change this to wiki.home or main.home aka login
 	baseURL = 'useCGIScriptName',
 	defaultItem = "home",
 	generateSES = true,
@@ -18,13 +18,19 @@ variables.framework	=	{
 	};
 	
 variables.framework.routes	= [
-	{ "_bootstrap"	= "302:/main/home"		},
-	{ "common"	= "docs/common"		},
-	{ "theme/:id"	= "main/theme/theme/:id"	},
-	{ "theme"		= "main/theme"			}
+	{ "edit/:id"		= "pages/edit/slug/:id"	},
+	{ "edit"			= "pages/edit"			},
+	{ "filedelete"		= "pages/delete"		},
+	{ "pages/home"		= "pages/home"			},
+	{ "_bootstrap"		= "302:/main/home"		},
+	{ "common"		= "docs/common"		},
+	{ "theme/:id"		= "main/theme/theme/:id"	},
+	{ "theme"			= "main/theme"			},
+	{ "wiki/:id"		= "wiki/home/slug/:id"	}
 	];
 	
 	
+
 	
 
 
@@ -33,6 +39,32 @@ variables.framework.routes	= [
 function setupApplication()	{
 	
 	application.initialized = now();
+	
+	local.objAppFile = fileopen(expandpath('./Application.cfc'), 'read');
+	
+	application.GSVERSION = "Version 3.3.5.#right(year(local.objAppFile.lastmodified), 2)#.#month(local.objAppFile.lastmodified)#.#day(local.objAppFile.lastmodified)#";
+fileclose(objAppFile);
+
+
+	// Support for complicated variables. This used to have to be in FW/1
+	application.objFormUtilities = new framework.formUtilities();
+
+
+	// Common variables and paths
+ 	application.GSAUTHOR			= "James Mohler and Web World Inc";
+ 	application.GSSITE_FULL_NAME		= "Pluma CMS";
+ 	application.GSSITE_LINK_BACK_URL	= "http://www.webworldinc.com";
+	
+ 	application.GSROOTPATH 			= getdirectoryfrompath(getBaseTemplatePath());
+ 	application.GSBACKUPSPATH		= application.GSROOTPATH & "backups/";
+ 	application.GSDATAPATH			= application.GSROOTPATH & "data/";
+ 	application.GSDATAOTHERPATH		= application.GSROOTPATH & "data/other/";
+ 	application.GSTHUMBNAILPATH		= application.GSROOTPATH & "data/thumbs/";
+ 	application.GSPAGEPATH			= application.GSROOTPATH & "data/pages/";
+ 	application.GSDATAUPLOADPATH		= application.GSROOTPATH & "data/uploads/";
+ 	application.GSUSERSPATH 			= application.GSROOTPATH & "data/users/";
+ 	
+	
 	
 	application.Bootstrap = {
 				
@@ -51,7 +83,7 @@ function setupApplication()	{
 		langRoot			= expandPath("vendor/lang") & "/",
 		arLang			= [],
 	
-		actionRoot 		= cgi.script_name,
+		actionRoot 		= "http://" & cgi.server_name & (cgi.server_port == 80 ? "" : ":" & cgi.server_port)  & cgi.script_name & "/",
 		validLook			= ["", "link", "default", "primary", "success", "info", "warning", "danger"], // There does not guarantee they are valid	
 		
 		iconLibrary		= {"default" = "glyphicon glyphicon-", "awesome" = "fa fa-", "jquery-ui" = "ui-icon ui-icon-"}, 		// be sure to include ending dashes
@@ -71,7 +103,7 @@ function setupApplication()	{
 		};
 	
 	
-
+	application.GSConfig	= new model.services.settings().getWebsite();
 
 		
 		
@@ -112,8 +144,10 @@ function setupApplication()	{
 	
 function setupSession()	{
 	
-	session.themeX = "default";
-	session.lang	= "en_US";
+	session.GSUser	= new model.services.settings().getUser();
+	
+	session.themeX = application.GSConfig.template;
+	session.lang	= session.GSUser.lang;
 	}	
 
 
@@ -163,6 +197,11 @@ function setupRequest()	{
 
 	
 function after()	{
+	
+	
+	
+	if ( isDefined('form') ) rc.Append(application.objFormUtilities.buildFormCollections(form));
+		
 		
 	if(rc.keyExists("lang"))	{
 		session.lang = rc.lang;
