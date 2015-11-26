@@ -4,7 +4,7 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-269";
+this.name="bs-4-cf-270";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -29,7 +29,7 @@ variables.framework.routes	= [
 	{ "pages/home"			= "pages/home"			},
 	{ "_bootstrap"			= "302:/main/home"		},
 	{ "common"			= "docs/common"		},
-	{ "bootswatch/:id"		= "bootswatch/home/theme/:id"	},
+	{ "bootswatch/:id"		= "bootswatch/home/bootswatch/:id"	},
 	{ "wiki/:id"			= "wiki/home/slug/:id"	}
 	];
 	
