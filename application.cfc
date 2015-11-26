@@ -4,7 +4,7 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-186";
+this.name="bs-4-cf-269";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -18,20 +18,22 @@ variables.framework	=	{
 	};
 	
 variables.framework.routes	= [
-	{ "edit/:id"		= "pages/edit/slug/:id"	},
-	{ "edit"			= "pages/edit"			},
-	{ "filedelete"		= "pages/delete"		},
-	{ "pages/home"		= "pages/home"			},
-	{ "_bootstrap"		= "302:/main/home"		},
-	{ "common"		= "docs/common"		},
-	{ "theme/:id"		= "main/theme/theme/:id"	},
-	{ "theme"			= "main/theme"			},
-	{ "wiki/:id"		= "wiki/home/slug/:id"	}
+	{ "backups/delete/:id"	= "backups/delete/slug/:id"},
+	{ "backups/edit/:id"	= "backups/edit/slug/:id"},
+	{ "backups/restore/:id"	= "backups/restore/slug/:id"},
+	{ "edit/:id"			= "pages/edit/slug/:id"	},
+	{ "theme"				= "theme/home"			},
+	{ "components"			= "theme/components"	},
+	{ "edit"				= "pages/edit"			},
+	{ "filedelete"			= "pages/delete"		},
+	{ "pages/home"			= "pages/home"			},
+	{ "_bootstrap"			= "302:/main/home"		},
+	{ "common"			= "docs/common"		},
+	{ "bootswatch/:id"		= "bootswatch/home/theme/:id"	},
+	{ "wiki/:id"			= "wiki/home/slug/:id"	}
 	];
 	
-	
 
-	
 
 
 
@@ -46,25 +48,25 @@ function setupApplication()	{
 fileclose(objAppFile);
 
 
-	// Support for complicated variables. This used to have to be in FW/1
-	application.objFormUtilities = new framework.formUtilities();
-
-
 	// Common variables and paths
  	application.GSAUTHOR			= "James Mohler and Web World Inc";
- 	application.GSSITE_FULL_NAME		= "Pluma CMS";
- 	application.GSSITE_LINK_BACK_URL	= "http://www.webworldinc.com";
+ 	application.GSSITE_FULL_NAME		= "PlumaCMS";
+ 	application.GSSITE_LINK_BACK_URL	= "https://github.com/jmohler1970";
 	
  	application.GSROOTPATH 			= getdirectoryfrompath(getBaseTemplatePath());
  	application.GSBACKUPSPATH		= application.GSROOTPATH & "backups/";
  	application.GSDATAPATH			= application.GSROOTPATH & "data/";
  	application.GSDATAOTHERPATH		= application.GSROOTPATH & "data/other/";
  	application.GSTHUMBNAILPATH		= application.GSROOTPATH & "data/thumbs/";
- 	application.GSPAGEPATH			= application.GSROOTPATH & "data/pages/";
+ 	application.GSDATAPAGESPATH		= application.GSROOTPATH & "data/pages/";
  	application.GSDATAUPLOADPATH		= application.GSROOTPATH & "data/uploads/";
  	application.GSUSERSPATH 			= application.GSROOTPATH & "data/users/";
+ 	// End Pluma
  	
 	
+	// Support for complicated variables. This used to have to be in FW/1
+	application.objFormUtilities = new framework.formUtilities();
+
 	
 	application.Bootstrap = {
 				
@@ -91,8 +93,9 @@ fileclose(objAppFile);
 		
 		// used by b:outputStyleSheet
 		styleSheetLibrary	= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",
-							 local  = replace(cgi.script_name, "/index.cfm", "") & "/assets/",
-							 vendor = replace(cgi.script_name, "/index.cfm", "") & "/vendor/"
+							 local  		= replace(cgi.script_name, "/index.cfm", "") & "/assets/",
+							 innovation  	= replace(cgi.script_name, "/index.cfm", "") & "/layouts/innovation/",
+							 vendor 		= replace(cgi.script_name, "/index.cfm", "") & "/vendor/"
 							 },
 							 
 		// used by b:outputScript
@@ -146,7 +149,7 @@ function setupSession()	{
 	
 	session.GSUser	= new model.services.settings().getUser();
 	
-	session.themeX = application.GSConfig.template;
+	session.bootswatch = "default";
 	session.lang	= session.GSUser.lang;
 	}	
 
@@ -208,9 +211,9 @@ function after()	{
 		}
 		
 
-	if(rc.keyExists("theme") and rc.theme != "assets")	{
+	if(rc.keyExists("bootswatch") and rc.bootswatch != "assets")	{
 		
-		session.themeX = rc.theme;
+		session.bootswatch = rc.bootswatch;
 		}
 		
 	

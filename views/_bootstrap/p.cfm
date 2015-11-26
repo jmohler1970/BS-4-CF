@@ -73,7 +73,7 @@ case "end" :
 
 									variables.result &= variables.crlf;
 	if(variables.myClass	== "")		variables.result &= '<p';
-	if(variables.myClass	!= "")		variables.result &= '<p class = "#encodeForHTMLAttribute(variables.myClass)#"';
+	if(variables.myClass	!= "")		variables.result &= '<p class = "#encodeForHTMLAttribute(variables.myClass.trim())#"';
 
 
 	if(attributes.id		!= "")		variables.result &= ' id = "#encodeForHTMLAttribute(attributes.id)#"';

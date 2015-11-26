@@ -40,7 +40,13 @@
 			<td>Should active class get added?</td>
 			<td>Must evaluate to boolean</td>
 		</tr>
-
+		<tr>
+			<td></td>
+			<td>buttonPart</td>
+			<td>false</td>
+			<td>This dropdown is a part of a Bootstrap button. It is not a part of a navbar. Button in this context can be 
+				<code>b:commandLink</code>, <code>b:commandButton</code>, or <code>b:button</code></td>
+			<td>Must evaluate to boolean</td>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
@@ -70,6 +76,13 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
+		<tr>
+			<td><b:label>Bootstrap</b:label></td>
+			<td>look</td>
+			<td>default</td>
+			<b:td key="common" />
+			<td></td>
+		</tr>	
 		<tr>
 			<td> <b:label look="success">i18n</b:label></td>
 			<td>placeholder</td>

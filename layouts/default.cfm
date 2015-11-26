@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<cfswitch expression="#session.themeX#">
+<cfswitch expression="#session.bootswatch#">
 	<cfcase value="default">
 		<b:outputStylesheet />
 	</cfcase>
@@ -24,7 +24,7 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
 	</cfcase>
 	<cfdefaultcase>
-		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/<cfoutput>#lcase(session.themeX)#</cfoutput>/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/<cfoutput>#lcase(session.bootswatch)#</cfoutput>/bootstrap.min.css" rel="stylesheet">
 	</cfdefaultcase>	
 </cfswitch>
 
@@ -39,12 +39,12 @@
 
 <!--- bootstrap.wysihtml5 --->
 <b:outputStyleSheet library="vendor" name="bootstrap-wysiwyg.css" />
-
+<b:outputStyleSheet library="vendor" name="material.css" />
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 
-<cfswitch expression="#session.themeX#">
+<cfswitch expression="#session.bootswatch#">
 	<cfcase value="4alpha">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 	</cfcase>
@@ -53,7 +53,7 @@
 	</cfdefaultcase>
 </cfswitch>		
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.8/js/dataTables.bootstrap.min.js"></script>
@@ -86,7 +86,38 @@ padding-top: 50px;
 	border:1px solid rgba(86,61,124,.2)
 }
 
-#editor {overflow:scroll; max-height:300px}
+
+#menu-order {
+	list-style: none;
+	margin: 0 0 25px 0;
+}
+
+#menu-order li {
+	text-shadow: 1px 1px solid rgba(255,255,255,.3);
+	cursor: move;
+	display: block;
+	margin: 2px 0;
+	border: 1px solid #eee;
+	background: #fbfbfb;
+	padding: 5px 10px;
+}
+
+#menu-order li:hover {
+	border: 1px solid #ccc;
+	background: #f6f6f6;
+}
+
+#menu-order li em {
+	float: right;
+	color: #666;
+}
+
+#menu-order li.placeholder-menu {
+	height: 18px;
+	background: #FFB164;
+	border: 1px solid #FF9933;
+}
+
 </style>
 
 
@@ -101,20 +132,12 @@ padding-top: 50px;
 	<b:container>
 	
 	
-	<cfsavecontent variable="menu">  
-		<cfinclude template="menu.cfm">
-	</cfsavecontent>
-	
 		
 	<cfoutput>
-		#menu.replacelist("~/", cgi.script_name & "/")#
-	
-		#body.replacelist("~/", cgi.script_name & "/")#
+		#body.replacelist("~/", application.Bootstrap.actionRoot)#  <!--- make sure that inner layouts have all ready done the escape--->
 	</cfoutput>
 	
-	
-	<cfinclude template="footer.cfm">
-	      
+     
 	</b:container>
 </body>
 

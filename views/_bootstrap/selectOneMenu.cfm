@@ -21,14 +21,17 @@ case "start" :
 	
 	if(structKeyExists(attributes, "qryOption")) thisTag.qryOption = attributes.qryOption;
   
+	param attributes.array			= [];
 	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.fieldSize		= "";
+	param attributes.from			= "";
 	param attributes.help			= "";
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.name;					// required field
 	param attributes.key			= "";
+	param attributes.list			= "";
 	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
@@ -40,6 +43,7 @@ case "start" :
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.to				= "";
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 
@@ -48,6 +52,9 @@ case "start" :
 	if(attributes.readonly == "readonly")	attributes.readonly = true;
 	if(attributes.required == "required")	attributes.required = true;
 		
+	if(attributes.list != "")			attributes.array.append(attributes.list.ListToArray(), true);
+	
+
 	
 	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
 	variables.arAttrSeries = [];
@@ -98,6 +105,29 @@ case "end" :
 	
 									variables.result &= ' >';
 								
+    	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean		
+
+	// range genarator
+	if(isnumeric(attributes.from) && isnumeric(attributes.to) && attributes.from < attributes.to)	{
+		for (variables.i = attributes.from; variables.i <= attributes.to; variables.i++)	{
+										variables.result &= variables.crlf & '<option value="#variables.i#"';
+										if (attributes.selectedValue == variables.i) variables.result &= ' selected="selected"';
+										variables.result &= '>' & variables.i & '</option>';
+										}
+									}
+	// end range generator					
+	// array and list generator
+	if(!attributes.array.isEmpty())		{
+		for (variables.i in attributes.array)	{
+										variables.result &= variables.crlf & '<option value="#variables.i#"';
+										if (attributes.selectedValue == variables.i) variables.result &= ' selected="selected"';
+										variables.result &= '>' & variables.i & '</option>';
+										}
+										
+									}
+
+
 	for(variables.myRow = 1; variables.myRow <= thisTag.qryOption.recordcount; variables.myRow++)	{							
 									variables.result &= '<option';
 									variables.result &= ' value="#thisTag.qryOption.value[variables.myRow]#"';
@@ -108,8 +138,7 @@ case "end" :
 		} // end for						
     
     
-    	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+						
 
 		
 	

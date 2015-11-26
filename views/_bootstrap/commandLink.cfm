@@ -20,6 +20,7 @@ case "start" :
 
 	param attributes.action			= "";	// powered by application.Bootstrap.actionRoot;
 	param attributes.binding			= "";
+	param attributes.bold			= false;
 	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.dropdown		= false;
@@ -44,6 +45,7 @@ case "start" :
 	param attributes.target			= "";
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
+	param attributes.tooltipKey		= "";
 	param attributes.tooltipPosition 	= "bottom";
 	param attributes.value			= "";
 	
@@ -80,15 +82,16 @@ case "end" :
 	
 	if (attributes.value != "")											thisTag.generatedContent = attributes.value;	
 	if (attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
-	if(attributes.key 		!= "" )		{
+	if (attributes.key 		!= "")		{
 																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
 																	attributes.isSafeHTML 	= true;				
 																	}	
-	
+	if (attributes.tooltipKey != "")										attributes.tooltip 		= application.geti18n(attributes.key, attributes.tooltipPlaceholder);
 
 	// no target of any kind was set AND this is not an anchor
 	if ((attributes.action != "" || attributes.href == "") && attributes.id == "")	attributes.href = application.Bootstrap.actionRoot & attributes.action;
 
+	if (attributes.bold)						variables.result &= '<b>';
 	if (attributes.look == 'link')				variables.result &= '<a class="';				// we don't do anything special so that link look like links
 	if (attributes.look != 'link')				variables.result &= '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())#';
 	if (attributes.outline)						variables.result &= "-outline";
@@ -133,7 +136,7 @@ case "end" :
 
 	if (attributes.dropdown)						variables.result &= '<span class="caret"></span>';
 											variables.result &= '</a>';
-											
+	if (attributes.bold)						variables.result &= '</b>';										
 											
 	if (attributes.cacheid != "")					CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);										
 

@@ -18,7 +18,7 @@
             <h3><b:icon library="awesome" name="file-o" /> Easy to Setup</h3>
             <p>Simply download the custom tag library, setup some default options and <code>&lt;cfimport&gt;</code> wherever you need it.</p>
             
-            <p><b:commandLink href="~/main/setup" value="Learn More" look="primary" /></p>
+            <p><b:commandLink href="~/docs/setup" value="Learn More" look="primary" /></p>
 	</b:column>
 	
 		 
@@ -49,18 +49,28 @@
           <h3><b:icon library="awesome" name="tag" />  Smart tags</h3>
           <p>This <q>Rendered</q> option is like wrapping your code in a <code>&lt;cfif&gt;</code>. It is much smarter because it is a part of the tags as opposed to wrapping the content. 
 	          <q>Binding</q> outputs data without using <code>&lt;cfoutput&gt;</code> tags.</p>
+	     
+	     <p>Includes Antisamy to protect your site from common injection attacks</p>
           
           <p><b:commandLink href="~/common" value="Learn More" look="primary" /></p>
 	</b:column>    
+		
+	<b:column span="4">
+     	<h3><b:icon library="awesome" name="cogs" /> PlumaCMS</h3>	
+		 
+		<p>Built-in content management system which provides all kinds of examples</p>
+          
+          <p><b:commandLink href="~/login" value="Login into Pluma" look="primary" /></p> 
+	</b:column>
 		  
-
+	<!---
 	<b:column span="4">
           <h3><b:icon library="awesome" name="cogs" /> Antisamy</h3>
           <p>Most tag attributes are sanitized to protect your site from common injection attacks</p>
           
           <p><b:commandLink href="~/main/antisamy" value="Learn More" look="primary" /></p>
 	</b:column>          
-
+	--->
 	
 	<b:column span="4">
             <h3><b:icon library="awesome" name="github" /> Open Source</h3>

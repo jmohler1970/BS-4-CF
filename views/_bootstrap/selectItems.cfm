@@ -50,7 +50,7 @@ case "end" :
 		QueryAddRow( thisTag.Parent.thisTag.qryOption);
 		QuerySetCell(thisTag.Parent.thisTag.qryOption, "disabled", 	attributes.disabled);
 		QuerySetCell(thisTag.Parent.thisTag.qryOption, "display", 	evaluate("attributes.query.#attributes.displayBinding#[#variables.myRow#]"));
-		QuerySetCell(thisTag.Parent.thisTag.qryOption, "selected",	(attributes.selected || ArrayContains(attributes.selectedValue, variables.myValue)));
+		QuerySetCell(thisTag.Parent.thisTag.qryOption, "selected",	(attributes.selected || attributes.selectedValue.contains(variables.myValue)));
 		
 		
 		if (attributes.groupBinding	!= "")		QuerySetCell(thisTag.Parent.thisTag.qryOption, "group", 	evaluate("attributes.query.#attributes.groupBinding#[#variables.myRow#]"));
