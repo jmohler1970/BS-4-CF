@@ -98,7 +98,7 @@ case "end" :
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#variables.myAttr.value#"';
 
 	if(attributes.role		!= "")				variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
-	if(attributes.style		!= "")				variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")				variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 	if(attributes.tooltip	!= "")				variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.disabled)						variables.result &= ' disabled="disabled"';
 											variables.result &= '>';

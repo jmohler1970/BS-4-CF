@@ -18,6 +18,7 @@ case "start" :
   
 	param attributes.binding			= "";
 	param attributes.cacheid			= "";
+	param attributes.footer			= "";
      param attributes.id				= "";
      param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
     	param attributes.key			= "";
@@ -73,7 +74,7 @@ case "end" :
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 		
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 	if(attributes.tooltip    != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';               
@@ -82,7 +83,7 @@ case "end" :
 	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
 	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
-									
+	if(attributes.footer	!= "" )		variables.result &= '<footer>' & attributes.footer & '</footer>';								
 									variables.result &= '</blockquote>';
      
      

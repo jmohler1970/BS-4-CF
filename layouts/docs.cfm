@@ -2,17 +2,17 @@
 
 
 
-<b:navBar brand="Bootstrap for ColdFusion" fixed="top">
+<b:navBar brand="Bootstrap for ColdFusion" fixed="top" inverse="true" style="background-image : linear-gradient(45deg, ##0A1855 0px, ##DA0024 100%)">
 	<b:navbarLinks>
 	
 		<b:dropMenu value="Getting Started">
 			<b:navLink key="Introduction" href="~/docs/getting_started" active="#IIF(getItem() EQ 'getting_started', 1, 0)#" />
-			<b:navLink value="Setup" href="~/main/setup" />
-			<b:navLink value="I18n" href="~/main/i18n" />
-			
+			<b:navLink value="Setup" href="~/docs/setup" />
+			<b:navLink value="I18n" href="~/docs/i18n" />
+			<b:navLink value="Directory Structure" href="~/docs/structure" />
 			<b:navLink value="Smart tags & common features" href="~/common" />
-			<b:navLink value="Antisamy" href="~/main/antisamy" />
-			<b:navLink value="Cacheing" href="~/main/cache" />
+			<b:navLink value="Antisamy" href="~/docs/antisamy" />
+			<b:navLink value="Cacheing" href="~/docs/cache" />
 		
 			<!---
 			<b:navLink />
@@ -59,16 +59,16 @@
 
      	
 		<b:dropMenu value="Themes" active="#IIF(getItem() EQ 'theme', 1, 0)#">
-          	<b:navLink value="Default" href="~/theme/default" />
+          	<b:navLink value="Default" href="~/bootswatch/default" />
 			<b:navLink />
 			<b:navLink header="By Bootswatch"/>
 			<cfloop index="rc.i" list="Cerulean,Cosmo,Cyborg,Darkly,Flatly,Journal,Lumen,Paper,Readable,Sandstone,Simplex,Slate,Spacelab,Superhero,United,Yeti">
-				<b:navLink href="~/theme/#rc.i#" binding="i" disabled="#IIF(session.themeX EQ rc.i , 1, 0)#" />
+				<b:navLink href="~/bootswatch/#rc.i#" binding="i" disabled="#IIF(session.bootswatch EQ rc.i , 1, 0)#" />
 			</cfloop>		
 		</b:dropMenu>
 		
 		
-		<b:dropMenu value="Current Language : #session.lang#" active="#ArrayContains(['lang'], getSection())#">
+		<b:dropMenu value="Current Language : #application.lang#" active="#ArrayContains(['lang'], getSection())#">
 			<cfloop index="lang" list="#application.Bootstrap.arLang.ToList()#">
 			    	<b:navLink value="#lang#"	href="?lang=#lang#" />
 			</cfloop>
@@ -81,3 +81,7 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+
+
+<cfoutput>#body#</cfoutput>
+

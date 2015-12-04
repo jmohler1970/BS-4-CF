@@ -51,13 +51,19 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
-		
 		<tr>
 			<td></td>
 			<td>data-*</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>footer</td>
+			<td>(none)</td>
+			<td>For <code>&lt;b:blockquote&gt;</code> only. This generates footer content</td>
+			<td><b:label look="danger">No</b:label> </td>
 		</tr>
 		<tr>
 			<td></td>
@@ -218,7 +224,7 @@
 <b:h6>I am h6. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:h6>
 <b:p>I am p. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:p>
 <b:p lead="true">I am p with lead. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:p>
-<b:blockquote>I am blockquote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:blockquote>
+<b:blockquote footer="I am a footer in a blockquote">I am blockquote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <small>Sed pretium magna in sem pharetra.</small></b:blockquote>
 
 
 <h3>&lt;b:outputText&gt; Example</h3>
@@ -353,6 +359,7 @@
 			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
 			<td>See generatedContent</td>
 		</tr>
+
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>

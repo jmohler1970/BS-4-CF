@@ -55,9 +55,7 @@
 </b:panel>
 
 
-<h2>Examples
-
-
+<h2>Examples</h2>
 <b:p text="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</b:p>
 <b:p text="primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</b:p>
 <b:p text="warning">Etiam porta sem malesuada magna mollis euismod.</b:p>
@@ -68,11 +66,67 @@
 
 <h2>Backgrounds</h2>
 
+<cfparam name="rc.look" default="primary">
+<cfparam name="rc.content" default="Tellus ac cursus commodo, tortor mauris nibh.">
 
 
-<b:p styleClass="bg-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</b:p>
-<b:p styleClass="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</b:p>
-<b:p styleClass="bg-warning">Etiam porta sem malesuada magna mollis euismod.</b:p>
-<b:p styleClass="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</b:p>
-<b:p styleClass="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</b:p>
-<b:p styleClass="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</b:p>
+<b:well>
+
+	<form action="?" method="post" class="form-horizontal">
+
+		<b:formGroup>
+			<label class="col-sm-3 control-label">Content to be echoed</label>
+			
+			<b:column span="9">
+				<cfoutput>
+					<textarea class="form-control" name="content" rows="5">#encodeForHTMLAttribute(rc.content)#</textarea>
+				</cfoutput>
+			</b:column>	
+		</b:formGroup>
+		
+
+			
+  		
+		<b:formGroup>
+			<b:column offset="3" span="9">
+				<b:commandButton value="Submit" />
+			</b:column>
+		</b:formGroup>		
+	</form>
+</b:well>
+
+
+<h3>Bootstrap</h3>
+<p>These come built-in with Bootstrap. These tend to be low key and have names that reflect their function. On this sample site, these vary based on the theme.</p>
+
+<b:row>
+<cfloop index="styleClass" list="muted,primary,warning,danger,success">
+	<b:column span="4">
+		<b:blockquote styleClass="bg-#styleClass#" binding="content" footer="#styleClass#" />
+	</b:column>
+</cfloop>
+
+</b:row>
+
+<h3>Material Design</h3>
+<p>This sample site also comes with material design classes. These are very bright and have names that reflect their color. These colors are not the same as html colors though. On this sample site, these do not vary by theme.</p>
+
+<b:row>
+
+<cfloop index="styleClass" list="#rc.lstcolor#">
+	<b:column span="3">
+		<b:blockquote styleClass="#styleClass.trim()#" binding="content" footer="#styleClass.trim()#" />
+	</b:column>
+	
+	<b:column span="3">
+		<b:blockquote styleClass="#styleClass.trim()# lighten-4" binding="content" footer="#styleClass.trim()# lighten-4" />
+	</b:column>	
+</cfloop>
+
+
+</b:row>
+
+
+
+
+

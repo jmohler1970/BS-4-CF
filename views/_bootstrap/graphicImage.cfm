@@ -92,7 +92,7 @@ case "end" :
 									}	
 	if(attributes.height	!= "")		variables.result &= ' height : #attributes.height#px;';
 	if(attributes.width		!= "")		variables.result &= ' width  : #attributes.width#px;';
-									variables.result &= ' #encodeForCSS(attributes.style)#"';
+									variables.result &= ' #encodeForHTMLAttribute(attributes.style)#"';
 	// end style
 	
 									variables.result &= ' alt="#encodeForHTMLAttribute(attributes.alt)#"';

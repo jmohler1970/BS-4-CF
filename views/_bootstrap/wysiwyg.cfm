@@ -176,7 +176,10 @@
 	if(attributes.useDefaultButtons)		variables.result &= variables.defaultButtons;
 	
 		
-									variables.result &= '<div id="#encodeForHTMLAttribute(attributes.id)#" class="wysiwyg #encodeForHTMLAttribute(attributes.styleClass)#">';
+									variables.result &= '<div id="#encodeForHTMLAttribute(attributes.id)#" class="wysiwyg #encodeForHTMLAttribute(attributes.styleClass)#"';
+	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
+									variables.result &= ' >';
+
 									variables.result &= getSafeHTML(attributes.htmlPlaceholder);
 									variables.result &= '</div>';
 									

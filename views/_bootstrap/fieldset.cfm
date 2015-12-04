@@ -43,7 +43,7 @@ case "start" :
 case "end" :
 
 	if(attributes.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+																	attributes.legend	= application.geti18n(attributes.key, attributes.placeholder);
 																	attributes.isSafeHTML 	= true;				
 																	}	
 
@@ -52,7 +52,7 @@ case "end" :
 	if(attributes.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
 									variables.result &= '"';
 	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 	if(attributes.disabled)				variables.result &= ' disabled="disabled"';
 									variables.result &= '>';
 	if(attributes.legend	!= "")		variables.result &= '<legend>#encodeForHTML(attributes.legend)#</legend>';
