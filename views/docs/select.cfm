@@ -860,7 +860,11 @@ disabled,display,group,id,look,value,selected,tooltip
 		</b:column>
 		
 		<b:column colmd="3">
-			<b:label binding="color" look="blank" styleClass="material-#rc.color#" />
+			<b:label binding="color" look="blank" styleClass="#rc.color#" />
+		</b:column>
+		
+		<b:column colmd="3">
+			<b:label binding="color" look="blank" styleClass="#rc.color# lighten-4" />
 		</b:column>
 	</b:formgroup>
 

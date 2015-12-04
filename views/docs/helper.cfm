@@ -67,7 +67,7 @@
 <h2>Backgrounds</h2>
 
 <cfparam name="rc.look" default="primary">
-<cfparam name="rc.content" default="Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.">
+<cfparam name="rc.content" default="Tellus ac cursus commodo, tortor mauris nibh.">
 
 
 <b:well>
@@ -97,7 +97,7 @@
 
 
 <h3>Bootstrap</h3>
-<p>These come built-in with Bootstrap. These tend to be low key and have names that reflect their function
+<p>These come built-in with Bootstrap. These tend to be low key and have names that reflect their function. On this sample site, these vary based on the theme.</p>
 
 <b:row>
 <cfloop index="styleClass" list="muted,primary,warning,danger,success">
@@ -109,13 +109,17 @@
 </b:row>
 
 <h3>Material Design</h3>
-<p>This sample site also comes with material design classes. These are very bright and have names that reflect their color. These colors are not the same as html colors though</p>
+<p>This sample site also comes with material design classes. These are very bright and have names that reflect their color. These colors are not the same as html colors though. On this sample site, these do not vary by theme.</p>
 
 <b:row>
 
 <cfloop index="styleClass" list="#rc.lstcolor#">
-	<b:column span="4">
-		<b:blockquote styleClass="material-#styleClass.trim()#" binding="content" footer="#styleClass.trim()#" />
+	<b:column span="3">
+		<b:blockquote styleClass="#styleClass.trim()#" binding="content" footer="#styleClass.trim()#" />
+	</b:column>
+	
+	<b:column span="3">
+		<b:blockquote styleClass="#styleClass.trim()# lighten-4" binding="content" footer="#styleClass.trim()# lighten-4" />
 	</b:column>	
 </cfloop>
 

@@ -4,13 +4,13 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-270";
+this.name="bs-4-cf-282";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
 
 variables.framework	=	{
-	home	= "docs.home",		// For PlumaCMS, change this to wiki.home or main.home aka login
+	home	= "docs.home",		// For PlumaCMS, change this to wiki.home or main.home aka login OR wiki.home
 	baseURL = 'useCGIScriptName',
 	defaultItem = "home",
 	generateSES = true,
@@ -18,19 +18,23 @@ variables.framework	=	{
 	};
 	
 variables.framework.routes	= [
+	// PlumaCMS
 	{ "backups/delete/:id"	= "backups/delete/slug/:id"},
 	{ "backups/edit/:id"	= "backups/edit/slug/:id"},
 	{ "backups/restore/:id"	= "backups/restore/slug/:id"},
-	{ "edit/:id"			= "pages/edit/slug/:id"	},
-	{ "theme"				= "theme/home"			},
 	{ "components"			= "theme/components"	},
+	{ "edit/:id"			= "pages/edit/slug/:id"	},
 	{ "edit"				= "pages/edit"			},
 	{ "filedelete"			= "pages/delete"		},
+	{ "logout"			= "login/logout"		},
 	{ "pages/home"			= "pages/home"			},
+	{ "wiki/:id"			= "wiki/home/slug/:id"	},
+	
+	// documentation
 	{ "_bootstrap"			= "302:/main/home"		},
 	{ "common"			= "docs/common"		},
-	{ "bootswatch/:id"		= "bootswatch/home/bootswatch/:id"	},
-	{ "wiki/:id"			= "wiki/home/slug/:id"	}
+	{ "theme"				= "theme/home"			},
+	{ "bootswatch/:id"		= "bootswatch/home/bootswatch/:id"	}
 	];
 	
 
@@ -115,9 +119,9 @@ fileclose(objAppFile);
 		if (!isArray(arguments.placeholder)) arguments.placeholder = [arguments.placeholder];
 		
 		
-		if (CacheIdExists(session.lang, application.Bootstrap.cache.language))	{
+		if (CacheIdExists(application.lang, application.Bootstrap.cache.language))	{
 			
-			local.stLang = cacheGet(session.lang, application.Bootstrap.cache.language);
+			local.stLang = cacheGet(application.lang, application.Bootstrap.cache.language);
 	
 			
 			
@@ -139,7 +143,8 @@ fileclose(objAppFile);
 		}; // end function
 	 		
 		
-		
+	// Language control
+	application.lang = "en_US"; // needs to be smarter		
 		
 		
 	} // end setupApplication
@@ -147,10 +152,9 @@ fileclose(objAppFile);
 	
 function setupSession()	{
 	
-	session.GSUser	= new model.services.settings().getUser();
+	session.authenticated = false;
 	
 	session.bootswatch = "default";
-	session.lang	= session.GSUser.lang;
 	}	
 
 
@@ -207,7 +211,7 @@ function after()	{
 		
 		
 	if(rc.keyExists("lang"))	{
-		session.lang = rc.lang;
+		application.lang = rc.lang;
 		}
 		
 

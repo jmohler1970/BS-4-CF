@@ -68,7 +68,7 @@
 		</b:dropMenu>
 		
 		
-		<b:dropMenu value="Current Language : #session.lang#" active="#ArrayContains(['lang'], getSection())#">
+		<b:dropMenu value="Current Language : #application.lang#" active="#ArrayContains(['lang'], getSection())#">
 			<cfloop index="lang" list="#application.Bootstrap.arLang.ToList()#">
 			    	<b:navLink value="#lang#"	href="?lang=#lang#" />
 			</cfloop>

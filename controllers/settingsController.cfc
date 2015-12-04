@@ -15,7 +15,7 @@ void function home(required struct rc) output="false"	{
 		settingsService.setWebsite(rc);
 		settingsService.setUser(rc);
 		
-		session.lang = rc.lang;
+		application.lang = rc.lang;
 		} // end post
 
 	rc.append(settingsService.getWebsite());

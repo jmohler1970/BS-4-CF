@@ -18,14 +18,14 @@
 			<b:fieldset key="Login">
 	
               		<b:formGroup>
-					<label for="inputEmail" class="col-lg-4 control-label">Email</label>
+					<label for="inputUser" class="col-lg-4 control-label"><b:outputText key="username" /></label>
 					<div class="col-lg-8">
-						<input type="text" class="form-control" name="email" placeholder="Email" required="required" />
+						<input type="text" class="form-control" name="usr" placeholder="" required="required" />
 					</div>
 				</b:formGroup>
                   
 				<b:formGroup>	
-					<label for="inputPassword" class="col-lg-4 control-label">Password</label>
+					<label for="inputPassword" class="col-lg-4 control-label"><b:outputText key="password" /></label>
 					<div class="col-lg-8">
 						<input type="password" class="form-control" name="pwd" placeholder="Password" required="required" />
 					</div>
@@ -37,10 +37,11 @@
 				<div class="col-lg-4">
 			
 				</div>
-				<div class="col-lg-8">
+				<div class="col-lg-4">
 					<b:commandButton key="Login" />
 				</div>
-			</b:formGroup>		
+
+			</b:formGroup>	
 
 		</form>
 		
@@ -48,6 +49,18 @@
 	</b:column>
 </b:row>
 
+
+<b:row>
+	<b:column span="2" offset="4">
+		<b:commandLink key="BACK_TO_WEBSITE" href="~/wiki" />
+	</b:column>
+			
+	<b:column span="2">
+		<b:commandLink key="FORGOT_PWD" href="~/resetpassword" />
+	</b:column>	
+</b:row>
+
+
 <cfif isDebugMode()>
-	<b:alert>Email is james.mohler@me.com, Password is admin123</b:alert>
+	<b:alert>Username is admin, Password is admin123</b:alert>
 </cfif>	

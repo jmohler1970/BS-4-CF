@@ -2,7 +2,7 @@ component	{
 	
 variables.Components= application.GSDATAOTHERPATH & "components.xml";
 variables.Website 	= application.GSDATAOTHERPATH & "website.xml";
-variables.Users 	= application.GSUSERSPATH 	& "admin.xml";
+
 	
 	
 
@@ -63,17 +63,17 @@ void function setWebsite(required struct rc)	{
 	local.xmlOther	&= "</item>";
 		
 		
-	FileWrite(variables.Settings, local.xmlOther);
+	FileWrite(variables.Website, local.xmlOther);
 	}
 	
 
 
 	
 	
-struct function getUser() output="false"	{
+struct function getUser(string usr = "admin") output="false"	{
 	
 		
-	local.xmlUser = xmlParse(FileRead(variables.users));
+	local.xmlUser = xmlParse(FileRead(application.GSUSERSPATH & arguments.usr & ".xml"));
 	
 	return	{
 		usr	 	= local.xmlUser.item.usr.xmlText,
@@ -88,10 +88,18 @@ struct function getUser() output="false"	{
 	}	
 	
 	
+boolean function doLogin(usr, pwd) output="false"	{
+	
+	local.stUser = this.getUser(arguments.usr);
+	
+	return (arguments.usr == local.stUser.usr && hash(arguments.pwd) ==	local.stUser.pwd || local.stUser.pwd == "")	? true : false;
+	}
+	
+	
 	
 void function setUser(required struct rc)	{
 	
-	local.oldValue = this.getUser();
+	local.oldValue = this.getUser(rc.usr);
 	
 	if (rc.sitepwd != "" && rc.sitepwd == rc.sitepwd_confirm)	{
 		local.pwd = hash(rc.sitepwd);
@@ -113,25 +121,12 @@ void function setUser(required struct rc)	{
 	local.xmlOther	&= "</item>";
 		
 		
-	FileWrite(variables.users, local.xmlOther);
+	FileWrite(application.GSUSERSPATH & rc.usr & ".xml", local.xmlOther);
 	}	
 	
 	
 
-string function doLogin(required struct rc)	{
-	
-	local.stUser = this.getUser();
-	
-	if(local.stUser.email == rc.email && (local.stUser.pwd == hash(rc.pwd) || local.stUser.pwd == "")) {
-		return true;
-		}
-		
-	//FileWrite();	
-		
-	return false;
-	}	
-	
-	
+
 	
 void function flushCache()	{
 	

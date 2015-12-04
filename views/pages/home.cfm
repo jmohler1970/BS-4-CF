@@ -55,7 +55,4 @@
 </cfoutput>
 </tbody>
 </b:table>
-	
-	
-<cfdump var="#rc#">	
-	
+
