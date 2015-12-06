@@ -71,7 +71,7 @@ case "end" :
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';                 
+	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';                 
 	if(attributes.tooltip    != "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';

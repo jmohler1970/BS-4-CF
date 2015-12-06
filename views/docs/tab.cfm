@@ -162,7 +162,13 @@
 			<b:td key="common" />
 			<td></td>
 		</tr>
-
+		<tr>
+			<td></td>
+			<td>styleClass</td>
+			<td>(none)</td>
+			<td>This applies to the tab, not the content of the tab. <b:outputText key="common" /></td>
+			<td></td>
+		</tr>
 		<tr>
 			<td>title</td>
 			<td>(none)</td>
@@ -198,6 +204,35 @@
 		<p><b>Action</b> Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
 	</b:tab>
 </b:tabView>
+
+
+<h3>Inline content with colors</h3>
+<!--- I always liked OS/2 colored tabs --->
+
+<!--- I had to patch in .nav-tabs > li > a {margin-right : 0;} for colored tabs to work right --->
+
+<b:tabView>
+	<b:tab title="Home" id="home5" styleClass="material-indigo" style="color : black">
+		Home Content
+	</b:tab>
+
+	<b:tab title="Options" id="opt5" styleClass="material-green" style="color : black">
+		Option Content
+	</b:tab>
+
+	<b:tab title="Events" id="event5" styleClass="material-orange" style="color : black">
+		Events Content
+	</b:tab>
+	
+	<b:tab title="Timeless Options" id="timeless5" styleClass="material-teal" style="color : black">
+		Timeless Content
+	</b:tab>
+
+	<b:tab title="Versions" id="ver5" styleClass="material-yellow" style="color : black">
+		Version Content
+	</b:tab>
+</b:tabView>
+
 
 
 

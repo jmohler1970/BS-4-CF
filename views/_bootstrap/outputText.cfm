@@ -31,6 +31,8 @@ case "start" :
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
      param attributes.tooltip			= "";
      param attributes.tooltipPosition	= "bottom";
+     param attributes.usespan			= true;
+	param attributes.value			= "";
      
      
      
@@ -61,33 +63,35 @@ case "start" :
 	break;
      
 case "end" :
+	if(attributes.value 	!= "")										thisTag.generatedContent = attributes.value;
      if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
      if(attributes.key 		!= "" )		{
 																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
 																	attributes.isSafeHTML 	= true;				
 																	}	
 	
-									variables.result &= variables.crlf;
-	if(variables.myClass == "")			variables.result &= '<span';
-	if(variables.myClass != "")			variables.result &= '<span class="#encodeForHTMLAttribute(variables.myClass)#"';							
+												variables.result &= variables.crlf;
+	if (attributes.usespan)	{											
+		if(variables.myClass == "")		variables.result &= '<span';
+		if(variables.myClass != "")		variables.result &= '<span class="#encodeForHTMLAttribute(variables.myClass)#"';							
 				
-		   							
-	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+		if(attributes.id != "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 	
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
-	if(attributes.tooltip    != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';           
-									variables.result &= '>';
+		if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';	
+		if(attributes.tooltip    != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+		if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+		if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';           
+										variables.result &= '>';
+		} // end usespan
 								
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+	if(!attributes.isSafeHTML)				variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
+	if( attributes.isSafeHTML)				variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
 
-									variables.result &= '</span>';
-									variables.result &= variables.crlf;
+	if (attributes.usespan)					variables.result &= '</span>';
+										variables.result &= variables.crlf;
 								
      if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      

@@ -203,7 +203,9 @@ rc.qryData.AddRow([
 </cfscript>
 
 
+<b:h2>Bootstrap Palette</b:h2>
 
+<p>These are symantec classes</p>
 
 
 <b:well>
@@ -222,8 +224,25 @@ rc.qryData.AddRow([
 </b:well>
 
 
+<b:h2>Material Palette</b:h2>
 
+<p>These are physical classes</p>
 
+<b:well>
+	<b:table>
+	<tbody>
+	<cfloop index="styleClass" list="#rc.lstcolor#">
+		<tr>
+			<td><b:label styleClass="material-#styleClass.trim()# darken-4" value="#styleClass.trim()# darken-4" /></td>
+			<td><b:label styleClass="material-#styleClass.trim()# darken-2" value="#styleClass.trim()# darken-2" /></td>
+			<td><b:label styleClass="material-#styleClass.trim()#" value="#styleClass.trim()#" /></td>
+			<td><b:label styleClass="material-#styleClass.trim()# lighten-2" value="#styleClass.trim()# lighten-2" /></td>	
+			<td><b:label styleClass="material-#styleClass.trim()# lighten-4" value="#styleClass.trim()# lighten-4" /></td>	
+		</tr>	
+		</cfloop>
+	</tbody>
+	</b:table>
+</b:well>
 
 
 <h2>Inside of headers</h2>

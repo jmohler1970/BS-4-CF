@@ -26,6 +26,7 @@ case "start" :
 	param attributes.rendered 		= true;
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.tag 			= 'div';
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
@@ -48,11 +49,11 @@ case "end" :
 																	attributes.isSafeHTML 	= true;
 																	}
 
-									variables.result &= variables.crlf & '<div class="row';
+									variables.result &= variables.crlf & '<#attributes.tag# class="row';
 	if(attributes.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 									variables.result &= '"';
 	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 	if(attributes.tooltip    != "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
@@ -63,7 +64,7 @@ case "end" :
 
 
 
-									variables.result &= variables.crlf & '</div><!-- /.row -->';
+									variables.result &= variables.crlf & '</#attributes.tag#><!-- /.row -->';
 									variables.result &= variables.crlf;
 									variables.result &= variables.crlf;
 

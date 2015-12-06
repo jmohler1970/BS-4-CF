@@ -80,7 +80,7 @@ case "end" :
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 
 
-	if(attributes.style		!= "")				variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")				variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 											variables.result &= '>';
 	if(attributes.tooltip    != "")				variables.result &=	'<span title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")				variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';

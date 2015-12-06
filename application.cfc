@@ -4,13 +4,13 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-51";
+this.name="bs-4-cf-282";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
 
 variables.framework	=	{
-	home	= "main.home",
+	home	= "docs.home",		// For PlumaCMS, change this to wiki.home or main.home aka login OR wiki.home
 	baseURL = 'useCGIScriptName',
 	defaultItem = "home",
 	generateSES = true,
@@ -18,14 +18,26 @@ variables.framework	=	{
 	};
 	
 variables.framework.routes	= [
-	{ "_bootstrap"	= "302:/main/home"		},
-	{ "common"	= "docs/common"		},
-	{ "theme/:id"	= "main/theme/theme/:id"	},
-	{ "theme"		= "main/theme"			}
+	// PlumaCMS
+	{ "backups/delete/:id"	= "backups/delete/slug/:id"},
+	{ "backups/edit/:id"	= "backups/edit/slug/:id"},
+	{ "backups/restore/:id"	= "backups/restore/slug/:id"},
+	{ "components"			= "theme/components"	},
+	{ "edit/:id"			= "pages/edit/slug/:id"	},
+	{ "edit"				= "pages/edit"			},
+	{ "filedelete"			= "pages/delete"		},
+	{ "logout"			= "login/logout"		},
+	{ "pages/home"			= "pages/home"			},
+	{ "wiki/:id"			= "wiki/home/slug/:id"	},
+	
+	// documentation
+	{ "_bootstrap"			= "302:/main/home"		},
+	{ "common"			= "docs/common"		},
+	{ "theme"				= "theme/home"			},
+	{ "bootswatch/:id"		= "bootswatch/home/bootswatch/:id"	}
 	];
 	
-	
-	
+
 
 
 
@@ -33,6 +45,32 @@ variables.framework.routes	= [
 function setupApplication()	{
 	
 	application.initialized = now();
+	
+	local.objAppFile = fileopen(expandpath('./Application.cfc'), 'read');
+	
+	application.GSVERSION = "Version 3.3.5.#right(year(local.objAppFile.lastmodified), 2)#.#month(local.objAppFile.lastmodified)#.#day(local.objAppFile.lastmodified)#";
+fileclose(objAppFile);
+
+
+	// Common variables and paths
+ 	application.GSAUTHOR			= "James Mohler and Web World Inc";
+ 	application.GSSITE_FULL_NAME		= "PlumaCMS";
+ 	application.GSSITE_LINK_BACK_URL	= "https://github.com/jmohler1970";
+	
+ 	application.GSROOTPATH 			= getdirectoryfrompath(getBaseTemplatePath());
+ 	application.GSBACKUPSPATH		= application.GSROOTPATH & "backups/";
+ 	application.GSDATAPATH			= application.GSROOTPATH & "data/";
+ 	application.GSDATAOTHERPATH		= application.GSROOTPATH & "data/other/";
+ 	application.GSTHUMBNAILPATH		= application.GSROOTPATH & "data/thumbs/";
+ 	application.GSDATAPAGESPATH		= application.GSROOTPATH & "data/pages/";
+ 	application.GSDATAUPLOADPATH		= application.GSROOTPATH & "data/uploads/";
+ 	application.GSUSERSPATH 			= application.GSROOTPATH & "data/users/";
+ 	// End Pluma
+ 	
+	
+	// Support for complicated variables. This used to have to be in FW/1
+	application.objFormUtilities = new framework.formUtilities();
+
 	
 	application.Bootstrap = {
 				
@@ -51,7 +89,7 @@ function setupApplication()	{
 		langRoot			= expandPath("vendor/lang") & "/",
 		arLang			= [],
 	
-		actionRoot 		= cgi.script_name,
+		actionRoot 		= "http://" & cgi.server_name & (cgi.server_port == 80 ? "" : ":" & cgi.server_port)  & cgi.script_name & "/",
 		validLook			= ["", "link", "default", "primary", "success", "info", "warning", "danger"], // There does not guarantee they are valid	
 		
 		iconLibrary		= {"default" = "glyphicon glyphicon-", "awesome" = "fa fa-", "jquery-ui" = "ui-icon ui-icon-"}, 		// be sure to include ending dashes
@@ -59,8 +97,9 @@ function setupApplication()	{
 		
 		// used by b:outputStyleSheet
 		styleSheetLibrary	= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css",
-							 local  = replace(cgi.script_name, "/index.cfm", "") & "/assets/",
-							 vendor = replace(cgi.script_name, "/index.cfm", "") & "/vendor/"
+							 local  		= replace(cgi.script_name, "/index.cfm", "") & "/assets/",
+							 innovation  	= replace(cgi.script_name, "/index.cfm", "") & "/layouts/innovation/",
+							 vendor 		= replace(cgi.script_name, "/index.cfm", "") & "/vendor/"
 							 },
 							 
 		// used by b:outputScript
@@ -71,7 +110,7 @@ function setupApplication()	{
 		};
 	
 	
-
+	application.GSConfig	= new model.services.settings().getWebsite();
 
 		
 		
@@ -80,9 +119,9 @@ function setupApplication()	{
 		if (!isArray(arguments.placeholder)) arguments.placeholder = [arguments.placeholder];
 		
 		
-		if (CacheIdExists(session.lang, application.Bootstrap.cache.language))	{
+		if (CacheIdExists(application.lang, application.Bootstrap.cache.language))	{
 			
-			local.stLang = cacheGet(session.lang, application.Bootstrap.cache.language);
+			local.stLang = cacheGet(application.lang, application.Bootstrap.cache.language);
 	
 			
 			
@@ -104,7 +143,8 @@ function setupApplication()	{
 		}; // end function
 	 		
 		
-		
+	// Language control
+	application.lang = "en_US"; // needs to be smarter		
 		
 		
 	} // end setupApplication
@@ -112,8 +152,9 @@ function setupApplication()	{
 	
 function setupSession()	{
 	
-	session.themeX = "default";
-	session.lang	= "en_US";
+	session.authenticated = false;
+	
+	session.bootswatch = "default";
 	}	
 
 
@@ -163,15 +204,20 @@ function setupRequest()	{
 
 	
 function after()	{
+	
+	
+	
+	if ( isDefined('form') ) rc.Append(application.objFormUtilities.buildFormCollections(form));
+		
 		
 	if(rc.keyExists("lang"))	{
-		session.lang = rc.lang;
+		application.lang = rc.lang;
 		}
 		
 
-	if(rc.keyExists("theme") and rc.theme != "assets")	{
+	if(rc.keyExists("bootswatch") and rc.bootswatch != "assets")	{
 		
-		session.themeX = rc.theme;
+		session.bootswatch = rc.bootswatch;
 		}
 		
 	

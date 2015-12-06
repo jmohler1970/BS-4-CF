@@ -1557,12 +1557,12 @@ component {
                         if ( section == variables.magicApplicationController ) {
                             // treat this (Application.cfc) as a controller:
                             cfc = this;
-                        } else if ( cachedFileExists( cfcFilePath( request.cfcbase ) & subsystemDir & 'controllers/' & section & '.cfc' ) ) {
+                        } else if ( cachedFileExists( cfcFilePath( request.cfcbase ) & subsystemDir & 'controllers/' & section & 'Controller.cfc' ) ) {
                             // we call createObject() rather than new so we can control initialization:
                             if ( request.cfcbase == '' ) {
-                                cfc = createObject( 'component', subsystemDot & 'controllers.' & section );
+                                cfc = createObject( 'component', subsystemDot & 'controllers.' & section & 'Controller' );
                             } else {
-                                cfc = createObject( 'component', request.cfcbase & '.' & subsystemDot & 'controllers.' & section );
+                                cfc = createObject( 'component', request.cfcbase & '.' & subsystemDot & 'controllers.' & section & 'Controller' );
                             }
                             if ( structKeyExists( cfc, 'init' ) ) {
                                 cfc.init( this );

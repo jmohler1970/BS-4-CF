@@ -26,6 +26,8 @@ case "start" :
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
@@ -66,11 +68,14 @@ case "end" :
 																	}	
      
 	
-									variables.result &= '<span class="label label-#encodeForHTMLAttribute(attributes.look.lcase())#"';
+									variables.result &= '<span class="label label-#encodeForHTMLAttribute(attributes.look.lcase())#';
+	if(attributes.styleClass	!= "")		variables.result &= ' #attributes.styleClass# ';
+									variables.result &= '"'; 
 	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
-		
+	
+	if(attributes.style		!= "")		variables.result &= ' style = "#encodeForHTMLAttribute(attributes.style)#"';	
 	if(attributes.tooltip    != "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';

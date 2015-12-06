@@ -3,6 +3,20 @@ component	accessors="true"	{
 	property	beanFactory;
 	property	framework;
 	
+	property	sampledataService;
+
+
+void function before(required struct rc)	{
+	
+	param rc.color = "";
+	
+	rc.lstColor = "red,pink,purple,deep-purple,
+		indigo,blue,light-blue,cyan,
+		teal,green,light-green,lime,
+		yellow,amber,orange,deep-orange,
+		grey,blue-grey,black";
+	}
+
 
 void function cache(required struct rc)	{
 	
@@ -21,6 +35,17 @@ void function cache(required struct rc)	{
 		} // end if	
 
 	} 
+
+
+	
+void function tables(required struct rc)	{
 	
 	
-}	
+	rc.qryData = sampledataService.getTable();	// sample data for table tag
+	
+	
+	} // end tables
+	
+
+	
+}

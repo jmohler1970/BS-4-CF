@@ -69,7 +69,7 @@ case "end" :
 	if (attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if (attributes.readonly)				variables.result &= ' readonly="readonly"';
 	if (attributes.required)				variables.result &= ' required="required"';
-	if (attributes.style	!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if (attributes.style	!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 	
 	if (attributes.tooltip   != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if (attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';

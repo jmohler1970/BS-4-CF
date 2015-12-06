@@ -49,6 +49,13 @@
 			<td>N/A</td>
 		</tr>
 		<tr>
+			<td></td>
+			<td>bold</td>
+			<td>false</td>
+			<td>Automatically wraps content in <code>&lt;b&gt;</code> tags</td>
+			<td>Must evaluate to boolean</td>
+		</tr>	
+		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
 			<td>(none)</td>
@@ -277,6 +284,20 @@
 			<td>Pass though of <code>target=</code> for <code>&lt;b:commandLink&gt;</code></td>
 			<td><code>encodeForURL()</code></td>
 		</tr>
+		<tr>
+			<td></td>
+			<td>tooltipKey</td>
+			<td>(none)</td>
+			<td>Like <code>key=</code></td>
+			<td><b:label look="danger">No</b:label></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>tooltipPlaceholder</td>
+			<td>(none)</td>
+			<td>Like <code>placeholder=</code></td>
+			<td><b:label look="danger">No</b:label></td>
+		</tr>	
 	</tbody>
 	</b:table>
 </b:panel>

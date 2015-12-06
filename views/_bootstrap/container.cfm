@@ -27,6 +27,7 @@ case "start" :
 	param attributes.rendered 		= true;
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
+	param attributes.tag 			= 'div';
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
@@ -50,12 +51,12 @@ case "end" :
 																	}
 
 
-	if(attributes.fluid)				variables.result &= '<div class="container-fluid';
-	if(!attributes.fluid)				variables.result &= '<div class="container';
+	if(attributes.fluid)				variables.result &= '<#attributes.tag# class="container-fluid';
+	if(!attributes.fluid)				variables.result &= '<#attributes.tag# class="container';
 	if(attributes.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 	   								variables.result &= '"';
 	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForCSS(attributes.style)#"';
+	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"'; 
@@ -66,7 +67,7 @@ case "end" :
 	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean
 
 
-									variables.result &= '</div><!-- /.container -->';
+									variables.result &= '</#attributes.tag#><!-- /.container -->';
 									variables.result &= variables.crlf;
 
 	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);

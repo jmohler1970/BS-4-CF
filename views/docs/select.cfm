@@ -662,7 +662,7 @@ disabled,display,group,id,look,value,selected,tooltip
 	
 <p>You can also create content between the tags and that will also be apart of the select one menu.	
 
-<b:panel look="info" title="Attributes of <b:selectOneRadio>">
+<b:panel look="info" title="Attributes of <b:selectOneMenu>">
 	<b:table styleClass="datatables">
 	<thead>
 		<tr>
@@ -676,14 +676,20 @@ disabled,display,group,id,look,value,selected,tooltip
 	
 	<tbody>
 		<tr>
+			<td></td>
+			<td>array</td>
+			<td>(none)</td>
+			<td>Iterates over items in an array. This allows for query ad hoc pulldowns.</td>
+			<td><code>encodeForHTML()</code></td>
+		</tr>	
+
+		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
 			<td>(none)</td>
 			<b:td key="common" />
 			<td></td>
 		</tr>
-
-		
 		<tr>
 			<td></td>
 			<td>data-*</td>
@@ -706,6 +712,13 @@ disabled,display,group,id,look,value,selected,tooltip
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
+			<td></td>
+			<td>from</td>
+			<td>(none)</td>
+			<td>this is used in conjunction with <code>to=</code> to generate a range of numbers.</td>
+			<td><code>isnumeric()</code></td>
+		</tr>	
+		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>help</td>
 			<td>(none)</td>
@@ -720,6 +733,13 @@ disabled,display,group,id,look,value,selected,tooltip
 			<b:td key="common" />
 			<td></td>
 		</tr>
+		<tr>
+			<td></td>
+			<td>list</td>
+			<td>(none)</td>
+			<td>Iterates over items in the list. This allows for query ad hoc pulldowns</td>
+			<td><code>encodeForHTML()</code></td>
+		</tr>	
 		<tr>
 			<td></td>
 			<td>name</td>
@@ -775,7 +795,14 @@ disabled,display,group,id,look,value,selected,tooltip
 			<td>(none)</td>
 			<td>Which value is pre selected</td>
 			<td>N/A</td>
-		</tr>	
+		</tr>
+		<tr>
+			<td></td>
+			<td>to</td>
+			<td>(none)</td>
+			<td>this is used in conjunction with <code>from=</code> to generate a range of numbers.</td>
+			<td><code>isnumeric()</code></td>
+		</tr>
 		<tr>
 			<td><b:label>Bootstrap</b:label></td>
 			<td>tooltip</td>
@@ -796,6 +823,8 @@ disabled,display,group,id,look,value,selected,tooltip
 
 
 <h3>Example</h3>
+
+<a name="#selectOneMenu#"></a>
 	
 <form class="form-horizontal">
 <b:formgroup>
@@ -820,6 +849,32 @@ disabled,display,group,id,look,value,selected,tooltip
 		</b:selectOneMenu>
 	</b:column>
 </b:formgroup>
+</form>	
+
+<form action="?#selectOneMenu" method="post" class="form-horizontal">
+	<b:formgroup>	
+		<label class="col-md-3 control-label">Looping over a list</label>
+	
+		<b:column colmd="3">	
+			<b:selectOneMenu name="color" list="#rc.lstColor#" selectedValue="#rc.color#" />
+		</b:column>
+		
+		<b:column colmd="3">
+			<b:label binding="color" look="blank" styleClass="material-#rc.color#" />
+		</b:column>
+		
+		<b:column colmd="3">
+			<b:label binding="color" look="blank" styleClass="material-#rc.color# lighten-4" />
+		</b:column>
+	</b:formgroup>
+
+
+	<b:formGroup>
+		<b:column offset="3" span="9">
+			<b:commandButton value="Submit" />
+		</b:column>
+	</b:formGroup>		
+			
 </form>		
 
 
