@@ -60,12 +60,19 @@ case "end" :
 	// generate tabs
 	for (variables.tab in thisTag.arTab)	{
 		if (variables.tab.title != "")	{
+			
+			variables.myClass = "";
+			if (attributes.activeIndex == variables.currentTab)	variables.myClass &= 'active ';
+			if (variables.tab.disabled)						variables.myClass &= 'disabled ';
+			if (variables.tab.styleClass != "")				variables.myClass &= variables.tab.styleClass;
+			
+			
 									variables.result &= variables.crlf & '<li role="presentation"';
-			if (attributes.activeIndex == variables.currentTab)	variables.result &= ' class="active"';
-			if (variables.tab.disabled)	variables.result &= ' class="disabled"';
+			if (variables.myClass != "")	variables.result &= ' class="' & encodeForHTMLAttribute(variables.myClass.trim()) & '"';
 									variables.result &= '>';
 									variables.result &= '<a';
 			if (!variables.tab.disabled)	variables.result &= ' href="###variables.tab.id#"';
+			if (variables.tab.style != "")variables.result &= ' style="' & encodeForHTMLAttribute(variables.tab.style) & '"';
 			if (!variables.tab.disabled)	variables.result &= ' aria-controls="#variables.tab.id#"';
 			if (!variables.tab.disabled)	variables.result &= ' role="#encodeForHTMLAttribute(variables.tab.id)#"';
 			if (!variables.tab.disabled)	variables.result &= ' data-toggle="tab"';

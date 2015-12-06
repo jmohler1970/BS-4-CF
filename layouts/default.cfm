@@ -68,6 +68,10 @@
 <b:outputStyleSheet name="application.css" processed="#IIF(getItem() EQ 'image', 1, 0)#" />
 
 <style type="text/css">
+
+/* fixes tabs for background colors	*/
+.nav-tabs > li > a { margin-right : 0 !important;}	
+	
 h1,h2	{
 padding-top: 50px;	
 	

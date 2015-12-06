@@ -233,11 +233,11 @@ rc.qryData.AddRow([
 	<tbody>
 	<cfloop index="styleClass" list="#rc.lstcolor#">
 		<tr>
-			<td><b:label styleClass="#styleClass.trim()# darken-4" value="#styleClass.trim()# darken-4" /></td>
-			<td><b:label styleClass="#styleClass.trim()# darken-2" value="#styleClass.trim()# darken-2" /></td>
-			<td><b:label styleClass="#styleClass.trim()#" value="#styleClass.trim()#" /></td>
-			<td><b:label styleClass="#styleClass.trim()# lighten-2" value="#styleClass.trim()# lighten-2" /></td>	
-			<td><b:label styleClass="#styleClass.trim()# lighten-4" value="#styleClass.trim()# lighten-4" /></td>	
+			<td><b:label styleClass="material-#styleClass.trim()# darken-4" value="#styleClass.trim()# darken-4" /></td>
+			<td><b:label styleClass="material-#styleClass.trim()# darken-2" value="#styleClass.trim()# darken-2" /></td>
+			<td><b:label styleClass="material-#styleClass.trim()#" value="#styleClass.trim()#" /></td>
+			<td><b:label styleClass="material-#styleClass.trim()# lighten-2" value="#styleClass.trim()# lighten-2" /></td>	
+			<td><b:label styleClass="material-#styleClass.trim()# lighten-4" value="#styleClass.trim()# lighten-4" /></td>	
 		</tr>	
 		</cfloop>
 	</tbody>

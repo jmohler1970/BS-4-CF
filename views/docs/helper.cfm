@@ -115,11 +115,11 @@
 
 <cfloop index="styleClass" list="#rc.lstcolor#">
 	<b:column span="3">
-		<b:blockquote styleClass="#styleClass.trim()#" binding="content" footer="#styleClass.trim()#" />
+		<b:blockquote styleClass="material-#styleClass.trim()#" binding="content" footer="#styleClass.trim()#" />
 	</b:column>
 	
 	<b:column span="3">
-		<b:blockquote styleClass="#styleClass.trim()# lighten-4" binding="content" footer="#styleClass.trim()# lighten-4" />
+		<b:blockquote styleClass="material-#styleClass.trim()# lighten-4" binding="content" footer="#styleClass.trim()# lighten-4" />
 	</b:column>	
 </cfloop>
 
