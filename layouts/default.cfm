@@ -55,8 +55,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/eldarion-ajax/0.12.0/eldarion-ajax.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.8/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
 
 <!--- bootstrap.wysihtml5 --->

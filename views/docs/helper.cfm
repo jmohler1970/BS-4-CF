@@ -56,6 +56,14 @@
 
 
 <h2>Examples</h2>
+
+<p>General format</p>
+
+<pre class="pretty-print">
+	&lt;b:p text=&quot;muted&quot;&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/b:p&gt;
+</pre>
+
+
 <b:p text="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</b:p>
 <b:p text="primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</b:p>
 <b:p text="warning">Etiam porta sem malesuada magna mollis euismod.</b:p>

@@ -6,7 +6,7 @@ component	accessors="true"	{
 	property	sampledataService;
 
 
-void function before(required struct rc)	{
+void function before(required struct rc) output="false"	{
 	
 	param rc.color = "";
 	
@@ -18,7 +18,7 @@ void function before(required struct rc)	{
 	}
 
 
-void function cache(required struct rc)	{
+void function cache(required struct rc)	 output="false" {
 	
 	// thanks to Brian Love:  http://brianflove.com/2015/01/14/ehcache-regions-in-coldfusion/
 	
@@ -38,7 +38,7 @@ void function cache(required struct rc)	{
 
 
 	
-void function tables(required struct rc)	{
+void function tables(required struct rc) output="false"	{
 	
 	
 	rc.qryData = sampledataService.getTable();	// sample data for table tag
@@ -46,6 +46,16 @@ void function tables(required struct rc)	{
 	
 	} // end tables
 	
+	
+void function after() output="false"	{
+	
+	if (rc.keyExists("contentType"))	{
+	
+		// view will not be shown
+		framework.renderData(rc.contentType, "Hi Mom");
+		}
+	
+	}
 
 	
 }
