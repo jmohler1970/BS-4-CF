@@ -20,33 +20,42 @@ case "start" :
 	param attributes.id				= "";
 	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase()); // this content is very large. Make sure it is clean before passing in
 	param attributes.key			= "";
-	param attributes.offset			= 0;
+	param attributes.offset			= 0;		// This can be JSON too
 	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
 	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
-	param attributes.span			= 0;
+	param attributes.span			= 0;		// This can be JSON too
 	param attributes.style			= "";
 	param attributes.styleClass		= "";
 	param attributes.tag 			= 'div';
 	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
-
-	// spans for specific screen sizes
-	param attributes.colXs			= attributes.span;		if (!isnumeric(attributes.colXs)) attributes.colXs = attributes.span;
-	param attributes.colSm			= attributes.span;		if (!isnumeric(attributes.colSm)) attributes.colSm = attributes.span;
-	param attributes.colMd			= attributes.span;		if (!isnumeric(attributes.colMd)) attributes.colMs = attributes.span;
-	param attributes.colLg			= "";				if (!isnumeric(attributes.colLg)) attributes.colLg = attributes.span;
-
-	param attributes.offsetXs		= attributes.offset;	if (!isnumeric(attributes.offsetXs)) attributes.offsetXs = attributes.offset;
-	param attributes.offsetSm		= attributes.offset;	if (!isnumeric(attributes.offsetSm)) attributes.offsetSm = attributes.offset;
-	param attributes.offsetMd		= attributes.offset;	if (!isnumeric(attributes.offsetMd)) attributes.offsetMd = attributes.offset;
-	param attributes.offsetLg		= 0;					if (!isnumeric(attributes.offsetLg)) attributes.offsetLg = attributes.offset;
-
-
+	
+	
 	if (!attributes.processed) exit "exitTag";
+	
+	
+	if (isNumeric(attributes.span))		{
+									attributes.span	= {xs = attributes.span,		sm = attributes.span, 	md = attributes.span  };
+									}
+	else								{
+									attributes.span 	= attributes.span.replacelist('{,=', '{",":');
+									attributes.span 	= attributes.span.replace(', ', ', "', "all");
+									attributes.span	= DeserializeJSON(attributes.span);
+									}
 
+	if (isNumeric(attributes.offset))		{
+									attributes.offset	= {xs = attributes.offset,	sm = attributes.offset,	md = attributes.offset};
+									}
+	else								{
+									attributes.offset 	= attributes.offset.replacelist('{,=', '{",":');
+									attributes.offset 	= attributes.offset.replace(', ', ', "', "all");							
+									attributes.offset	= DeserializeJSON(attributes.offset);
+									}
+	
+	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
 	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
@@ -58,20 +67,24 @@ case "start" :
 case "end" :
 
 	if(attributes.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
-																	attributes.isSafeHTML 	= true;
-																	}
+									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+									attributes.isSafeHTML 	= true;
+									}
 
 
-									variables.result &= variables.crlf & '<#attributes.tag# class="';
-									variables.result &= 'col-xs-#encodeForHTMLAttribute(attributes.colXs)# ';
-									variables.result &= 'col-sm-#encodeForHTMLAttribute(attributes.colSm)# ';
-									variables.result &= 'col-md-#encodeForHTMLAttribute(attributes.colMd)# ';
-	if(attributes.colLg		!= "")		variables.result &= 'col-lg-#encodeForHTMLAttribute(attributes.colLg)# ';
-	if(attributes.offsetXs 	!= 0)		variables.result &= 'col-xs-offset-#encodeForHTMLAttribute(attributes.offsetXs)# ';
-	if(attributes.offsetSm 	!= 0)		variables.result &= 'col-sm-offset-#encodeForHTMLAttribute(attributes.offsetSm)# ';
-	if(attributes.offsetMd 	!= 0)		variables.result &= 'col-md-offset-#encodeForHTMLAttribute(attributes.offsetMd)# ';
-	if(attributes.offsetLg 	!= 0)		variables.result &= 'col-lg-offset-#encodeForHTMLAttribute(attributes.offsetLg)# ';
+
+																variables.result &= variables.crlf & '<#attributes.tag# class="';
+	if(attributes.span.keyExists("xs")		&& isnumeric(attributes.span.xs))	variables.result &= 'col-xs-#encodeForHTMLAttribute(attributes.span.Xs)# ';
+	if(attributes.span.keyExists("sm")		&& isnumeric(attributes.span.sm))	variables.result &= 'col-sm-#encodeForHTMLAttribute(attributes.span.Sm)# ';
+	if(attributes.span.keyExists("md")		&& isnumeric(attributes.span.md))	variables.result &= 'col-md-#encodeForHTMLAttribute(attributes.span.Md)# ';
+	if(attributes.span.keyExists("Lg")		&& isnumeric(attributes.span.Lg))	variables.result &= 'col-lg-#encodeForHTMLAttribute(attributes.span.Lg)# ';
+	if(attributes.span.keyExists("Xl")		&& isnumeric(attributes.span.Xl))	variables.result &= 'col-xl-#encodeForHTMLAttribute(attributes.span.Xl)# ';
+	
+	if(attributes.offset.keyExists("Xs")	&& attributes.offset.Xs 	!= 0)	variables.result &= 'col-xs-offset-#encodeForHTMLAttribute(attributes.offset.Xs)# ';
+	if(attributes.offset.keyExists("Sm")	&& attributes.offset.Sm 	!= 0)	variables.result &= 'col-sm-offset-#encodeForHTMLAttribute(attributes.offset.Sm)# ';
+	if(attributes.offset.keyExists("Md")	&& attributes.offset.Md 	!= 0)	variables.result &= 'col-md-offset-#encodeForHTMLAttribute(attributes.offset.Md)# ';
+	if(attributes.offset.keyExists("Lg")	&& attributes.offset.Lg 	!= 0)	variables.result &= 'col-lg-offset-#encodeForHTMLAttribute(attributes.offset.Lg)# ';
+	if(attributes.offset.keyExists("Xl")	&& attributes.offset.Xl 	!= 0)	variables.result &= 'col-xl-offset-#encodeForHTMLAttribute(attributes.offset.Xl)# ';
 
 
 	if(attributes.styleClass	!= "")		variables.result &= ' #attributes.styleClass#';
