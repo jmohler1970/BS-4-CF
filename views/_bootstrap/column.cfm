@@ -41,9 +41,9 @@ case "start" :
 									attributes.span	= {xs = attributes.span,		sm = attributes.span, 	md = attributes.span  };
 									}
 	else								{
-									attributes.span 	= attributes.span.replacelist('{,=', '{",":');
+									attributes.span 	= attributes.span.replacelist(':', '":,');
 									attributes.span 	= attributes.span.replace(', ', ', "', "all");
-									attributes.span	= DeserializeJSON(attributes.span);
+									attributes.span	= DeserializeJSON('{"#attributes.span#}');
 									}
 
 	if (isNumeric(attributes.offset))		{
