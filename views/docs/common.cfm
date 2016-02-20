@@ -74,7 +74,7 @@
 			<td> <b:label look="success">i18n</b:label></td>
 			<td>key</td>
 			<td>(none)</td>
-			<td>Use for lookup strings in an i18n language file. Also see placeholder and cacheid</td>
+			<td>Use for lookup strings in an i18n language file. Also see placeholder and cacheid. For more info, see <b:commandLink look="link" action="docs/i18n">i18n</b:commandLink></td>
 			<td>N/A</td>
 		</tr>
 		<tr>

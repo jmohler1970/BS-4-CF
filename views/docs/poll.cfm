@@ -138,10 +138,11 @@
 
 <h3>Minimal Config</h3>
 
-<!---
 
-<b:p><b>The time is now:</b> <b:poll action="./ajax/poll.cfm"><b:icon library="awesome" name="cogs" spin="true" /></b:poll></b:p>
 
-<b:alert isSafeHTML="true"><b>The time is now:</b> <b:poll action="ajax/poll.cfm" tooltip="Hi have a title with some scary characters <>">Loading...</b:poll></b:alert>
+<b:p isSafeHTML="true"><b>The time is now:</b> <b:poll action="~/ajax/time?contentType=text"><b:icon library="awesome" name="cogs" spin="true" /></b:poll></b:p>
 
---->
+
+<b:alert isSafeHTML="true"><b>Alert! the time is now:</b> <b:poll action="~/ajax/time?contentType=text" tooltip="Hi have a title with some scary characters <>">Loading...</b:poll></b:alert>
+
+

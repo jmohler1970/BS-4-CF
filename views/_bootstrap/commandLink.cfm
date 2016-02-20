@@ -24,7 +24,7 @@ case "start" :
 	param attributes.cacheid			= "";
 	param attributes.disabled		= false;
 	param attributes.dropdown		= false;
-	param attributes.href			= "";	// any target
+	param attributes.href			= "";	// any target but should really be used for external
 	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
 	param attributes.id				= "";

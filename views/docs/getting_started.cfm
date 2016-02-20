@@ -69,7 +69,7 @@
 	<li>&lt;bs:tag&gt;</li><!--- For Bootstrap --->
 	<li>&lt;boot:tag&gt;</li><!--- You will just have to guess the strap part --->
 	<li>&lt;bootstrap:tag&gt;</li><!--- Just spell it all out --->
-</ul
+</ul>
 
 
 <p>Then add the following to <code>application.cfc</code></p>

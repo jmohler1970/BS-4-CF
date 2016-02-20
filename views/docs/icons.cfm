@@ -11,7 +11,7 @@
 	<b:column span="12">	
 
 		<b:h1 pageHeader="true">Icon Examples</b:h1>
-		<p>b:icon</p>
+		<p>&lt;b:icon&gt;</p>
 	</b:column>	
 </b:row>
 
@@ -178,8 +178,15 @@
 
 <h2>Requirements for b:icon</h2>
 
-<p>In order for sizing and spinning to work, the Font Awesome is required. Glyphicons work with the default Bootstrap package.</p>
+<p>In order for sizing and spinning to work, the Font Awesome is required. Glyphicons work with the default Bootstrap 3 package.</p>
 
+
+<p>General format</p>
+
+
+<pre class="pretty-print">
+	&lt;b:icon binding=&quot;icon&quot; look=&quot;success&quot;	/&gt;
+</pre>	
 
 
 <h2>Requirements for b:iconAwesome</h2>

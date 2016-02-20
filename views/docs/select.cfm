@@ -869,6 +869,15 @@ disabled,display,group,id,look,value,selected,tooltip
 	</b:formgroup>
 
 
+	<b:formgroup>	
+		<label class="col-md-3 control-label">From 1 to a really big number</label>
+	
+		<b:column colmd="3">	
+			<b:selectOneMenu name="number" from="1" to="20" />
+		</b:column>
+	</b:formgroup>	
+
+
 	<b:formGroup>
 		<b:column offset="3" span="9">
 			<b:commandButton value="Submit" />

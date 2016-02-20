@@ -84,7 +84,7 @@ case "end" :
 																	attributes.isSafeHTML 	= true;				
 																	}	
 	
-											variables.result &= '<button type="#attributes.type#" class="btn btn-#attributes.look.lcase()#';
+											variables.result &= '<button type="#encodeForHTMLAttribute(attributes.type)#" class="btn btn-#attributes.look.lcase()#';
 	if(attributes.outline)						variables.result &= "-outline";
 	if(attributes.size		!= "")				variables.result &= ' btn-#attributes.size#';
 	if(attributes.styleClass	!= "")				variables.result &= ' #attributes.styleClass#';

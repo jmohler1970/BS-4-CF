@@ -1,10 +1,10 @@
 
 
 
-component extends="framework.one" accessors="true"	{
+component extends="framework.one" accessors="true" output="false"	{
 	
 
-this.name="bs-4-cf-282";
+this.name="bs-4-cf-297";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -42,7 +42,7 @@ variables.framework.routes	= [
 
 
 
-function setupApplication()	{
+void function setupApplication() output="false"	{
 	
 	application.initialized = now();
 	
@@ -112,7 +112,8 @@ fileclose(objAppFile);
 	
 	application.GSConfig	= new model.services.settings().getWebsite();
 
-		
+	
+	
 		
 	application.geti18n = function(required string key, any placeholder = []) output="false"	{
 	
@@ -159,7 +160,7 @@ function setupSession()	{
 
 
 
-function setupRequest()	{
+void function setupRequest() output="false"	{
 	
 	
 	if(application.Bootstrap.arLang.isEmpty())	{
@@ -203,7 +204,7 @@ function setupRequest()	{
 	} // end setupRequest
 
 	
-function after()	{
+void function before() output="false"	{
 	
 	
 	
@@ -219,9 +220,33 @@ function after()	{
 		
 		session.bootswatch = rc.bootswatch;
 		}
-		
-	
 	}
 
+
+void function setupView() output="false"	{
+
+
+	/*
+	if (rc.keyExists("contentType"))	{
+	
+		// view will not be shown
+		this.renderData(rc.contentType, "Hi Mom");
+		}
+		
+	
+	if (rc.keyExists("contentType") && rc.keyExists("resultData"))	{
+	
+		// view will not be shown
+		this.renderData(rc.contentType, rc.resultData);
+		}
+		
+	*/	
+	}
+
+
+void function onMissingView() output="false"	{
+		
 }
+
+} // end controller
 
