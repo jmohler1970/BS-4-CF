@@ -37,7 +37,7 @@
           <h3><b:icon library="awesome" name="link" /> i18n</h3>
           <p>Internationalization support is built in. Supports both ColdFusion and PHP language files. Write less code and do more.</p>
           
-          <p><b:commandLink href="~/common" value="Learn More" look="primary" /></p>
+          <p><b:commandLink href="~/docs/i18n" value="Learn More" look="primary" /></p>
 	</b:column> 
 </b:row>
 

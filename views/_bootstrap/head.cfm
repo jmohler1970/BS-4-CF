@@ -36,10 +36,8 @@ case "start" :
 	break;
 case "end" :   
 	
-	if(attributes.key 		!= "" )						{
-													attributes.title		= application.geti18n(attributes.key, attributes.placeholder);
-													attributes.isSafeHTML 	= true;				
-													}	
+	if(attributes.key 		!= "")						attributes.title &= "- " & application.geti18n(attributes.key, attributes.placeholder);
+														
 
 	if(attributes.title != "")							variables.result &= "<title>";
 	if(attributes.title != "" && !attributes.isSafeHTML)		variables.result &= getSafeHTML(attributes.title.trim(), attributes.profile, attributes.throwOnError); // pass through of content

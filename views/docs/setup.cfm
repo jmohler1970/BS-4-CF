@@ -88,6 +88,14 @@
 			<td></td>
 		</tr>
 		<tr>
+			<td> <b:label look="success">i18n</b:label></td>
+			<td>key</td>
+			<td>(none)</td>
+			<td>This gets applied to the title tag. It is often useful for title to be managed in a central title repository.
+				If both title and key are supplied then the key will be appended after the title.</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td></td>
 			<td>processed</td>
 			<td>true</td>
@@ -109,6 +117,13 @@
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>
+			<td>title</td>
+			<td>true</td>
+			<td>This is a passthrough to generate the <code>&lt;title&gt;</code> tag. If this attribute is used in combination with Antisamy, then titles will always be safe.</td>
+			<td></td>
+		</tr>
+		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
 			<td>throwOnError</td>
 			<td>false</td>
@@ -119,10 +134,18 @@
 	</b:table>
 </b:panel>
 
+<p><b>Practical usage:</b> The <code>&lt;b:head&gt;</code> is used as a container for style sheets and javascript.</p>
+
+<pre class="pretty-print">
+	&lt;b:head key=&quot;brand&quot;&gt;
+	...
+	&lt;/b:head&gt;
+</pre>	
+
 
 <h2>Stylesheets</h2>
 
-<p>These must be inside of b:head.</p>
+<p>These must be inside of <code>&lt;b:head&gt;</code>.</p>
 
 
 <b:panel look="info" title="Attributes of <b:outputStyleSheet>">
@@ -140,7 +163,8 @@
 		<tr>
 			<td>library</td>
 			<td>(none)</td>
-			<td>Defaults to <code>application.Bootstrap.StyleSheetLibrary.default</code></td>
+			<td>Defaults to <code>application.Bootstrap.StyleSheetLibrary.default</code>. This can either be a full path or a directory.
+				If it is a directory, then name must be provided to find the CSS </td>
 			<td>N/A</td>
 		</tr>
 		
@@ -179,6 +203,15 @@
 	</b:table>
 </b:panel>
 
+
+<pre class="pretty-print">
+	&lt;b:head key=&quot;brand&quot;&gt;
+	
+		&lt;b:outputStyleSheet  /&gt;
+		&lt;b:outputStyleSheet library=&quot;vendor&quot; name=&quot;material.css&quot; /&gt;
+	
+	&lt;/b:head&gt;
+</pre>	
 
 
 <h2>Example</h2>
