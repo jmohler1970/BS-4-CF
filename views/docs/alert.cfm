@@ -160,6 +160,26 @@
 <b:alert look="info" title="Heads up!" closable="true">This alert needs your attention, but it's not super important. </b:alert>
 
 
+
+<b:table>
+<thead>
+	<tr>
+		<td>No setting</td>
+		<td><code>Closable="true"</code></td>
+		<td><code>Closable="false"</code></td>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td><b:alert look="info" title="Heads up!">This alert needs your attention, but it's not super important. </b:alert></td>
+		<td><b:alert look="warning" title="Heads up!" closable="true">This alert needs your attention, but it's not super important. </b:alert></td>
+		<td><b:alert look="info" title="Heads up!" closable="false">This alert needs your attention, but it's not super important. </b:alert></td>
+	</tr>
+</tbody>
+</b:table>	
+
+
+
 <h2>i18n language file</h2>
 
 <p>This also does cacheing</p>

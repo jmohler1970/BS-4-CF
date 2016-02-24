@@ -16,22 +16,14 @@ case "start" :
 	variables.crlf 	=  chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
   
-	param attributes.binding			= "";
-	param attributes.cacheid			= "";
-	param attributes.footer			= "";
-     param attributes.id				= "";
-     param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-    	param attributes.key			= "";
-	param attributes.placeholder		= [];
+
+
+     param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
      param attributes.processed 		= true;
-     param attributes.profile			= application.Bootstrap.profile;
-     param attributes.reverse			= false;
+     param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.style			= "";
-	param attributes.styleClass		= "";
-	param attributes.text			= "";
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
-     param attributes.tooltip			= "";
+	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
+
 	param attributes.tooltipPosition	= "bottom";
 	
 	
@@ -49,8 +41,8 @@ case "start" :
 
      if (!attributes.processed) exit "exitTag";
      
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -58,36 +50,36 @@ case "start" :
 	break;
      
 case "end" :     
-     if(attributes.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-     if(attributes.key 		!= "")										{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+     if(attributes?.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+     if(attributes?.key 		!= "")										{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
 																	attributes.isSafeHTML 	= true;				
 																	}	
      
 	
 									variables.result &= '<blockquote class="';
-	if(attributes.reverse)				variables.result &= ' blockquote-reverse';	
-	if(attributes.text		!= "")		variables.result &= ' text-#encodeForHTMLAttribute(attributes.text)#';	
-	if(attributes.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
+	if(attributes?.reverse	== true)		variables.result &= ' blockquote-reverse';	
+	if(attributes?.text		!= "")		variables.result &= ' text-#encodeForHTMLAttribute(attributes.text)#';	
+	if(attributes?.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
 	   								variables.result &= '"';
-	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes?.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 		
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
-	if(attributes.tooltip    != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';               
+	if(attributes?.style	!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
+	if(attributes?.tooltip   != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes?.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes?.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';               
 									variables.result &= '>';
 	
 	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
 	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
-	if(attributes.footer	!= "" )		variables.result &= '<footer>' & attributes.footer & '</footer>';								
+	if(attributes?.footer	!= "" )		variables.result &= '<footer>' & attributes.footer & '</footer>';								
 									variables.result &= '</blockquote>';
      
      
-     if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+     if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
      if (attributes.rendered)				writeOutput(variables.result);

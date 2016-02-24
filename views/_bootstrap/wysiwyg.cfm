@@ -15,19 +15,14 @@
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
 
-	param attributes.binding			= ""; 
 	param attributes.name;
-	param attributes.htmlPlaceholder 	= "";
+
 	param attributes.id				= attributes.name;
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-	param attributes.key			= "";
-	param attributes.placeholder		= [];
+	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed	 	= true;
-	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.style			= "";
-	param attributes.styleClass		= "";
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.useDefaultButtons = true;
 	param attributes.useDefaultJS 	= true;
 	</cfscript>
@@ -166,9 +161,9 @@
 <cfcase value="end">
 
 	<cfscript>
-	if(attributes.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-	if(attributes.key 		!= "" )		{
-									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+	if(attributes?.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+	if(attributes?.key 		!= "" )		{
+									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
 									attributes.isSafeHTML 	= true;				
 									}
 
@@ -176,11 +171,11 @@
 	if(attributes.useDefaultButtons)		variables.result &= variables.defaultButtons;
 	
 		
-									variables.result &= '<div id="#encodeForHTMLAttribute(attributes.id)#" class="wysiwyg #encodeForHTMLAttribute(attributes.styleClass)#"';
-	if(attributes.style		!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
+									variables.result &= '<div id="#encodeForHTMLAttribute(attributes.id)#" class="wysiwyg #encodeForHTMLAttribute(attributes?.styleClass)#"';
+	if(attributes?.style	!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 									variables.result &= ' >';
 
-									variables.result &= getSafeHTML(attributes.htmlPlaceholder);
+									variables.result &= getSafeHTML(attributes?.htmlPlaceholder);
 									variables.result &= '</div>';
 									
 	if(attributes.useDefaultJS)			variables.result &= variables.defaultJS;								

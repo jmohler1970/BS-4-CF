@@ -37,7 +37,9 @@
      <b:column span="4">
 		<b:alert look="info" closeable="true"> <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.</b:alert>
      </b:column>
-</b:row>     
+</b:row>
+
+    
 
 <b:row>
 	<b:column span="4">
@@ -75,7 +77,7 @@
           <b:h3 id="progress-basic">Basic</b:h3>
           <b:progressBar width="60" />
  
- 
+
 		<b:h3 id="progress-alternatives">Contextual alternatives</b:h3>
           <b:progressBar width="20" look="info" />
           <b:progressBar width="80" look="success" />

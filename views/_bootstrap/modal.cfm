@@ -17,29 +17,21 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
   
 	param attributes.backdrop		= true;
-	param attributes.cacheid			= "";
 	param attributes.closable		= true;
 	if(!structKeyExists(attributes, "close-on-escape")) attributes["close-on-escape"] = true;
-	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-	param attributes.key			= "";
-	param attributes.placeholder		= [];
+	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
-	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.size			= "";
-     param attributes.styleClass		= "";
-     param attributes.throwOnError		= application.Bootstrap.throwOnError;
-	param attributes.title			= "";
-	param attributes.showSubmit		= false;
+     param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.submitValue		= "Save Changes";
 	
 	
 	
      if (!attributes.processed) exit "exitTag";
      
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -48,15 +40,15 @@ case "start" :
      
 case "end" :     
 
-	if(attributes.key 		!= "" )		{
-									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+	if(attributes?.key 		!= "" )		{
+									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
 									attributes.isSafeHTML 	= true;				
 									}	
      
 									variables.result &= variables.crlf & '<div class="modal fade';
-	if(attributes.styleClass != "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
+	if(attributes?.styleClass != "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 									variables.result &= '"';
-	if(attributes.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes?.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(!attributes.backdrop)				variables.result &= ' data-backdrop="#encodeForHTMLAttribute(attributes.backdrop)#"';
 	if(!attributes["close-on-escape"])		variables.result &= ' data-keyboard="false"';
 	
@@ -79,13 +71,13 @@ case "end" :
 
 									variables.result &= variables.crlf & '<div class="modal-footer">';
 									variables.result &= variables.crlf & '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-	if(attributes.showSubmit)			variables.result &= variables.crlf & '<button type="submit" class="btn btn-primary">#encodeForHTML(attributes.submitValue)#</button>';
+	if(attributes?.showSubmit == true)		variables.result &= variables.crlf & '<button type="submit" class="btn btn-primary">#encodeForHTML(attributes.submitValue)#</button>';
 									variables.result &= variables.crlf & '</div><!-- /.modal-footer -->';
 									variables.result &= variables.crlf & '</div><!-- /.modal-content -->';
 									variables.result &= variables.crlf & '</div><!-- /.modal-dialog -->';
 									variables.result &= variables.crlf & '</div><!-- /.modal -->';
 								
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
+	if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
      
      thisTag.GeneratedContent = "";
      if (attributes.rendered)				writeOutput(variables.result);

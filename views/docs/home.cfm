@@ -8,8 +8,9 @@
 <b:jumbotron>
 	<b:h1>Bootstrap for ColdFusion</b:h1>
      <p>Making development safe and quick</p>
-     <p><b:commandLink action="~/docs/getting_started" look="primary" size="lg">Get Started</b:commandLink></p>
+    <p><b:commandLink action="~/docs/getting_started" look="primary" size="lg">Get Started</b:commandLink></p>
 </b:jumbotron>
+
 
 
 
@@ -40,7 +41,6 @@
           <p><b:commandLink href="~/common" value="Learn More" look="primary" /></p>
 	</b:column> 
 </b:row>
-
 
 <b:row> 
 	
