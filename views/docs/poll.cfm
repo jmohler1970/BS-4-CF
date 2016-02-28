@@ -33,13 +33,13 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content. this is the initial message before the content is AJAX'ed in</td>
-			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
+			<td><b:label look="danger" key="No" /> Content is assumed to be clean</td>
 		</tr>
 		<tr>
 			<td>action</td>
 			<td>required</td>
 			<td>Source for content. Expecting text</td>
-			<td><b:label look="danger">No</b:label>  this attributes is assumed to be clean</td>
+			<td><b:label look="danger" key="No" /> this attributes is assumed to be clean</td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>

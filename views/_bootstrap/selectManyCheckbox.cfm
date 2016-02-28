@@ -19,27 +19,22 @@ case "start" :
 	
 	if(attributes.keyExists("qryOption")) thisTag.qryOption = attributes.qryOption;
 
-	param attributes.cacheid			= "";
-	param attributes.circle			= false;		// make it look like radio
-	param attributes.disabled		= false;
-	param attributes.inline			= false;
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
+
+	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "";
 	param attributes.name;
-	param attributes.key			= "";
-	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
-	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	
 	// Patch this
-	if(attributes.disabled == "disabled")	attributes.disabled = true;
+	if(attributes?.disabled == "disabled")	attributes.disabled = true;
 
 	if (!attributes.processed) exit "exitTag";
 	
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -58,11 +53,11 @@ case "end" :
 		
 		
 		
-		if(thisTag.qryOption.look[variables.myRow] == "" && attributes.circle)	variables.result &= '<div class="checkbox checkbox-circle';
+		if(thisTag.qryOption.look[variables.myRow] == "" && attributes?.circle == true)	variables.result &= '<div class="checkbox checkbox-circle';
 		else												variables.result &= '<div class="checkbox';
 		
 		if(variables.myLook							!= "")	variables.result &= ' #variables.preClass#-#lcase(variables.myLook)#';
-		if(attributes.inline)								variables.result &= ' #variables.preClass#-inline';
+		if(attributes?.inline						== true)	variables.result &= ' #variables.preClass#-inline';
 														variables.result &= '"';
 	
 		if(thisTag.qryOption.tooltip[variables.myRow]	!= "")	variables.result &= ' tooltip="#thisTag.qryOption.tooltip[variables.myRow]#"';
@@ -73,8 +68,8 @@ case "end" :
 														variables.result &= '<input type="checkbox"';
 		if(attributes.name							!= "")	variables.result &= ' name="#attributes.name#"';
 		if(thisTag.qryOption.id[variables.myRow]		!= "")	variables.result &= ' id="#thisTag.qryOption.id[variables.myRow]#"';
-		if(thisTag.qryOption.selected[variables.myRow])			variables.result &= ' checked="checked"';
-		if(attributes.disabled)								variables.result &= ' disabled="disabled"';
+		if(thisTag.qryOption.selected[variables.myRow]	== true)	variables.result &= ' checked="checked"';
+		if(attributes?.disabled						== true)	variables.result &= ' disabled="disabled"';
 														variables.result &= ' value="#thisTag.qryOption.value[variables.myRow]#"';	
 														variables.result &= ' />';
 														variables.result &= variables.crlf &'<label';
@@ -92,7 +87,7 @@ case "end" :
 
 
 
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+	if (attributes?.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
 	thisTag.GeneratedContent = "";
 	if (attributes.rendered)			writeOutput(variables.result);

@@ -16,25 +16,19 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
 
-	param attributes.binding			= "";
-	param attributes.cacheid			= "";
-	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
+
+	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "warning";
-	param attributes.key			= "";
-	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
-	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
-	param attributes.tooltip			= "";
+	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.tooltipPosition	= "bottom";
-	param attributes.value			= "";
 
 
-	if (structKeyExists(attributes, "text")) throw "attributes.text is an invalid option. Don't even think of using it";
+	if (attributes.KeyExists("text")) throw "attributes.text is an invalid option. Don't even think of using it";
 
-	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
+	if (!application?.Bootstrap?.validLook.contains(attributes?.look))	throw "This is an invalid look option";
 	
 	
 	
@@ -52,8 +46,8 @@ case "start" :
 
 	if (!attributes.processed) exit "exitTag";
 	
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -62,24 +56,24 @@ case "start" :
 
 case "end" :
 
-	if(attributes.key 		!= "")		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+	if(attributes?.key 		!= "")		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
 																	attributes.isSafeHTML 	= true;				
 																	}	
 
 
-	if(attributes.value != "")											thisTag.generatedContent = attributes.value;
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
+	if(attributes?.value	!= "")											thisTag.generatedContent = attributes.value;
+     if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
 
 
 									variables.result &= '<span class = "badge badge-#encodeForHTMLAttribute(attributes.look.lcase())#"';
-	if(attributes.id		!= "")		variables.result &= ' id = "#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes?.id		!= "")		variables.result &= ' id = "#encodeForHTMLAttribute(attributes.id)#"';
 	
 	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
 		
-	if(attributes.tooltip	!= "")		variables.result &= ' title = "#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
+	if(attributes?.tooltip	!= "")		variables.result &= ' title = "#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes?.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes?.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
 									variables.result &= '>';
 
 	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
@@ -89,7 +83,7 @@ case "end" :
 									variables.result &= '</span>';
 
 
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+	if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
 	thisTag.GeneratedContent = ""; // This tag does not have pass through
 

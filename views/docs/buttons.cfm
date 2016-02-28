@@ -32,7 +32,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td>Yes</td>
+			<td><b:yesnoFormat value="1" /></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -648,6 +648,29 @@
 </tbody>
 </b:table>
 
+
+<h3>&lt;b:button&gt; with bolding</h3>
+
+<p>It is is often useful to bold buttons to call out their importance</p>
+
+
+<b:table>
+<thead>
+	<tr>
+		<td>Normal</td>
+		<td><code>bold="1"</code></td>
+		<td><code>bold="0"</code></td>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td><b:commandLink href="##" value="Normal" look="primary"  size="lg"/></td>
+		<td><b:commandLink href="##" value="Bold 1" look="primary"  size="lg" bold="1"/></td>
+		<td><b:commandLink href="##" value="Bold 0" look="primary"  size="lg" bold="0"/></td>
+	</tr>
+</tbody>
+</b:table>		
+		
 
 
 <h2>Also See</h2>

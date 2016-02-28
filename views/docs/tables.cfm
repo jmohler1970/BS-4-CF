@@ -41,7 +41,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" />this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
 		</tr>
 		<tr>
 			<td><b:label>Bootstrap</b:label></td>
@@ -63,7 +63,7 @@
 			<td>colFooters</td>
 			<td>(none)</td>
 			<td>This generates <code>&lt;tfoot&gt;</code> section of your table. This should make it easier to keep table footers consistent. This accepts a comma separated list.</td>
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" />Make sure that the inner content is clean</td>
 		</tr>	
 		
 		<tr>
@@ -71,7 +71,7 @@
 			<td>colHeaders</td>
 			<td>(none)</td>
 			<td>This generates <code>&lt;thead&gt;</code> section of your table. This should make it easier to keep table columns consistent. This accepts a comma separated list.</td>
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" />Make sure that the inner content is clean</td>
 		</tr>	
 		
 		<tr>
@@ -218,7 +218,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
+			<td><b:label look="danger" key="No" />this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -366,7 +366,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td>Yes</td>
+			<td><b:yesnoFormat value="1" /></td>
 		</tr>
 		<tr>
 			<td></td>

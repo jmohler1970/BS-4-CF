@@ -932,7 +932,7 @@ disabled,display,group,id,look,value,selected,tooltip
 			<td>name</td>
 			<td>required</td>
 			<td>All the check boxes get the same name</td>
-			<td>Yes</td>
+			<td><b:yesnoFormat value="1" /></td>
 		</tr>
 		<tr>
 			<td></td>

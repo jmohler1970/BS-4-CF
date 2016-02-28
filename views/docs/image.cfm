@@ -50,7 +50,7 @@
 			<td>base64</td>
 			<td>(none)</td>
 			<td>Used to generate base64 encoded image. See <a href="http://caniuse.com/#feat=datauri">Can I use</a> for browser support.  If base64 is chosen, then name is not needed.</td>
-			<td><b:label look="danger">No</b:label> </td>
+			<td><b:label look="danger" key="No" /></td>
 		</tr>
 		<tr>
 			<td></td>

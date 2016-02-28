@@ -24,7 +24,7 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
 	</cfcase>
 	<cfdefaultcase>
-		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/<cfoutput>#lcase(session.bootswatch)#</cfoutput>/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/<cfoutput>#lcase(session.bootswatch)#</cfoutput>/bootstrap.min.css" rel="stylesheet">
 	</cfdefaultcase>	
 </cfswitch>
 
@@ -41,7 +41,7 @@
 <b:outputStyleSheet library="vendor" name="bootstrap-wysiwyg.css" />
 <b:outputStyleSheet library="vendor" name="material.css" />
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
 
 <cfswitch expression="#session.bootswatch#">
@@ -143,7 +143,7 @@ padding-top: 50px;
 	
      
 	</b:container>
-</body>
+
 
 
 

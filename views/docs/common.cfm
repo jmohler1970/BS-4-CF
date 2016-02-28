@@ -33,7 +33,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
+			<td><b:label look="danger" key="No" /> Content is assumed to be clean</td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -50,7 +50,7 @@
 			<td>(none)</td>
 			<td>Pass through of HTML5 <code>data-*=</code> attributes.</td>
 			<td>
-				Keys: <b:label look="danger">No</b:label> 	
+				Keys: <b:label look="danger" key="No" />	
 				<br />	
 				Values <code>encodeForHTMLAttribute()</code>
 			</td>
@@ -65,7 +65,7 @@
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>
-			<td>IF exists in<code>application.Bootstrap.isSafeHTML</code></td>
+			<td>IF exists in<code>application?.Bootstrap?.isSafeHTML</code></td>
 			<td>Controls how content is rendered. Content is assumed to be clean, but it can be cleaned if necessary.
 				By setting this to false, all content will be cleaned via <code>getSafeHTML()</code></td>
 			<td>Must evaluate to boolean</td>
@@ -83,7 +83,7 @@
 			<td>(none)</td>
 			<td>Pass through of all AngularJS attributes</td>
 			<td class="text-nowrap">
-				Keys: <b:label look="danger">No</b:label> 	
+				Keys: <b:label look="danger" key="No" />	
 				<br />	
 				Values <code>encodeForHTMLAttribute()</code>
 			</td>
@@ -94,7 +94,7 @@
 			<td>(none)</td>
 			<td>Pass through of all Mouse/Pointer events.</td>
 			<td>
-				Keys: <b:label look="danger">No</b:label> 	
+				Keys: <b:label look="danger" key="No" />	
 				<br />	
 				Values <code>encodeForHTMLAttribute()</code>
 			</td>

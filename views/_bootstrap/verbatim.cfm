@@ -16,15 +16,12 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
  
-	param attributes.cacheid			= "";
-	param attributes.binding			= "";
-     param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-	param attributes.key			= "";
-	param attributes.placeholder		= [];
+
+     param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
      param attributes.processed		= true;
-     param attributes.profile			= application.Bootstrap.profile;
+     param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 
      
 
@@ -33,8 +30,8 @@ case "start" :
 
      if (!attributes.processed) exit "exitTag";
      
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -43,9 +40,9 @@ case "start" :
 	break;
      
 case "end" :
-     if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-     if(attributes.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+     if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
+     if(attributes?.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
 																	attributes.isSafeHTML 	= true;				
 																	}	
 	
@@ -54,7 +51,7 @@ case "end" :
 	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 
 								
-     if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+     if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
      if (attributes.rendered)				writeOutput(variables.result);

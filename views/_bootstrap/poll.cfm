@@ -18,20 +18,14 @@ case "start" :
 	variables.defaultTimeframe = 5000; // in milliseconds
   
 	param attributes.action;			// required
-	param attributes.cacheid			= "";
 	param attributes.id				= "auto";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());	// make sure to set to true if you want animated loading 
+	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());	// make sure to set to true if you want animated loading 
 	param attributes.interval		= variables.defaultTimeframe;		// ms
-     param attributes.key			= "";
-	param attributes.placeholder		= [];
      param attributes.processed		= true;
-     param attributes.profile			= application.Bootstrap.profile;
+     param attributes.profile			= application?.Bootstrap?.profile;
      param attributes.rendered 		= true;
-	param attributes.style			= "";
-	param attributes.styleClass		= "";
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.timeout			= variables.defaultTimeframe;		// ms
-	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
      
      if (attributes.id == "auto")	attributes.id = "poll_" & left(createUUID(), 10);
@@ -43,8 +37,8 @@ case "start" :
      if (!attributes.processed) exit "exitTag";
      
      
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -54,23 +48,23 @@ case "start" :
      
 case "end" :
 
-	if(attributes.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
+	if(attributes?.key 		!= "" )		{
+																	thisTag.GeneratedContent	= application.geti18n(attributes?.key, attributes?.placeholder);
 																	attributes.isSafeHTML 	= true;				
 																	}
 																	
 	
 								variables.result &= variables.crlf;
-	if(attributes.styleClass == "")	variables.result &= '<span';
-	if(attributes.styleClass != "")	variables.result &= '<span class="#encodeForHTMLAttribute(attributes.styleClass)#"';							
+	if(attributes?.styleClass == "")	variables.result &= '<span';
+	if(attributes?.styleClass != "")	variables.result &= '<span class="#encodeForHTMLAttribute(attributes.styleClass)#"';							
 				
 		   							
-	if(attributes.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes?.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
-	if(attributes.style		!= "")	variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
-	if(attributes.tooltip    != "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
+	if(attributes?.style	!= "")	variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
+	if(attributes?.tooltip	!= "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes?.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
+	if(attributes?.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
 	
 	             
 								variables.result &= '>';
@@ -105,7 +99,7 @@ case "end" :
      
 								variables.result &= variables.crlf & '</script>';
 								
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
+	if (attributes?.cacheid != "")	CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
      
      thisTag.GeneratedContent = "";
      if (attributes.rendered)			writeOutput(variables.result);
