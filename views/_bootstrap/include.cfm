@@ -41,7 +41,7 @@
 
 	
 	<cfsavecontent variable="variables.result"> 
-		<cfinclude template="../views/#attributes.template#">
+		<cfinclude template="../#attributes.template#">
 	</cfsavecontent>
 	
 	<cfscript>

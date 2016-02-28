@@ -33,7 +33,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content. this is the initial message before the content is AJAX'ed in</td>
-			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
+			<td><b:label look="danger" key="No" /> Content is assumed to be clean</td>
 		</tr>
 		<tr>
 			<td>backdrop</td>

@@ -44,7 +44,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td></td>
+			<td><b:label look="danger" key="No" /> Make sure that the inner content is clean</td></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -65,7 +65,7 @@
 			<td>closable</td>
 			<td>false</td>
 			<td>Does this include a close X?</td>
-			<td>No</td>
+			<td><b:yesnoFormat value="0" /></td>
 		</tr>
 
 		<tr>

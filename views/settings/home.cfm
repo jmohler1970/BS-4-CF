@@ -128,9 +128,9 @@
      	<h6><small><b:outputText key="ONLY_NEW_PASSWORD" /></small></h6>
 	             
 		<b:formGroup>	
-			<label for="inputPassword" class="control-label"><b:outputText key="NEW_PASSWORD" /></label>
+			<label for="sitepwd" class="control-label"><b:outputText key="NEW_PASSWORD" /></label>
 		
-			<input type="password" class="form-control" name="sitepwd" />
+			<input type="password" class="form-control" name="sitepwd" value="" />
 		</b:formGroup>
 
      </b:column>				
@@ -140,7 +140,7 @@
      	<h6><small>&nbsp;</small></h6>
 	             
 		<b:formGroup>	
-			<label for="inputPassword" class="control-label"><b:outputText key="CONFIRM_PASSWORD" /></label>
+			<label for="sitepwd_confirm" class="control-label"><b:outputText key="CONFIRM_PASSWORD" /></label>
 		
 			<input type="password" class="form-control" name="sitepwd_confirm" />
 		</b:formGroup>

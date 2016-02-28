@@ -35,7 +35,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td>Yes</td>
+			<td><b:yesnoFormat value="1" /></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -63,7 +63,7 @@
 			<td>footer</td>
 			<td>(none)</td>
 			<td>For <code>&lt;b:blockquote&gt;</code> only. This generates footer content</td>
-			<td><b:label look="danger">No</b:label> </td>
+			<td><b:label look="danger" key="No" /></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -350,7 +350,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> </td>
+			<td><b:label look="danger" key="No" /></td>
 		</tr>
 		<tr>
 			<td></td>

@@ -49,7 +49,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td><b:label look="danger">No</b:label> this is often longer than antisamy limits. Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" /> This is often longer than antisamy limits. Make sure that the inner content is clean</td>
 		</tr>
 		
 		<tr>
@@ -135,7 +135,7 @@
 			<td>tag</td>
 			<td>div</td>
 			<td>Div tag always works but is generic. Consider setting to <code>section</code>, <code>article</code>, or <code>aside</code>. </td>
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" /> Make sure that the inner content is clean</td>
 		</tr>	
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
@@ -188,7 +188,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> this is often longer than antisamy limits. Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" /> This is often longer than antisamy limits. Make sure that the inner content is clean</td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -252,7 +252,7 @@
 			<td>tag</td>
 			<td>div</td>
 			<td>Div tag always works but is generic. Consider setting to <code>section</code>, <code>article</code>, or <code>aside</code>. </td>
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" /> Make sure that the inner content is clean</td>
 		</tr>	
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
@@ -303,7 +303,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label></td>
+			<td><b:label look="danger" key="No" /></td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -407,7 +407,7 @@
 			<td>tag</td>
 			<td>div</td>
 			<td>Div tag always works but is generic. Consider setting to <code>section</code>, <code>article</code>, or <code>aside</code>. </td>
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" /> Make sure that the inner content is clean</td>
 		</tr>	
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
