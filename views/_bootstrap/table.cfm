@@ -42,7 +42,7 @@ case "end" :
      									variables.result &= variables.crlf;  
 	   									variables.result &= '<table class="table';
 	if(attributes?.bordered		== true)		variables.result &= ' table-bordered';
-	if(attributes?.condensed		== true)		variables.result &= ' table-condensed';
+	if(attributes?.condensed		== true)		variables.result &= ' table-condensed table-sm';
 	if(attributes?.hover		== true)		variables.result &= ' table-hover';
 	if(attributes?.striped		== true)		variables.result &= ' table-striped';
 				
