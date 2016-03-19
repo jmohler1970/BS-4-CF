@@ -18,12 +18,9 @@ case "start" :
   
 
 	param attributes.buttonPart		= false;		// false actually does something
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "default";
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	
 	if (!attributes.processed) exit "exitTag";
 	
@@ -36,9 +33,6 @@ case "start" :
      
 case "end" :
 
-	if(attributes?.key 		!= "" )				{
-											attributes.value	= application.geti18n(attributes.key, attributes?.placeholder);
-											}	
 
 	if(attributes?.buttonPart == false)	{										
 									variables.result &= variables.crlf & '<li class="dropdown';
@@ -61,10 +55,8 @@ case "end" :
 								
 									variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
 						
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-
-					
+						
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);	
 						
 						
 									variables.result &= crlf & '</ul>';

@@ -19,14 +19,11 @@ case "start" :
   
 	param attributes.action;			// required
 	param attributes.id				= "auto";
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());	// make sure to set to true if you want animated loading 
 	param attributes.interval		= variables.defaultTimeframe;		// ms
      param attributes.processed		= true;
-     param attributes.profile			= application?.Bootstrap?.profile;
      param attributes.rendered 		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.timeout			= variables.defaultTimeframe;		// ms
-	param attributes.tooltipPosition	= "bottom";
+
      
      if (attributes.id == "auto")	attributes.id = "poll_" & left(createUUID(), 10);
      
@@ -48,30 +45,17 @@ case "start" :
      
 case "end" :
 
-	if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes?.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}
 																	
 	
 								variables.result &= variables.crlf;
 	if(attributes?.styleClass == "")	variables.result &= '<span';
 	if(attributes?.styleClass != "")	variables.result &= '<span class="#encodeForHTMLAttribute(attributes.styleClass)#"';							
 				
-		   							
-	if(attributes?.id		!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	
-	if(attributes?.style	!= "")	variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
-	if(attributes?.tooltip	!= "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes?.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes?.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';
-	
+								variables.result &= application.filterAttributes(attributes);
 	             
 								variables.result &= '>';
 							
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-
+								variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);		
 							
 	
 								variables.result &= '</span>';

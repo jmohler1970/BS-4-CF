@@ -28,26 +28,9 @@ case "start" :
 	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
 	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-	param attributes.tooltipPosition	= "bottom";
 
-	// Patch this
-	if(attributes?.disabled == "disabled")	attributes.disabled = true;
-	if(attributes?.readonly == "readonly")	attributes.readonly = true;
-	if(attributes?.required == "required")	attributes.required = true;
-		
+
 	if(attributes?.list != "")			attributes.array.append(attributes.list.ListToArray(), true);
-	
-
-	
-	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
-	variables.arAttrSeries = [];
-	
-	for(variables.myKey in attributes)	{
-		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
-			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
-			} // end if	
-		}	// end for
-		
 	
 
      if (!attributes.processed) exit "exitTag";
@@ -62,34 +45,21 @@ case "start" :
      
 case "end" :
 
-	if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
-	
+
 
 	if(attributes?.span			!= "")	variables.result &= '<div class="col-md-#attributes.span#">' & variables.crlf;
 									variables.result &= '<select name="#encodeForHTMLAttribute(attributes.name)#" class="form-control';
 	if(attributes?.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 	if(attributes?.fieldSize		!= "")	variables.result &= ' input-#attributes.fieldSize#';
 									variables.result &= '"';
-	if(attributes?.disabled		== true)	variables.result &= ' disabled="disabled"';													
-	if(attributes?.id			!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttributes(variables.myAttr.value)#"';
-	
-	if (attributes?.readonly == true)		variables.result &= ' readonly="readonly"';
-	if (attributes?.required == true)		variables.result &= ' required="required"';
-	if (attributes?.style	!= "")		variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
-	if (attributes?.tooltip  != "")		variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if (attributes?.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if (attributes?.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
-
+									variables.result &= application.filterAttributes(attributes);
+													
 	
 									variables.result &= ' >';
 								
-    	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean		
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
+										
 
 	// range genarator
 	if(isnumeric(attributes?.from) && isnumeric(attributes?.to) && attributes.from < attributes.to)	{

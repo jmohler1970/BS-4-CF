@@ -17,11 +17,8 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
   
 
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
      param attributes.rendered 		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 
 
 	
@@ -38,11 +35,6 @@ case "start" :
 case "end" :
 
 
-
-	if (attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;
-																	}
 
 	if (attributes?.inverse == true)		variables.result &= '<nav class="navbar navbar-inverse';
 	else								variables.result &= '<nav class="navbar navbar-default';
@@ -72,8 +64,7 @@ case "end" :
 									variables.result &= '<div class="collapse navbar-collapse">';
 
 							
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);	
 
 
 									variables.result &= variables.crlf & '</div><!-- /.navbar-collapse -->';

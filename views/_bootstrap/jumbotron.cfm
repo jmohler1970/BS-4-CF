@@ -16,13 +16,9 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
  
-	param attributes.isSafeHTML		= application?.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap.profile;
-	param attributes.rendered 		= true;
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 
-	param attributes.tooltipPosition 	= "bottom";     
+   
 
 	if (!attributes.processed) exit "exitTag";
 	
@@ -36,22 +32,17 @@ case "start" :
 	break;
      
 case "end" :
-
-	if(attributes?.key 		!= "" )		{
-									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-									attributes.isSafeHTML 	= true;				
-									}	
      
 									variables.result &= variables.crlf;
 									variables.result &= '<div class="jumbotron"';
-	if(attributes?.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes?.tooltip	!= "")   		variables.result &= ' tooltip="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	
+									variables.result &= application.filterAttributes(attributes); 	
+	
 	if(attributes?.tight	== true)		variables.result &= ' style="margin : 0; padding-top : 0; padding-right : 0"';
 									variables.result &= '>';
 								
 								
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
 							
 
 									variables.result &= '</div><!-- /.jumbotron -->';
@@ -60,7 +51,7 @@ case "end" :
      if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)				writeOutput(variables.result);
+     if (attributes.rendered ?: true)		writeOutput(variables.result);
      
 	break;
 	}

@@ -18,15 +18,10 @@ case "start" :
 
 
      param attributes.condensed		= true;
-     param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase()); // this is set to true because the content may be very large and td and th should have cleaned it
-  
      param attributes.processed		= true;
-     param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true; // removes content not actuall td
 	param attributes.responsive		= true;
 	param attributes.striped			= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-     param attributes.tooltipPosition	= "bottom";
      
 
 	if (!attributes.processed) exit "exitTag";
@@ -43,23 +38,21 @@ case "start" :
 case "end" :     
           
 
-     if(attributes?.responsive	== true)			variables.result &= '<div class="table-responsive">';  
-     										variables.result &= variables.crlf;  
-	   										variables.result &= '<table class="table';
-	if(attributes?.bordered		== true)			variables.result &= ' table-bordered';
-	if(attributes?.condensed		== true)			variables.result &= ' table-condensed';
-	if(attributes?.hover		== true)			variables.result &= ' table-hover';
-	if(attributes?.striped		== true)			variables.result &= ' table-striped';
+     if(attributes?.responsive	== true)		variables.result &= '<div class="table-responsive">';  
+     									variables.result &= variables.crlf;  
+	   									variables.result &= '<table class="table';
+	if(attributes?.bordered		== true)		variables.result &= ' table-bordered';
+	if(attributes?.condensed		== true)		variables.result &= ' table-condensed';
+	if(attributes?.hover		== true)		variables.result &= ' table-hover';
+	if(attributes?.striped		== true)		variables.result &= ' table-striped';
 				
-	if(attributes?.styleClass	!= "")			variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
-	   										variables.result &= '"';
-	if(attributes?.id			!= "")			variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes?.style		!= "")			variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
-	if(attributes?.tooltip		!= "")			variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes?.tooltip		!= "")			variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes?.tooltip		!= "")			variables.result &= ' data-toggle="tooltip"';						
-	               
-											variables.result &= '>' & variables.crlf;
+	if(attributes?.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
+	   									variables.result &= '"';
+	   										
+	   									variables.result &= application.filterAttributes(attributes);
+	   										
+               
+										variables.result &= '>' & variables.crlf;
 											
 	if(attributes?.colHeaders	!= "")		{
 											variables.result &= '<thead>' & variables.crlf & '<tr>' & variables.crlf;
@@ -70,8 +63,7 @@ case "end" :
 									} // end thead
 								
 	
-	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+										variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);							
 
 	
 	if(attributes?.colFooters != "")		{
@@ -83,14 +75,14 @@ case "end" :
 									} // end thead
 		
 							
-											variables.result &= '</table>';
-     if(attributes?.responsive	== true) 			variables.result &= '</div>';    
+										variables.result &= '</table>';
+     if(attributes?.responsive	== true) 		variables.result &= '</div>';    
 	
 	
-	if (attributes?.cacheid != "")				CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+	if (attributes?.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)						writeOutput(variables.result);
+     if (attributes.rendered)					writeOutput(variables.result);
      
 	break;
 	}

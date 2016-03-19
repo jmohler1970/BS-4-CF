@@ -23,12 +23,10 @@ case "start" :
 
 
 	param attributes.look			= "";
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.name;
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
+
 	
 	// Patch this
 	if(attributes?.disabled == "disabled")	attributes.disabled = true;
@@ -80,9 +78,8 @@ case "end" :
 		if(thisTag.qryOption.id[variables.myRow]		!= "")	variables.result &=	' for="#encodeForHTMLAttribute(thisTag.qryOption.id[variables.myRow])#"';
 														variables.result &= '>';
 	
-		
-		if(!attributes.isSafeHTML)							variables.result &= getSafeHTML(thisTag.qryOption.display[variables.myRow].trim(), attributes.profile, attributes.throwOnError); // pass through of content
-		if( attributes.isSafeHTML)							variables.result &= thisTag.qryOption.display[variables.myRow].trim(); // warning content must already be clean								
+	
+														variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);	
 
 		
 														variables.result &= '</label>';

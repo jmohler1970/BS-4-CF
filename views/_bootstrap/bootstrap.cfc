@@ -48,41 +48,16 @@ void function setupApplication()	{
 	
 	
 	
-	application.geti18n = function(required string key, any placeholder = []) output="false"	{
-	
-		if (!isArray(arguments.placeholder)) arguments.placeholder = [arguments.placeholder];
-		
-		
-		if (CacheIdExists(application.lang, application.Bootstrap.cache.language))	{
-			
-			local.stLang = cacheGet(application.lang, application.Bootstrap.cache.language);
-	
-			
-			
-			if (local.stLang.keyExists(arguments.key))	{
-			
-				local.myString = local.stLang[arguments.key]; 
-			
-				for (var i in arguments.placeholder)	{
-			
-					local.myString = local.myString.replace('%s', i); // only does first match
-					}
-					
-				return getSafeHTML(local.myString);
-				} // end keyExists
-			} // end cacheIdExists
-			
-		
-		return "{#arguments.key#}";
-		}; // end function
+	application.geti18n			= this.geti18n;
+	application.filterAttributes	= this.filterAttributes;
+	application.generateContent	= this.generateContent;
 	 		
 		
 	// Language control
 	application.lang = "en_US"; // needs to be smarter		
-		
-	
 	}
 	
+
 	
 void function setupRequest()	{
 		
@@ -99,6 +74,7 @@ void function setupRequest()	{
 	if(!cacheRegionExists(application.Bootstrap.cache.language)) CacheRegionNew(application.Bootstrap.cache.language);
 	
 	
+	// note: renaming application will not load new languages, you have to restart the cf service
 	if(cacheGetAllIds(application.Bootstrap.cache.language).isEmpty())	{	
 				
 		
@@ -120,9 +96,98 @@ void function setupRequest()	{
 			}
 		
 		}
+	
+}
+
+
+// Functions for tags
+
+string function geti18n(required string key, any placeholder = []) output="false"	{
+	
+	if (!isArray(arguments.placeholder)) arguments.placeholder = [arguments.placeholder];
+		
+		
+	if (CacheIdExists(application.lang, application.Bootstrap.cache.language))	{
+			
+		local.stLang = cacheGet(application.lang, application.Bootstrap.cache.language);
+	
+			
+			
+		if (local.stLang.keyExists(arguments.key))	{
+			
+			local.myString = local.stLang[arguments.key]; 
+			
+			for (var i in arguments.placeholder)	{
+			
+				local.myString = local.myString.replace('%s', i); // only does first match
+				}
+					
+			return getSafeHTML(local.myString);
+			} // end keyExists
+		} // end cacheIdExists
+			
+		
+	return "{#arguments.key#}";
+	}
+		
+
+// See: http://codereview.stackexchange.com/questions/121963/filtering-the-attributes-for-a-custom-tag
+
+string function filterAttributes(required struct attr, string filter = "id|name|lang|style|role|href|rel|target|disabled|readonly|required", boolean tooltip = true)	output="false" {
+	
+	
+		// Patch this
+	if(arguments.attr?.disabled == true)	arguments.attr.disabled = "disabled";
+	if(arguments.attr?.readonly == true)	arguments.attr.readonly = "readonly";
+	if(arguments.attr?.required == true)	arguments.attr.required = "required";
+		
+	var prev = "";	
+	
+	local.result = arguments.attr.filter(function(key, value)	{ 
+				return (key.reFindNoCase(filter)		|| key.reFindNoCase("data\-|ng\-|on") || true );
+
+			})?.reduce(function(string prev, string key, string value)	{
+				return prev & ' #key.lcase()# = "#value.encodeForHTMLAttribute()#"';
+			}
+		);
+	
+	param local.result = "";
 
 		
-}
+	if(arguments.attr?.tooltip	!= "" && arguments.tooltip)	{
+			param arguments.attr.tooltipPosition	= "bottom";
+			
+			local.result &= ' title = "#arguments.attr.tooltip.encodeForHTMLAttribute()#"';
+			local.result &= ' data-placement="#arguments.attr.tooltipPosition.encodeForHTMLAttribute()#"';
+			local.result &= ' data-toggle="tooltip"';	
+			}
+	
+	
+	return local?.result;
+	}	
+
+
+
+string function generateContent(required string Content, required array tagstack, required struct attr) output="false"	{
+	
+
+	if(arguments.attr?.key 		!= "" )		{
+									arguments.Content			= application.geti18n(arguments.attr.key, arguments.attr?.placeholder);
+									arguments.attr.isSafeHTML 	= true;
+									}			
+		
+
+
+	param arguments.attr.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(arguments.tagStack[1].lcase());
+	if(arguments.attr.isSafeHTML)			return arguments.Content.trim(); // warning content must already be clean
+	
+	
+	param arguments.attr.profile			= application.Bootstrap.profile;
+	param arguments.attr.throwOnError		= application.Bootstrap.throwOnError;
+
+
+	return arguments.Content.trim().getSafeHTML(arguments.attr.profile, arguments.attr.throwOnError); // pass through of content
+	}
 
 
 

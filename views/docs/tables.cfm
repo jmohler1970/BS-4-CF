@@ -520,6 +520,7 @@
 
 <b:h2 key="examples" />
 
+<p>This includes a tooltip over the icons</p>
 
 <b:table>
 <thead> 
@@ -537,7 +538,7 @@
 <cfoutput query="rc.qryData">
 	<b:tr rendered="#IIF(Delete, 0, 1)#">
 		<b:td isSafeHTML="true"><b:badge value="#ID#" /></b:td>
-		<b:td isSafeHTML="true" data-sort="#ID#"><b:icon name="#icon#" /></b:td>
+		<b:td isSafeHTML="true" data-sort="#ID#" tooltip="This is a #icon#"><b:icon name="#icon#" /></b:td>
 		<b:td>#Album#</b:td>
 		<b:td>#Message#</b:td>
 		<b:td>#Score#</b:td>

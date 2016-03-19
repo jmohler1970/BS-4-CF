@@ -20,13 +20,11 @@ case "start" :
 	if(attributes.keyExists("qryOption")) thisTag.qryOption = attributes.qryOption;
 
 
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "";
 	param attributes.name;
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
+
 	
 	// Patch this
 	if(attributes?.disabled == "disabled")	attributes.disabled = true;

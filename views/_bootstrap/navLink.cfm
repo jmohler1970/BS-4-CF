@@ -30,17 +30,6 @@ case "start" :
 	if(attributes?.disabled == "disabled")	attributes.disabled = true;
 
 
-	variables.arAttrSeries = [];
-
-
-	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
-	for(variables.myKey in attributes)	{
-		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
-			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
-			} // end if	
-		}	// end for
-     
-     
      
      if (!attributes.processed) exit "exitTag";
      
@@ -55,10 +44,6 @@ case "end" :
 
 	if(attributes?.value	!= "")										thisTag.generatedContent = attributes.value;
 	if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
-	if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
 
      
      if (thisTag.generatedContent == "" && attributes?.header == "")
@@ -75,19 +60,17 @@ case "end" :
 												variables.result &= '<a href="#attributes.href#';
 		if(attributes?.fragment	== true)				variables.result &= '###encodeForURL(attributes.fragment)#';
 												variables.result &= '"';
-		if(attributes?.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-		
-		for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
-		
+												
+												
+												variables.result &= application.filterAttributes(attributes);
+												
+												
 												variables.result &= '>';
 		if(attributes?.icon != "" && attributes.iconAlign == "left")		{
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
 												}
 												
-	if (!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if ( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-											
-												
+												variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);					
 														
 		if(attributes?.icon != "" && attributes.iconAlign == "right")	{
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';

@@ -24,13 +24,10 @@ case "start" :
 		}
  
 
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase()); // this really does not work with false
 	param attributes.look			= "default";
 	param attributes.processed	 	= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered		= true;
 	param attributes.role			= "button";
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	
 	if (!attributes.processed) exit "exitTag";
 	
@@ -46,10 +43,6 @@ case "start" :
      
 case "end" :
 
-	if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}
 
 
 	if (attributes.look == "tab")			variables.result &= crlf & '<a class="dropdown-toggle" ';
@@ -58,10 +51,7 @@ case "end" :
 									variables.result &= 'data-toggle="dropdown" role="#EncodeForHTMLAttribute(attributes.role)#">#EncodeForHTML(attributes?.value)# <b class="caret"></b></a>';  
 									variables.result &= crlf & '<ul class="dropdown-menu" role="menu">';
 	
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-
-	
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);							
 	
 									variables.result &= crlf & '</ul>';
 									variables.result &= crlf & '<!-- /.end dropdown -->';

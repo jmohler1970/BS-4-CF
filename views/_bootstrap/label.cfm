@@ -23,23 +23,11 @@ case "start" :
 	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
 	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-	param attributes.tooltipPosition	= "bottom";
 	
 	
 	if (attributes.keyExists("text")) 						throw "attributes.text is an invalid option. Don't even think of using it";
 	
 	
-	variables.arAttrSeries = [];
-	
-	
-	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
-	for(variables.myKey in attributes)	{
-		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
-			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
-			} // end if	
-		}	// end for
-     
-     
      if (!attributes.processed) exit "exitTag";
      
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
@@ -54,28 +42,19 @@ case "end" :
      
      if(attributes?.value != "")											thisTag.generatedContent = attributes.value;
      if(attributes?.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
-     if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
+
      
 	
 									variables.result &= '<span class="label label-#encodeForHTMLAttribute(attributes.look.lcase())#';
-	if(attributes?.styleClass	!= "")		variables.result &= ' #attributes.styleClass# ';
-									variables.result &= '"'; 
-	if(attributes?.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
-	
-	if(attributes?.style	!= "")		variables.result &= ' style = "#encodeForHTMLAttribute(attributes.style)#"';	
-	if(attributes?.tooltip	!= "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes?.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes?.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
+	if(attributes?.styleClass	!= "")	variables.result &= ' #attributes.styleClass# ';
+									variables.result &= '"';
+									
+									
+									variables.result &= application.filterAttributes(attributes);
  	
 									variables.result &= '>';
 								
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);						
 							
 
 									variables.result &= '</span>';

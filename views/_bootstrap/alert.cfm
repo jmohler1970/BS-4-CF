@@ -17,13 +17,9 @@ case "start" :
 	variables.tagStack	= getBaseTagList().ListToArray();
   
 
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "warning";
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-	param attributes.tooltipPosition	= "bottom";
      
     
 	
@@ -40,33 +36,26 @@ case "start" :
      
 case "end" :
 	if(attributes?.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-	if(attributes?.key 		!= "")		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
 
      
-									variables.result &= '<div class="alert alert-#encodeForHTMLAttribute(attributes.look.lcase())#';
+									variables.result &= '<div class="alert alert-#attributes.look.lcase().encodeForHTMLAttribute()#';
 	if(attributes?.closable	== true)		variables.result &= ' alert-dismissible';  							
-	   								variables.result &= '"';
-	if(attributes?.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+									variables.result &= '"';
 	
-	if(attributes?.tooltip	!= "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes?.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes?.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
+									variables.result &= application.filterAttributes(attributes);
+     
 	
 									variables.result &= '>';
 	
 	if(attributes?.closable	== true)		variables.result &= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';		
-	if(attributes?.title	!= "")    	variables.result &= '<strong>#encodeForHTML(attributes.title)#</strong>';
+	if(attributes?.title	!= "")    	variables.result &= '<strong>#attributes.title.encodeForHTML()#</strong>';
 									variables.result &= variables.crlf;
 	if(attributes?.title	!= "")    	variables.result &= '<br />';
 	
+	      
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
 	
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
 	
-
 									variables.result &= '</div><!-- /.alert -->';
 									variables.result &= variables.crlf;
      

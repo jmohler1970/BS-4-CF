@@ -19,12 +19,9 @@ case "start" :
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 
 	param attributes.look 			= ""; // needed 
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase()); // really does not work with true
 	param attributes.orientation 		= "horizontal"; // horizontal, vertical, up
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.toggle			= false;
 	param attributes.tooltipPosition	= "bottom";
 
@@ -89,9 +86,8 @@ case "end" :
 		} // end for
 								
 		
-	if(!attributes.isSafeHTML)				variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)				variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-
+										variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
+					
 
 										variables.result &= '</div><!-- /.btn-group -->';
 										variables.result &= variables.crlf;

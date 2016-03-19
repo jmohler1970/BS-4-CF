@@ -20,17 +20,12 @@ case "start" :
 	if(attributes.keyExists("qryOption")) thisTag.qryOption = attributes.qryOption;
   
 
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.name;					// required field
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered	 	= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-	param attributes.tooltipPosition	= "bottom";
+
 	
-	// Patch this
-	if(attributes?.disabled == "disabled")	attributes.disabled = true;
-	if(attributes?.readonly == "readonly")	attributes.readonly = true;
+
 	
      if (!attributes.processed) exit "exitTag";
      
@@ -50,19 +45,8 @@ case "end" :
 	if (attributes?.styleClass	!= "")	variables.result &= ' #encodeforHTMLAttribute(attributes.styleClass)#';
 	if (attributes?.fieldSize	!= "")	variables.result &= ' input-#encodeForHTMLAttribute(attributes.fieldSize)#';
 									variables.result &= '"';
-	if (attributes?.disabled		== true)	variables.result &= ' disabled="disabled"';													
-	if (attributes?.id			!= "")	variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if (attributes?.readonly		== true)	variables.result &= ' readonly="readonly"';
-	if (attributes?.required		== true)	variables.result &= ' required="required"';
-	if (attributes?.style		!= "")	variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
 	
-	if (attributes?.tooltip		!= "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if (attributes?.tooltip		!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if (attributes?.tooltip		!= "")	variables.result &= ' data-toggle="tooltip"';
-	
-	if (attributes?.onBlur		!= "")	variables.result &= ' onBlur="#attributes.onBlur#"';
-	if (attributes?.onClick		!= "")	variables.result &= ' onClick="#attributes.onClick#"';
-	if (attributes?.onChange		!= "")	variables.result &= ' onChange="#attributes.onChange#"';
+									variables.result &= application.filterAttributes(attributes);
 	
 									variables.result &= ' >';
 

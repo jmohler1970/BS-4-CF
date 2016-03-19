@@ -18,11 +18,8 @@ case "start" :
 
 
 	attributes.hidden				= "";
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed		= true; // unknown how to support
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true; // removes content not actual th
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.tooltipPosition	= "bottom";
 
 
@@ -39,15 +36,6 @@ case "start" :
 	if(attributes?.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';
 
 
-	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
-	variables.arAttrSeries = [];
-	
-	for(variables.myKey in attributes)	{
-		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
-			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
-			} // end if	
-		}	// end for
-
 
 	// if (!attributes.processed) exit "exitTag";
 	
@@ -62,28 +50,22 @@ case "start" :
 case "end" :
 
 	if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-	if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
+
+
 
 	if(variables.myClass 	== "")				variables.result &= '<th';
 	if(variables.myClass 	!= "")				variables.result &= '<th class="#encodeForHTMLAttribute(variables.myClass)#"';
-	if(attributes?.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
-
-
-	if(attributes?.style	!= "")				variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
+	
+											variables.result &= application.filterAttributes(attr = attributes, tooltip = false);		
 											variables.result &= '>';
+
 	if(attributes?.tooltip   != "")				variables.result &=	'<span title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes?.tooltip	!= "")				variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes?.tooltip	!= "")				variables.result &= ' data-toggle="tooltip"';
 	if(attributes?.tooltip   != "")				variables.result &=	'>';
 	
 	
-	if(attributes.rendered && !attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+											variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);					
 	
 	
 	if(attributes?.tooltip    != "")				variables.result &=	'</span>';

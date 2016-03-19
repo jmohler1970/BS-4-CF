@@ -16,12 +16,9 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
 
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.look			= "";
 	param attributes.processed		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.tooltipPosition	= "bottom";
 	param attributes.value			= 1;
 
@@ -47,10 +44,7 @@ case "start" :
 
 case "end" :
 
-	if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;
-																	}
+
 
 									variables.result &= '<div class="checkbox';
 	if(attributes?.circle	== true)		variables.result &= ' checkbox-circle';
@@ -79,8 +73,7 @@ case "end" :
 									variables.result &= '>';
 
 
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);	
 
 
 									variables.result &= '</label>';

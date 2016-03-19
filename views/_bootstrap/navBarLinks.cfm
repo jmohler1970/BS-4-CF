@@ -17,12 +17,9 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
 
 
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-	param attributes.tooltipPosition	= "bottom";
+
 	
 	
 	if (!attributes.processed) exit "exitTag";
@@ -43,14 +40,12 @@ case "end" :
 	if (attributes?.pull 	!= "")		variables.result &= ' navbar-#encodeForHTMLAttribute(attributes.pull)#';
 	if (attributes?.stacked	== true)		variables.result &= ' nav-stacked';	
 									variables.result &= '"';
-	if (attributes?.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if (attributes?.tooltip	!= "")		variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if (attributes?.tooltip	!= "")		variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if (attributes?.tooltip	!= "")		variables.result &= ' data-toggle="tooltip"';
+									
+									variables.result &= application.filterAttributes(attributes);
+		
 									variables.result &= '>';
 								
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);	
 								
 
 									variables.result &= variables.crlf & '</ul><!-- /.nav -->';

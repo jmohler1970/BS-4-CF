@@ -17,14 +17,11 @@ case "start" :
 	variables.tagStack	= getBaseTagList().ListToArray();
   
 
-     param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
      param attributes.processed		= true;
-     param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
 	param attributes.role 			= "progressbar";
 	param attributes.stripped		= false;	if(attributes?.animated == true) attributes.stripped = true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-     param attributes.tooltipPosition	= "bottom";
+
      param attributes.width			= 0;
      
      
@@ -45,10 +42,7 @@ case "end" :
 	
 
      if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-     if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
+
 	
 	
 											variables.result &= '<div class="progress">';
@@ -58,21 +52,16 @@ case "end" :
 	if(attributes?.animated		== true)			variables.result &= ' active';
 	if(attributes?.styleClass	!= "")			variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';		
 											variables.result &= '"';
-	if(attributes?.id			!= "")			variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes?.role			!= "")			variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
+											
+											variables.result &= application.filterAttributes(attributes);
+											
 											variables.result &= ' style="width : #encodeForHTMLAttribute(attributes.width)#%;';
 	if(attributes?.style		!= "")			variables.result &= ' #encodeForHTMLAttribute(attributes.style)#';
 											variables.result &= '"';
-	
-	if (attributes?.tooltip  != "")				variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if (attributes?.tooltip	!= "")				variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if (attributes?.tooltip	!= "")				variables.result &= ' data-toggle="tooltip"';            
 											variables.result &= '>';
 								
-	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-							
-							
+								
+											variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
 						
 								
 	if(thisTag.GeneratedContent	== "")			variables.result &= '&nbsp;';							

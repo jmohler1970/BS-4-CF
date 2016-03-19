@@ -202,8 +202,9 @@
 
 
 
-<b:h1 key="try_me" />
+<b:h2 key="try_me" />
 
+<p>This includes really scary inner content</p>
 
 <cfsavecontent variable="horrible">
 
@@ -255,6 +256,5 @@ Your news article
 <pre>&lt;b:alert key=&quot;ER_YOUR_CHANGES&quot; placeholder=&quot;#rc.content#&quot; /&gt;</pre>
 
 <b:alert key="ER_YOUR_CHANGES" placeholder="#rc.content#" />
-
 
 

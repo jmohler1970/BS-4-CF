@@ -21,12 +21,9 @@ case "start" :
 	variables.needsJS	= false;
   
 	param attributes.activeIndex		= 1;
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
 	param attributes.role 			= "tabpanel";
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	
 	
 	if (!attributes.processed) exit "exitTag";
@@ -89,8 +86,7 @@ case "end" :
 		if (trim(thisTag.generatedContent) != "")	{
 									variables.result &= variables.crlf & '<li role="presentation" class="dropdown"><!-- Content passthrough -->';
 								
-			if(!attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-			if( attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
 						
 									variables.result &= '</li>';
 									}	
@@ -111,7 +107,7 @@ case "end" :
 							
 								variables.result &= ' id="#encodeForHTMLAttribute(variables.tab.id)#">';
 								
-								variables.result &= getSafeHTML(variables.tab.generatedContent);	
+								variables.result &= variables.tab.generatedContent.getSafeHTML();	
 	
 								variables.result &= '</section>' & variables.crlf;
 		variables.currentTab++;			

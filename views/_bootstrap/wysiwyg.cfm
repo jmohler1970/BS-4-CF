@@ -162,10 +162,7 @@
 
 	<cfscript>
 	if(attributes?.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-	if(attributes?.key 		!= "" )		{
-									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-									attributes.isSafeHTML 	= true;				
-									}
+
 
 	
 	if(attributes.useDefaultButtons)		variables.result &= variables.defaultButtons;
@@ -182,8 +179,7 @@
 								
 									variables.result &= '<textarea style="display: none;" id="#encodeForHTMLAttribute(attributes.id)#Copy" name="#encodeForHTMLAttribute(attributes.name)#">';
 								
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean			
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);	
 								
 									variables.result &= '</textarea>';
 								

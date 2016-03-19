@@ -45,9 +45,9 @@
 	</cfsavecontent>
 	
 	<cfscript>
-	if(attributes.rendered && !attributes.isSafeHTML)	variables.result = getSafeHTML(variables.result.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result = variables.result.trim(); // warning content must already be clean								
-
+									variables.result &= attributes.rendered ? application.filterAttributes(attributes) : "";
+		
+		
 	
 		
 	if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);

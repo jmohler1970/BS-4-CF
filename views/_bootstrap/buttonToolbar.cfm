@@ -17,12 +17,8 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
  
 
- 	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase()); // really doesn't work with false
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered		= true;
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-	param attributes.tooltipPosition	= "bottom";
 
 
 	if (!attributes.processed) exit "exitTag";
@@ -37,24 +33,15 @@ case "start" :
 	break;
      
 case "end" :
-
-	if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	  
-     
+  
 								variables.result &= '<div class="btn-toolbar';
-	   							variables.result &= '"';
-	if(attributes?.id		!= "")	variables.result &= ' id="#attributes.id.encodeForHTMLAttribute()#"';
-	if(attributes?.tooltip	!= "")	variables.result &=	' title="#attributes.tooltip.encodeForHTMLAttribute()#"';
-	if(attributes?.tooltip	!= "")	variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes?.tooltip	!= "")	variables.result &= ' data-toggle="tooltip"';          
+								variables.result &= '"';
+	   							
+								variables.result &= application.filterAttributes(attributes);
+        
 								variables.result &= '>';
-								
-	
-	if(!attributes.isSafeHTML)		variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)		variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-
+			
+								variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
 
 						
 								variables.result &= '</div><!-- /.btn-toolbar -->';

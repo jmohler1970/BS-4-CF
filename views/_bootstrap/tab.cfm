@@ -25,14 +25,12 @@ case "start" :
 
 	param attributes.disabled		= false;	
 	param attributes.id;					// Tab must have id
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered		= true;
 	param attributes.role 			= "tab";
-	param attributes.style			= "";			// cf 2016 bug
-	param attributes.styleClass		= "";			// cf 2016 bug
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
+	param attributes.style			= "";			
+	param attributes.styleClass		= "";			
+
 
 	if (!structKeyExists(attributes, "data-url")) attributes["data-url"]	= "";
 

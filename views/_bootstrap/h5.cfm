@@ -17,12 +17,8 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
   
 
-     param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
      param attributes.processed 		= true;
-     param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true; 
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
-	param attributes.tooltipPosition	= "bottom";
 
 
 	variables.myClass = "";
@@ -30,16 +26,6 @@ case "start" :
 	if(attributes?.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';	
 	
 	
-   	variables.arAttrSeries = [];
-	
-	
-	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
-	for(variables.myKey in attributes)	{
-		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
-			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
-			} // end if	
-		}	// end for
-		
      
      if (!attributes.processed) exit "exitTag";
      
@@ -52,36 +38,24 @@ case "start" :
      break;
      
 case "end" :
-     if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-     if(attributes?.key 		!= "" )		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
+     if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#"))	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
      
      
-     if(variables.myClass == "")				variables.result &= '<h5';
-	if(variables.myClass != "")				variables.result &= '<h5 class="#encodeForHTMLAttribute(variables.myClass)#"';
-     
-	if(attributes?.id		!= "")			variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+     if(variables.myClass	== "")		variables.result &= '<h5';
+	if(variables.myClass 	!= "")		variables.result &= '<h5 class="#variables.myClass.encodeForHTMLAttribute()#"';
 	
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #variables.myAttr.key.lcase()#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
-		
-	if(attributes?.style	!= "")			variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
-	if(attributes?.tooltip	!= "")			variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes?.tooltip	!= "")			variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes?.tooltip	!= "")			variables.result &= ' data-toggle="tooltip"';             
-										variables.result &= '>';
-								
-	if(!attributes.isSafeHTML)				variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)				variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+									variables.result &= application.filterAttributes(attributes);
+           
+									variables.result &= '>';
+	
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
 							
-						
-										variables.result &= '</h5>' & variables.crlf;
+									variables.result &= '</h5>' & variables.crlf;
      
-     if (attributes?.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+     if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
-     if (attributes.rendered)					writeOutput(variables.result);
+     if (attributes.rendered)				writeOutput(variables.result);
      
 	break;
 	}

@@ -17,27 +17,12 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
 
 	param attributes.iconAlign		= "left";
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());;
 	param attributes.library			= "default";	// for icon
 	param attributes.look			= "default";
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
 	param attributes.role			= "button";
-	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-	param attributes.tooltipPosition	= "bottom";
 	
-
-	variables.arAttrSeries = [];
-	
-	
-	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
-	for(variables.myKey in attributes)	{
-		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
-			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
-			} // end if	
-		}	// end for
-		
 
 
 	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
@@ -55,62 +40,45 @@ case "start" :
 
 case "end" :
 
-	if(attributes?.value 	!= "")										thisTag.generatedContent = attributes.value;
-     if(attributes?.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
-	if(attributes?.key 		!= "")		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
+	if( attributes?.value 	!= "")										thisTag.generatedContent = attributes.value;
+     if( attributes?.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
      
 
 
-											variables.result &= '<button type="button" class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())#';
-	if(attributes?.outline	== true)				variables.result &= "-outline";
-	if(attributes?.size		!= "")				variables.result &= ' btn-#encodeForHTMLAttribute(attributes.size)#';
-	if(attributes?.styleClass	!= "")			variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
-											variables.result &= '"';
+									variables.result &= '<button type="button" class="btn btn-#attributes.look.lcase().encodeForHTMLAttribute()#';
+	if( attributes?.outline		== true)	variables.result &= "-outline";
+	if( attributes?.size		!= "")	variables.result &= ' btn-#attributes.size.encodeForHTMLAttribute()#';
+	if( attributes?.styleClass	!= "")	variables.result &= ' #attributes.styleClass.encodeForHTMLAttribute()#';
+									variables.result &= '"';
 	// end class specification
 	
-	if(attributes?.dismiss	== true)				variables.result &= ' data-dismiss="#encodeForHTMLAttribute(attributes.dismiss)#"';
-	if(attributes.keyExists("data-target"))			variables.result &= ' data-target="' & attributes['data-target'] & '"';
-	if(attributes.keyExists("data-toggle"))			variables.result &= ' data-toggle="' & attributes['data-toggle'] & '"';
-	if(attributes?.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes?.lang		!= "")				variables.result &= ' lang="#encodeForHTMLAttribute(attributes.lang)#"';
+
+									variables.result &= application.filterAttributes(attributes);
 		
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
-		
-	if(attributes?.role		!= "")				variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
-	if(attributes?.style	!= "")				variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
-	
-	if(attributes?.tooltip	!= "")				variables.result &= ' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes?.tooltip	!= "")				variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
-	if(attributes?.tooltip	!= "")				variables.result &= ' data-toggle="tooltip"';
-	
-	if(attributes?.disabled	== true)				variables.result &= ' disabled="disabled"';
-											variables.result &= '>';
+									variables.result &= '>';
 								
 	// space on end is not an accident							
-	if (attributes?.icon 	!= "" && attributes.iconAlign == "left")	{
-											variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##encodeForHTMLAttribute(attributes.icon)#"></i> ';
+	if( attributes?.icon 	!= "" && attributes.iconAlign == "left")	{
+									variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon.encodeForHTMLAttribute()#"></i> ';
 											}		
 
-	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
 
 
 	
 	// space at start is not an accident
-	if (attributes?.icon 		!= "" && attributes.iconAlign == "right")	{
-											variables.result &= ' <i class="#application?.Bootstrap?.IconLibrary[attributes.library]##encodeForHTMLAttribute(attributes.icon)#"></i>';
-											}		
+	if( attributes?.icon 		!= "" && attributes.iconAlign == "right")	{
+									variables.result &= ' <i class="#application?.Bootstrap?.IconLibrary[attributes.library]##attributes.icon.encodeForHTMLAttribute()#"></i>';
+									}		
 
 
-											variables.result &= '</button>';
+									variables.result &= '</button>';
 
-	if (attributes?.cacheid != "")					CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+	if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
 	thisTag.GeneratedContent = "";
-	if (attributes.rendered)			writeOutput(variables.result);
+	if (attributes.rendered)				writeOutput(variables.result);
 
 	break;
 	}

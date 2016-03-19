@@ -19,11 +19,8 @@ case "start" :
 	param attributes.backdrop		= true;
 	param attributes.closable		= true;
 	if(!structKeyExists(attributes, "close-on-escape")) attributes["close-on-escape"] = true;
-	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
-	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-     param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.submitValue		= "Save Changes";
 	
 	
@@ -40,10 +37,6 @@ case "start" :
      
 case "end" :     
 
-	if(attributes?.key 		!= "" )		{
-									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-									attributes.isSafeHTML 	= true;				
-									}	
      
 									variables.result &= variables.crlf & '<div class="modal fade';
 	if(attributes?.styleClass != "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
@@ -63,8 +56,8 @@ case "end" :
 
 									variables.result &= variables.crlf & '<div class="modal-body">';
 								
-	if(!attributes.isSafeHTML)			variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)			variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+								
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);	
 							
 								
 									variables.result &= variables.crlf & '</div><!-- /.modal-body -->';	

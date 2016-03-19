@@ -23,7 +23,7 @@ case "start" :
 	param attributes.library			= "default";
      param attributes.processed		= true;
 	param attributes.rendered 		= true;
-     param attributes.tooltipPosition	= "bottom";
+
      
      
      if(!isnumeric(attributes?.height)) attributes.height = "";
@@ -79,7 +79,7 @@ case "end" :
 	// end style
 	
 									variables.result &= ' alt="#encodeForHTMLAttribute(attributes?.alt)#"';
-	if(attributes?.tooltip		!= "")	variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';               
+          
 									variables.result &= ' />';
 							
 	if (attributes?.cacheid		!= "")	CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
