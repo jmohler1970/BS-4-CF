@@ -65,6 +65,8 @@ case "end" :
 	if (attributes?.dropdown != "")   				variables.result &= ' datatoggle ';
 	
 											variables.result &= '" '; // end class
+											
+	if (attributes?.href	!= "")				variables.result &= ' href="#attributes.href#"';
 
 											variables.result &= application.filterAttributes(attributes);
            	
