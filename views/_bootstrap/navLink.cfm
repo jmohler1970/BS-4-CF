@@ -17,6 +17,7 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
   
+	param attributes.key			= "";
 	param attributes.iconAlign		= "left";
 	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.library			= "default"; //for icons
@@ -45,13 +46,17 @@ case "end" :
 	if(attributes?.value	!= "")										thisTag.generatedContent = attributes.value;
 	if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
 
+
+		
+	variables.Content		= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
+
      
-     if (thisTag.generatedContent == "" && attributes?.header == "")
+     if (variables.Content == "" && attributes?.header == "")
      								variables.result &= '<li role="separator" class="divider"></li>';
      
      if (attributes?.header != "")			variables.result &= '<li class="dropdown-header">#encodeForHTML(attributes.header)#</li>';
      
- 	if (thisTag.generatedContent != "")				{
+ 	if (variables.Content != "")				{
      											variables.result &= '<li';
      	if(attributes?.active	== true)				variables.result &= ' class="active"';
      	if(attributes?.disabled	== true)				variables.result &= ' class="disabled"';						  			
@@ -70,7 +75,7 @@ case "end" :
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
 												}
 												
-												variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);					
+												variables.result &= variables.Content;													
 														
 		if(attributes?.icon != "" && attributes.iconAlign == "right")	{
 												variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i> ';
