@@ -83,6 +83,6 @@
 
 
 
-<b:commandLink href="~/main/cache?flush=1" look="danger" key="FLUSHCACHE" />
+<b:commandLink href="~/docs/cache?flush=1" look="danger" key="FLUSHCACHE" />
 
 
