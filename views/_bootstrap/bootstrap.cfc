@@ -133,7 +133,7 @@ string function geti18n(required string key, any placeholder = []) output="false
 
 // See: http://codereview.stackexchange.com/questions/121963/filtering-the-attributes-for-a-custom-tag
 
-string function filterAttributes(required struct attr, string filter = "id|name|lang|style|role|href|rel|target|disabled|readonly|required", boolean tooltip = true)	output="false" {
+string function filterAttributes(required struct attr, string filter = "id|name|lang|style|role|rel|target|disabled|readonly|required", boolean tooltip = true)	output="false" {
 	
 	
 		// Patch this
