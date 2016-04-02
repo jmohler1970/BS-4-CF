@@ -39,10 +39,10 @@ case "end" :
 
      
 									variables.result &= variables.crlf & '<div class="modal fade';
-	if(attributes?.styleClass != "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
+	if(attributes?.styleClass != "")		variables.result &= ' #attributes.styleClass.encodeForHTMLAttribute()#';
 									variables.result &= '"';
-	if(attributes?.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(!attributes.backdrop)				variables.result &= ' data-backdrop="#encodeForHTMLAttribute(attributes.backdrop)#"';
+	if(attributes?.id		!= "")		variables.result &= ' id="#attributes.id.encodeForHTMLAttribute()#"';
+	if(!attributes.backdrop)				variables.result &= ' data-backdrop="#attributes.backdrop.encodeForHTMLAttribute()#"';
 	if(!attributes["close-on-escape"])		variables.result &= ' data-keyboard="false"';
 	
 	
@@ -51,7 +51,12 @@ case "end" :
 	   								variables.result &= variables.crlf & '<div class="modal-dialog">';
 	   								variables.result &= variables.crlf & '<div class="modal-content">';
 	   								variables.result &= variables.crlf & '<div class="modal-header">';
-	if(attributes.closable)				variables.result &= variables.crlf & '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';   													variables.result &= '<h4 class="modal-title">#encodeForHTML(attributes.title)#</h4>';
+	
+	if(attributes.closable)				{
+									variables.result &= variables.crlf & '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+									variables.result &= '<h4 class="modal-title">#encodeForHTML(attributes?.title)#</h4>';
+									}
+									
 									variables.result &= variables.crlf & '</div><!-- /.modal-header -->';
 
 									variables.result &= variables.crlf & '<div class="modal-body">';
