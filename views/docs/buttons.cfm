@@ -43,13 +43,6 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Try to find the value of this tag in the <code>rc.*</code> scope. See note below</td>
-			<td>N/A</td>
-		</tr>
-		<tr>
-			<td></td>
 			<td>bold</td>
 			<td>false</td>
 			<td>Automatically wraps content in <code>&lt;b&gt;</code> tags</td>
@@ -313,7 +306,6 @@
 <p>Order of precedence</p>
 
 <ol>
-	<li>Binding 	(<code>xmlFormat()</code>)</li>
 	<li>Value		(<code>xmlFormat()</code>)</li>
 	<li>Generated Content (use this option to pass in HTML)</li>
 </ol>

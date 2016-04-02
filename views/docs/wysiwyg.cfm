@@ -41,13 +41,6 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
-			<td>See generatedContent</td>
-		</tr>
-		<tr>
-			<td></td>
 			<td>htmlPlaceholder</td>
 			<td>(none)</td>
 			<td>Placeholder content for editor. This content disappears as soon as something is typed in.</td>

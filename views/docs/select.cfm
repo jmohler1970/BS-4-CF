@@ -153,14 +153,6 @@
 	<tbody>
 		<tr>
 			<td></td>
-			<td>binding</td>
-			<td>required</td>
-			<td>Which database recordset column should be used for value</td>
-			<td>N/A</td>
-		</tr>
-		
-		<tr>
-			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled</td>

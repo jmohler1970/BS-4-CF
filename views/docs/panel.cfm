@@ -49,13 +49,6 @@
 			<td><b:label look="danger" key="No" />this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
 		</tr>
 		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
-			<td><b:label look="danger" key="No" /></td>
-		</tr>
-		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
 			<td>(none)</td>
@@ -268,13 +261,7 @@
 			<td>Pass through of content</td>
 			<td><b:label look="danger" key="No" /> this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
 		</tr>
-		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
-			<td>See generatedContent</td>
-		</tr>
+
 		<tr>
 			<td></td>
 			<td>id</td>
@@ -448,10 +435,10 @@ fero tui sceleris.
 </b:well>
 
 
-<pre>&lt;b:well binding=&quot;content&quot; /&gt;</pre>
+<pre>&lt;b:well value=&quot;#rc.content#&quot; /&gt;</pre>
 
 
-<b:well binding="content" />
+<b:well value="#rc.content#" />
 
 
 

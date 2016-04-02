@@ -48,7 +48,7 @@
 	<b:column span="4">
           <h3><b:icon library="awesome" name="tag" />  Smart tags</h3>
           <p>This <q>Rendered</q> option is like wrapping your code in a <code>&lt;cfif&gt;</code>. It is much smarter because it is a part of the tags as opposed to wrapping the content. 
-	          <q>Binding</q> outputs data without using <code>&lt;cfoutput&gt;</code> tags.</p>
+		</p>
 	     
 	     <p>Includes Antisamy to protect your site from common injection attacks</p>
           

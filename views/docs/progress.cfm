@@ -44,13 +44,6 @@
 			<td>must evaluate to boolean</td>
 		</tr>
 		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Finds data in <code>rc.*</code> scope</td>
-			<td>N/A</td>
-		</tr>	
-		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
 			<td>(none)</td>
@@ -253,7 +246,7 @@ Your news article
 
 
 
-<b:progressBar width="#rc.size#" look="#rc.look#" binding="content" />
+<b:progressBar width="#rc.size#" look="#rc.look#" value="#rc.content#" />
 
 
 

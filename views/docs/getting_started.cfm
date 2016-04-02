@@ -33,7 +33,7 @@
 
 
 <pre>
-&lt;b:button rendered="#showme#" binding="savelabel" icon="floppy-disk /&gt;	
+&lt;b:button rendered="#showme#" value="#savelabel#" icon="floppy-disk /&gt;	
 </pre>
 
 
@@ -151,10 +151,6 @@ function onApplicationStart()	{
 
 
 <a id="bind"></a>
-<b:h3>Using Binding</b:h3>
-
-<p>Bootstrap for ColdFusion was written with frameworks such as FW/1 by Sean Corfield in mind. All of the variables that are outputted should be in the <code>rc</code> scope. We can take advantage of that and make our code much simple. Consider the following</p>
-
 
 <b:h3>Without Bootstrap for ColdFusion</b:h3>
 <pre>
@@ -164,7 +160,7 @@ function onApplicationStart()	{
 
 <b:h3>With Bootstrap for ColdFusion</b:h3>
 <pre>
-&lt;b:button binding="savelabel" /&gt;	
+&lt;b:button value="#rc.savelabel#" /&gt;	
 </pre>
 
 
@@ -253,26 +249,26 @@ function onApplicationStart()	{
 
 
 
-<b:h3>Using both Binding &amp; Rendered</b:h3>
+<b:h3>Using both Value &amp; Rendered</b:h3>
 
 <p>Including a Glyphicon for good measure. Assume relevant variables have been already setup</p>
 
 <pre>
 showme = DayOfWeek(now()) EQ 3 ? 0 : 1;
-rc.savelabel = "Save this data";
+savelabel = "Save this data";
 </pre>
 
 <!--- All this would have been setup somewhere else --->
 <cfscript>
 showme = true;
-rc.savelabel = "Save this data";
+savelabel = "Save this data";
 </cfscript>
 
 
 <b:h3>Without Bootstrap for ColdFusion</b:h3>
 <pre>
 &lt;cfif showme&gt;	
-     &lt;button type="button" class="btn btn-default"&gt;&lt;i class="glyphicon glyphicon-floppy-disk&gt;&lt;/i&gt;&lt;cfoutput&gt;#rc.savelabel#&lt;cfoutput&gt;&lt;/button&gt;
+     &lt;button type="button" class="btn btn-default"&gt;&lt;i class="glyphicon glyphicon-floppy-disk&gt;&lt;/i&gt;&lt;cfoutput&gt;#savelabel#&lt;cfoutput&gt;&lt;/button&gt;
 &lt;/cfif&gt;	
     
 </pre>	
@@ -282,18 +278,16 @@ rc.savelabel = "Save this data";
 
 
 <pre>
-&lt;b:button rendered="#showme#" binding="savelabel" icon="floppy-disk /&gt;	
+&lt;b:button rendered="#showme#" value="#savelabel#" icon="floppy-disk /&gt;	
 </pre>
 
 <p>Results</p>
 
 
-<b:button rendered="#showme#" binding="savelabel" icon="floppy-disk" />	
+<b:button rendered="#showme#" value="#savelabel#" icon="floppy-disk" />	
 
 
-<!---
-<b:h2>Kudos</b:h2>
---->
+
 
 
 <b:h2>Roadmap</b:h2>
@@ -328,6 +322,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </pre>
 

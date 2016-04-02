@@ -102,7 +102,7 @@
 <b:row>
 <cfloop index="styleClass" list="muted,primary,warning,danger,success">
 	<b:column span="4">
-		<b:blockquote styleClass="bg-#styleClass#" binding="content" footer="#styleClass#" />
+		<b:blockquote styleClass="bg-#styleClass#" value="#rc.content#" footer="#styleClass#" />
 	</b:column>
 </cfloop>
 
@@ -115,11 +115,11 @@
 
 <cfloop index="styleClass" list="#rc.lstcolor#">
 	<b:column span="3">
-		<b:blockquote styleClass="material-#styleClass.trim()#" binding="content" footer="#styleClass.trim()#" />
+		<b:blockquote styleClass="material-#styleClass.trim()#" value="#rc.content#" footer="#styleClass.trim()#" />
 	</b:column>
 	
 	<b:column span="3">
-		<b:blockquote styleClass="material-#styleClass.trim()# lighten-4" binding="content" footer="#styleClass.trim()# lighten-4" />
+		<b:blockquote styleClass="material-#styleClass.trim()# lighten-4" value="#rc.content#" footer="#styleClass.trim()# lighten-4" />
 	</b:column>	
 </cfloop>
 

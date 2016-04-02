@@ -60,13 +60,6 @@
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>	
 		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
-			<td>N/A</td>
-		</tr>
-		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
 			<td>(none)</td>

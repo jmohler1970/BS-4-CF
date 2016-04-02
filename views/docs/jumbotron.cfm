@@ -204,7 +204,7 @@ This is a Jumbotron
 
 
 <b:jumbotron>
-    <b:h1 binding="content" />
+    <b:h1>#rc.content#</b:jumbotron>
     <b:p>O Fortuna
 velut luna
 statu variabilis,
