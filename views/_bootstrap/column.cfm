@@ -29,23 +29,13 @@ case "start" :
 
 	
 	
-	if (isNumeric(attributes.span))		{
-									attributes.span	= {xs = attributes.span,		sm = attributes.span, 	md = attributes.span  };
-									}
-	else								{
-									attributes.span 	= attributes.span.replacelist(':', '":,');
-									attributes.span 	= attributes.span.replace(', ', ', "', "all");
-									attributes.span	= DeserializeJSON('{"#attributes.span#}');
-									}
-
-	if (isNumeric(attributes.offset))		{
-									attributes.offset	= {xs = attributes.offset,	sm = attributes.offset,	md = attributes.offset,	lg = attributes.offset,	xl = attributes.offset};
-									}
-	else								{
-									attributes.offset 	= attributes.offset.replacelist('{,=', '{",":');
-									attributes.offset 	= attributes.offset.replace(', ', ', "', "all");							
-									attributes.offset	= DeserializeJSON(attributes.offset);
-									}
+	if (isNumeric(attributes.span))		attributes.span	= {xs = attributes.span,		sm = attributes.span, 	md = attributes.span  };
+	else								attributes.span	= DeserializeJSON(attributes.span);
+	
+									
+	if (isNumeric(attributes.offset))		attributes.offset	= {xs = attributes.offset,	sm = attributes.offset,	md = attributes.offset,	lg = attributes.offset,	xl = attributes.offset};
+	else								attributes.offset	= DeserializeJSON(attributes.offset);
+									
 	
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
@@ -58,13 +48,14 @@ case "start" :
 
 case "end" :
 								
+	
 
 									variables.result &= variables.crlf & '<#attributes.tag# class="';
-	if(isnumeric(attributes.span?.xs))		variables.result &= 'col-xs-#attributes.span.Xs.encodeForHTMLAttribute()# ';
-	if(isnumeric(attributes.span?.sm))		variables.result &= 'col-sm-#attributes.span.Sm.encodeForHTMLAttribute()# ';
-	if(isnumeric(attributes.span?.md))		variables.result &= 'col-md-#attributes.span.Md.encodeForHTMLAttribute()# ';
-	if(isnumeric(attributes.span?.Lg))		variables.result &= 'col-lg-#attributes.span.Lg.encodeForHTMLAttribute()# ';
-	if(isnumeric(attributes.span?.Xl))		variables.result &= 'col-xl-#attributes.span.Xl.encodeForHTMLAttribute()# ';
+	if(isnumeric(attributes.span?.xs))		variables.result &= 'col-xs-#attributes.span.Xs?.encodeForHTMLAttribute()# ';
+	if(isnumeric(attributes.span?.sm))		variables.result &= 'col-sm-#attributes.span.Sm?.encodeForHTMLAttribute()# ';
+	if(isnumeric(attributes.span?.md))		variables.result &= 'col-md-#attributes.span.Md?.encodeForHTMLAttribute()# ';
+	if(isnumeric(attributes.span?.Lg))		variables.result &= 'col-lg-#attributes.span.Lg?.encodeForHTMLAttribute()# ';
+	if(isnumeric(attributes.span?.Xl))		variables.result &= 'col-xl-#attributes.span.Xl?.encodeForHTMLAttribute()# ';
 	
 	if(attributes.offset?.Xs 	!= 0)	variables.result &= 'col-xs-offset-#attributes.offset.Xs.encodeForHTMLAttribute()# ';
 	if(attributes.offset?.Sm 	!= 0)	variables.result &= 'col-sm-offset-#attributes.offset.Sm.encodeForHTMLAttribute()# ';
