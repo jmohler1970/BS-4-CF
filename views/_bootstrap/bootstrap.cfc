@@ -46,6 +46,9 @@ void function setupApplication()	{
 		};
 	
 	
+	// Clear out bootstrap caches 
+	CacheRemoveAll(application.Bootstrap.cache.content);
+	CacheRemoveAll(application.Bootstrap.cache.language);
 	
 	
 	application.geti18n			= this.geti18n;
@@ -133,7 +136,7 @@ string function geti18n(required string key, any placeholder = []) output="false
 
 // See: http://codereview.stackexchange.com/questions/121963/filtering-the-attributes-for-a-custom-tag
 
-string function filterAttributes(required struct attr, string filter = "id|name|lang|style|role|rel|target|disabled|readonly|required", boolean tooltip = true)	output="false" {
+string function filterAttributes(required struct attr, string attributeFilter = "id|name|lang|style|role|rel|target|disabled|readonly|required", boolean tooltip = true)	output="false" {
 	
 	
 		// Patch this
@@ -144,7 +147,7 @@ string function filterAttributes(required struct attr, string filter = "id|name|
 	var prev = "";	
 	
 	local.result = arguments.attr.filter(function(key, value)	{ 
-				return (key.reFindNoCase(filter)		|| key.reFindNoCase("data\-|ng\-|on") || true );
+				return (attributeFilter.ListFind(key)		|| key.reFindNoCase("data\-|ng\-|on") );
 
 			})?.reduce(function(string prev, string key, string value)	{
 				return prev & ' #key.lcase()# = "#value.encodeForHTMLAttribute()#"';
