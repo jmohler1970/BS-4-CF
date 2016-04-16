@@ -4,7 +4,7 @@
 component extends="framework.one" accessors="true"	{
 	
 
-this.name="bs-4-cf-346";
+this.name="bs-4-cf-348";
 this.applicationManagement = true;
 this.sessionManagement = true;
 

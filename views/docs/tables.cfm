@@ -611,3 +611,56 @@ DataTables is a plug-in for the jQuery Javascript library. It is a highly flexib
 
 
 
+<h3>Things like tables</h3>
+
+<p>Here is a comparison of things that look like tables</p>
+
+
+
+
+<b:table colHeaders="Kind, Environment, Pros, Cons">
+<tbody>
+	<tr>
+		<td nowrap>Excel</td>
+		<td>Desktop Application</td>
+		<td>Every user in an office has it.</td>
+		<td>Not distributed</td>
+	</tr>
+	<tr>
+		<td nowrap>CSV</td>
+		<td>Notepad, Excel, SQL Server (SSIS, DTS)</td>
+		<td>Works anywhere</td>
+		<td>Works only very very simple data</td>
+	</tr>
+	<tr>
+		<td nowrap>XML</td>
+		<td>Notepad, Excel, SQL Server (SSIS, DTS)</td>
+		<td>Works on any kind of data</td>
+		<td>Very difficult to program to in general. There useful subsets.</td>
+	</tr>	
+	<tr>
+		<td nowrap>SQL Server Service</td>
+		<td>MS SQL Management Studio, ODBC, Native Drivers</td>
+		<td>Massively scallable. Loves to be distributed</td>
+		<td>It is only part of a request life cycle. Other tools have to connect to it.</td>
+	</tr>	
+	<tr>
+		<td nowrap>Preformatted HTML</td>
+		<td>Internet Explorer, Chrome, Firefox, etc</td>
+		<td>Like CSVs, it is really really simple</td>
+		<td>What is this the 1990s?</td>
+	</tr>
+	<tr>
+		<td nowrap>HTML Tables</td>
+		<td>Internet Explorer, Chrome, Firefox, etc</td>
+		<td>It provides a starting point to build very sophisticated tools</td>
+		<td>Something has to load it.</td>
+	</tr>	
+</tbody>
+</b:table>	
+	
+	
+
+
+
+

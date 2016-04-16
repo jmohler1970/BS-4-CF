@@ -50,9 +50,6 @@ case "start" :
 
 case "end" :
 
-// This needs to be smart enough to iterate
-//	if(attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-
 
 	if(variables.myClass	== "")				variables.result &= '<td';
 	if(variables.myClass	!= "")				variables.result &= '<td class="#encodeForHTMLAttribute(variables.myClass)#"';

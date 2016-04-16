@@ -49,9 +49,7 @@ case "start" :
 
 case "end" :
 
-	if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-
-
+			
 
 	if(variables.myClass 	== "")				variables.result &= '<th';
 	if(variables.myClass 	!= "")				variables.result &= '<th class="#encodeForHTMLAttribute(variables.myClass)#"';
@@ -59,12 +57,13 @@ case "end" :
 											variables.result &= application.filterAttributes(attr = attributes, tooltip = false);		
 											variables.result &= '>';
 
+
 	if(attributes?.tooltip   != "")				variables.result &=	'<span title="#encodeForHTMLAttribute(attributes.tooltip)#"';
 	if(attributes?.tooltip	!= "")				variables.result &= ' data-placement="#encodeForHTMLAttribute(attributes.tooltipPosition)#"';
 	if(attributes?.tooltip	!= "")				variables.result &= ' data-toggle="tooltip"';
 	if(attributes?.tooltip   != "")				variables.result &=	'>';
 	
-	
+											
 											variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);					
 	
 	
@@ -76,7 +75,7 @@ case "end" :
 
 	thisTag.GeneratedContent = "";
 	writeOutput(variables.result);
-
+	
 	break;
 	}
 

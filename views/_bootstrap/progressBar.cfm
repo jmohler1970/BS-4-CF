@@ -41,10 +41,7 @@ case "start" :
 case "end" :
 	
 
-     if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
 
-	
-	
 											variables.result &= '<div class="progress">';
 											variables.result &= variables.crlf & '<div class="progress-bar';
 	if(attributes?.look			!= "")			variables.result &= ' progress-bar-#encodeForHTMLAttribute(attributes.look.lcase())#';

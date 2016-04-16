@@ -40,9 +40,7 @@ case "start" :
 	break;
      
 case "end" :
-	if(attributes?.value 	!= "")										thisTag.generatedContent = attributes.value;
-     if(attributes?.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-
+	if(attributes?.value 	!= "")			thisTag.generatedContent = attributes.value;
      
 										variables.result &= variables.crlf;
 	if (attributes.usespan)	{											

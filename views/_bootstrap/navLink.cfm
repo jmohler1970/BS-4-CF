@@ -43,12 +43,10 @@ case "start" :
      
 case "end" :
 
-	if(attributes?.value	!= "")										thisTag.generatedContent = attributes.value;
-	if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
-
+	if(attributes?.value	!= "")		thisTag.generatedContent = attributes.value;
 
 		
-	variables.Content		= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
+									variables.Content		= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
 
      
      if (variables.Content == "" && attributes?.header == "")

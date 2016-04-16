@@ -51,7 +51,7 @@ case "end" :
 
 	
 	if (attributes?.value	!= "")										thisTag.generatedContent = attributes.value;	
-	if (attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
+
 	
 	if (attributes?.tooltipKey != "")										attributes.tooltip 		= application.geti18n(attributes.key, attributes?.tooltipPlaceholder);
 

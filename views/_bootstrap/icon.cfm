@@ -34,9 +34,6 @@ case "start" :
      
 case "end" :
 
-	
-	if (attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) attributes.name = evaluate("caller.rc.#attributes.binding#");    
-     
 	if (attributes?.addon	!= "")		variables.result &= '<span class="input-group-addon">';
 	
 	

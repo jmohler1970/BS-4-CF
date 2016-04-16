@@ -35,9 +35,6 @@ case "start" :
 	break;
      
 case "end" :
-     if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-
-	
 								
 									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);									
 								

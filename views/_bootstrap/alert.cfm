@@ -35,7 +35,6 @@ case "start" :
 	break;
      
 case "end" :
-	if(attributes?.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
 
      
 									variables.result &= '<div class="alert alert-#attributes.look.lcase().encodeForHTMLAttribute()#';

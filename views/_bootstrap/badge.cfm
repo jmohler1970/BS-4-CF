@@ -44,7 +44,6 @@ case "end" :
 
 
 	if(attributes?.value	!= "")										thisTag.generatedContent = attributes.value;
-     if(attributes?.binding	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
 
 
 									variables.result &= '<span class = "badge badge-#attributes.look.lcase().encodeForHTMLAttribute()#"';

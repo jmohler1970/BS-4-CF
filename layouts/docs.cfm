@@ -2,6 +2,7 @@
 
 
 
+
 <b:navBar brand="Bootstrap for ColdFusion" fixed="top" inverse="true" style="background-image : linear-gradient(45deg, ##0A1855 0px, ##DA0024 100%)">
 	<b:navbarLinks>
 	
@@ -30,7 +31,7 @@
 			<b:navLink value="Select, Checkbox, Radio"		active="#getItem().find('select')#"		href="~/docs/select" />
 			<b:navLink value="Awesome Bootstrap Checkboxes"	active="#getItem().find('awesomecheckbox')#" href="~/docs/awesomecheckbox" />
 			<b:navLink value="Buttons & Links"				active="#getItem().find('buttons')#"		href="~/docs/buttons" />
-			<b:navLink value="Helper classes"				active="#getItem().find('helper')#"		href="~/docs/helper" />
+			<b:navLink value="Material Colors & Helper classes"	active="#getItem().find('helper')#"	href="~/docs/helper" />
 		</b:dropMenu>
 		
 		<b:dropMenu value="Components" active="#ArrayContains(['icons','dropdowns','buttonGroups','nav','label','jumbotron','thumbnail','alert','progress','panel','include'], getItem())#">

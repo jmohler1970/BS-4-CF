@@ -20,12 +20,12 @@
 
  <b:row>
 	<b:column span="4">
-          <b:h1 binding="heading" />
-          <b:h2 binding="heading" />
-          <b:h3 binding="heading" />
-          <b:h4 binding="heading" />
-          <b:h5 binding="heading" />
-          <b:h6 binding="heading" />
+          <b:h1 value="#rc.heading#" />
+          <b:h2 value="#rc.heading#" />
+          <b:h3 value="#rc.heading#" />
+          <b:h4 value="#rc.heading#" />
+          <b:h5 value="#rc.heading#" />
+          <b:h6 value="#rc.heading#" />
           <b:p styleClass="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</b:p>
           <b:p styleClass="lead" rendered="false">This should not be seen on the page</b:p>
 	</b:column>

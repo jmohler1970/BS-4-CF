@@ -63,23 +63,4 @@ void function setupRequest()	{
 
 
 
-<cfoutput>
-#BooleanFormat("")#
-	
-	
-#BooleanFormat(request?.bob)#
-
-
-</cfoutput>	
-
-
-<cfscript>
-if(request?.bob)	writeoutput("There is a Bob variable");
-</cfscript>
-
-
-
-
-<cfif request?.bob>There is a Bob variable</cfif>
-
 

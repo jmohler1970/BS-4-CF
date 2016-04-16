@@ -161,10 +161,6 @@
 <cfcase value="end">
 
 	<cfscript>
-	if(attributes?.binding 	!= "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
-
-
-	
 	if(attributes.useDefaultButtons)		variables.result &= variables.defaultButtons;
 	
 		

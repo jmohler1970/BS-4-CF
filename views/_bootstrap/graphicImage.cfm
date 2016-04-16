@@ -55,7 +55,6 @@ case "start" :
 	break;
      
 case "end" :
-     if(attributes?.binding != "" && isDefined("caller.rc.#attributes.binding#")) thisTag.GeneratedContent = evaluate("caller.rc.#attributes.binding#");
 	
 	   								variables.result &= '<img class="';
 	if(attributes?.shape		!= "")	variables.result &= ' img-#encodeForHTMLAttribute(attributes.shape.lcase())#';

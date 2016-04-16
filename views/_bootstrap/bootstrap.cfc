@@ -28,7 +28,20 @@ void function setupApplication()	{
 		actionRoot 		= "http://" & cgi.server_name & (cgi.server_port == 80 ? "" : ":" & cgi.server_port)  & cgi.script_name & "/",
 		validLook			= ["", "link", "default", "primary", "success", "info", "warning", "danger"], // There does not guarantee they are valid	
 		
-		iconLibrary		= {"default" = "glyphicon glyphicon-", "awesome" = "fa fa-", "jquery-ui" = "ui-icon ui-icon-"}, 		// be sure to include ending dashes
+		// be sure to include ending dashes
+		iconLibrary		= {	"default"		= "glyphicon glyphicon-",		// make default however you like
+							"glyphicon"	= "glyphicon glyphicon-", 		// Glyphicon: 				http://glyphicons.com/
+							"awesome"		= "fa fa-", 					// Font Awesome: 			http://fontawesome.io/
+							"foundation"	= "fi-",						// Zurb Foundation Icons: 	http://zurb.com/playground/foundation-icon-fonts-3
+							"ionicon"		= "ion-",						// The premium icon font for Ionic Framework: http://ionicons.com/
+							"material"	= "mdi mdi-",					// Material Design Icons: 	https://materialdesignicons.com/
+							"elusive"		= "el el-",					// Elusive Icons:			http://elusiveicons.com/icons/
+							"octicon"		= "octicon octicon-",			// Github Icons:			https://octicons.github.com/
+							"jquery-ui"	= "ui-icon ui-icon-"			// jQuery UI:				https://jqueryui.com/
+							}, 	
+		
+		
+		
 		imageLibrary		= {"default" = replace(cgi.script_name, "/index.cfm", "") & "/assets/"},							// used by b:graphicImage
 		
 		// used by b:outputStyleSheet
@@ -47,8 +60,8 @@ void function setupApplication()	{
 	
 	
 	// Clear out bootstrap caches 
-	CacheRemoveAll(application.Bootstrap.cache.content);
-	CacheRemoveAll(application.Bootstrap.cache.language);
+	if(cacheRegionExists(application.Bootstrap.cache.content))  CacheRemoveAll(application.Bootstrap.cache.content);
+	if(cacheRegionExists(application.Bootstrap.cache.language))	CacheRemoveAll(application.Bootstrap.cache.language);
 	
 	
 	application.geti18n			= this.geti18n;
