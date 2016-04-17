@@ -11,8 +11,9 @@
 	<b:row>
 		<b:column span="12">	
 
-			<b:h1>Helper Class Examples</b:h1>
-			<p>text attribute</p>
+			<b:h1>Material Colors & Helper classes</b:h1>
+			<p>Classes that make it easier color code things</p>
+			<!--- To quote my accountant: color coded tabed folders are the best invention ever --->
 		</b:column>	
 	</b:row>
 </div>
@@ -28,7 +29,7 @@
 </b:blockquote>
 
 
-<b:panel look="info" title="Tags with <b:text> attribute">
+<b:panel look="info" title="Tags with text attribute">
 
 	<b:table>
 	<thead>
@@ -42,12 +43,12 @@
 	<tbody>
 		<tr>
 			<td>h1,h2,h3,h4,h5.h6,p,blockqoute</td>
-			<td></td>
+			<td>(none)</td>
 			<td>Color of text</td>
 		</tr>
 		<tr>
-			<td>td,th</td>
-			<td></td>
+			<td>tr,td,th</td>
+			<td>(none)</td>
 			<td>Color of text</td>
 		</tr>
 	</tbody>
@@ -55,7 +56,10 @@
 </b:panel>
 
 
-<h2>Examples</h2>
+<b:h1 key="examples" />
+
+
+
 <b:p text="muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</b:p>
 <b:p text="primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</b:p>
 <b:p text="warning">Etiam porta sem malesuada magna mollis euismod.</b:p>
@@ -102,29 +106,49 @@
 <b:row>
 <cfloop index="styleClass" list="muted,primary,warning,danger,success">
 	<b:column span="4">
-		<b:blockquote styleClass="bg-#styleClass#" binding="content" footer="#styleClass#" />
+		<b:blockquote styleClass="bg-#styleClass#" value="#rc.content#" footer="#styleClass#" />
 	</b:column>
 </cfloop>
 
 </b:row>
+
 
 <h3>Material Design</h3>
-<p>This sample site also comes with material design classes. These are very bright and have names that reflect their color. These colors are not the same as html colors though. On this sample site, these do not vary by theme.</p>
+<p>This sample site also comes with material design classes. These are very bright and have names that reflect their color.
+	These colors are not the same as html colors though. On this sample site, these do not vary by theme.
+	Only even lighten and darken values exist. This is to encourage consistency.
+</p>
 
-<b:row>
 
 <cfloop index="styleClass" list="#rc.lstcolor#">
-	<b:column span="3">
-		<b:blockquote styleClass="material-#styleClass.trim()#" binding="content" footer="#styleClass.trim()#" />
+<b:row>
+
+	<b:column span="2">
+		<b:blockquote styleClass="material-#styleClass.trim()# lighten-4" value="#rc.content#" footer="#styleClass.trim()# lighten-4" />
+	</b:column>
+
+	<b:column span="2">
+		<b:blockquote styleClass="material-#styleClass.trim()# lighten-2" value="#rc.content#" footer="#styleClass.trim()# lighten-2" />
+	</b:column>
+
+
+	<b:column span="2">
+		<b:blockquote styleClass="material-#styleClass.trim()#" value="#rc.content#" footer="#styleClass.trim()#" />
+	</b:column>
+
+	<b:column span="2">
+		<b:blockquote styleClass="material-#styleClass.trim()# darken-2" value="#rc.content#" footer="#styleClass.trim()# darken-2" />
 	</b:column>
 	
-	<b:column span="3">
-		<b:blockquote styleClass="material-#styleClass.trim()# lighten-4" binding="content" footer="#styleClass.trim()# lighten-4" />
-	</b:column>	
+	
+	<b:column span="2">
+		<b:blockquote styleClass="material-#styleClass.trim()# darken-4" value="#rc.content#" footer="#styleClass.trim()# darken-4" />
+	</b:column>
+
+</b:row>
 </cfloop>
 
 
-</b:row>
 
 
 

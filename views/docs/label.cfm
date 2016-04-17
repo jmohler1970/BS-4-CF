@@ -36,14 +36,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Finds data in <code>rc.*</code> scope</td>
-			<td>N/A</td>
+			<td><b:yesnoFormat value="1" /></td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -145,6 +138,7 @@
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>	
 			<td>text</td>
 			<td>Required to not exist</td>
 			<td>BootsFaces has this wrong. b:banner and b:label are very similar and should both be powered by value. One of the reasons why this is wrong, is <code>text=</code> is used for context colors. See helpers for more details </td>
@@ -172,6 +166,7 @@
 			<td></td>
 		</tr>
 		<tr>
+			<td></td>	
 			<td>value</td>
 			<td>(none)</td>
 			<td>The content of what should be shown. If value is blank, this will still be rendered. This can be useful for Javascript to dynamically updating content.</td>

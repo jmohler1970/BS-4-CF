@@ -34,7 +34,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td></td>
+			<td><b:label look="danger" key="No" />Make sure that the inner content is clean</td></td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -204,7 +204,7 @@ This is a Jumbotron
 
 
 <b:jumbotron>
-    <b:h1 binding="content" />
+    <b:h1>#rc.content#</b:jumbotron>
     <b:p>O Fortuna
 velut luna
 statu variabilis,

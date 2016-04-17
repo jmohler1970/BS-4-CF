@@ -35,14 +35,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
-			<td>See generatedContent</td>
+			<td><b:yesnoFormat value="1" /></td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -63,7 +56,7 @@
 			<td>footer</td>
 			<td>(none)</td>
 			<td>For <code>&lt;b:blockquote&gt;</code> only. This generates footer content</td>
-			<td><b:label look="danger">No</b:label> </td>
+			<td><b:label look="danger" key="No" /></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -230,8 +223,7 @@
 <h3>&lt;b:outputText&gt; Example</h3>
 
 
-<p><b:outputText binding="heading" /></p>
-<!-- you should have just done the binding to p -->
+<p><b:outputText value="#rc.heading#" /></p>
 
 
 <h2>i18n language file examples</h2>
@@ -252,14 +244,14 @@
 
 <b:well>
 
-	<b:h1 binding="heading" rendered="false" />
-	<b:h2 binding="heading" rendered="false" />
-	<b:h3 binding="heading" rendered="false" />
-	<b:h4 binding="heading" rendered="false" />
-	<b:h5 binding="heading" rendered="false" />
-	<b:h6 binding="heading" rendered="false" />
-	<b:p binding="heading" rendered="false" />
-	<b:blockquote binding="heading" rendered="false" />
+	<b:h1 value="#rc.heading#" rendered="false" />
+	<b:h2 value="#rc.heading#" rendered="false" />
+	<b:h3 value="#rc.heading#" rendered="false" />
+	<b:h4 value="#rc.heading#" rendered="false" />
+	<b:h5 value="#rc.heading#" rendered="false" />
+	<b:h6 value="#rc.heading#" rendered="false" />
+	<b:p value="#rc.heading#" rendered="false" />
+	<b:blockquote value="#rc.heading#" rendered="false" />
 
 </b:well>
 
@@ -268,14 +260,14 @@
 
 <b:well>
 
-	<b:h1 binding="heading" processed="false" />
-	<b:h2 binding="heading" processed="false" />
-	<b:h3 binding="heading" processed="false" />
-	<b:h4 binding="heading" processed="false" />
-	<b:h5 binding="heading" processed="false" />
-	<b:h6 binding="heading" processed="false" />
-	<b:p binding="heading" processed="false" />
-	<b:blockquote binding="heading" processed="false" />
+	<b:h1 value="#rc.heading#" processed="false" />
+	<b:h2 value="#rc.heading#" processed="false" />
+	<b:h3 value="#rc.heading#" processed="false" />
+	<b:h4 value="#rc.heading#" processed="false" />
+	<b:h5 value="#rc.heading#" processed="false" />
+	<b:h6 value="#rc.heading#" processed="false" />
+	<b:p value="#rc.heading#" processed="false" />
+	<b:blockquote value="#rc.heading#" processed="false" />
 
 </b:well>
 
@@ -286,14 +278,14 @@
 <b:well rendered="false">
 
 	<cfloop from = "0" to="101" index="i">
-		<b:h1 binding="heading" />
-		<b:h2 binding="heading" />
-		<b:h3 binding="heading" />
-		<b:h4 binding="heading" />
-		<b:h5 binding="heading" />
-		<b:h6 binding="heading" />
-		<b:p binding="heading" />
-		<b:blockquote binding="heading" />
+		<b:h1 value="#rc.heading#" />
+		<b:h2 value="#rc.heading#" />
+		<b:h3 value="#rc.heading#" />
+		<b:h4 value="#rc.heading#" />
+		<b:h5 value="#rc.heading#" />
+		<b:h6 value="#rc.heading#" />
+		<b:p value="#rc.heading#" />
+		<b:blockquote value="#rc.heading#" />
 	</cfloop>
 
 </b:well>
@@ -306,21 +298,21 @@
 <b:well rendered="false">
 
 	<cfloop from = "0" to="101" index="i">
-		<b:h1 binding="heading" cacheid="cheat" />
-		<b:h2 binding="heading" cacheid="cheat" />
-		<b:h3 binding="heading" cacheid="cheat" />
-		<b:h4 binding="heading" cacheid="cheat" />
-		<b:h5 binding="heading" cacheid="cheat" />
-		<b:h6 binding="heading" cacheid="cheat" />
-		<b:p binding="heading" cacheid="cheat" />
-		<b:blockquote binding="heading" cacheid="cheat" />
+		<b:h1 value="#rc.heading#" cacheid="cheat" />
+		<b:h2 value="#rc.heading#" cacheid="cheat" />
+		<b:h3 value="#rc.heading#" cacheid="cheat" />
+		<b:h4 value="#rc.heading#" cacheid="cheat" />
+		<b:h5 value="#rc.heading#" cacheid="cheat" />
+		<b:h6 value="#rc.heading#" cacheid="cheat" />
+		<b:p value="#rc.heading#" cacheid="cheat" />
+		<b:blockquote value="#rc.heading#" cacheid="cheat" />
 	</cfloop>
 
 </b:well>
 
 <p>View the cache status tracker to see how well the cacheing worked</p>
 
- <p><b:commandLink href="~/main/cache" value="Check Cache" look="primary" /></p>
+ <p><b:commandLink href="~/docs/cache" value="Check Cache" look="primary" /></p>
  
  
  <h1>b:verbatim</h1>
@@ -350,16 +342,8 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> </td>
+			<td><b:label look="danger" key="No" /></td>
 		</tr>
-		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
-			<td>See generatedContent</td>
-		</tr>
-
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>
 			<td>isSafeHTML</td>

@@ -18,50 +18,20 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
 
 
-	param attributes.action			= "";	// powered by application.Bootstrap.actionRoot;
-	param attributes.binding			= "";
-	param attributes.bold			= false;
-	param attributes.cacheid			= "";
-	param attributes.disabled		= false;
-	param attributes.dropdown		= false;
-	param attributes.href			= "";	// any target
-	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
-	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-	param attributes.key			= "";
 	param attributes.library			= "default";	// for icon
 	param attributes.look	 		= "default";
-	param attributes.outline			= false;
-	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
-	param attributes.profile			= application.Bootstrap.profile;
-	param attributes.rel			= "";
 	param attributes.rendered 		= true;
 	param attributes.role			= "button";
-	param attributes.size			= "";
-	param attributes.style			= "";
-	param attributes.styleClass		= "";
-	param attributes.target			= "";
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
-	param attributes.tooltip			= "";
-	param attributes.tooltipKey		= "";
-	param attributes.tooltipPosition 	= "bottom";
-	param attributes.value			= "";
 	
 	
-	// Patch this
-	if(attributes.disabled == "disabled")	attributes.disabled = true;
 	
 	
-	// We will be passing through HTML5 data-, Mouse Events, and Angular JS
-	variables.arAttrSeries = [];
-	
-	for(variables.myKey in attributes)	{
-		if (left(variables.myKey, 5) == "data-" || left(variables.myKey, 2) == "on" || left(variables.myKey, 3) == "ng-")	{
-			ArrayAppend(arAttrSeries, {key = variables.myKey, value = attributes[variables.myKey] });
-			} // end if	
-		}	// end for
+	// no target of any kind was set AND this is not an anchor
+	if ((attributes?.action != "" || attributes?.href == "") && attributes?.id == "")	attributes.href = attributes.action;
+
+
 
 
 	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This #attributes.look# is an invalid look option";
@@ -69,8 +39,8 @@ case "start" :
 	
 	if (!attributes.processed) exit "exitTag";
 	
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -80,69 +50,54 @@ case "start" :
 case "end" :
 
 	
-	if (attributes.value != "")											thisTag.generatedContent = attributes.value;	
-	if (attributes.binding != "" && isDefined("caller.rc.#attributes.binding#")) 	thisTag.generatedContent = evaluate("caller.rc.#attributes.binding#");
-	if (attributes.key 		!= "")		{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
-	if (attributes.tooltipKey != "")										attributes.tooltip 		= application.geti18n(attributes.key, attributes.tooltipPlaceholder);
+	if (attributes?.value	!= "")										thisTag.generatedContent = attributes.value;	
 
-	// no target of any kind was set AND this is not an anchor
-	if ((attributes.action != "" || attributes.href == "") && attributes.id == "")	attributes.href = application.Bootstrap.actionRoot & attributes.action;
+	
+	if (attributes?.tooltipKey != "")										attributes.tooltip 		= application.geti18n(attributes.key, attributes?.tooltipPlaceholder);
 
-	if (attributes.bold)						variables.result &= '<b>';
-	if (attributes.look == 'link')				variables.result &= '<a class="';				// we don't do anything special so that link look like links
-	if (attributes.look != 'link')				variables.result &= '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())#';
-	if (attributes.outline)						variables.result &= "-outline";
-	if (attributes.size 		!= "")			variables.result &= ' btn-#encodeForHTMLAttribute(attributes.size)#'; // space needed
-	if (attributes.styleClass != "")				variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
+
+	if (attributes.look 	== 'link')			variables.result &= '<a class="';				// we don't apply btn so that link look like links
+	if (attributes.look 	!= 'link')			variables.result &= '<a class="btn btn-#encodeForHTMLAttribute(attributes.look.lcase())#';
+	if (attributes?.outline	== true)				variables.result &= "-outline";
+	if (attributes?.size 	!= "")				variables.result &= ' btn-#encodeForHTMLAttribute(attributes.size)#'; // space needed
+	if (attributes?.styleClass != "")				variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 		
-	if (attributes.dropdown)   					variables.result &= ' datatoggle ';
+	if (attributes?.dropdown != "")   				variables.result &= ' datatoggle ';
 	
 											variables.result &= '" '; // end class
-	if (attributes.disabled)						variables.result &= 'disabled="disabled" ';
 											
+	if (attributes?.href	!= "")				variables.result &= ' href="#attributes.href#"';
 
-	if (attributes.href		!= "")				variables.result &= ' href="#attributes.href#"';
-	if (attributes.id		!= "")				variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-
-	for(variables.myAttr in variables.arAttrSeries)	variables.result &= ' #lcase(variables.myAttr.key)#="#encodeForHTMLAttribute(variables.myAttr.value)#"';
-
-
-	if (attributes.rel		!= "")				variables.result &= ' rel = "#encodeForHTMLAttribute(attributes.rel)#"';
-	if (attributes.role		!= "")				variables.result &= ' role = "#encodeForHTMLAttribute(attributes.role)#"';
-	if (attributes.target	!= "")				variables.result &= ' target = "#encodeForHTMLAttribute(attributes.target)#"';
-	if (attributes.tooltip   != "")				variables.result &= ' title = "#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if (attributes.style    	!= "")				variables.result &= ' style = "#encodeForHTMLAttribute(attributes.style)#"';
-
-	if (attributes.dropdown)						variables.result &= ' data-toggle="dropdown"';
+											variables.result &= application.filterAttributes(attributes);
+           	
+	if (attributes?.dropdown == true)				variables.result &= ' data-toggle="dropdown"';
 											variables.result &= '>';
+	if (attributes?.bold 	== true)				variables.result &= '<b>';
 
 	// space on end is not an accident							
-	if (attributes.icon 		!= "" && attributes.iconAlign == "left")	{
+	if (attributes?.icon 		!= "" && attributes.iconAlign == "left")	{
 											variables.result &= '<i class="#application.Bootstrap.IconLibrary[attributes.library]##encodeForHTMLAttribute(attributes.icon)#"></i> ';
 											}
 	
-	if(!attributes.isSafeHTML)					variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)					variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+											variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);								
 
 
 	
 	// space at start is not an accident
-	if (attributes.icon 		!= "" && attributes.iconAlign == "right")	{
+	if (attributes?.icon 	!= "" && attributes.iconAlign == "right")	{
 											variables.result &= ' <i class="#application.Bootstrap.IconLibrary[attributes.library]##attributes.icon#"></i>';
 											}			
 
-	if (attributes.dropdown)						variables.result &= '<span class="caret"></span>';
+	if (attributes?.dropdown == true)				variables.result &= '<span class="caret"></span>';
+	if (attributes?.bold	== true)				variables.result &= '</b>';										
 											variables.result &= '</a>';
-	if (attributes.bold)						variables.result &= '</b>';										
 											
-	if (attributes.cacheid != "")					CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);										
+	if (attributes?.cacheid != "")				CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);										
 
 
 	thisTag.GeneratedContent = ""; // This tag does not have pass through
 	if (attributes.rendered)						writeOutput(variables.result);
+	
 
 	break;
 	}

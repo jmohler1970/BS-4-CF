@@ -24,13 +24,21 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
 	</cfcase>
 	<cfdefaultcase>
-		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/<cfoutput>#lcase(session.bootswatch)#</cfoutput>/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/<cfoutput>#lcase(session.bootswatch)#</cfoutput>/bootstrap.min.css" rel="stylesheet">
 	</cfdefaultcase>	
 </cfswitch>
 
+<!--- Support for all icon libraries. It is recommended that you choose one --->
+<!--- Glypicons are built into Bootstrap --->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" 	rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css" 		rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" 			rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" 				rel="stylesheet">
+
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/0.3.4/awesome-bootstrap-checkbox.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.10.8/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
@@ -41,7 +49,7 @@
 <b:outputStyleSheet library="vendor" name="bootstrap-wysiwyg.css" />
 <b:outputStyleSheet library="vendor" name="material.css" />
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
 
 <cfswitch expression="#session.bootswatch#">
@@ -143,7 +151,7 @@ padding-top: 50px;
 	
      
 	</b:container>
-</body>
+
 
 
 

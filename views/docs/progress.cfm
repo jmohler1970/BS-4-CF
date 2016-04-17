@@ -34,7 +34,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td>Yes</td>
+			<td><b:yesnoFormat value="1" /></td>
 		</tr>
 		<tr>
 			<td><b:label>Bootstrap</b:label></td>
@@ -43,13 +43,6 @@
 			<td>Is the progress bar animated. If this is true, stripped is also treated as true</td>
 			<td>must evaluate to boolean</td>
 		</tr>
-		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Finds data in <code>rc.*</code> scope</td>
-			<td>N/A</td>
-		</tr>	
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
@@ -253,7 +246,7 @@ Your news article
 
 
 
-<b:progressBar width="#rc.size#" look="#rc.look#" binding="content" />
+<b:progressBar width="#rc.size#" look="#rc.look#" value="#rc.content#" />
 
 
 

@@ -44,13 +44,6 @@
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>
 		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Variable that controls what icon to show</td>
-			<td>N/A</td>
-		</tr>
-		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>
 			<td>(none)</td>
@@ -188,6 +181,30 @@
 
 
 <b:h2 key="try_me" />
+
+<h3>Example with All Supported libraries</h3>
+
+<p>It is recommended that only one library be used per site.</p>
+
+
+<b:table colHeaders='Name,Glyphicon,Font Awesome,Foundation Icons,Ionicon,Octicon'>
+<tbody>
+<cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check,credit-card,clock,lock,git-branch,comment,log-out,ios-loop,ios-trash,image,beer,power,alert" index="i">
+	<tr>
+		<td><cfoutput>#i#</cfoutput></td>
+		<td><b:icon library="glyphicon" name="#i#"	size="2x"	/></td>
+		<td><b:icon library="awesome" name="#i#"	size="2x"	/></td>
+		<td><b:icon library="foundation" name="#i#"	size="2x"	/></td>
+		<td><b:icon library="ionicon" name="#i#"	size="2x"	/></td>
+		<td><b:icon library="mega-octicon" name="#i#"		/></td>
+	</tr>
+</cfloop>
+</tbody>
+
+</b:table>
+
+
+				
 	
 <p>You may want to go to getBootstrap.com to see the icon names. <a href="http://getbootstrap.com/components/" target="_blank">http://getbootstrap.com/components/</a></p>	
 	
@@ -197,7 +214,7 @@
 <form class="form-inline">
   <div class="form-group">
     <label for="exampleInputName2">Icon name</label>
-    <input type="text" class="form-control" name="icon" placeholder="" value="<cfoutput>#EncodeforHTMLAttribute(rc.icon)#</cfoutput>" />
+    <input type="text" class="form-control" name="icon" placeholder="" value="<cfoutput>#rc.icon.EncodeforHTMLAttribute()#</cfoutput>" />
   </div>
   <button type="submit" class="btn btn-default">Show icons</button>
 </form>	
@@ -207,22 +224,21 @@
 <b:table colHeaders='#colHeaders#' colFooters='#colHeaders#' rendered="#IIF(rc.icon EQ "", 0, 1)#">
 	<tr>
 		<td>Glyphicon</td>
-		<td><b:icon binding="icon" look="success"	/></td>
-		<td><b:icon binding="icon" look="danger"	/></td>
-		<td><b:icon binding="icon" size="lg" 		/></td>
-		<td><b:icon binding="icon" size="2x" 		/></td>
-		<td><b:icon binding="icon" spin="true"		/></td>
+		<td><b:icon name="#rc.icon#" look="success"	/></td>
+		<td><b:icon name="#rc.icon#" look="danger"	/></td>
+		<td><b:icon name="#rc.icon#" size="lg" 		/></td>
+		<td><b:icon name="#rc.icon#" size="2x" 		/></td>
+		<td><b:icon name="#rc.icon#" spin="true"	/></td>
 	</tr>
 	
 	<tr>
 		<td>Font-Awesome</td>
-		<td><b:icon library="awesome" binding="icon" look="success"	/></td>
-		<td><b:icon library="awesome" binding="icon" look="danger"	/></td>
-		<td><b:icon library="awesome" binding="icon" size="lg" 	/></td>
-		<td><b:icon library="awesome" binding="icon" size="2x" 	/></td>
-		<td><b:icon library="awesome" binding="icon" spin="true"	/></td>
+		<td><b:icon library="awesome" name="#rc.icon#" look="success"	/></td>
+		<td><b:icon library="awesome" name="#rc.icon#" look="danger"	/></td>
+		<td><b:icon library="awesome" name="#rc.icon#" size="lg" 		/></td>
+		<td><b:icon library="awesome" name="#rc.icon#" size="2x" 		/></td>
+		<td><b:icon library="awesome" name="#rc.icon#" spin="true"		/></td>
 	</tr>
-	
 </b:table>
 
 </b:well>
@@ -231,15 +247,15 @@
 
 <b:table colHeaders='Name,Default look,<code>look="success</code>,<code>look="danger"</code>,<code>size="lg"</code>,<code>size="2x"</code>,<code>spin="true"</code>'>
 <tbody>
-<cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check" index="rc.i">
+<cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check" index="i">
 	<tr>
-		<td><cfoutput>#rc.i#</cfoutput></td>
-		<td><b:icon binding="i" /></td>
-		<td><b:icon binding="i" look="success"	/></td>
-		<td><b:icon binding="i" look="danger"	/></td>
-		<td><b:icon binding="i" size="lg" 		/></td>
-		<td><b:icon binding="i" size="2x" 		/></td>
-		<td><b:icon binding="i" spin="true"	/></td>
+		<td><cfoutput>#i#</cfoutput></td>
+		<td><b:icon name="#i#" /></td>
+		<td><b:icon name="#i#" look="success"	/></td>
+		<td><b:icon name="#i#" look="danger"	/></td>
+		<td><b:icon name="#i#" size="lg" 		/></td>
+		<td><b:icon name="#i#" size="2x" 		/></td>
+		<td><b:icon name="#i#" spin="true"	/></td>
 	</tr>
 </cfloop>
 </tbody>
@@ -255,15 +271,15 @@
 
 <b:table colHeaders='Name,Default look,<code>look="success</code>,<code>look="danger"</code>,<code>size="lg"</code>,<code>size="2x"</code>,<code>spin="true"</code>'>
 <tbody>
-<cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check" index="rc.i">
+<cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check" index="i">
 	<tr>
-		<td><cfoutput>#rc.i#</cfoutput></td>
-		<td><b:icon library="awesome" binding="i" /></td>
-		<td><b:icon library="awesome" binding="i" look="success"/></td>
-		<td><b:icon library="awesome" binding="i" look="danger"	/></td>
-		<td><b:icon library="awesome" binding="i" size="lg" 	/></td>
-		<td><b:icon library="awesome" binding="i" size="2x" 	/></td>
-		<td><b:icon library="awesome" binding="i" spin="true"	/></td>
+		<td><cfoutput>#i#</cfoutput></td>
+		<td><b:icon library="awesome" name="#i#" /></td>
+		<td><b:icon library="awesome" name="#i#" look="success"/></td>
+		<td><b:icon library="awesome" name="#i#" look="danger"	/></td>
+		<td><b:icon library="awesome" name="#i#" size="lg" 	/></td>
+		<td><b:icon library="awesome" name="#i#" size="2x" 	/></td>
+		<td><b:icon library="awesome" name="#i#" spin="true"	/></td>
 	</tr>
 </cfloop>
 </tbody>
@@ -279,18 +295,21 @@
 
 <b:table colHeaders='Name,Default look,<code>lstyleClass="ui-state-highlight"</code>,<code>styleClass="ui-state-error"</code>,<code>spin="true"</code>'>
 <tbody>
-<cfloop list="tag,note,bookmark,print,image,flag,arrowthickstop-1-s,arrowthickstop-1-n,mail-closed,arrowrefresh-1-w,trash,check" index="rc.i">
+<cfloop list="tag,note,bookmark,print,image,flag,arrowthickstop-1-s,arrowthickstop-1-n,mail-closed,arrowrefresh-1-w,trash,check" index="i">
 	<tr>
-		<td><cfoutput>#rc.i#</cfoutput></td>
-		<td><b:icon library="jquery-ui" binding="i" /></td>
-		<td><b:icon library="jquery-ui" binding="i" styleClass="ui-state-highlight"/></td>
-		<td><b:icon library="jquery-ui" binding="i" styleClass="ui-state-error"	/></td>
-		<td><b:icon library="jquery-ui" binding="i" spin="true"	/></td>
+		<td><cfoutput>#i#</cfoutput></td>
+		<td><b:icon library="jquery-ui" name="#i#" /></td>
+		<td><b:icon library="jquery-ui" name="#i#" styleClass="ui-state-highlight"/></td>
+		<td><b:icon library="jquery-ui" name="#i#" styleClass="ui-state-error"	/></td>
+		<td><b:icon library="jquery-ui" name="#i#" spin="true"	/></td>
 	</tr>
 </cfloop>
 </tbody>
 
 </b:table>
+
+
+		
 
 
 

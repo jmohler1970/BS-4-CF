@@ -83,7 +83,7 @@
 			<td>template</td>
 			<td>(required)</td>
 			<td>Pass through of <code>template=</code> attribute. If a relative path is used, it is from the install directory of this tag. It is recommended absolute paths be used</td>
-			<td><b:label look="danger">No</b:label>  Value is assumed to be clean</td>
+			<td><b:label look="danger" key="No" /> Value is assumed to be clean</td>
 		</tr>
 	</tbody>
 	</b:table>

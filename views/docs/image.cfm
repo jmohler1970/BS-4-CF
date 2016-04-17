@@ -50,7 +50,7 @@
 			<td>base64</td>
 			<td>(none)</td>
 			<td>Used to generate base64 encoded image. See <a href="http://caniuse.com/#feat=datauri">Can I use</a> for browser support.  If base64 is chosen, then name is not needed.</td>
-			<td><b:label look="danger">No</b:label> </td>
+			<td><b:label look="danger" key="No" /></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -59,13 +59,6 @@
 			<td>Used to specify non png images</td>
 			<td><code>encodeForHTMLAttribute()</code></td>
 		</tr>	
-		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
-			<td>N/A</td>
-		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
 			<td>cacheid</td>

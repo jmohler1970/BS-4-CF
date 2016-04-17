@@ -5,7 +5,7 @@
 
 <cfscript>
 if (!thisTag.HasEndTag) 
-	abort "An end tag is required for b:tab."; 
+	abort "An end tag is required for b:tabView."; 
 	
 	
 
@@ -21,24 +21,16 @@ case "start" :
 	variables.needsJS	= false;
   
 	param attributes.activeIndex		= 1;
-	param attributes.cacheid			= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-	param attributes.key			= "";
-	param attributes.placeholder		= [];
 	param attributes.processed		= true;
-	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered 		= true;
 	param attributes.role 			= "tabpanel";
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
-	param attributes.style			= "";
-	param attributes.styleClass		= "";
 	
 	
 	if (!attributes.processed) exit "exitTag";
 
 	
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -49,22 +41,25 @@ case "start" :
 case "end" :
 
 	
-								variables.result &= variables.crlf & '<div class="tab-panel';
-	if(attributes.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
-								variables.result &= '"';								
-	if(attributes.role		!= "")	variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
+									variables.result &= variables.crlf & '<div class="tab-panel';
+	if(attributes?.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
+									variables.result &= '"';								
+	if(attributes?.role			!= "")	variables.result &= ' role="#encodeForHTMLAttribute(attributes.role)#"';
 	
-	if(attributes.style		!= "")	variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
-								variables.result &= '>';
-								variables.result &= variables.crlf & '<ul class="nav nav-tabs" role="tablist">';
+	if(attributes?.style		!= "")	variables.result &= ' style="#encodeForHTMLAttribute(attributes.style)#"';
+									variables.result &= '>';
+									variables.result &= variables.crlf & '<ul class="nav nav-tabs" role="tablist">';
+									
+									
 	// generate tabs
 	for (variables.tab in thisTag.arTab)	{
-		if (variables.tab.title != "")	{
+		
+		if (variables.tab?.title != "")	{
 			
 			variables.myClass = "";
 			if (attributes.activeIndex == variables.currentTab)	variables.myClass &= 'active ';
-			if (variables.tab.disabled)						variables.myClass &= 'disabled ';
-			if (variables.tab.styleClass != "")				variables.myClass &= variables.tab.styleClass;
+			if (variables.tab?.disabled	== true)				variables.myClass &= 'disabled ';
+			if (variables.tab?.styleClass != "")				variables.myClass &= variables.tab.styleClass;
 			
 			
 									variables.result &= variables.crlf & '<li role="presentation"';
@@ -72,7 +67,7 @@ case "end" :
 									variables.result &= '>';
 									variables.result &= '<a';
 			if (!variables.tab.disabled)	variables.result &= ' href="###variables.tab.id#"';
-			if (variables.tab.style != "")variables.result &= ' style="' & encodeForHTMLAttribute(variables.tab.style) & '"';
+			if (variables.tab.style != "")		variables.result &= ' style="' & encodeForHTMLAttribute(variables.tab.style) & '"';
 			if (!variables.tab.disabled)	variables.result &= ' aria-controls="#variables.tab.id#"';
 			if (!variables.tab.disabled)	variables.result &= ' role="#encodeForHTMLAttribute(variables.tab.id)#"';
 			if (!variables.tab.disabled)	variables.result &= ' data-toggle="tab"';
@@ -84,13 +79,14 @@ case "end" :
 									variables.result &= '</li>';
 			variables.currentTab++;
 			} // end if title exists
+			
 		} // end for
+		
 		
 		if (trim(thisTag.generatedContent) != "")	{
 									variables.result &= variables.crlf & '<li role="presentation" class="dropdown"><!-- Content passthrough -->';
 								
-			if(!attributes.isSafeHTML)	variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-			if( attributes.isSafeHTML)	variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
+									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
 						
 									variables.result &= '</li>';
 									}	
@@ -111,9 +107,9 @@ case "end" :
 							
 								variables.result &= ' id="#encodeForHTMLAttribute(variables.tab.id)#">';
 								
-								variables.result &= getSafeHTML(variables.tab.generatedContent);	
+								variables.result &= variables.tab.generatedContent.getSafeHTML();	
 	
-								variables.result &= variables.crlf & '</section>';
+								variables.result &= '</section>' & variables.crlf;
 		variables.currentTab++;			
 		}	// end for
      
@@ -143,10 +139,12 @@ case "end" :
 								}
 
 								
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
+	if (attributes?.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
 
 	thisTag.GeneratedContent = "";    
 	if (attributes.rendered)				writeOutput(variables.result);
+	
+	
     
 	break;
 	}

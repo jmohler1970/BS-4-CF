@@ -40,7 +40,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean.</td>
+			<td><b:label look="danger" key="No" />this is often more than the default value as set in antisamy. Make sure that the inner content is clean.</td>
 		</tr>
 		
 		<tr>
@@ -166,20 +166,20 @@
 
 	<form>
 		<b:formGroup>
-			<label for="exampleInputEmail1">Email address</label>
+			<label for="exampleInputEmail1"><b:outputText key="label_email" /></label>
 			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
 		</b:formGroup>
 		
 		<b:formGroup>
-			<label for="exampleInputPassword1">Password</label>
+			<label for="exampleInputPassword1"><b:outputText key="Password" /></label>
 			<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 		</b:formGroup>
 		
 	  
 	  	<b:formGroup>
-	  		<label for="exampleInputFile">File input</label>
+	  		<label for="exampleInputFile"><b:outputText key="browse_computer" /></label>
 	  		<input type="file" id="exampleInputFile">
-	  		<p class="help-block">Example block-level help text here.</p>
+	  		<p class="help-block"><b:outputText key="uploadify_button" /></p>
 	  	</b:formGroup>
 	
 	  	<!--- This one won't be showing up --->
@@ -192,11 +192,11 @@
 	
 	  	<div class="checkbox">
 	  		<label>
-	  			<input type="checkbox"> Check me out
+	  			<input type="checkbox"> <b:outputText key="add_to_menu" />
 	  		</label>
 	  	</div>
 	  
-		<b:commandButton value="Submit" />
+		<b:commandButton key="btn_saveupdates" />
 	</form>
 
 </b:well>
@@ -217,63 +217,61 @@
 	<b:th>Notes</b:th>
 </b:tr>
 <b:tr>
-	<b:td><code>&lt;b:button value="Save"&gt;</code></b:td>
-	<b:td><code>&lt;button type="button" class="btn"&gt;Save&lt;/button&gt;</code></b:td>
-	<b:td></b:td>
+	<td><code>&lt;b:button value="Save" /&gt;</code></td>
+	<td><code>&lt;button type="button" class="btn"&gt;Save&lt;/button&gt;</code></td>
+	<td></td>
 </b:tr>
 <b:tr>
-	<b:td><code>&lt;b:commandButton value="Save"&gt;</code></b:td>
-	<b:td><code>&lt;button type="submit" class="btn"&gt;Save&lt;/button&gt;</code></b:td>
-	<b:td></b:td>
+	<b:td isSafeHTML="true" styleClass="text-nowrap"><code>&lt;b:commandButton value="Save" /&gt;</code></b:td>
+	<td><code>&lt;button type="submit" class="btn"&gt;Save&lt;/button&gt;</code></td>
+	<td></td>
 </b:tr>
 <b:tr>
-	<b:td><code>&lt;b:fieldset legend="My Legend"&gt;</code></b:td>
-	<b:td><code>&lt;fieldset&gt;<br />&nbsp; &lt;legend&gt;My Legend&lt;/legend&gt;</code></b:td>
-	<b:td></b:td>
+	<td><code>&lt;b:fieldset legend="My Legend" /&gt;</code></td>
+	<td><code>&lt;fieldset&gt;<br />&nbsp; &lt;legend&gt;My Legend&lt;/legend&gt;</code></td>
+	<td></td>
 </b:tr>
 <b:tr>
-	<b:td><code>&lt;b:formGroup&gt;</code></b:td>
-	<b:td><code>&lt;div class="form-group"&gt;</code></b:td>
-	<b:td></b:td>
+	<td><code>&lt;b:formGroup&gt;</code></td>
+	<td><code>&lt;div class="form-group"&gt;</code></td>
+	<td></td>
 </b:tr>
 <b:tr>
-	<b:td><code>&lt;b:selectItem&gt;</code></b:td>
-	<b:td><code>&lt;option&gt;</code></b:td>
-	<b:td></b:td>
+	<td><code>&lt;b:selectItem&gt;</code></td>
+	<td><code>&lt;option&gt;</code></td>
+	<td></td>
 </b:tr>
 <b:tr>
-	<b:td><code>&lt;b:selectItems query="#rc.qryData#"&gt;</code></b:td>
-	<b:td>
+	<td><code>&lt;b:selectItems query="#rc.qryData#"&gt;</code></td>
+	<td>
 		<code>&lt;cfoutput query="rc.qryData"&gt;<br />&nbsp; &lt;option&gt;</code>
 		<br />
 		OR
 		<br />
 		<code>&lt;cfselect&gt;</code>
-	</b:td>
-	<b:td>The # is required for the Bootstrap for ColdFusion version. It is not present in the original. You still need to wrap this in either selectOneMenu or SelectMultiMenu</b:td>
+	</td>
+	<td>The # is required for the Bootstrap for ColdFusion version. It is not present in the original. You still need to wrap this in either selectOneMenu or SelectMultiMenu</td>
 </b:tr>
 <b:tr>
-	<b:td><code>&lt;b:selectOneMenu&gt;</code></b:td>
-	<b:td><code>&lt;select type="form-control"&gt;</code>
+	<td><code>&lt;b:selectOneMenu&gt;</code></td>
+	<td><code>&lt;select type="form-control"&gt;</code>
 	<br />
 	OR
 	<br />
 	<code>&lt;div class="col-lg-*"&gt;<br />&nbsp; &lt;select type="form-control"&gt;</code>
-	</b:td>
-	<b:td></b:td>
+	</td>
+	<td></td>
 </b:tr>
 <b:tr>
-	<b:td><code>&lt;b:selectManyMenu&gt;</code></b:td>
-	<b:td><code>&lt;select class="form-control" multiple="multiple"&gt;</code></b:td>
-	<b:td></b:td>
+	<td><code>&lt;b:selectManyMenu&gt;</code></td>
+	<td><code>&lt;select class="form-control" multiple="multiple"&gt;</code></td>
+	<td></td>
 </b:tr>
 <b:tr>
-	<b:td><code>&lt;b:selectManyMenu styleClass="select2"&gt;</code></b:td>
-	<b:td><code>&lt;select class="form-control select2" multiple="multiple"&gt;</code></b:td>
-	<b:td>Select2 is a great tool for making multi selects much smarter</b:td>
+	<td><code>&lt;b:selectManyMenu styleClass="select2"&gt;</code></td>
+	<td><code>&lt;select class="form-control select2" multiple="multiple"&gt;</code></td>
+	<td>Select2 is a great tool for making multi selects much smarter</td>
 </b:tr>
-
-
 </b:table>
 
 

@@ -17,7 +17,7 @@
 	<b:navbarLinks>
 		<b:dropMenu key="tab_Pages" active="#IIF(getSection() EQ 'pages', 1, 0)#">
 			<b:navLink value="View All Pages" 	href="~/pages" 	active="#IIF(getSection() EQ 'pages' AND getItem() EQ 'home', 1, 0)#" />
-			<b:navLink value="Create New Page" href="~/pages/edit"	active="#IIF(getSection() EQ 'pages' AND getItem() EQ 'edit' AND rc.slug EQ  '', 1, 0)#" />
+			<b:navLink value="Create New Page" href="~/edit"		active="#IIF(getSection() EQ 'pages' AND getItem() EQ 'edit' AND rc.slug EQ  '', 1, 0)#" />
           	<b:navLink value="Edit Page" 		processed="#IIF(getSection() EQ 'pages' AND getItem() EQ 'edit' AND rc.slug NEQ '', 1, 0)#" active="1" />
           	<b:navLink value="Menu Manager" 	href="~/pages/menu" active="#IIF(getSection() EQ 'pages' AND getItem() EQ 'menu', 1, 0)#" />
 		</b:dropMenu>

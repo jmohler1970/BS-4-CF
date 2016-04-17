@@ -8,8 +8,9 @@
 <b:jumbotron>
 	<b:h1>Bootstrap for ColdFusion</b:h1>
      <p>Making development safe and quick</p>
-     <p><b:commandLink action="~/docs/getting_started" look="primary" size="lg">Get Started</b:commandLink></p>
+    <p><b:commandLink action="~/docs/getting_started" look="primary" size="lg">Get Started</b:commandLink></p>
 </b:jumbotron>
+
 
 
 
@@ -41,14 +42,13 @@
 	</b:column> 
 </b:row>
 
-
 <b:row> 
 	
 	
 	<b:column span="4">
           <h3><b:icon library="awesome" name="tag" />  Smart tags</h3>
           <p>This <q>Rendered</q> option is like wrapping your code in a <code>&lt;cfif&gt;</code>. It is much smarter because it is a part of the tags as opposed to wrapping the content. 
-	          <q>Binding</q> outputs data without using <code>&lt;cfoutput&gt;</code> tags.</p>
+		</p>
 	     
 	     <p>Includes Antisamy to protect your site from common injection attacks</p>
           

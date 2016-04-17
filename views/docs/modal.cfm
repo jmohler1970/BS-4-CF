@@ -33,7 +33,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content. this is the initial message before the content is AJAX'ed in</td>
-			<td><b:label look="danger">No</b:label>  Content is assumed to be clean</td>
+			<td><b:label look="danger" key="No" /> Content is assumed to be clean</td>
 		</tr>
 		<tr>
 			<td>backdrop</td>
@@ -121,7 +121,8 @@
 </b:panel>
 
 
-<h2>Example</h2>
+<b:h1 key="examples" />
+
 
 
 <h3>Displays information</h3>
@@ -171,3 +172,51 @@
 
 
 
+<h3>Content from AJAX</h3>
+
+<p>For more details on this approach, see: http://stackoverflow.com/questions/18378720/bootstrap-3-with-remote-modal</p>
+
+
+<!-- Button trigger modal -->
+<b:commandLink data-toggle="modal" data-target="##ajax-example" href="../../ajax/for_modal.cfm" Value="Load AJAX Modal" />
+
+
+
+<b:modal id="ajax-example">Loading content from AJAX</b:modal>
+
+
+<script>
+// Make sure the DOM elements are loaded and accounted for
+$(document).ready(function() {
+
+  // Match to Bootstraps data-toggle for the modal
+  // and attach an onclick event handler
+  $('a[data-toggle="modal"]').on('click', function(e) {
+
+    // From the clicked element, get the data-target arrtibute
+    // which BS3 uses to determine the target modal
+    var target_modal = $(e.currentTarget).data('target');
+    // also get the remote content's URL
+    var remote_content = e.currentTarget.href;
+
+    // Find the target modal in the DOM
+    var modal = $(target_modal);
+    // Find the modal's <div class="modal-body"> so we can populate it
+    var modalBody = $(target_modal + ' .modal-body');
+
+    // Capture BS3's show.bs.modal which is fires
+    // immediately when, you guessed it, the show instance method
+    // for the modal is called
+    modal.on('show.bs.modal', function () {
+            // use your remote content URL to load the modal body
+            modalBody.load(remote_content);
+        }).modal();
+        // and show the modal
+
+    // Now return a false (negating the link action) to prevent Bootstrap's JS 3.1.1
+    // from throwing a 'preventDefault' error due to us overriding the anchor usage.
+    return false;
+  });
+});
+
+</script>

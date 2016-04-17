@@ -24,18 +24,16 @@ case "start" :
 		throw "This tag must be in #variables.validTag.toList()#. It appears to be #variables.parentTag#";
 		}
 	
-	param attributes.cacheid			= "";  
-	param attributes.key			= ""; // Doesn't read a language file. This is included so than fullCacheid is generated identically
+
 	param attributes.library			= "default";
-	param attributes.name			= "";		// if name is blank, the library better have complete target
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
 	param attributes.type			= "application/javascript";
      
 	if (!attributes.processed) exit "exitTag";
 	
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -46,7 +44,7 @@ case "start" :
 case "end" :     
      								variables.result &= crlf;
 	   								variables.result &= '<script ';
-	   								variables.result &= ' src="' & application.Bootstrap.ScriptLibrary[attributes.library] & attributes.name & '"';
+	   								variables.result &= ' src="' & application?.Bootstrap?.ScriptLibrary[attributes.library] & attributes?.name & '"';
 									variables.result &= ' type="#encodeForHTMLAttribute(attributes.type)#"';              
 									variables.result &= '>';
 								
@@ -55,7 +53,7 @@ case "end" :
 									variables.result &= '</script>';
 								
 
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+	if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      
      thisTag.GeneratedContent = "";
      if (attributes.rendered)				writeOutput(variables.result);

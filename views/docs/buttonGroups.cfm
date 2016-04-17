@@ -192,7 +192,8 @@
 
 <b:buttonGroup>
 	<b:button look="success" value="500" />
-	<b:button look="primary" icon="print" />
+	<b:button look="success" key="CREATE_NEW_ARC" />
+	<b:button look="primary" icon="cog" key="Control_Panel" />
 	<b:dropButton look="warning" value="DropButton">
 		<b:navLink href="##" value="Action" />
 		<b:navLink href="##" value="Another Action" />

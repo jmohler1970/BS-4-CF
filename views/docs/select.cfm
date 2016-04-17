@@ -153,14 +153,6 @@
 	<tbody>
 		<tr>
 			<td></td>
-			<td>binding</td>
-			<td>required</td>
-			<td>Which database recordset column should be used for value</td>
-			<td>N/A</td>
-		</tr>
-		
-		<tr>
-			<td></td>
 			<td>disabled</td>
 			<td>false</td>
 			<td>Pass through of HTML disabled</td>
@@ -932,7 +924,7 @@ disabled,display,group,id,look,value,selected,tooltip
 			<td>name</td>
 			<td>required</td>
 			<td>All the check boxes get the same name</td>
-			<td>Yes</td>
+			<td><b:yesnoFormat value="1" /></td>
 		</tr>
 		<tr>
 			<td></td>

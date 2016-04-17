@@ -44,14 +44,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Try to find the value of this tag in the <code>rc.*</code> scope. If found then use its value, else use the content between the tags.</td>
-			<td>See generatedContent</td>
+			<td><b:label look="danger" key="No" /> Make sure that the inner content is clean</td></td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -65,7 +58,7 @@
 			<td>closable</td>
 			<td>false</td>
 			<td>Does this include a close X?</td>
-			<td>No</td>
+			<td><b:yesnoFormat value="0" /></td>
 		</tr>
 
 		<tr>
@@ -160,6 +153,26 @@
 <b:alert look="info" title="Heads up!" closable="true">This alert needs your attention, but it's not super important. </b:alert>
 
 
+
+<b:table>
+<thead>
+	<tr>
+		<td>No setting</td>
+		<td><code>Closable="true"</code></td>
+		<td><code>Closable="false"</code></td>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td><b:alert look="info" title="Heads up!">This alert needs your attention, but it's not super important. </b:alert></td>
+		<td><b:alert look="warning" title="Heads up!" closable="true">This alert needs your attention, but it's not super important. </b:alert></td>
+		<td><b:alert look="info" title="Heads up!" closable="false">This alert needs your attention, but it's not super important. </b:alert></td>
+	</tr>
+</tbody>
+</b:table>	
+
+
+
 <h2>i18n language file</h2>
 
 <p>This also does cacheing</p>
@@ -182,8 +195,9 @@
 
 
 
-<b:h1 key="try_me" />
+<b:h2 key="try_me" />
 
+<p>This includes really scary inner content</p>
 
 <cfsavecontent variable="horrible">
 
@@ -235,6 +249,5 @@ Your news article
 <pre>&lt;b:alert key=&quot;ER_YOUR_CHANGES&quot; placeholder=&quot;#rc.content#&quot; /&gt;</pre>
 
 <b:alert key="ER_YOUR_CHANGES" placeholder="#rc.content#" />
-
 
 

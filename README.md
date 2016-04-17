@@ -27,7 +27,7 @@ BootsFaces for JSF shows the way to a cleaner approach. So what I have done is c
 ### With Bootstrap for ColdFusion
 
 ```
-<b:button processed="#showme#" binding="savelabel" icon="floppy-disk" size="lg" />	
+<b:button processed="#showme#" value="#rc.savelabel#" icon="floppy-disk" size="lg" />	
 ```
 
 

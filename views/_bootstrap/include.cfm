@@ -17,21 +17,19 @@
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
 
-	param attributes.cacheid			= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-	param attributes.key			= "";
-	param attributes.placeholder		= [];
+
+	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
-	param attributes.profile			= application.Bootstrap.profile;
+	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.template;
 
 
 	if (!attributes.processed) exit "exitTag";
 
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -43,16 +41,16 @@
 
 	
 	<cfsavecontent variable="variables.result"> 
-		<cfinclude template="../views/#attributes.template#">
+		<cfinclude template="../#attributes.template#">
 	</cfsavecontent>
 	
 	<cfscript>
-	if(attributes.rendered && !attributes.isSafeHTML)	variables.result = getSafeHTML(variables.result.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if(attributes.rendered &&  attributes.isSafeHTML)	variables.result = variables.result.trim(); // warning content must already be clean								
-
+									variables.result &= attributes.rendered ? application.filterAttributes(attributes) : "";
+		
+		
 	
 		
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+	if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
 	thisTag.GeneratedContent = "";
 

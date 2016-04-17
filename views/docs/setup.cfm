@@ -78,7 +78,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td><b:label look="danger">No</b:label> Default Antisamy wouldn't work anyway</td>
+			<td><b:label look="danger" key="No" />Default Antisamy wouldn't work anyway</td>
 		</tr>
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>

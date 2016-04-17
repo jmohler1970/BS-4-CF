@@ -18,23 +18,11 @@ case "start" :
 	
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 
-	param attributes.cacheid			= "";
-	param attributes.id				= "";
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase()); // really does not work with true
-	param attributes.key			= "";
-	param attributes.justified		= false;
-	param attributes.look			= ""; // this is the default unless over ridden 
-	param attributes.name			= "";
+	param attributes.look 			= ""; // needed 
 	param attributes.orientation 		= "horizontal"; // horizontal, vertical, up
-	param attributes.placeholder		= [];
 	param attributes.processed 		= true;
-	param attributes.profile			= application.Bootstrap.profile;
-	param attributes.pull 			= "";
 	param attributes.rendered		= true;
-	param attributes.size			= "";
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
 	param attributes.toggle			= false;
-	param attributes.tooltip			= "";
 	param attributes.tooltipPosition	= "bottom";
 
 
@@ -42,8 +30,8 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	
 	
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -57,13 +45,13 @@ case "end" :
 	if(attributes.orientation == "up")			variables.result &= '<div class="btn-group dropup';
 	
 
-	if(attributes.size		!= "")			variables.result &= ' btn-group-#encodeForHTMLAttribute(attributes.size)#';
-	if(attributes.justified)					variables.result &= ' btn-group-justified';
-	if(attributes.pull		!= "")			variables.result &= ' pull-#encodeForHTMLAttribute(attributes.pull)#';
+	if(attributes?.size		!= "")			variables.result &= ' btn-group-#encodeForHTMLAttribute(attributes.size)#';
+	if(attributes?.justified == true)			variables.result &= ' btn-group-justified';
+	if(attributes?.pull		!= "")			variables.result &= ' pull-#encodeForHTMLAttribute(attributes.pull)#';
 										variables.result &= '"';
-	if(attributes.id		!= "")			variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
-	if(attributes.tooltip	!= "")			variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
-	if(attributes.toggle)					variables.result &= ' data-toggle="buttons"';
+	if(attributes?.id		!= "")			variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
+	if(attributes?.tooltip	!= "")			variables.result &=	' title="#encodeForHTMLAttribute(attributes.tooltip)#"';
+	if(attributes?.toggle	== true)			variables.result &= ' data-toggle="buttons"';
 										variables.result &= ' role="group">';
 
 
@@ -73,40 +61,38 @@ case "end" :
 
 		if(thisTag.qryOption.id[variables.myRow] == "auto")	QuerySetCell(thisTag.qryOption, "id", "auto_" & left(createUUID(), 10), variables.myRow);
 			
-													variables.result &= '<label class="btn btn-#encodeForHTMLAttribute(variables.myLook.lcase())# ';
+														variables.result &= '<label class="btn btn-#encodeForHTMLAttribute(variables.myLook.lcase())# ';
 		
-		if(thisTag.qryOption.selected[variables.myRow])		variables.result &= ' active';
-													variables.result &= '"';
+		if(thisTag.qryOption.selected[variables.myRow] == true)	variables.result &= ' active';
+														variables.result &= '"';
 	
-		if(thisTag.qryOption.tooltip[variables.myRow] != "")	variables.result &= ' title="#encodeForHTML(thisTag.qryOption.tooltip[variables.myRow])#"';
-													variables.result &= '>';
+		if(thisTag.qryOption.tooltip[variables.myRow] != "")		variables.result &= ' title="#encodeForHTML(thisTag.qryOption.tooltip[variables.myRow])#"';
+														variables.result &= '>';
 
 
 
-													variables.result &= '<input type="radio"';
-		if(attributes.name					 != "")		variables.result &= ' name="#encodeForHTML(attributes.name)#"';
-		if(thisTag.qryOption.id[variables.myRow] != "")		variables.result &= ' id="#encodeForHTML(thisTag.qryOption.id[variables.myRow])#"';
-		if(thisTag.qryOption.selected[variables.myRow])
-													variables.result &= ' checked="checked"';
-													variables.result &= ' value="#encodeForHTML(thisTag.qryOption.value[variables.myRow])#"';	
-													variables.result &= ' />';
+														variables.result &= '<input type="radio"';
+		if(attributes?.name					 != "")			variables.result &= ' name="#encodeForHTML(attributes.name)#"';
+		if(thisTag.qryOption.id[variables.myRow] != "")			variables.result &= ' id="#encodeForHTML(thisTag.qryOption.id[variables.myRow])#"';
+		if(thisTag.qryOption.selected[variables.myRow] == true)	variables.result &= ' checked="checked"';
+														variables.result &= ' value="#encodeForHTML(thisTag.qryOption.value[variables.myRow])#"';	
+														variables.result &= ' />';
 		
-													variables.result &= thisTag.qryOption.display[variables.myRow]; // pass through of content
-													variables.result &= '</label>';
+														variables.result &= thisTag.qryOption.display[variables.myRow]; // pass through of content
+														variables.result &= '</label>';
 												
-													variables.result &= variables.crlf & '</label><!-- /.radio -->';
+														variables.result &= variables.crlf & '</label><!-- /.radio -->';
 
 		} // end for
 								
 		
-	if(!attributes.isSafeHTML)				variables.result &= getSafeHTML(thisTag.GeneratedContent.trim(), attributes.profile, attributes.throwOnError); // pass through of content
-	if( attributes.isSafeHTML)				variables.result &= thisTag.GeneratedContent.trim(); // warning content must already be clean								
-
+										variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
+					
 
 										variables.result &= '</div><!-- /.btn-group -->';
 										variables.result &= variables.crlf;
 								
-	if (attributes.cacheid != "")				CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
+	if (attributes?.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);							
 
 
 	thisTag.GeneratedContent = "";

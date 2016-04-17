@@ -23,20 +23,14 @@ case "start" :
 		throw "This tag must be in #ArrayToList(variables.validTag)#. It appears to be #variables.parentTag#";
 		}
 
-	param attributes.cacheid			= "";
-	param attributes.disabled		= false;
+	param attributes.disabled		= false;	
 	param attributes.id;					// Tab must have id
-	param attributes.isSafeHTML		= application.Bootstrap.isSafeHTML.contains(variables.tagStack[1].lcase());
-	param attributes.key			= "";
-	param attributes.placeholder		= [];
 	param attributes.processed		= true;
-	param attributes.profile			= application.Bootstrap.profile;
 	param attributes.rendered		= true;
 	param attributes.role 			= "tab";
-	param attributes.style			= "";
-	param attributes.styleClass		= "";
-	param attributes.title			= "";
-	param attributes.throwOnError		= application.Bootstrap.throwOnError;
+	param attributes.style			= "";			
+	param attributes.styleClass		= "";			
+
 
 	if (!structKeyExists(attributes, "data-url")) attributes["data-url"]	= "";
 
@@ -44,8 +38,8 @@ case "start" :
 	if (!attributes.processed) exit "exitTag";
 	if (!attributes.rendered)  exit "exitTag";	// this is a known bug
 
-	variables.fullCacheid = variables.tagStack[1] & " " & attributes.key & " " & attributes.cacheid;
-	if (attributes.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
+	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
+	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
@@ -57,10 +51,10 @@ case "end" :
 	variables.Data = {
 		disabled	= attributes.disabled,
 		id		= attributes.id,
-		role		= attributes.Role,
+		role		= attributes.role,
 		style	= attributes.style,
 		styleClass= attributes.styleClass,
-		title	= attributes.title,
+		title	= attributes?.title,
 		dataUrl	= attributes["data-url"],
 		generatedContent = thisTag.generatedContent
 		};
@@ -69,7 +63,7 @@ case "end" :
 	thisTag.Parent.thisTag.arTab.append(variables.Data);
 
 
-	if (attributes.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
+	if (attributes?.cacheid != "")			CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
 
 	thisTag.generatedContent = "";
 	break;

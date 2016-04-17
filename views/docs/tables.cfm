@@ -41,7 +41,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" />this is often more than the default value as set in antisamy. Make sure that the inner content is clean</td>
 		</tr>
 		<tr>
 			<td><b:label>Bootstrap</b:label></td>
@@ -63,7 +63,7 @@
 			<td>colFooters</td>
 			<td>(none)</td>
 			<td>This generates <code>&lt;tfoot&gt;</code> section of your table. This should make it easier to keep table footers consistent. This accepts a comma separated list.</td>
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" />Make sure that the inner content is clean</td>
 		</tr>	
 		
 		<tr>
@@ -71,7 +71,7 @@
 			<td>colHeaders</td>
 			<td>(none)</td>
 			<td>This generates <code>&lt;thead&gt;</code> section of your table. This should make it easier to keep table columns consistent. This accepts a comma separated list.</td>
-			<td><b:label look="danger">No</b:label> Make sure that the inner content is clean</td>
+			<td><b:label look="danger" key="No" />Make sure that the inner content is clean</td>
 		</tr>	
 		
 		<tr>
@@ -218,7 +218,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td><b:label look="danger">No</b:label> this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
+			<td><b:label look="danger" key="No" />this is often more than the default value as set in antisamy. Make sure that the inner content is clean. Having said all that, it is preferable to use the &lt;b:td&gt; and &lt;b:th&gt; inside of this tag</td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -366,14 +366,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<b:td key="common" />
-			<td>Yes</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>binding</td>
-			<td>(none)</td>
-			<td>Reserved for future use</td>
-			<td>N/A</td>
+			<td><b:yesnoFormat value="1" /></td>
 		</tr>
 		<tr>
 			<td><b:label look="warning">Ehcache</b:label></td>
@@ -520,6 +513,7 @@
 
 <b:h2 key="examples" />
 
+<p>This includes a tooltip over the icons</p>
 
 <b:table>
 <thead> 
@@ -537,7 +531,7 @@
 <cfoutput query="rc.qryData">
 	<b:tr rendered="#IIF(Delete, 0, 1)#">
 		<b:td isSafeHTML="true"><b:badge value="#ID#" /></b:td>
-		<b:td isSafeHTML="true" data-sort="#ID#"><b:icon name="#icon#" /></b:td>
+		<b:td isSafeHTML="true" data-sort="#ID#" tooltip="This is a #icon#"><b:icon name="#icon#" /></b:td>
 		<b:td>#Album#</b:td>
 		<b:td>#Message#</b:td>
 		<b:td>#Score#</b:td>
@@ -614,6 +608,59 @@ DataTables is a plug-in for the jQuery Javascript library. It is a highly flexib
 
 
 <cfdump var="#rc.qryData#" expand="no">
+
+
+
+<h3>Things like tables</h3>
+
+<p>Here is a comparison of things that look like tables</p>
+
+
+
+
+<b:table colHeaders="Kind, Environment, Pros, Cons">
+<tbody>
+	<tr>
+		<td nowrap>Excel</td>
+		<td>Desktop Application</td>
+		<td>Every user in an office has it.</td>
+		<td>Not distributed</td>
+	</tr>
+	<tr>
+		<td nowrap>CSV</td>
+		<td>Notepad, Excel, SQL Server (SSIS, DTS)</td>
+		<td>Works anywhere</td>
+		<td>Works only very very simple data</td>
+	</tr>
+	<tr>
+		<td nowrap>XML</td>
+		<td>Notepad, Excel, SQL Server (SSIS, DTS)</td>
+		<td>Works on any kind of data</td>
+		<td>Very difficult to program to in general. There useful subsets.</td>
+	</tr>	
+	<tr>
+		<td nowrap>SQL Server Service</td>
+		<td>MS SQL Management Studio, ODBC, Native Drivers</td>
+		<td>Massively scallable. Loves to be distributed</td>
+		<td>It is only part of a request life cycle. Other tools have to connect to it.</td>
+	</tr>	
+	<tr>
+		<td nowrap>Preformatted HTML</td>
+		<td>Internet Explorer, Chrome, Firefox, etc</td>
+		<td>Like CSVs, it is really really simple</td>
+		<td>What is this the 1990s?</td>
+	</tr>
+	<tr>
+		<td nowrap>HTML Tables</td>
+		<td>Internet Explorer, Chrome, Firefox, etc</td>
+		<td>It provides a starting point to build very sophisticated tools</td>
+		<td>Something has to load it.</td>
+	</tr>	
+</tbody>
+</b:table>	
+	
+	
+
 
 
 

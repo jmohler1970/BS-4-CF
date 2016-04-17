@@ -7,7 +7,7 @@
 	<b:row>
 		<b:column span="12">	
 
-			<b:h1 binding="theme" />
+			<b:h1 value="#rc.theme#" />
 			<p>All themes are from Bootswatch and are not a part of this distribution.</p>
 		</b:column>	
 	</b:row>
@@ -23,30 +23,30 @@
 
 
 
-<cfinclude template="theme/navbar.cfm">
+<b:include template="bootswatch/theme/navbar.cfm" cacheid="bootswatch_navbar"  />
 
 
-<cfinclude template="theme/button.cfm">
+<b:include template="bootswatch/theme/button.cfm" cacheid="bootswatch_button" />
 
 
-<cfinclude template="theme/typography.cfm">
+<b:include template="bootswatch/theme/typography.cfm" cacheid="bootswatch_typography" />
 
 
-<cfinclude template="theme/table.cfm">
+<b:include template="bootswatch/theme/table.cfm" cacheid="bootswatch_table" />
 
 
-<cfinclude template="theme/forms.cfm">
+<b:include template="bootswatch/theme/forms.cfm" cacheid="bootswatch_forms" />
 
 
-<cfinclude template="theme/nav.cfm"><!--- includes tabs --->
+<b:include template="bootswatch/theme/nav.cfm" cacheid="bootswatch_nav" /><!--- includes tabs --->
 
 
-<cfinclude template="theme/indicators.cfm">
+<b:include template="bootswatch/theme/indicators.cfm" cacheid="bootswatch_indicators" />
 
 
-<cfinclude template="theme/containers.cfm">
+<b:include template="bootswatch/theme/containers.cfm" cacheid="bootswatch_containers" />
 
 
-<cfinclude template="theme/dialogs.cfm">
+<b:include template="bootswatch/theme/dialogs.cfm" cacheid="bootswatch_dialogs" />
 
 
