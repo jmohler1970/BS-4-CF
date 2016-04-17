@@ -181,6 +181,30 @@
 
 
 <b:h2 key="try_me" />
+
+<h3>Example with All Supported libraries</h3>
+
+<p>It is recommended that only one library be used per site.</p>
+
+
+<b:table colHeaders='Name,Glyphicon,Font Awesome,Foundation Icons,Ionicon,Octicon'>
+<tbody>
+<cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check,credit-card,clock,lock,git-branch,comment,log-out,ios-loop,ios-trash,image,beer,power,alert" index="i">
+	<tr>
+		<td><cfoutput>#i#</cfoutput></td>
+		<td><b:icon library="glyphicon" name="#i#"	size="2x"	/></td>
+		<td><b:icon library="awesome" name="#i#"	size="2x"	/></td>
+		<td><b:icon library="foundation" name="#i#"	size="2x"	/></td>
+		<td><b:icon library="ionicon" name="#i#"	size="2x"	/></td>
+		<td><b:icon library="mega-octicon" name="#i#"		/></td>
+	</tr>
+</cfloop>
+</tbody>
+
+</b:table>
+
+
+				
 	
 <p>You may want to go to getBootstrap.com to see the icon names. <a href="http://getbootstrap.com/components/" target="_blank">http://getbootstrap.com/components/</a></p>	
 	
@@ -225,7 +249,7 @@
 <tbody>
 <cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check" index="i">
 	<tr>
-		<td><cfoutput>#rc.i#</cfoutput></td>
+		<td><cfoutput>#i#</cfoutput></td>
 		<td><b:icon name="#i#" /></td>
 		<td><b:icon name="#i#" look="success"	/></td>
 		<td><b:icon name="#i#" look="danger"	/></td>
@@ -249,7 +273,7 @@
 <tbody>
 <cfloop list="tags,book,bookmark,print,camera,flag,download,upload,inbox,repeat,trash,check" index="i">
 	<tr>
-		<td><cfoutput>#rc.i#</cfoutput></td>
+		<td><cfoutput>#i#</cfoutput></td>
 		<td><b:icon library="awesome" name="#i#" /></td>
 		<td><b:icon library="awesome" name="#i#" look="success"/></td>
 		<td><b:icon library="awesome" name="#i#" look="danger"	/></td>
@@ -273,7 +297,7 @@
 <tbody>
 <cfloop list="tag,note,bookmark,print,image,flag,arrowthickstop-1-s,arrowthickstop-1-n,mail-closed,arrowrefresh-1-w,trash,check" index="i">
 	<tr>
-		<td><cfoutput>#rc.i#</cfoutput></td>
+		<td><cfoutput>#i#</cfoutput></td>
 		<td><b:icon library="jquery-ui" name="#i#" /></td>
 		<td><b:icon library="jquery-ui" name="#i#" styleClass="ui-state-highlight"/></td>
 		<td><b:icon library="jquery-ui" name="#i#" styleClass="ui-state-error"	/></td>
@@ -283,6 +307,9 @@
 </tbody>
 
 </b:table>
+
+
+		
 
 
 

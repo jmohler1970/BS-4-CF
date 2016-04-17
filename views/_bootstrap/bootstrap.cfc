@@ -34,9 +34,8 @@ void function setupApplication()	{
 							"awesome"		= "fa fa-", 					// Font Awesome: 			http://fontawesome.io/
 							"foundation"	= "fi-",						// Zurb Foundation Icons: 	http://zurb.com/playground/foundation-icon-fonts-3
 							"ionicon"		= "ion-",						// The premium icon font for Ionic Framework: http://ionicons.com/
-							"material"	= "mdi mdi-",					// Material Design Icons: 	https://materialdesignicons.com/
-							"elusive"		= "el el-",					// Elusive Icons:			http://elusiveicons.com/icons/
 							"octicon"		= "octicon octicon-",			// Github Icons:			https://octicons.github.com/
+							"mega-octicon"	= "mega-octicon octicon-",		// Octicons resize in their own special way
 							"jquery-ui"	= "ui-icon ui-icon-"			// jQuery UI:				https://jqueryui.com/
 							}, 	
 		
