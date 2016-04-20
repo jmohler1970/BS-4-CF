@@ -34,10 +34,7 @@ case "start" :
 	break;
      
 case "end" :     
-     if(attributes?.key 		!= "")										{
-																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
-																	attributes.isSafeHTML 	= true;				
-																	}	
+	if( attributes?.value 	!= "")										thisTag.generatedContent = attributes.value;
      
 	
 									variables.result &= '<blockquote class="';
