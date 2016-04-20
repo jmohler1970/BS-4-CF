@@ -1,11 +1,11 @@
-<cfimport prefix="b" taglib="../_bootstrap">
+<cfimport prefix="b" taglib="../../vendor/tags/bootstrap">
 
 
 
 <row>
 	<column span="12">	
-		<h1 pageHeader="true">Image</h1>
-		<p>b:outputStylesheets & b:outputScript</p>
+		<h1 pageHeader="true">Setup & LayoutsImage</h1>
+		<p><code>b:outputStylesheet</code>, <code>b:outputScript</code>, and <code>b:head</code></p>
 	</column>	
 </row>
 
@@ -17,7 +17,7 @@
 <h3>Minimal setup</h3>
 
 
-<p>Inside of <code>application.cfc</code></p>
+<p>Inside of <code>views/_bootstrap/bootstrap.cfc</code></p>
 
 <pre>
 	application.Bootstrap = {

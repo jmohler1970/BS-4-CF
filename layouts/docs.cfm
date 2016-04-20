@@ -1,4 +1,4 @@
-<cfimport prefix="b" taglib="../views/_bootstrap">
+<cfimport prefix="b" taglib="../vendor/tags/bootstrap">
 
 
 
@@ -8,7 +8,7 @@
 	
 		<b:dropMenu value="Getting Started">
 			<b:navLink key="Installation" 				active="#getItem().find('getting_started')#"	href="~/docs/getting_started" />
-			<b:navLink value="Setup"						active="#getItem().find('setup')#"			href="~/docs/setup" />
+			<b:navLink value="Setup & Layouts"				active="#getItem().find('setup')#"			href="~/docs/setup" />
 			<b:navLink value="I18n"						active="#getItem().find('i18n')#"			href="~/docs/i18n" />
 			<b:navLink value="Directory Structure"			active="#getItem().find('structure')#"		href="~/docs/structure" />
 			<b:navLink value="Smart tags & common features"	active="#getItem().find('common')#"		href="~/common" />

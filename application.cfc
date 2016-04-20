@@ -2,11 +2,12 @@
 
 
 component extends="framework.one" accessors="true"	{
-	
 
-this.name="bs-4-cf-349";
+
+this.name="bs-4-cf-352";
 this.applicationManagement = true;
 this.sessionManagement = true;
+
 
 
 variables.framework	=	{
@@ -31,7 +32,6 @@ variables.framework.routes	= [
 	{ "wiki/:id"			= "wiki/home/slug/:id"	},
 	
 	// documentation
-	{ "_bootstrap"			= "302:/main/home"		},
 	{ "common"			= "docs/common"		},
 	{ "theme"				= "theme/home"			},
 	{ "bootswatch/:id"		= "bootswatch/home/bootswatch/:id"	}
@@ -72,7 +72,7 @@ fileclose(objAppFile);
 	application.objFormUtilities	= new framework.formUtilities();
 	application.GSConfig		= new model.services.settings().getWebsite();
 
-	invoke("views._bootstrap.bootstrap", "setupApplication");
+	invoke("vendor.tags.bootstrap.bootstrap", "setupApplication");
 	} // end setupApplication
 	
 	
@@ -87,7 +87,7 @@ function setupSession()	{
 
 function setupRequest()	{
 	
-	invoke("views._bootstrap.bootstrap", "setupRequest");
+	invoke("vendor.tags.bootstrap.bootstrap", "setupRequest");
 	} // end setupRequest
 
 	
