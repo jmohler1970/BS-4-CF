@@ -45,7 +45,7 @@ case "end" :
      								variables.result &= crlf;
 	   								variables.result &= '<script ';
 	   								variables.result &= ' src="' & application?.Bootstrap?.ScriptLibrary[attributes.library] & attributes?.name & '"';
-									variables.result &= ' type="#encodeForHTMLAttribute(attributes.type)#"';              
+									variables.result &= ' type="#attributes.type.encodeForHTMLAttribute()#"';              
 									variables.result &= '>';
 								
 									variables.result &= thisTag.GeneratedContent.trim();

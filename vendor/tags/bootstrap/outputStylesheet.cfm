@@ -45,8 +45,8 @@ case "end" :
      								variables.result &= crlf;
 	   								variables.result &= '<link type="#attributes.type#"';
 	   								variables.result &= ' href="' & application?.Bootstrap?.StylesheetLibrary[attributes.library] & attributes?.name & '"';
-	if(attributes?.media	!= "")		variables.result &= ' media="#attributes.media#"';
-									variables.result &= ' rel="#attributes.rel#"';              
+	if(attributes?.media	!= "")		variables.result &= ' media="#attributes.media.encodeForHTMLAttribute()#"';
+									variables.result &= ' rel="#attributes.rel.encodeForHTMLAttribute()#"';              
 									variables.result &= '>';
 								
 									variables.result &= thisTag.GeneratedContent.trim();
