@@ -1,4 +1,4 @@
-<cfimport prefix="b" taglib="../_bootstrap">
+<cfimport prefix="b" taglib="../../vendor/tags/bootstrap">
 
 
 <b:h1 key="BAK_MANAGEMENT" />

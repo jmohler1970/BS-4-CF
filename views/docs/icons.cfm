@@ -1,5 +1,5 @@
 
-<cfimport prefix="b" taglib="../_bootstrap">
+<cfimport prefix="b" taglib="../../vendor/tags/bootstrap">
 
 
 
@@ -175,9 +175,10 @@
 
 
 
-<h2>Requirements for b:iconAwesome</h2>
+<h2>Requirements</h2>
 
-<p>Font Awesome package is required</p>
+<p>Font Awesome package is required for Font Awesome fonts. Font Awesome also adds resizing and animation to other libraries</p>
+
 
 
 <b:h2 key="try_me" />

@@ -1,4 +1,4 @@
-<cfimport prefix="b" taglib="../_bootstrap">
+<cfimport prefix="b" taglib="../../vendor/tags/bootstrap">
 
 
 <h1><b:outputText key="BACKUP_OF" /> &lsquo;<em><cfoutput>#encodeforHTML(rc.slug)#</cfoutput></em>&rsquo;</h1>

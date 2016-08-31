@@ -1,11 +1,11 @@
-<cfimport prefix="b" taglib="../_bootstrap">
+<cfimport prefix="b" taglib="../../vendor/tags/bootstrap">
 
 
 
 <row>
 	<column span="12">	
-		<h1 pageHeader="true">Image</h1>
-		<p>b:outputStylesheets & b:outputScript</p>
+		<h1 pageHeader="true">Setup & LayoutsImage</h1>
+		<p><code>b:outputStylesheet</code>, <code>b:outputScript</code>, and <code>b:head</code></p>
 	</column>	
 </row>
 
@@ -17,12 +17,11 @@
 <h3>Minimal setup</h3>
 
 
-<p>Inside of <code>application.cfc</code></p>
+<p>Inside of <code>vendor/tags/bootstrap/bootstrap.cfc</code></p>
 
 <pre>
 	application.Bootstrap = {
 	
-		actionRoot 		= cgi.script_name,
 		IconLibrary		= {"default" = "glyphicon glyphicon-", "awesome" = "fa fa-"},
 		ImageLibrary		= {"default" = replace(cgi.script_name, "/index.cfm", "") & "/assets/"},	
 		StyleSheetLibrary	= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"},	
@@ -48,7 +47,7 @@
 <p>Inside of each view file</p>
 
 <pre>
-&lt;cfimport prefix="b" taglib="../bootstrap"&gt;
+&lt;cfimport prefix="b" taglib="../../vendor/tags/bootstrap"&gt;
 </pre>	
 
 <!--- And Bob's your uncle --->
@@ -78,7 +77,7 @@
 			<td>generatedContent</td>
 			<td>(none)</td>
 			<td>Pass through of content</td>
-			<td><b:label look="danger" key="No" />Default Antisamy wouldn't work anyway</td>
+			<td><b:label look="danger" key="No" /> Default Antisamy wouldn't work anyway</td>
 		</tr>
 		<tr>
 			<td><b:label look="info">Antisamy</b:label></td>

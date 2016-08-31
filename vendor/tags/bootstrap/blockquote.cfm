@@ -1,11 +1,11 @@
-<!---@ Description: Support for h4 --->
+<!---@ Description: Support for blockquote --->
 
 
 
 
 <cfscript>
 if (!thisTag.HasEndTag) 
-	abort "An end tag is required for b:h4."; 
+	abort "An end tag is required for b:blockquote."; 
 	
 	
 
@@ -13,22 +13,18 @@ switch (thisTag.ExecutionMode)     {
 case "start" :
 
 	variables.result 	= "";
-	variables.crlf 	= chr(13) & chr(10);
+	variables.crlf 	=  chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
   
 
+
      param attributes.processed 		= true;
-	param attributes.rendered 		= true; 
+ 	param attributes.rendered 		= true;
 
-
-	variables.myClass = "";
-	if(attributes?.text			!= "")	variables.myClass &= 'text-#attributes.text# ';		
-	if(attributes?.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';	
 	
 
-		
      if (!attributes.processed) exit "exitTag";
-
+     
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
 	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
@@ -37,19 +33,26 @@ case "start" :
      
 	break;
      
-case "end" :
+case "end" :     
+	if( attributes?.value 	!= "")										thisTag.generatedContent = attributes.value;
      
-     
-     if(variables.myClass	== "")		variables.result &= '<h4';
-	if(variables.myClass	!= "")		variables.result &= '<h4 class="#variables.myClass.encodeForHTMLAttribute()#"';
 	
+									variables.result &= '<blockquote class="';
+	if(attributes?.reverse	== true)		variables.result &= ' blockquote-reverse';	
+	if(attributes?.text		!= "")		variables.result &= ' text-#attributes.text.encodeForHTMLAttribute()#';	
+	if(attributes?.styleClass	!= "")	variables.result &= ' #attributes.styleClass.encodeForHTMLAttribute()#';		
+	   								variables.result &= '"';
+	   								
 									variables.result &= application.filterAttributes(attributes);
            
 									variables.result &= '>';
 	
 									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
-							
-									variables.result &= '</h4>' & variables.crlf;
+	   								
+
+	if(attributes?.footer	!= "" )		variables.result &= '<footer>' & attributes.footer & '</footer>';								
+									variables.result &= '</blockquote>';
+     
      
      if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
      

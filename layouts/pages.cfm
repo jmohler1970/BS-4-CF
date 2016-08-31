@@ -1,4 +1,4 @@
-<cfimport prefix="b" taglib="../views/_bootstrap">
+<cfimport prefix="b" taglib="../vendor/tags/bootstrap">
 
 
 <b:jumbotron tight="true">
