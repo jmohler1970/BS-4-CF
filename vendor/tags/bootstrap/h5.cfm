@@ -39,6 +39,8 @@ case "start" :
      
 case "end" :
     
+	if(attributes?.value	!= "")		{ thisTag.GeneratedContent = attributes.value; }
+    
      
      if(variables.myClass	== "")		variables.result &= '<h5';
 	if(variables.myClass 	!= "")		variables.result &= '<h5 class="#variables.myClass.encodeForHTMLAttribute()#"';

@@ -42,6 +42,9 @@ case "start" :
      
 case "end" :
 
+	if(attributes?.value	!= "")		{ thisTag.GeneratedContent = attributes.value; }
+
+
 	if(attributes?.key 		!= "" )		{
 																	thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
 																	attributes.isSafeHTML 	= true;				

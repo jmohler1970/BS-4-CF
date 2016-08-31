@@ -44,6 +44,8 @@ case "start" :
 
 case "end" :
 
+	if(attributes?.value	!= "")		{ thisTag.GeneratedContent = attributes.value; }
+
 
 									variables.result &= variables.crlf;
 	if(variables.myClass	== "")		variables.result &= '<p';

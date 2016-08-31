@@ -38,7 +38,9 @@ case "start" :
 	break;
      
 case "end" :
-     
+
+	if(attributes?.value	!= "")		{ thisTag.GeneratedContent = attributes.value; }
+
      
      if(variables.myClass	== "")		variables.result &= '<h4';
 	if(variables.myClass	!= "")		variables.result &= '<h4 class="#variables.myClass.encodeForHTMLAttribute()#"';

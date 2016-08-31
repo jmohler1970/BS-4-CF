@@ -42,10 +42,10 @@ case "start" :
 	
      break;
      
-case "end" :     
+case "end" :
 
-     
-     
+	if(attributes?.value	!= "")		{ thisTag.GeneratedContent = attributes.value; }
+
 	if(variables.myClass	== "")		variables.result &= '<h6';
 	if(variables.myClass 	!= "")		variables.result &= '<h6 class="#variables.myClass.encodeForHTMLAttribute()#"';
 	

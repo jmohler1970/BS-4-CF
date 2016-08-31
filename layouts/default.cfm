@@ -24,7 +24,7 @@
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
 	</cfcase>
 	<cfdefaultcase>
-		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/<cfoutput>#lcase(session.bootswatch)#</cfoutput>/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/<cfoutput>#lcase(session.bootswatch)#</cfoutput>/bootstrap.min.css" rel="stylesheet">
 	</cfdefaultcase>	
 </cfswitch>
 

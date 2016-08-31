@@ -7,7 +7,7 @@
 	<b:row>
 		<b:column span="12">	
 
-			<b:h1 value="#rc.theme#" />
+			<b:h1 value="#session.bootswatch#" />
 			<p>All themes are from Bootswatch and are not a part of this distribution.</p>
 		</b:column>	
 	</b:row>

@@ -14,7 +14,7 @@ void function setupApplication()	{
 		isSafeHTML		= [	"cf_buttongroup",	"cf_buttontoolbar",	"cf_column",	"cf_container",	"cf_dropmenu",
 							"cf_fieldset",		"cf_formgroup",	"cf_head",	"cf_include",
 							"cf_jumbotron",	"cf_modal",		"cf_navbar",	"cf_navbarlinks",	"cf_navlink",
-							"cf_panel",		"cf_row",			"cf_table",	"cf_tabview",		"cf_tr","cf_well"],	// these tags to not run through getSafeHTML		
+							"cf_panel",		"cf_row",			"cf_table",	"cf_tabview",		"cf_tr",	"cf_well"],	// these tags to not run through getSafeHTML		
 		profile			= "",	// blank means use system default
 		throwOnError		= false,	// Default behavior for getSafeHTML()
 		
@@ -155,11 +155,11 @@ string function filterAttributes(required struct attr, string attributeFilter = 
 	if(arguments.attr?.disabled == true)	arguments.attr.disabled = "disabled";
 	if(arguments.attr?.readonly == true)	arguments.attr.readonly = "readonly";
 	if(arguments.attr?.required == true)	arguments.attr.required = "required";
-		
+	
 	var prev = "";	
 	
 	local.result = arguments.attr.filter(function(key, value)	{ 
-				return (attributeFilter.ListFind(key)		|| key.reFindNoCase("data\-|ng\-|on") );
+				return (attributeFilter.ListFind(key)		|| key.reFindNoCase("data\-|ng\-|on" && key != "throwonError") );
 
 			})?.reduce(function(string prev, string key, string value)	{
 				return prev & ' #key.lcase()# = "#value.encodeForHTMLAttribute()#"';
@@ -185,8 +185,8 @@ string function filterAttributes(required struct attr, string attributeFilter = 
 
 string function generateContent(required string Content, required array tagstack, required struct attr) output="false"	{
 	
-
-	if(arguments.attr?.key 		!= "" )		{
+	
+	if(arguments.attr?.key 	!= "" )		{
 									arguments.Content			= application.geti18n(arguments.attr.key, arguments.attr?.placeholder);
 									arguments.attr.isSafeHTML 	= true;
 									}			

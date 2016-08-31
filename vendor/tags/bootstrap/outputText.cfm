@@ -40,7 +40,7 @@ case "start" :
 	break;
      
 case "end" :
-	if(attributes?.value 	!= "")			thisTag.generatedContent = attributes.value;
+	if (attributes?.value 	!= "")			thisTag.generatedContent = attributes.value;
      
 										variables.result &= variables.crlf;
 	if (attributes.usespan)	{											
