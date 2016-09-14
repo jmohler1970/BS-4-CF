@@ -79,7 +79,7 @@ void function setupRequest()	{
 	
 	if(application.Bootstrap.arLang.isEmpty())	{
 		for(local.langFile in DirectoryList(application.Bootstrap.langRoot, false, "path", "*.php"))	{
-			application.Bootstrap.arLang.append(local.langFile.listLast("/").listFirst("."));
+			application.Bootstrap.arLang.append(local.langFile.listLast("/").listLast("\").listFirst("."));
 			}
 		}	
 	
