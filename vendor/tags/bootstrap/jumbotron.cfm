@@ -16,7 +16,9 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
  
+	
 	param attributes.processed 		= true;
+	param attributes.rendered 		= true; 
 
    
 

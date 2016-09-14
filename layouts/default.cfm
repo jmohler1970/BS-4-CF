@@ -7,6 +7,7 @@
 
 <b:head key="brand">
 
+	<META http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="author" content="James Mohler" />
 	<meta name="description" content="Bootstrap tags for ColdFusion, a powerful tag libary that takes the best from Bootstrap for next-gen Front-end Enterprise Applications fast and easy supporting HTML5." />
 	<meta name="KEYWORDS" content="ColdFusion, bootstrap, framework, java, enterprise, server, faces, jquery, usability, next-gen, web, html5, easy, modern, well-designed, website, state-of-the-art" />
