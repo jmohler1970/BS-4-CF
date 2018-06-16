@@ -4,7 +4,7 @@
 component extends="framework.one" accessors="true"	{
 
 
-this.name="bs-4-cf-355";
+this.name="bs-4-cf-358";
 this.applicationManagement = true;
 this.sessionManagement = true;
 
@@ -17,7 +17,7 @@ variables.framework	=	{
 	generateSES = true,
 	SESomitIndex = false
 	};
-	
+
 variables.framework.routes	= [
 	// PlumaCMS
 	{ "backups/delete/:id"	= "backups/delete/slug/:id"},
@@ -30,25 +30,25 @@ variables.framework.routes	= [
 	{ "logout"			= "login/logout"		},
 	{ "pages/home"			= "pages/home"			},
 	{ "wiki/:id"			= "wiki/home/slug/:id"	},
-	
+
 	// documentation
 	{ "common"			= "docs/common"		},
 	{ "theme"				= "theme/home"			},
 	{ "bootswatch/:id"		= "bootswatch/home/bootswatch/:id"	}
 	];
-	
+
 
 
 
 
 
 function setupApplication()	{
-	
+
 	application.initialized = now();
-	
+
 	local.objAppFile = fileopen(expandpath('./Application.cfc'), 'read');
-	
-	application.GSVERSION = "Version 3.3.5.#right(year(local.objAppFile.lastmodified), 2)#.#month(local.objAppFile.lastmodified)#.#day(local.objAppFile.lastmodified)#";
+
+	application.GSVERSION = "Version 3.3.7.#right(year(local.objAppFile.lastmodified), 2)#.#month(local.objAppFile.lastmodified)#.#day(local.objAppFile.lastmodified)#";
 fileclose(objAppFile);
 
 
@@ -56,7 +56,7 @@ fileclose(objAppFile);
  	application.GSAUTHOR			= "James Mohler and Web World Inc";
  	application.GSSITE_FULL_NAME		= "PlumaCMS";
  	application.GSSITE_LINK_BACK_URL	= "https://github.com/jmohler1970";
-	
+
  	application.GSROOTPATH 			= getdirectoryfrompath(getBaseTemplatePath());
  	application.GSBACKUPSPATH		= application.GSROOTPATH & "backups/";
  	application.GSDATAPATH			= application.GSROOTPATH & "data/";
@@ -66,50 +66,49 @@ fileclose(objAppFile);
  	application.GSDATAUPLOADPATH		= application.GSROOTPATH & "data/uploads/";
  	application.GSUSERSPATH 			= application.GSROOTPATH & "data/users/";
  	// End Pluma
- 	
-	
+
+
 	// Support for complicated variables. This used to have to be in FW/1
 	application.objFormUtilities	= new framework.formUtilities();
 	application.GSConfig		= new model.services.settings().getWebsite();
 
 	invoke("vendor.tags.bootstrap.bootstrap", "setupApplication");
 	} // end setupApplication
-	
-	
+
+
 function setupSession()	{
-	
+
 	session.authenticated = false;
-	
+
 	session.bootswatch = "default";
-	}	
+	}
 
 
 
 function setupRequest()	{
-	
+
 	invoke("vendor.tags.bootstrap.bootstrap", "setupRequest");
 	} // end setupRequest
 
-	
+
 function after()	{
-	
-	
-	
+
+
+
 	if ( isDefined('form') ) rc.Append(application.objFormUtilities.buildFormCollections(form));
-		
-		
+
+
 	if(rc.keyExists("lang"))	{
 		application.lang = rc.lang;
 		}
-		
+
 
 	if(rc.keyExists("bootswatch") and rc.bootswatch != "assets")	{
-		
+
 		session.bootswatch = rc.bootswatch;
 		}
-		
-	
+
+
 	}
 
 }
-
