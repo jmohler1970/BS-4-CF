@@ -1,10 +1,20 @@
 # Bootstrap for ColdFusion
 
 
-Simplifying both Bootstrap and ColdFusion
+Simplifying both Bootstrap 3.3.7 and And ColdFusion
 
 
-# Why is this interesting?
+## Hold the presses!
+
+It is Sept 2018, and the world is a different place
+
+- ColdFusion is now ColdFusion 2018
+- Bootstrap 4.1x is out. 4.2 will hopefully be out soon
+- Angular, React, and VueJS are coming on strong
+
+I look forward to having a revised approach!
+
+## Why is this interesting?
 
 
 Bootstrap's code looks like tag soup. There are way too may </div> tags in Bootstrap. ColdFusion view code looks tag soup. There are way too may </cfif> tags in ColdFusion. 
