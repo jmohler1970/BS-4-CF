@@ -18,7 +18,10 @@ case "start" :
   
 
      param attributes.processed 		= true;
-	param attributes.rendered 		= true; 
+	param attributes.rendered 		= true;
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+	param attributes.value			= "";
 
 
 	variables.myClass = "";

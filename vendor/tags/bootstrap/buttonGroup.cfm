@@ -18,11 +18,15 @@ case "start" :
 	
 	thisTag.qryOption 				= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 
+	param attributes.id				= "";
 	param attributes.look 			= ""; // needed 
 	param attributes.orientation 		= "horizontal"; // horizontal, vertical, up
 	param attributes.processed 		= true;
+	param attributes.pull			= "";
 	param attributes.rendered		= true;
+	param attributes.size			= "";
 	param attributes.toggle			= false;
+	param attributes.tooltip			= "bottom";
 	param attributes.tooltipPosition	= "bottom";
 
 

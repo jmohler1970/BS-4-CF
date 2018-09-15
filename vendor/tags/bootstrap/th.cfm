@@ -17,14 +17,16 @@ case "start" :
 	variables.tagStack	= getBaseTagList().ListToArray();
 
 
-	attributes.hidden				= "";
+	param attributes.hidden			= "";
 	param attributes.processed		= true; // unknown how to support
 	param attributes.rendered 		= true; // removes content not actual th
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
 	param attributes.tooltipPosition	= "bottom";
 
 
 	variables.myClass = "";
-	if(attributes?.text		!= "")		variables.myClass &= 'text-#attributes.text# ';
+	if(attributes.text		!= "")		variables.myClass &= 'text-#attributes.text# ';
 	
 	
 	switch(attributes.hidden)	{

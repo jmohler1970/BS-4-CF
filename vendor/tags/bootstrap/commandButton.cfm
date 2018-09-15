@@ -16,23 +16,25 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
 
+	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
+	param attributes.key			= "";
 	param attributes.library			= "default";	// for icon
 	param attributes.look			= "default";
 	param attributes.processed		= true;
 	param attributes.rendered		= true;
 	param attributes.role			= "button";
-
-
+	param attributes.size			= "";
+	param attributes.styleClass		= "";
 	param attributes.type			= "submit";	// as opposed to reset, use button for buttons
-
+	param attributes.value			= "";
 
 	// Patch this
 	if(attributes?.disabled == "disabled")	attributes.disabled = true;
 
 
 	if (!application?.Bootstrap?.validLook.contains(attributes.look))	throw "This is an invalid look option";
-		
+
 
 	if (!attributes.processed) exit "exitTag";
 	

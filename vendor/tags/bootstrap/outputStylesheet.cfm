@@ -25,11 +25,12 @@ case "start" :
  
 
 	param attributes.library			= "default";
+	param attributes.media			= "";
 	param attributes.processed 		= true;
 	param attributes.rel 			= "stylesheet";
 	param attributes.rendered	 	= true;
 	param attributes.type			= "text/css";
-     
+
 	if (!attributes.processed) exit "exitTag";
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
@@ -40,12 +41,12 @@ case "start" :
 	
 	
 	break;
-     
-case "end" :     
+
+case "end" :
      								variables.result &= crlf;
 	   								variables.result &= '<link type="#attributes.type#"';
 	   								variables.result &= ' href="' & application?.Bootstrap?.StylesheetLibrary[attributes.library] & attributes?.name & '"';
-	if(attributes?.media	!= "")		variables.result &= ' media="#attributes.media.encodeForHTMLAttribute()#"';
+	if(attributes.media	!= "")			variables.result &= ' media="#attributes.media.encodeForHTMLAttribute()#"';
 									variables.result &= ' rel="#attributes.rel.encodeForHTMLAttribute()#"';              
 									variables.result &= '>';
 								

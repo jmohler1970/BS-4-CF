@@ -29,9 +29,8 @@ void function setupApplication()	{
 		validLook			= ["", "link", "default", "primary", "success", "info", "warning", "danger"], // There does not guarantee they are valid
 
 		// be sure to include ending dashes
-		iconLibrary		= {	"default"		= "glyphicon glyphicon-",		// make default however you like
-							"glyphicon"	= "glyphicon glyphicon-", 		// Glyphicon: 				http://glyphicons.com/
-							"awesome"		= "fa fa-", 					// Font Awesome: 			http://fontawesome.io/
+		iconLibrary		= {	"default"		= "fas fa-",					// make default however you like
+							"awesome"		= "fas fa-", 					// Font Awesome: 			http://fontawesome.io/
 							"foundation"	= "fi-",						// Zurb Foundation Icons: 	http://zurb.com/playground/foundation-icon-fonts-3
 							"ionicon"		= "ion-",						// The premium icon font for Ionic Framework: http://ionicons.com/
 							"octicon"		= "octicon octicon-",			// Github Icons:			https://octicons.github.com/
@@ -44,14 +43,14 @@ void function setupApplication()	{
 		imageLibrary		= {"default" = replace(cgi.script_name, "/index.cfm", "") & "/assets/"},							// used by b:graphicImage
 
 		// used by b:outputStyleSheet
-		styleSheetLibrary	= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css",
+		styleSheetLibrary	= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css",
 							 local  		= replace(cgi.script_name, "/index.cfm", "") & "/assets/",
 							 innovation  	= replace(cgi.script_name, "/index.cfm", "") & "/layouts/innovation/",
 							 vendor 		= replace(cgi.script_name, "/index.cfm", "") & "/vendor/"
 							 },
 
 		// used by b:outputScript
-		scriptLibrary		= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js",
+		scriptLibrary		= {"default" = "https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js",
 							 local  = replace(cgi.script_name, "/index.cfm", "") & "/assets/",
 							 vendor = replace(cgi.script_name, "/index.cfm", "") & "/vendor/"
 							 }
@@ -150,8 +149,9 @@ string function geti18n(required string key, any placeholder = []) output="false
 
 string function filterAttributes(required struct attr, string attributeFilter = "id|name|lang|style|role|rel|target|disabled|readonly|required", boolean tooltip = true)	output="false" {
 
+	param arguments.attr.tooltip = "";
 
-		// Patch this
+	// Patch this
 	if(arguments.attr?.disabled == true)	arguments.attr.disabled = "disabled";
 	if(arguments.attr?.readonly == true)	arguments.attr.readonly = "readonly";
 	if(arguments.attr?.required == true)	arguments.attr.required = "required";
@@ -169,7 +169,7 @@ string function filterAttributes(required struct attr, string attributeFilter = 
 	param local.result = "";
 
 
-	if(arguments.attr?.tooltip	!= "" && arguments.tooltip)	{
+	if(arguments.attr.tooltip	!= "" && arguments.tooltip)	{
 			param arguments.attr.tooltipPosition	= "bottom";
 
 			local.result &= ' title = "#arguments.attr.tooltip.encodeForHTMLAttribute()#"';
@@ -178,15 +178,15 @@ string function filterAttributes(required struct attr, string attributeFilter = 
 			}
 
 
-	return local?.result;
+	return local.result;
 	}
 
 
 
 string function generateContent(required string Content, required array tagstack, required struct attr) output="false"	{
 
-
-	if(arguments.attr?.key 	!= "" )		{
+	param arguments.attr.key = "";
+	if(arguments.attr.key 	!= "" )		{
 									arguments.Content			= application.geti18n(arguments.attr.key, arguments.attr?.placeholder);
 									arguments.attr.isSafeHTML 	= true;
 									}

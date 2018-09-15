@@ -18,6 +18,7 @@ case "start" :
 
 
 	param attributes.processed 		= true;
+	param attributes.pull 			= "";
 	param attributes.rendered 		= true;
 
 	

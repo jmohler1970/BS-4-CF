@@ -15,17 +15,20 @@ case "start" :
 	variables.result 	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
-  
+ 
 
+	param attributes.key			= "";
 	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
 	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
 	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-
+	param attributes.value			= "";
 	
 	variables.myClass = "";
-	if(attributes?.text			!= "")	variables.myClass &= 'text-#attributes.text# ';		
+	if(attributes.text			!= "")	variables.myClass &= 'text-#attributes.text# ';		
 	if(attributes?.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';
 	
 
@@ -57,7 +60,7 @@ case "end" :
 	
 	
 									variables.result &= application.filterAttributes(attributes);
-           
+
 									variables.result &= '>';
 	
 									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);
@@ -65,13 +68,13 @@ case "end" :
 	
 									variables.result &= '</h1>' & variables.crlf;
      if(attributes?.pageHeader == true)		variables.result &= '</div><!-- /.page-header -->';
-     
-     
+
+
      if (attributes?.cacheid != "")		CachePut(variables.fullCacheid, variables.result, 1, 1, application.Bootstrap.cache.content);
-     
+
 	thisTag.GeneratedContent = "";
 	if (attributes.rendered)				writeOutput(variables.result);
-    
+
  	break;
 	}
  </cfscript>

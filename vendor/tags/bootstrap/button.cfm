@@ -16,14 +16,16 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
 
+	param attributes.icon			= "";
 	param attributes.iconAlign		= "left";
 	param attributes.library			= "default";	// for icon
 	param attributes.look			= "default";
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
 	param attributes.role			= "button";
-	
-
+	param attributes.size			= "";
+	param attributes.styleClass		= "";
+	param attributes.value			= "";
 
 	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
 

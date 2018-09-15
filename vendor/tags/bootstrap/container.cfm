@@ -19,6 +19,7 @@ case "start" :
 
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
+	param attributes.styleClass		= "";
 	param attributes.tag 			= 'div';
 
 
@@ -40,7 +41,7 @@ case "end" :
 	else								variables.result &= '<#attributes.tag# class="container';
 	
 	
-	if(attributes?.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
+	if(attributes.styleClass	!= "")		variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';
 	   								variables.result &= '"';
 	   								
 	   								variables.result &= application.filterAttributes(attributes);

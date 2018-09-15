@@ -21,7 +21,8 @@
 	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed	 	= true;
 	param attributes.profile			= application?.Bootstrap?.profile;
-	param attributes.rendered 		= true;
+	param attributes.rendered		= true;
+	param attributes.style			= "";
 	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 	param attributes.useDefaultButtons = true;
 	param attributes.useDefaultJS 	= true;

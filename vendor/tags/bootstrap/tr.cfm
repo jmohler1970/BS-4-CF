@@ -15,10 +15,11 @@ case "start" :
 	variables.result	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
-  
+
 	param attributes.look			= "";
 	param attributes.processed		= true;
 	param attributes.rendered 		= true;
+	param attributes.styleClass		= "";
 
 	
 	if(!ArrayContains(['','active','success','info','warning','danger'],attributes.look)) throw "tr tag has invalid contextual class option";

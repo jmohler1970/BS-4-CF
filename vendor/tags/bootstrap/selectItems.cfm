@@ -18,25 +18,29 @@ case "start" :
 
 	param attributes.binding			= "Value";
 	param attributes.displayBinding	= "Display";
+	param attributes.groupBinding		= "";
 	param attributes.idBinding		= "auto";
+	param attributes.lookBinding		= "";
 	param attributes.processed 		= true;
 	param attributes.query			= QueryNew("Label,Value");
 	param attributes.rendered 		= true;
 	param attributes.selectedValue	= [];	// may be an array. We use arrays so that if the values commas, selecting will still work
-	
+	param attributes.span			= "";
+	param attributes.tooltipBinding	= "";
+
 	if(!isArray(attributes.selectedValue))	attributes.selectedValue = [attributes.selectedValue];
 	
 	if(attributes?.disabled == "disabled")	attributes.disabled = true;
 	if(attributes?.selected == "selected")	attributes.selected = true;
 	
-			     
+
      if (!attributes.processed) exit "exitTag";
 	if (!attributes.rendered) exit "exitTag";
 	
 	if (attributes.query.recordcount == 0) exit "exitTag";
      break;
-     
-case "end" :     
+
+case "end" :
 	
 	
 	for(variables.myRow = 1; variables.myRow <= attributes.query.recordcount; variables.myRow++)	{

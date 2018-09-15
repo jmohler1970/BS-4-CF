@@ -16,11 +16,12 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
   
 
-
 	param attributes.library			= "default";
+	param attributes.look			= "";
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
-
+	param attributes.size			= "";
+	param attributes.styleClass		= "";
 
 	if (!attributes.processed) exit "exitTag";
 	
@@ -37,7 +38,7 @@ case "end" :
 	if (attributes?.addon	!= "")		variables.result &= '<span class="input-group-addon">';
 	
 	
-	   								variables.result &= '<i class="#application?.Bootstrap?.IconLibrary[attributes.library]##encodeForHTMLAttribute(attributes?.name)#';
+									variables.result &= '<i class="#application?.Bootstrap?.IconLibrary[attributes.library]##encodeForHTMLAttribute(attributes?.name)#';
 	if (attributes?.look 	!= "")		variables.result &= ' text-#encodeForHTMLAttribute(attributes.look.lcase())#';
 	if (attributes?.size 	!= "")		variables.result &= ' fa-#encodeForHTMLAttribute(attributes.size)#';
 	if (attributes?.spin	!= "")		variables.result &= ' fa-spin';

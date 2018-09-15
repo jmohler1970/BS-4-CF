@@ -17,8 +17,10 @@ case "start" :
 	variables.tagStack	= getBaseTagList().ListToArray();
 
 	param attributes.look			= "";
+	param attributes.name			= "";
 	param attributes.processed		= true;
 	param attributes.rendered		= true;
+	param attributes.tooltip			= "bottom";
 	param attributes.tooltipPosition	= "bottom";
 	param attributes.value			= 1;
 
@@ -60,7 +62,7 @@ case "end" :
 
 
 									variables.result &= '<input type="checkbox"';
-	if(attributes?.name		!= "")		variables.result &= ' name="#encodeForHTMLAttribute(attributes.name)#"';
+	if(attributes.name		!= "")		variables.result &= ' name="#encodeForHTMLAttribute(attributes.name)#"';
 	if(attributes?.id		!= "")		variables.result &= ' id="#encodeForHTMLAttribute(attributes.id)#"';
 	if(attributes?.checked	== true)		variables.result &= ' checked="checked"';
 	if(attributes?.disabled	== true)		variables.result &= ' disabled="disabled"';

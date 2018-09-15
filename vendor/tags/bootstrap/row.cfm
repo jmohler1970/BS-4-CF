@@ -19,6 +19,7 @@ case "start" :
 
 	param attributes.processed		= true;
 	param attributes.rendered 		= true;
+	param attributes.styleClass		= "";
 	param attributes.tag 			= 'div';
 
 	

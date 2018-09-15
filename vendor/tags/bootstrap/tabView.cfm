@@ -23,7 +23,9 @@ case "start" :
 	param attributes.activeIndex		= 1;
 	param attributes.processed		= true;
 	param attributes.rendered 		= true;
-	param attributes.role 			= "tabpanel";
+	param attributes.role			= "tabpanel";
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
 	
 	
 	if (!attributes.processed) exit "exitTag";
@@ -75,7 +77,7 @@ case "end" :
 									variables.needsJS = true;
 									variables.result &= ' data-url="' & variables.tab.dataUrl & '"';
 									}
-									variables.result &= ' >#encodeForHTML(variables.tab.title)#</a>';
+									variables.result &= ' >#encodeForHTML(variables.tab?.title)#</a>';
 									variables.result &= '</li>';
 			variables.currentTab++;
 			} // end if title exists

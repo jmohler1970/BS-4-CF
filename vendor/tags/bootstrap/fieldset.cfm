@@ -18,7 +18,8 @@ case "start" :
 
 
 	param attributes.processed 		= true;
-	param attributes.rendered	 	= true; 
+	param attributes.rendered		= true;
+	param attributes.styleClass		= "";
 
 	if (!attributes.processed) exit "exitTag";
 	
