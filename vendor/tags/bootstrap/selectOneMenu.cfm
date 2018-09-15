@@ -20,29 +20,34 @@ case "start" :
 	thisTag.qryOption 			= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
 	
 	if(structKeyExists(attributes, "qryOption")) thisTag.qryOption = attributes.qryOption;
-  
+
 	param attributes.array			= [];
+	param attributes.fieldsize		= "";
+	param attributes.help			= "";
 	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
+	param attributes.list			= "";
 	param attributes.name;					// required field
 	param attributes.processed 		= true;
 	param attributes.profile			= application?.Bootstrap?.profile;
-	param attributes.rendered 		= true;
+	param attributes.rendered		= true;
+	param attributes.span			= "";
+	param attributes.styleClass		= "";
 	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
 
 
 	if(attributes?.list != "")			attributes.array.append(attributes.list.ListToArray(), true);
 	
 
-     if (!attributes.processed) exit "exitTag";
-     
+	if (!attributes.processed) exit "exitTag";
+
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
 	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
-     
+
 	break;
-     
+
 case "end" :
 
 

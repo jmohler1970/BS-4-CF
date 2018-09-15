@@ -15,28 +15,37 @@ case "start" :
 	variables.result	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
-  
+
 
 	param attributes.collapsible		= true;
+	param attributes.contentClass		= "";
+	param attributes.contentStyle		= "";
+	param attributes.footer			= "";
+	param attributes.footerClass		= "";
+	param attributes.footerStyle		= "";
 	param attributes.look			= "default";
 	param attributes.processed		= true;
 	param attributes.rendered 		= true;
+	param attributes.size			= "";
+	param attributes.styleClass		= "";
+	param attributes.title			= "";
+	param attributes.titleClass		= "";
+	param attributes.titleStyle		= "";
 
-     
-     
+
      if (!attributes.processed) exit "exitTag";
-     
+
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
 	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
-     
+
 	break;
-     
+
 case "end" :
-   
-     
+
+
 									variables.result &= '<div class="panel panel-#encodeForHTMLAttribute(attributes.look.lcase())#';
 	if (attributes?.styleClass 	!= "") 	variables.result &= ' #encodeForHTMLAttribute(attribites.styleClass)#';						
 	   								variables.result &= '"';

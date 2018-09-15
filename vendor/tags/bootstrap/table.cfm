@@ -16,13 +16,15 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
 
-
-     param attributes.condensed		= true;
-     param attributes.processed		= true;
+	param attributes.colfooters		= "";
+	param attributes.colheaders		= "";
+	param attributes.condensed		= true;
+	param attributes.processed		= true;
 	param attributes.rendered 		= true; // removes content not actuall td
 	param attributes.responsive		= true;
 	param attributes.striped			= true;
-     
+	param attributes.styleClass		= "";
+
 
 	if (!attributes.processed) exit "exitTag";
 	
@@ -34,13 +36,12 @@ case "start" :
 							}
 		
 	break;
-     
-case "end" :     
-          
+
+case "end" :
 
      if(attributes?.responsive	== true)		variables.result &= '<div class="table-responsive">';  
      									variables.result &= variables.crlf;  
-	   									variables.result &= '<table class="table';
+										variables.result &= '<table class="table';
 	if(attributes?.bordered		== true)		variables.result &= ' table-bordered';
 	if(attributes?.condensed		== true)		variables.result &= ' table-condensed table-sm';
 	if(attributes?.hover		== true)		variables.result &= ' table-hover';
@@ -51,10 +52,10 @@ case "end" :
 	   										
 	   									variables.result &= application.filterAttributes(attributes);
 	   										
-               
+
 										variables.result &= '>' & variables.crlf;
 											
-	if(attributes?.colHeaders	!= "")		{
+	if(attributes.colHeaders	!= "")		{
 											variables.result &= '<thead>' & variables.crlf & '<tr>' & variables.crlf;
 									for (variables.colHeader in attributes.colHeaders.listToArray())	{
 											variables.result &= '<th>' & variables.colHeader & '</th>'& variables.crlf;

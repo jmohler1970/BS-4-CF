@@ -18,10 +18,12 @@ case "start" :
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
 
-     
-     param attributes.processed 		= true;
- 	param attributes.rendered 		= true; 
 
+	param attributes.processed 		= true;
+	param attributes.rendered 		= true; 
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+	param attributes.value			= "";
 
 	variables.myClass = "";
 	if(attributes?.text			!= "")	variables.myClass &= 'text-#attributes.text# ';		

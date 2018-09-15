@@ -21,6 +21,8 @@ case "start" :
 	param attributes.hidden			= "";
 	param attributes.processed		= true; // unknown how to support
 	param attributes.rendered 		= true; // removes content not actual td
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
 	param attributes.tooltipPosition	= "bottom";
 
 

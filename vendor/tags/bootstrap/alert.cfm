@@ -18,13 +18,13 @@ case "start" :
   
 
 	param attributes.look			= "warning";
-	param attributes.processed 		= true;
-	param attributes.rendered 		= true;
-     
-    
+	param attributes.processed		= true;
+	param attributes.rendered		= true;
+	param attributes.title			= "";
+
 	
 	if (!application.Bootstrap.validLook.contains(attributes.look))	throw "This is an invalid look option";
-        
+
 	if (!attributes.processed) exit "exitTag";
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
@@ -33,17 +33,17 @@ case "start" :
 							exit "exitTag";
 							}
 	break;
-     
+
 case "end" :
 
-     
+
 									variables.result &= '<div class="alert alert-#attributes.look.lcase().encodeForHTMLAttribute()#';
 	if(attributes?.closable	== true)		variables.result &= ' alert-dismissible';  							
 									variables.result &= '"';
 	
 									variables.result &= application.filterAttributes(attributes);
-     
-	
+
+
 									variables.result &= '>';
 	
 	if(attributes?.closable	== true)		variables.result &= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';		

@@ -17,20 +17,24 @@ case "start" :
 	variables.result 	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
-  
 
+	
+	param attributes.id				= "";
+	param attributes.base64			= "";
 	param attributes.base64mime		= "image/png";
 	param attributes.library			= "default";
-     param attributes.processed		= true;
-	param attributes.rendered 		= true;
+	param attributes.processed		= true;
+	param attributes.rendered		= true;
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
 
-     
-     
+
+
      if(!isnumeric(attributes?.height)) attributes.height = "";
      if(!isnumeric(attributes?.width))	attributes.width = "";
-     
-     
-     
+
+
+
      variables.arAttrSeries = [];
 		
 	// We will be passing through HTML5 data-, Mouse Events, and Angular JS

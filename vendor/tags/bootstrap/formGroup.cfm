@@ -1,12 +1,8 @@
 <!---@ Description: Support for formgroup. --->
 
-
-
-
 <cfscript>
 if (!thisTag.HasEndTag) 
 	abort "An end tag is required for b:formGroup."; 
-	
 	
 
 switch (thisTag.ExecutionMode)     {
@@ -15,12 +11,13 @@ case "start" :
 	variables.result 	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
-  
+
 
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
-     
-     
+	param attributes.styleClass		= "";
+
+
 	if (!attributes.processed) exit "exitTag";
 	
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
@@ -30,16 +27,16 @@ case "start" :
 							}
 	
 	break;
-     
+
 case "end" :
 
-     
+
 									variables.result &= variables.crlf & '<div class="form-group';
 	if(attributes?.styleClass	!= "")	variables.result &= ' #encodeForHTMLAttribute(attributes.styleClass)#';			
 	   								variables.result &= '"';
 	   								
 									variables.result &= application.filterAttributes(attributes);
-           
+
 									variables.result &= '>';
 	
 									variables.result &= application.generateContent(thisTag.GeneratedContent, variables.tagstack, attributes);							

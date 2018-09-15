@@ -18,13 +18,18 @@ case "start" :
 	variables.tagStack	= getBaseTagList().listToArray();
 
 
+	param attributes.href			= "";
+	param attributes.icon			= "left";
 	param attributes.iconAlign		= "left";
 	param attributes.library			= "default";	// for icon
-	param attributes.look	 		= "default";
+	param attributes.look			= "default";
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
 	param attributes.role			= "button";
-	
+	param attributes.size			= "";
+	param attributes.styleClass		= "";
+	param attributes.tooltipKey		= "";
+	param attributes.value			= "";
 	
 	
 	
@@ -50,10 +55,10 @@ case "start" :
 case "end" :
 
 	
-	if (attributes?.value	!= "")										thisTag.generatedContent = attributes.value;	
+	if (attributes.value	!= "")										thisTag.generatedContent = attributes.value;	
 
 	
-	if (attributes?.tooltipKey != "")										attributes.tooltip 		= application.geti18n(attributes.key, attributes?.tooltipPlaceholder);
+	if (attributes.tooltipKey != "")										attributes.tooltip 		= application.geti18n(attributes.key, attributes?.tooltipPlaceholder);
 
 
 	if (attributes.look 	== 'link')			variables.result &= '<a class="';				// we don't apply btn so that link look like links

@@ -15,27 +15,28 @@ case "start" :
 	variables.result 	= "";
 	variables.crlf 	=  chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
-  
 
 
-     param attributes.processed 		= true;
- 	param attributes.rendered 		= true;
-
+	param attributes.footer			= "";
+	param attributes.processed		= true;
+	param attributes.rendered		= true;
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+	param attributes.value			= "";
 	
 
-     if (!attributes.processed) exit "exitTag";
-     
+	if (!attributes.processed) exit "exitTag";
+
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
 	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
-     
+
 	break;
-     
-case "end" :     
-	if( attributes?.value 	!= "")										thisTag.generatedContent = attributes.value;
-     
+
+case "end" :
+	if( attributes.value 	!= "")										thisTag.generatedContent = attributes.value;
 	
 									variables.result &= '<blockquote class="';
 	if(attributes?.reverse	== true)		variables.result &= ' blockquote-reverse';	

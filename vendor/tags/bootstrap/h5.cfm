@@ -15,10 +15,12 @@ case "start" :
 	variables.result 	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
-  
 
      param attributes.processed 		= true;
-	param attributes.rendered 		= true; 
+	param attributes.rendered 		= true;
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+	param attributes.value			= "";
 
 
 	variables.myClass = "";

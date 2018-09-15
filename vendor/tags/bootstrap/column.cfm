@@ -21,6 +21,7 @@ case "start" :
 	param attributes.processed 		= true;
 	param attributes.rendered 		= true;
 	param attributes.span			= 0;		// This can be JSON too
+	param attributes.styleClass		= "";
 	param attributes.tag 			= 'div';
 	
 	

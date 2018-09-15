@@ -22,7 +22,9 @@ case "start" :
 	param attributes.processed 		= true;
 	param attributes.profile			= application?.Bootstrap?.profile;
 	param attributes.rendered 		= true;
+	param attributes.styleClass		= "";
 	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
+	param attributes.value			= "";
 	
 	
 	if (attributes.keyExists("text")) 						throw "attributes.text is an invalid option. Don't even think of using it";

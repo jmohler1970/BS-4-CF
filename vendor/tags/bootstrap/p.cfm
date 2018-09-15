@@ -19,7 +19,9 @@ case "start" :
 
 	param attributes.processed		= true;
 	param attributes.rendered 		= true;
-
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+	param attributes.value			= "";
 
 	variables.myClass = "";
 	if(attributes?.lead 		== "lead")	variables.lead = true;
@@ -38,7 +40,7 @@ case "start" :
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
-     
+
 	
 	break;
 

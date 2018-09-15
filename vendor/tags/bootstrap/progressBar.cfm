@@ -15,29 +15,31 @@ case "start" :
 	variables.result	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
-  
 
-     param attributes.processed		= true;
+
+	param attributes.look			= "";
+	param attributes.processed		= true;
 	param attributes.rendered 		= true;
 	param attributes.role 			= "progressbar";
 	param attributes.stripped		= false;	if(attributes?.animated == true) attributes.stripped = true;
+	param attributes.style			= "";
+	param attributes.styleClass		= "";
+	param attributes.width			= 0;
 
-     param attributes.width			= 0;
-     
-     
-     
+
+
      if (attributes.keyExists("text")) 						throw "attributes.text is an invalid option. Don't even think of using it!";
      
      if (!attributes.processed) exit "exitTag";
-     
+
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
 	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
-     
+
 	break;
-     
+
 case "end" :
 	
 

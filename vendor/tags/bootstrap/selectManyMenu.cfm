@@ -16,19 +16,20 @@ case "start" :
 	variables.tagStack	= getBaseTagList().ListToArray();
 	
 	thisTag.qryOption 			= QueryNew("disabled,display,group,id,look,value,selected,tooltip,tooltipPosition");
-  
+
 	if(attributes.keyExists("qryOption")) thisTag.qryOption = attributes.qryOption;
-  
 
+	param attributes.fieldsize		= "";
+	param attributes.help			= "";
 	param attributes.name;					// required field
-	param attributes.processed 		= true;
-	param attributes.rendered	 	= true;
-
-	
+	param attributes.processed		= true;
+	param attributes.rendered		= true;
+	param attributes.span			= "";
+	param attributes.styleClass		= "";
 
 	
      if (!attributes.processed) exit "exitTag";
-     
+
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
 	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
@@ -36,8 +37,8 @@ case "start" :
 							}
      
 	break;
-     
-case "end" :     
+
+case "end" :
 	
 
 	if (attributes?.span		!= "")	variables.result &= '<div class="col-md-#attributes.span#">' & variables.crlf;

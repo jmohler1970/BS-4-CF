@@ -15,18 +15,21 @@ case "start" :
 	variables.result 	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().listToArray();
-	  
 
+
+	param attributes.key		= "";
 	param attributes.isSafeHTML		= application?.Bootstrap?.isSafeHTML.contains(variables.tagStack[1].lcase());
 	param attributes.processed 		= true;
 	param attributes.profile			= application?.Bootstrap?.profile;
-	param attributes.rendered	 	= true; 
+	param attributes.rendered	 	= true;
+	param attributes.styleClass		= "";
+	param attributes.text		 	= "";
 	param attributes.throwOnError		= application?.Bootstrap?.throwOnError;
-
+	param attributes.value		 	= "";
 
 	variables.myClass = "";
-	if(attributes?.text			!= "")	variables.myClass &= 'text-#attributes.text# ';		
-	if(attributes?.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';
+	if(attributes.text		!= "")	variables.myClass &= 'text-#attributes.text# ';		
+	if(attributes.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';
 	
 
 		
@@ -42,7 +45,7 @@ case "start" :
 
 case "end" :
 
-	if(attributes?.value	!= "")		{ thisTag.GeneratedContent = attributes.value; }
+	if(attributes.value	!= "")		{ thisTag.GeneratedContent = attributes.value; }
 
 
 	if(attributes?.key 		!= "" )		{

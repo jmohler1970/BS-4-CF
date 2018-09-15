@@ -15,33 +15,34 @@ case "start" :
 	variables.result	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
- 
 
-     param attributes.processed		= true;
+
+	param attributes.processed		= true;
 	param attributes.rendered 		= true;
-     param attributes.usespan			= true;
-     
-     
-     
-     variables.myClass = "";
+	param attributes.styleClass		= "";
+	param attributes.text			= "";
+	param attributes.usespan			= true;
+	param attributes.value			= "";
+
+	variables.myClass = "";
 	if(attributes?.text			!= "")	variables.myClass &= 'text-#attributes.text# ';		
 	if(attributes?.styleClass	!= "")	variables.myClass &= '#attributes.styleClass# ';		
 
 
      if (!attributes.processed) exit "exitTag";
-     
+
 	variables.fullCacheid = variables.tagStack[1] & " " & attributes?.key & " " & attributes?.cacheid;
 	if (attributes?.cacheid != "" && cacheidExists(variables.fullcacheid, application.Bootstrap.cache.content) && attributes.rendered)	{
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
-     
-     
+
+
 	break;
-     
+
 case "end" :
 	if (attributes?.value 	!= "")			thisTag.generatedContent = attributes.value;
-     
+
 										variables.result &= variables.crlf;
 	if (attributes.usespan)	{											
 		if(variables.myClass == "")			variables.result &= '<span';

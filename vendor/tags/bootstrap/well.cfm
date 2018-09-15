@@ -15,14 +15,14 @@ case "start" :
 	variables.result	= "";
 	variables.crlf 	= chr(13) & chr(10);
 	variables.tagStack	= getBaseTagList().ListToArray();
-  
 
+
+	param attributes.key			= "";
 	param attributes.processed	 	= true;
 	param attributes.rendered 		= true;
+	param attributes.size			= "";
+	param attributes.styleClass		= "";
 
-
-	
-	
 	
 	if (!attributes.processed) exit "exitTag";
 	
@@ -31,10 +31,10 @@ case "start" :
 							writeOutput(cacheGet(variables.fullCacheid, application.Bootstrap.cache.content));
 							exit "exitTag";
 							}
-     
-	
+
+
 	break;
-     
+
 case "end" :
 	if(attributes?.key 		!= "" )		{
 									thisTag.GeneratedContent	= application.geti18n(attributes.key, attributes?.placeholder);
